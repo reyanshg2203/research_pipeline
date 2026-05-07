@@ -1,0 +1,112 @@
+In this lesson, students develop an understanding of how similar figures are pairs of figures for which there is a sequence of rigid transformations and a dilation that takes one figure onto the other. Then students practice writing a sequence of transformations that could be used to take one triangle onto a similar triangle and identify the scale factor used for the dilation. They must use the structure of transformations and dilation to write out the sequence of transformations (MP7).
+
+Learning Goals
+Comprehend the definition of similarity in terms of dilations and rigid transformations.
+Generate similarity statements about similar figures, and identify proportional relationships among corresponding side lengths (in writing).
+Student-Facing Goal
+Let’s identify similar figures.
+Student-Facing Targets
+I can write similarity statements.
+I know the definition of similarity.
+
+In a subsequent lesson, students will justify why not all rectangles are similar to each other and will explore a false proof that all rectangles are similar. This activity previews that thinking, as students explain what went wrong with this attempt to dilate a square. Monitor for students who:
+
+Notice that the figures are not the same shape.
+Notice that the sides are not scaled by the same scale factor.
+
+
+The goal of this Activity Synthesis is for students to begin to justify why accurate dilations lead to figures with all pairs of corresponding angles congruent and all pairs of corresponding sides having the same ratio as the scale factor. They approach this from the contrapositive: If a figure does not have all pairs of corresponding angles congruent and all pairs of corresponding sides having the same ratio as the scale factor, then the figures cannot be a dilation of one another.
+
+Invite students to share who:
+
+Noticed that the figures are not the same shape.
+Noticed that the sides are not scaled by the same scale factor.
+
+
+Activity Narrative
+Students sort different pairs of figures during this activity. A sorting task gives students opportunities to analyze representations, statements, and structures closely and to make connections (MP2, MP7).
+
+Monitor for different ways groups choose to categorize the pairs of figures, but especially for categories that distinguish between congruent figures, similar figures, and neither congruent nor similar. 
+
+After doing and discussing a card sort, students are assigned one pair of figures to figure out a sequence of rigid motions and dilations that takes one figure onto the other. Students use their prior knowledge of rigid transformations and their experience carrying out dilations to help them be successful in this task.
+
+Activity Synthesis
+The purpose of this discussion is for students to describe sequences of rigid motions and dilations that show that two figures are either congruent or similar.
+
+Record the scale factors for dilating from Figure F to Figure G, and from Figure G to Figure F, for each pair of figures except the rhombi. Include the right triangles and the trapezoids, which have a scale factor of 1. Ask students what they notice. (There’s a scale factor either way. The scale factors are multiplicative inverses. The congruent figures have a scale factor of 1.)
+
+Activity Narrative
+The goal of this activity is for students to use the definition of similarity, and to practice applying to similar figures some of the skills they learned when studying congruent figures. Students practice writing a sequence of rigid motions and dilations to take one figure onto another, write accurate similarity statements about the figures, and reason about what must be true about corresponding side lengths.
+
+Activity Synthesis
+Ask students to determine if their sequence of rigid motions and dilations will always work for any pair of triangles that have all pairs of corresponding angles congruent and all pairs of corresponding side lengths in the same proportion. (Probably not, some figures would require rotations and dilations. But the general method of dilating and using rigid motions will always work.)
+
+For students who dilated first, ask:
+
+"How do you choose the dilation to use?" (Dilate from any vertex, by using the scale factor given by the ratio of a pair of corresponding sides.)
+“Once you dilate, how do you know you’ll be able to use rigid motions to take one triangle to the other?“ (After dilation, the triangles are congruent because their corresponding angles remain congruent, and all the corresponding side lengths will be the same. Because they are congruent, there is always a sequence of rigid motions that takes one figure to the other. In this example, the lines are parallel and the triangles are oriented the same way, so only a translation is needed to align the figures.)
+For students who used rigid motions first, ask:
+
+“How do you know rigid motion will line up parts of the figures?“ (Because corresponding angles are congruent and one pair of corresponding sides is parallel, we’ll be able to line up both of the rays that meet at the vertex with a translation, because you can always take an angle onto another congruent angle.)
+“How do you know that dilation will then line up the remaining two points?“ (Dilations keep angles the same measure, keep the center of the dilation in the same place, and move other points along the ray connecting the center to the point. Because the corresponding sides are all in the same proportion, if the right scale factor is used, then all of the vertex points should be in the same position so that the triangles line up.)
+
+
+Lesson Synthesis
+The goal of this discussion is to make sure that students are comfortable asserting that if all pairs of corresponding angles are congruent and all pairs of corresponding sides have lengths in the same proportion, that they could definitely find a sequence of rigid motions and a dilation that takes one triangle onto the other. Students will write more formal proofs of this idea in a subsequent lesson. 
+
+Invite students to choose a method of transforming one similar figure onto the other that they prefer, by either dilating first or using rigid motions first. Arrange students with a partner who prefers the same method.
+
+Display a pair of triangles where one has sides twice as long as the other, and all the pairs of corresponding angles are congruent. Give students 1 minute to talk with their partner about their strategy for lining up the triangles.
+
+JL = 2 * PR
+<p>Similar triangles J K L and P Q R.</p>
+
+Ask students to find a group that preferred a different strategy than theirs. Invite each group to describe to the other how they will line up the triangles and how they know their strategy will work. (Dilate the smaller triangle by a scale factor of 2. The triangles will be congruent. Then you can translate, rotate, and reflect so that the triangles line up. Alternatively, use rigid motions to line up one pair of corresponding vertices and two pairs of corresponding sides. Then dilate the smaller triangle by a scale factor of 2.) 
+
+Invite students to explain why they are convinced that if two triangles have all pairs of corresponding angles congruent and all pairs of corresponding sides similar, the triangles must be similar. 
+
+Student Lesson Summary
+One figure is similar to another if there is a sequence of rigid motions and dilations that takes the first figure so that it fits exactly over the second. For example, triangle DHF is similar to triangle EHG. 
+
+What is a rotation and a dilation that will take DHF onto EHG?
+
+<p><strong>Two parallel horizontal line segments. Top, F D, bottom, E G, point H between two segments. Triangles D H F and E H G drawn. D H labeled 2, H F labeled 2 point 8. H G labeled 5 point 6, H E labeled 4.</strong></p>
+
+The triangles are similar because a 180 degree rotation of DHF using center H will take segment HF onto segment HG, because 180 degree rotations take lines through the center of the rotation to themselves. It will also take segment HD onto segment HE for the same reason. Then G will be on a ray from H through F', and E will be on a ray from H through D'. Because H'F'/HG = H'D'/HE = 1/2, a dilation by a scale factor of 2 and center H will take  to fit exactly onto EHG. Therefore, there is a sequence of rigid motions and dilations that takes DHF onto EHG, and triangle DHF is similar to triangle EHG. 
+
+<p><strong>Adding on from previous image. Triangles D H F, blue, and E H G drawn. Point D prime on H E. Point F prime on H G. Triangle D prime H prime F prime drawn, green.</strong></p>
+
+Because both rigid motions and dilations leave corresponding angles congruent, all pairs of corresponding angles in similar figures are congruent. In this example, angle D is congruent to angle E, angle F is congruent to angle G, and angle DHF is congruent to angle EHG.
+
+Because rigid motions keep lengths congruent and dilations scale them at the same proportion, all pairs of corresponding sides in similar figures are in the same proportion. In this example, HE/HD = HG/HF = EG/DF.
+
+
+Problem 1 
+
+Find a sequence of rigid motions and dilations that takes square ABCD to square EFGH.
+
+<p>Squares A B C D and E F G H. A B C D has A upper left, base B C and left side A B is 5. E F G H has G above E, rests on E and right lower side E F is 2.</p>
+
+Problem 2
+
+Quadrilaterals Q and P are similar.
+
+What is the scale factor of the dilation that takes P to Q?
+What is the scale factor of the dilation that takes Q to P?
+
+<p>Quadrilaterals P and Q are similar. P has sides from the top measuring 4, 3 and 2, Q has sides from the top 5, none and 2 point 5. </p>
+
+
+Problem 3
+
+What is our definition of “similarity”?
+
+A. If two figures have the same angles, then they are similar.
+
+B. If two figures have proportional side lengths, then they are similar.
+
+C. If there is a sequence of rigid transformations taking one figure to another, then they are similar.
+
+D. If there is a sequence of rigid transformations and dilations that take one figure to the other, then they are similar.
+
+

@@ -1,0 +1,104 @@
+In this lesson, students review the definition of scale factor by comparing examples and non-examples of a scaled image. Then students define dilation as a transformation with a center P and a positive scale factor k that takes a point A along the ray PA to another point that is a distance k times farther away from P than A is. Then students practice dilating points on a figure to better understand the concept.
+
+When students are drawing a dilation they must both measure precisely and pay attention to which of the labeled points is being used as the center (MP6).
+
+Learning Goals
+Comprehend the terms “scale factor” and “dilation.”
+Critique and create scaled drawings of figures (using words and other representations).
+Student-Facing Goal
+Let’s make a scale drawing.
+Student-Facing Targets
+I can dilate a figure given a scale factor and a center.
+
+In this activity, students recall the meaning of scaled drawings by studying an image and looking for a scaled copy and a distorted image. In the discussion, students should articulate that measurements in a scaled copy of a figure are the same multiple of measurements in the original figure. 
+Activity Synthesis
+The important concepts in this discussion are that in a scale drawing: 
+The ratio of the distance between two points in the original figure to the distance between two corresponding points in the scaled figure is constant.
+The corresponding angles are congruent.
+Remind students of the term scale drawing from middle school. Ask students what they could measure to figure out which video game controller was a scale drawing of the original video game controller. (If the distance between the original controller’s buttons is twice the distance between the scaled controller’s buttons, then the height of the buttons on the original controller should also be twice the height of the buttons on the scaled controller.) If no student mentions angles, ask students if a protractor could also help them confirm which video game controller is the scale drawing. (The angles defined by points in the scaled figure should have the same measure as the angles defined by points in the original figure.) Students need not do any measuring.Add the following definition to the class reference chart, and ask students to add it to their reference charts:
+Scale factor is the factor by which every length in an original figure is multiplied when you make a scaled copy. (Definition) 
+
+This activity is the first time students are asked to dilate a figure in this course. Monitor for students with misconceptions, such as making the distance from H to H' 120 units, rather than making the distance from C to H' 120 units so that the distance from H to H' is 80 units. If students aren't sure how to get started, support them in understanding the definition of dilation given in the task. Draw an example using the labels in the definition, and invite them to match the labels in the task to the example. Make sure that all students understand how to draw rays from the center point through the point(s) to be dilated, and how to find the image of the points by measuring along the rays. Students will dilate more complex figures in subsequent activities. 
+
+
+In this activity, students dilate a figure with multiple points and multiple shapes. The goal is for them to practice dilation and begin to confirm some properties of dilation. Students will have additional opportunities to formalize properties of dilation in subsequent lessons. (A dilation takes a line not passing through the center of the dilation to a parallel line, and leaves a line passing through the center unchanged. The dilation of a line segment is longer or shorter according to the same ratio given by the scale factor.)
+
+Monitor for students who use these strategies, listed in order of precision:
+
+Use the two given lines to place D' and B', and then estimate all of the other shapes and points.
+Measure distances within the figure, and try to replicate them, for example, calculating the radii of the two dilated circles and trying to place them without scaling A and C along rays through P.
+Draw rays from P through each point in the original figure, and place points in the image halfway between P and the corresponding point.
+When students articulate what they notice and wonder, they have an opportunity to attend to precision in the language they use to describe what they see (MP6). They might first propose less formal or imprecise language, and then restate their observation with more precise language in order to communicate more clearly. 
+Activity Synthesis
+The goal of this discussion is to surface some observations about dilations. 
+
+Invite previously selected students to share their strategies for dilating points. Sequence the discussion of the strategies in the order listed in the Activity Narrative. If possible, record and display the students’ work.
+
+Connect the different responses to the learning goals by asking questions, such as:
+
+“What is precise about each student’s method for dilating points?”
+“How did each student’s method fill in the rest of the figure after dilating a few points?”
+Ask students to share the things they noticed and wondered. Record and display their responses without editing or commentary. If possible, record the relevant reasoning on or near the image. Next, ask students, “Is there anything on this list that you are wondering about now?” Encourage students to observe what is on display and to respectfully ask for clarification, point out contradicting information, or voice any disagreement.
+
+If the relative length of segments, or measure of angles, does not come up during the conversation, ask students to discuss these ideas.
+
+Tell students that when we write  in an equation or expression it means the length of the segment AB. The equation A'B' = 1/2 * AB means “The length of segment A'B' is half as much as the length of segment AB.”
+
+Lesson Synthesis
+Invite students to examine the figures they have drawn during this lesson. Ask students:
+
+“Does a point change size when it is dilated?“ (No, points are always infinitesimally small, only the location changes.)
+“What does a segment look like when it is dilated?“ (If the scale factor is greater than 1, then it looks like a longer segment. If the scale factor is less than 1, then it looks like a shorter segment. If the scale factor is 1, then it is the same segment.)
+“When a dilated segment is longer than the original, why are there no holes?“ (There are infinite points in a segment so even when it is dilated to be longer there are still infinite points so there are no holes.)
+Note that dilations take line segments to line segments and circles to circles. Even though any pair of points in the original figure will be farther apart or closer together in the image, we don’t need to worry that a dilated circle will have tiny holes in it, or a dilated line segment will be dashed if we zoom in far enough. We define dilation to take lines to lines and circles to circles without any gaps.
+
+Add the following definition to the class reference chart, and ask students to add it to their reference charts:
+
+A dilation with center P and positive scale factor k takes a point A along the ray PA to another point whose distance is k times farther away from P than A is.
+
+Dilate (object) using center (point) and a scale factor of (number). (Definition)
+
+Student Lesson Summary
+A scale drawing of an object is a drawing in which all lengths in the drawing correspond to lengths in the original object multiplied by the same value. When we scale a figure we need to be sure to scale all of the parts equally or else the image will become distorted.
+
+Creating a scaled copy involves multiplying the lengths in the original figure by a scale factor. The scale factor is the factor by which every length in an original figure is multiplied when you make a scaled copy. A scale factor greater than 1 enlarges an object, and a scale factor less than 1 shrinks an object. What would a scale factor equal to 1 do?
+
+For example, segment BC is a scaled copy of segment DE with a scale factor of 1/4. So BC = 1/4 * DE. If DE = 6, then BC = 6/4 or 1.5.
+<p>Diagram showing line segment dilations with center A. </p>
+To perform a dilation, we need a center of dilation, a scale factor, and something to dilate. A dilation with center A and a positive scale factor of k takes a point D to another point along the ray AD that is k times farther away from A than D is.
+In the image here, segment FG is a dilation of segment DE using center A and a scale factor of 3. So FA = 3 * DA and GA = 3 * EA.
+
+Segment BC is also a dilation of segment DE. This dilation uses center A and a scale factor of 1/4.
+
+Problem 1
+Polygon P is a scaled copy of Polygon Q.
+<p>2 4-sided polygons, P and Q. 1 side in polygon P is 4 and its corresponding side in Q is 3. Another side in polygon P is x, and its corresponding side in Q is y.</p>
+The value of x is 6, what is the value of y?
+What is the scale factor?
+
+Problem 2
+Figure f ​is a scaled copy of Figure e.
+
+We know:
+AB = 6
+CD = 3
+XY = 4
+ZW = a
+
+Select all true equations.
+A. 6/3 = 4/a
+B. 6/4 = 3/a
+C. 3/4 = 6/a
+D. 6/3 = a/4
+E. 6/4 = a/3
+F. 3/4 = a/6
+
+<p>2 figures, e and f. Figure e: segments A B and D C intersect at C. D C is 3, A B is 6. An ellipse through D. Figure f: segments X Y and Z W intersect at W. Z W is a. X Y is 4. An ellipse through Z.</p>
+
+Problem 3
+
+Solve each equation. 
+1. 2/5 = x/15
+2. 4/3 = x/7
+3. 7/5 = 28/x
+4. 11/4 = 5/x
