@@ -7,12 +7,14 @@ from pathlib import Path
 
 import anthropic
 from dotenv import load_dotenv
+from pydantic import BaseModel
 
 # Repo root (parent of pipelines/)
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from schema import ProblemSchema  # noqa: E402
+from schema_to_text import schema_to_problem_text  # noqa: E402
 
 load_dotenv(ROOT / ".env")
 
@@ -20,6 +22,10 @@ client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 LESSONS_DIR = ROOT / "lessons"
 OUTPUTS_DIR = ROOT / "outputs"
+
+
+class ProblemBatch(BaseModel):
+    problems: list[ProblemSchema]
 
 
 def _lesson_paths(single: str | None) -> list[Path]:
@@ -56,15 +62,17 @@ Below is the source material from {lesson_path.name} ({label}):
 {lesson_content}
 </lesson>
 
-Your job is to invent ONE original math problem based on this lesson and represent it as a structured JSON object. Do not copy problems from the lesson. The problem must have a single numerical or yes/no answer.
+Your job is to invent THREE original math problems based on this lesson, each represented as a structured JSON object in a list. Do not copy problems from the lesson. Each problem must have a single numerical or yes/no answer. The three problems should be distinct from one another in structure and difficulty.
 
 Rules:
 1. Only use mathematical concepts explicitly taught in this lesson
-2. The problem must be solvable using only words and numbers — no diagrams
+2. Each problem must be solvable using only words and numbers — no diagrams
 3. All declared values must be internally consistent
-4. The target must be uniquely determinable from the declared facts
+4. The target must be uniquely determinable from the declared facts. However, the target should not be explicitly stated in the problem statement.
 5. Use null for any unknown values
 6. The relationship type must be one of the allowed enum values
+7. Make sure each problem is tightly aligned and integrates a supporting lesson concept; it pushes to the productive edge of difficulty.
+
 
 CRITICAL — Naming conventions (these must be followed exactly):
 - Triangle ids: use bare letters ONLY. Write "ABC" — NOT "triangle_ABC", NOT "triangleABC", NOT "Triangle ABC"
@@ -124,30 +132,64 @@ congruent_triangles:
 collinear_dilation:
   center (str), pre_image_point (str), image_point (str)
 
+supplementary_angles:
+  angle1 (str), angle2 (str), sum (always 180)
+
+complementary_angles:
+  angle1 (str), angle2 (str), sum (always 90)
+
+vertical_angles:
+  angle1 (str), angle2 (str)
+
+linear_pair:
+  angle1 (str), angle2 (str), sum (always 180)
+
+adjacent_angles:
+  shared_vertex (str), shared_ray (str), angle1 (str), angle2 (str)
+
+angle_bisector:
+  bisected_angle (str), ray (str), angle1 (str), angle2 (str)
+
+exterior_angle:
+  exterior_angle (str), remote_interior_angle1 (str), remote_interior_angle2 (str)
+
+parallel_lines_transversal:
+  transversal (str), line1 (str), line2 (str),
+  alternate_interior_pairs (list of [str, str]),
+  alternate_exterior_pairs (list of [str, str]),
+  corresponding_pairs (list of [str, str]),
+  co_interior_pairs (list of [str, str])
+
+angle_sum_triangle:
+  triangle_id (str), angles (list of str), sum (always 180)
+
+angle_sum_polygon:
+  polygon_id (str), num_sides (int), interior_sum (float), exterior_sum (always 360)
+
 All other relationship types use an empty attributes dictionary."""
 
 
-def generate_for_lesson(lesson_path: Path) -> Path | None:
+def generate_for_lesson(lesson_path: Path) -> list[Path]:
     lesson_content = lesson_path.read_text(encoding="utf-8")
     if not lesson_content.strip():
         print(f"Skipping empty file: {lesson_path.name}")
-        return None
+        return []
 
     prompt = _build_prompt(lesson_path, lesson_content)
     print(f"\n--- Calling API for {lesson_path.name} ---")
 
     message = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=1000,
+        max_tokens=3000,
         messages=[{"role": "user", "content": prompt}],
         tools=[
             {
-                "name": "generate_problem",
-                "description": "Generate a geometry problem in structured schema format",
-                "input_schema": ProblemSchema.model_json_schema(),
+                "name": "generate_problems",
+                "description": "Generate three geometry problems in structured schema format",
+                "input_schema": ProblemBatch.model_json_schema(),
             }
         ],
-        tool_choice={"type": "tool", "name": "generate_problem"},
+        tool_choice={"type": "tool", "name": "generate_problems"},
     )
 
     tool_use = None
@@ -157,25 +199,38 @@ def generate_for_lesson(lesson_path: Path) -> Path | None:
             break
     if tool_use is None:
         print("No tool_use block in response; skipping save.")
-        return None
+        return []
 
     raw = tool_use.input
-    print("Raw output from Haiku:")
-    print(json.dumps(raw, indent=2))
+    problems = raw.get("problems", [])
+    print(f"Received {len(problems)} problem(s) from API.")
 
-    try:
-        ProblemSchema(**raw)
-        print("Pydantic validation passed")
-    except Exception as e:
-        print(f"Pydantic validation failed: {e}")
-        return None
-
+    saved_paths = []
     OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
-    out_name = f"schema_{lesson_path.stem}.json"
-    out_path = OUTPUTS_DIR / out_name
-    out_path.write_text(json.dumps(raw, indent=2), encoding="utf-8")
-    print(f"Saved to {out_path.relative_to(ROOT)}")
-    return out_path
+
+    for i, problem in enumerate(problems, start=1):
+        print(f"\n--- Problem {i} ---")
+        print(json.dumps(problem, indent=2))
+
+        try:
+            ProblemSchema(**problem)
+            print(f"Pydantic validation passed (problem {i})")
+        except Exception as e:
+            print(f"Pydantic validation failed (problem {i}): {e}")
+            continue
+
+        out_name = f"schema_{lesson_path.stem}_{i:03d}.json"
+        out_path = OUTPUTS_DIR / out_name
+        out_path.write_text(json.dumps(problem, indent=2), encoding="utf-8")
+        print(f"Saved to {out_path.relative_to(ROOT)}")
+
+        txt_path = out_path.with_suffix(".txt")
+        txt_path.write_text(schema_to_problem_text(problem), encoding="utf-8")
+        print(f"Saved NL text to {txt_path.relative_to(ROOT)}")
+
+        saved_paths.append(out_path)
+
+    return saved_paths
 
 
 def main() -> None:
@@ -197,7 +252,8 @@ def main() -> None:
     paths = _lesson_paths(args.lesson)
     for lesson_path in paths:
         try:
-            generate_for_lesson(lesson_path)
+            results = generate_for_lesson(lesson_path)
+            print(f"\nGenerated {len(results)} problem(s) for {lesson_path.name}")
         except Exception as e:
             print(f"Error on {lesson_path.name}: {e}")
             continue
