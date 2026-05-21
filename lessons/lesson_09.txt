@@ -1,0 +1,154 @@
+Lesson Narrative
+In this lesson, students use the Angle-Side-Angle Triangle Congruence Theorem as the basis for proving the Angle-Angle Triangle Similarity Theorem. Students make use of the structure of the Angle-Side-Angle Triangle Congruence Theorem along with their understanding of dilations to prove that two triangles with 2 pairs of corresponding congruent angles must be similar (MP7).
+
+Students then make use of the Triangle Sum Theorem along with the Angle-Angle Triangle Similarity Theorem to determine other angle conditions that could be used to determine whether two triangles are similar.
+
+Technology isn’t required for this lesson, but there are opportunities for students to choose to use appropriate technology to solve problems. We recommend making technology available.
+
+Learning Goals
+Prove the Angle-Angle Triangle Similarity Theorem (in writing).
+Student-Facing Goal
+Let’s prove that some triangles are similar.
+Student-Facing Targets
+I can explain why the Angle-Angle Triangle Similarity Theorem works.
+
+
+Activity Narrative
+This Math Talk focuses on using the idea of congruence to show that two triangles are similar. It encourages students to think about the definitions of congruence and similarity and to rely on what they know about triangle congruence to mentally solve problems. The strategies elicited here will be helpful later in the lesson when students examine triangle similarity theorems.
+
+To show congruence between triangles, students need to look for and make use of structure (MP7).
+
+Student Task Statement
+Justify each statement.
+Angles Q, R, Q', R', T, & U are all congruent to each other. 
+
+     
+<p>Triangles P Q R, P prime q prime R prime, and S T U.</p>
+Triangles P Q R, P prime q prime R prime, and S T U. Angles Q and R are congruent. Side Q R is 2 and R P is 3. Angles Q prime and R prime are congruent. Side Q prime R prime if 1 and R prime and P prime is 1.5. Side T U is 1 and S U is 1 point 5.
+Triangle P'Q'R' is congruent to triangle STU. 
+Triangle PQR is similar to triangle STU.
+    
+<p>Triangles G H I, G prime H prime I prime, and M N O.</p>
+Triangles G H I, G prime H prime I prime, and M N O. Angle G corresponds to angle G prime and angle M. Angle H corresponds to angle H prime and angle N. Side G H is congruent to side M N.
+Triangle G'H'I' is congruent to triangle MNO.
+Triangle GHI is similar to triangle MNO.
+
+Activity Synthesis
+The goal of this discussion is to review students’ strategies for finding similarity and congruence between triangles.
+
+To involve more students in the conversation, consider asking:
+
+“Who can restate ____’s reasoning in a different way?”
+“Did anyone use the same strategy but would explain it differently?”
+“Did anyone solve the problem in a different way?”
+“Does anyone want to add on to ____’s strategy?”
+“Do you agree or disagree? Why?”
+“What connections to previous problems do you see?”
+If no students bring up the Angle-Side-Angle Triangle Congruence Theorem, ask students how they might use the triangle congruence theorems that they know. Then ask students, “If a dilation takes triangle ABC to triangle A'B'C', and triangle A'B'C' is congruent to triangle DEF, how do we know that triangle ABC is similar to triangle DEF?” (After the dilation, the figures are congruent which means there is a sequence of rigid motions that takes A'B'C' onto triangle DEF. The same sequence of rigid motions following the dilation to make triangle A'B'C' shows that triangle ABC and triangle DEF are similar by the definition of similarity.)
+
+
+Activity Narrative
+While the Angle-Angle Triangle Similarity Theorem follows logically from the Angle-Side-Angle Triangle Congruence Theorem (dilate one triangle by a scale factor determined by the ratio of the sides between the known corresponding angle pairs, and the dilated triangle will be congruent to the target by the Angle-Side-Angle Triangle Congruence Theorem, so the original triangle must be similar to the target), it can still be unintuitive.
+
+Students experienced the Angle-Angle Triangle Similarity Theorem briefly in a previous unit when they looked at examples of triangles constructed so that their angles were the same but their side lengths were undetermined. In middle school, students confirmed the Angle-Angle Triangle Similarity Theorem informally. However, their proofs until this point have tended to rely on knowing something about the proportionality of side lengths.
+
+Students might be unsure that the same scale factor will work for all three pairs of corresponding sides when all they know is the measure of two angles of the triangle. It is a surprising result when you put it that way. This activity starts by building students’ intuition about the Angle-Angle Triangle Similarity Theorem, to motivate the proof of the theorem.
+
+Making dynamic geometry software available gives students an opportunity to choose appropriate tools strategically (MP5).
+
+Student Task Statement
+For each problem, draw 2 triangles that have the listed properties. Try to make them as different as possible.
+
+One angle is 45 degrees.
+One angle is 45 degrees, and another angle is 30 degrees.
+One angle is 45 degrees, and another angle is 30 degrees. The lengths of a pair of corresponding sides are 2 cm and 6 cm.
+Compare your triangles with the other triangles from your group. Do any of the conditions guarantee that the triangles will be similar? Make a conjecture.
+Prove your conjecture.
+
+Activity Synthesis
+The goal of this discussion is for students to be convinced that the Angle-Angle Triangle Similarity Theorem is a valid way to prove that two triangles are similar. 
+
+Invite students to summarize the main points of the proof:
+
+Choose the pair of corresponding sides between the known congruent angles to generate a scale factor.
+Dilate one triangle using that scale factor.
+The triangles must be congruent now based on the Angle-Side-Angle Triangle Congruence Theorem.
+The triangles can be taken onto each other by dilation and rigid motions. Therefore, they are similar.
+Add the following theorem to the class reference chart, and ask students to add it to their reference charts:
+
+Angle-Angle Triangle Similarity Theorem: In two triangles, if two pairs of corresponding angles are congruent, then the triangles must be similar. (Theorem)
+
+Angle A is congruent to Angle C. Angle DEA is congruent to Angle BEC so Triangle DEA is similar to Triangle BEC. 
+
+<p>2 triangles, A E D and C E B, sharing vertex E. Angles A and C have 1 tick mark. Angles D E A and B E C have 2 tick marks.</p>
+
+Activity Narrative
+This activity expands upon the Angle-Angle Triangle Similarity Theorem by requiring the use of the Triangle Angle Sum Theorem to find two pairs of congruent angles. Once similarity is established, students use the scale factor to determine missing side lengths on the triangles.
+
+Here are 2 triangles. One triangle has a 60 degree angle and a 40 degree angle. The other triangle has a 40 degree angle and an 80 degree angle.
+
+<p>2 triangles.</p>
+2 triangles. One triangle has a 60 degree angle and a 40 degree angle. Side opposite 40 degree angle has a length of 3, side opposite 60 degrees has a length of x, and third side has a length of 6. The second triangle has a 40 degree angle and an 80 degree angle. Side opposite 40 degree angle has a length of 5, side opposite 80 degrees has a length of y, and third side has a length of 8.
+How can you show that the triangles are similar?
+
+How long are the sides labeled x and y?
+
+
+Activity Synthesis
+The purpose of this discussion is for students to recognize that there are some cases in which knowing two pairs of angles in a pair of triangles is enough to show that they are similar even if there is only one pair of congruent corresponding angles.
+
+Invite groups to share their reasoning about why the triangles are similar. Listen for students to share that the third angle of each triangle can be found based on the sum of the angles. If it is not mentioned, ask students to refer to their reference chart to find the name of the theorem that shows this idea (Triangle Angle Sum Theorem).
+
+Ask students what is special about the given angles that lets us know that triangles are similar when only two angles are given for each triangle. (The triangles are similar when the angles given are either:
+
+Two pairs of congruent, corresponding angles or
+One pair of congruent, corresponding angles and the other angles are not corresponding, but the sum of the two non-corresponding angles along with one of the given corresponding angles is 180 degrees.)
+It is ok if students cannot precisely articulate the second condition, as long as they understand the process of using the Triangle Angle Sum Theorem to find the missing angles and then show that all pairs of corresponding angles are congruent.
+
+Lesson Synthesis
+The main ideas to draw out of this lesson are:
+
+The Angle-Angle Triangle Similarity Theorem: If two pairs of corresponding angles in triangles are congruent, then the triangles are similar.
+Knowing the measures of any two angles from one triangle, and any two angles of the other triangle, is enough information to determine if the Angle-Angle Triangle Similarity Theorem can be used. The given angles do not have to be corresponding.
+If a dilation can take Figure A to an image that is congruent to Figure B, then Figure A and Figure B are similar.
+Invite students to make up their own examples of pairs of triangles that are similar and pairs of triangles that are not similar. If students are familiar with the game, they could set up their examples as two truths and a lie. Ask students to trade with a partner and justify which triangles are similar.
+
+Student Lesson Summary
+We already know that when two figures are congruent there is a sequence of rigid motions that takes one figure onto the other. So, if a dilation takes Figure A to an image that is congruent to Figure B, then Figure A and Figure B are similar because there is a sequence of a dilation and rigid motions that takes Figure A onto Figure B.
+
+We can use this idea to show that when two angles of one triangle are congruent to two angles of a second triangle, then the two triangles are similar. We call this the Angle-Angle Triangle Similarity Theorem.
+
+In the diagram, angle A is congruent to angle D, and angle B is congruent to angle E. If a sequence of rigid motions and dilations moves the first figure so that it fits exactly over the second, then we have shown that the Angle-Angle Triangle Similarity Theorem is true.
+
+<p>Triangles A B C and D E F. Angle A corresponds to angle D, angle B to E.</p>
+
+Dilate triangle ABC by the ratio DE/AB, so that A'B' is congruent to DE. Now triangle A'B'C' is congruent to triangle DEF by the Angle-Side-Angle Triangle Congruence Theorem, which means that there is a sequence of rotations, reflections, and translations that takes A'B'C' onto DEF.
+
+<p>Two triangles A B C and D E F.</p>
+Two triangles A B C and D E F. Point C prime lies on side A C and point B prime lies on side A B. A line segment is drawn from point C prime to point B prime forming triangle A prime B prime C prime. Angle A prime corresponds to angle D, angle B prime corresponds to angle E, and angle B corresponds to angle E.
+Therefore, a dilation followed by a sequence of rotations, reflections, and translations will take triangle ABC onto triangle DEF, which is the definition of similarity. We have shown that a dilation and a sequence of rigid motions takes triangle ABC to triangle DEF, so the triangles are similar.
+
+Problem 1
+What is the length of segment DF?
+
+<p>Triangle A B C and D E F.</p>
+Angle B measures 44 degrees, Angle A measures 68 degrees, AC has length 6, AB has length 8. Angle F measures 44 degrees, Angle D measures 68 degrees, DE has length 18. 
+
+Problem 2
+In triangle ABC, angle A is 35º and angle B is 20º. Select all triangles that are similar to triangle ABC.
+
+A. triangle DEF where angle D is 35º and angle E is 20º 
+
+B. triangle GHI where angle G is 35º and angle I is 30º 
+
+C. triangle JKL where angle J is 35º and angle L is 125º 
+
+D. triangle MNO where angle N is 20º and angle O is 125º 
+
+E. triangle PQR where angle Q is 20º and angle R is 30º
+
+Problem 3
+Decide whether triangles ABC and DEC are similar. Explain or show your reasoning.
+
+<p><strong>Triangles A B C and D E C. Angle C A B labeled 36, angle A B C labeled 21. Angle C D E labeled 36, angle D C E labeled 123.</strong></p>
+

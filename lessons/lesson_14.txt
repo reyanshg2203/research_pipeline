@@ -1,0 +1,116 @@
+Lesson Narrative
+In this lesson, students use similar triangles within a right triangle to prove the Pythagorean Theorem. They must use the structure of the right triangles and the algebraic structure of the proportional segments to show that a^2 + b^2 = c^2. They also construct convincing arguments for the Pythagorean Theorem and examine an alternate way to prove the theorem (MP3).
+
+Learning Goals
+Prove the Pythagorean Theorem (using words and other representations).
+Student-Facing Goal
+Let’s prove the Pythagorean Theorem.
+Student-Facing Targets
+I can prove the Pythagorean Theorem.
+
+Activity Narrative
+The purpose of this Warm-up is for students to get familiar and comfortable with the diagram of an altitude drawn to the hypotenuse of a right triangle with side lengths labeled with variables, which will be useful when students write equations using these variables and manipulate them in a later activity. While students may notice and wonder many things about this image, the similarity of the triangles and relationships among the side lengths are the important discussion points.
+
+By engaging with this explicit prompt to take a step back and become familiar with a context and the mathematics that might be involved, students are making sense of problems (MP1).
+
+What do you notice? What do you wonder? (content related to diagram description below)
+
+<p>Triangle with sides a, b, and c. Right angle between a and b. Segment h drawn from vertex between a and b and meets c at a right angle. H splits c into 2 lengths labeled x and y. X is adjacent to a.</p>
+
+Activity Synthesis
+Ask students to share the things they noticed and wondered. Record and display their responses without editing or commentary. If possible, record the relevant reasoning on or near the image. Next, ask students, “Is there anything on this list that you are wondering about now?” Encourage students to observe what is on display and to respectfully ask for clarification, point out contradicting information, or voice any disagreement.
+
+If similarity does not come up during the conversation, ask students to discuss this idea. The following activity uses the same diagram, so students do not need to resolve all of the questions they are wondering about at this point.
+
+Activity Narrative
+All the work students have done to make sense of the altitude to the hypotenuse in right triangles pays off in this activity, as students prove the familiar Pythagorean Theorem. In middle school, students explored and proved the Pythagorean Theorem visually, but now they can also prove it using similarity. Because manipulating the equivalent ratios involved in this proof is challenging, and it’s hard to see where it’s going when you’re in the middle of calculations, we introduce the proof through a dialogue between two characters, but students are the ones to come up with the insight of how we can use the expressions involving a^2 and b^2 to prove that a^2 + b^2 = c^2.
+
+<p>Triangle with sides a, b, and c. Right angle between a and b. Segment h drawn from vertex between a and b and meets c at a right angle. H splits c into 2 lengths labeled x and y. X is adjacent to a.</p>
+Elena is playing with the equivalent ratios she wrote using this diagram. She rewrites a/x = c/a as a^2 = xc. Diego notices and comments, “I got b^2 = yc. The a^2 and b^2 remind me of the Pythagorean Theorem.” Elena says, “The Pythagorean Theorem says that a^2 + b^2 = c^2. I bet we could figure out how to show that.”
+How did Elena get from a/x = c/a to a^2 =   xc?
+What equivalent ratios of side lengths did Diego use to get b^2 = yc?
+Prove a^2 + b^2 = c^2 in a right triangle with legs length a and b and hypotenuse length c.
+
+
+Activity Synthesis
+Invite students to share their thinking about how Elena’s and Diego’s discoveries can be used to prove the Pythagorean Theorem. Continue discussing until students have described all the key ideas:
+
+Adding the expressions equal to a^2 and b^2 together
+Figuring out why xc + yc =  (x+y)c
+Figuring out why (x+y)c = c^2
+Ask students if a^2 + b^2 = c^2 is true for all types of triangles. If students aren’t sure, display an example of an altitude in an acute triangle. Once students are convinced that a^2 + b^2 = c^2 works only for right triangles, ask students what aspect of the proof worked only for right triangles. (The altitude forms three similar triangles only if the biggest triangle is a right triangle.)
+
+Tell students that proofs cannot rely on the result of the theorem in the justification. Ask students, “Did you use the equation a^2 + b^2 = c^2 in your proof?” (No, we used only ideas of similarity, which rely on transformations, dilations, and ratios.)
+
+Activity Narrative
+Students may be familiar with this proof from middle school. Revisiting this proof helps students connect a familiar diagram and proof to the similarity proof. It also gives students an opportunity to compare and contrast different types of proof and to think about why mathematicians might bother to re-prove something that has already been proven.
+
+When students articulate their reasoning, they have an opportunity to attend to precision in the language that they use to describe their thinking (MP6). They might first propose less formal or imprecise language, and after sharing with a partner, revise their explanation to be clearer and stronger.
+
+Student Task Statement
+<p>Diagram of 2 congruent squares.</p>
+A diagram of two congruent squares. The left diagram is composed of 4 congruent right triangles and two smaller squares of different sizes. In the top left corner, two right triangles creating a small rectangle. The small leg is labeled A on the left side of the square. In the top right corner, a small green square. In the bottom right corner, two triangles creating a small rectangle. The small leg is labeled A on the bottom of the square. In the bottom left corner, a larger yellow square, both sides labeled B.  The right diagram is composed of the same 4 congruent right triangles and one smaller square inside, on an angle. The long leg of the triangle is labeled b, the short leg of the triangle is labeled a. No labels are provided for the blue square inside.
+When Pythagoras proved his theorem, he used the two images shown here. Can you figure out how he used these diagrams to prove that a^2 + b^2 = c^2 in a right triangle with a hypotenuse of length c?
+
+Activity Synthesis
+Use Stronger and Clearer Each Time to give students an opportunity to revise and refine their proof. In this structured pairing strategy, students bring their first draft response into conversations with 2–3 different partners. They take turns being the speaker and the listener. As the speaker, students share their initial ideas and read their first draft. As the listener, students ask questions and give feedback that will help clarify and strengthen their partner’s ideas and writing.
+
+If time allows, display these prompts for feedback:
+
+"_____ makes sense, but what do you mean when you say ____?”
+“Can you describe that another way?”
+“How do you know _____? What else do you know is true?”
+Close the partner conversations, and give students 3–5 minutes to revise their first draft. Encourage students to incorporate any good ideas and words they got from their partners to make their next draft stronger and clearer. If time allows, invite students to compare their first and final drafts. Select 2–3 students to share how their drafts changed and why they made the changes they did.
+
+After Stronger and Clearer Each Time, invite students to talk about the differences between this proof and the one in the previous activity, including which one made more sense to them, which one they preferred writing, or which one felt most convincing. Ask students why they think mathematicians might continue to try to come up with different ways to prove a theorem as old as the Pythagorean Theorem.
+
+Lesson Synthesis
+Add the following theorem to the class reference chart, and ask students to add it to their reference charts:
+
+Pythagorean Theorem: If a right triangle has legs with lengths  and 
+and hypotenuse with length c, then a^2 + b^2 = c^2.  (Theorem)
+
+  
+
+<p>Right triangle. Sides labeled a, b, and c. Right angle between sides a and c.</p>
+Ask students to brainstorm the kinds of problems that the Pythagorean Theorem helps them solve.
+
+Ask students why it might be useful to prove the same thing in multiple ways. (If one way is confusing or relies on something someone doesn’t understand, then it can be good to have another way to prove it.) Then ask students to consider times in their life when it has been useful to make a point in a conversation by approaching that point in several different ways.
+
+Student Lesson Summary
+In any right triangle with legs a and b and hypotenuse c, we know that a^2 + b^2 = c^2. We call this the Pythagorean Theorem. But why does it work?
+
+We can use an altitude drawn to the hypotenuse of a right triangle to prove the Pythagorean Theorem.
+
+<p>Right triangle a b c.</p>
+Right triangle labeled A B C. Right angle points up. Left side labeled A, right side labeled b, arrow on bottom side labeled c. Altitude drawn from right angle to bottom side, labeled f, creating 2 segments on bottom side, left side labeled d creating triangle F D A, right side labeled e, creating triangle F E B.
+We can use the Angle-Angle Triangle Similarity Theorem to show that all 3 triangles are similar. Because the triangles are similar, the corresponding side lengths are in the same proportion.
+
+<p>3 similar triangles. The largest triangle has sides a, c, b. The middle-sized has sides f, b, e. The smallest has sides d, a, f.</p>
+Because the largest triangle is similar to the smaller triangle, c/a = a/d. Because the largest triangle is similar to the middle triangle, c/b = b/e. We can rewrite these equations as a^2 = cd and b^2 = ce.
+
+We can add the 2 equations to get that a^2 + b^2 = cd + ce, or a^2 + b^2 = c(d+e). From the original diagram we can see that d + e = c, so a^2 + b^2 = c(c), or a^2 + b^2 = c^2.
+
+Problem 1
+Which of the following are right triangles?
+
+A. Triangle ABC with AC = 6, BC = 9, and AB = 12
+
+B. Triangle DEF with DE = 8, EF = 10, and FD = 13
+
+C. Triangle GHI with GI = 9, HI = 12, and GH = 15
+
+D. Triangle JKL with JL = 10, KL = 13, and JL = 17
+
+Problem 2
+
+In right triangle ABC, a square is drawn on each of its sides. An altitude CD is drawn to the hypotenuse AB and extended to the opposite side of the square on FE. In class, we discussed Elena’s observation that a^2 = xc and Diego’s observation that b^2 = yc. Mai observes that these statements can be thought of as claims about the areas of rectangles.
+
+Which rectangle has the same area as BGHC?
+Which rectangle has the same area as ACIJ?
+<p>Right triangle A B C with squares drawn on each side (squares BGHC, AJIC, and AFEB) </p> 
+
+Problem 3
+Andre says that he can find the length of the third side of triangle ABC and that it is 5 units. Mai disagrees and thinks that the side length is unknown. Do you agree with either of them? Show or explain your reasoning. 
+
+<p>Triangle A B C. Length of A B is 4 and A C is 3.</p>

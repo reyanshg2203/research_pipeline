@@ -1,0 +1,153 @@
+Lesson Narrative
+In this lesson, students explore what they can determine about a triangle when they have information about side lengths. They begin by playing with two known side lengths to understand that when two side lengths are the same, increasing the angle between them also lengthens the side opposite the angle. Then, students state the converse of the Pythagorean Theorem and use that to classify triangles as either acute, right, or obtuse based on the lengths of all three sides.
+
+An optional activity is included to explore the idea that any side of a triangle must be less than the sum of the other two sides. 
+
+Students must make use of the structure of triangles to determine what they can figure out about a triangle given a few of its side lengths (MP7).
+
+Learning Goals
+Determine (in writing and other representations) possible lengths for the third side of a triangle when given the lengths of the two other sides.
+Identify (orally and in writing) triangles as acute, right, or obtuse based on the side lengths.
+Student-Facing Goal
+Let’s look at the converse of the Pythagorean Theorem.
+Student-Facing Targets
+I can decide whether a triangle is acute, right, or obtuse based on the side lengths.
+I can find possible side lengths for a triangle when I know the lengths of two sides.
+
+Activity Narrative
+In this Warm-up, students play with two sides of a triangle with fixed length to recognize how the angle between them is connected to the opposite side of the triangle.
+
+In the digital version of the activity, students use an applet to adjust an angle between two segments to see how the opposite side is affected. The applet allows students to more clearly see the side opposite the angle being adjusted and play with different options more dynamically. The digital version may be preferable if it is available and students would benefit from visualizing the connection.
+
+Select two positive lengths to represent two side lengths of a triangle. 
+a = ?
+b = ?
+ 
+Use a ruler to draw several different possibilities for triangle ABC so that the length of BC = a and the length of AC = b.
+What connection do you see between angle BCA and the length of segment AB in the triangles that you drew?
+What else do you notice about the length of segment AB?
+
+Activity Synthesis
+The purpose of the discussion is for students to understand that, when two side lengths of a triangle are fixed, the side opposite the angle between the two fixed sides is longer when the angle is large and shorter when the angle is small.
+
+Invite students to share any connections they noticed between angle BCA and the length of AB. If it does not come up, ask students what they notice happens to the length when the angle is increased.
+
+Then, invite students to share anything else they notice about the length of segment AB. If it comes up, highlight any observations that mention the maximum or minimum possible lengths of AB. Students do not need to recognize the triangle inequality at this point. 
+
+Ask students,
+
+“What do we know about the length of AB when angle BCA is a right angle?” (a^2 + b^2 = (AB)^2 by the Pythagorean Theorem.)
+“Is the door handle closer to the latch on the door frame when I open the classroom door a little or when I swing it wide open?” (It is closer when the door is open just a little.)
+“An acute triangle has all three angle measures less than 90 degrees. An obtuse triangle has one angle that is greater than 90 degrees. Imagine an acute triangle with sides of length 4, 5, and 6. Then, imagine an obtuse triangle with sides of length 4 and 5. Does the third side of the obtuse triangle need to be greater than 6?” (It depends on whether the obtuse triangle is between the sides with the given lengths or not. If the obtuse angle is between the sides of length 4 and 5, then the answer is yes. If the obtuse angle is one of the other 2 angles, then the answer is no.)
+Tell students that the side of a triangle that is opposite the largest angle will always be the longest, and the side of a triangle that is opposite the smallest angle will always be the shortest.
+
+In this activity, students examine the converse of the Pythagorean Theorem: If the sides of a triangle are of lengths a,b and c and a^2 + b^2 = c^2, then the triangle is a right triangle. Students do not need to create a rigorous proof of this fact, but the Are You Ready For More? section provides an outline of how the fact can be proven.
+
+Students must make use of the structure of triangles and the relationship between an angle and its opposite side to describe the triangles (MP7).
+
+Triangle ABC with sides of length 3, 4, and 5
+Is this triangle a right triangle? Explain or show your reasoning.
+Triangle DEF is constructed so that DE = 4, EF = 3, and DF = 6. What can you say about the angles in triangle DEF? Explain or show your reasoning.
+Triangle LMN is constructed so that LM = 4, MN = 3, and LN = 4.5. What can you say about the angles in triangle ? Explain or show your reasoning.
+A triangle has sides of length a,b and c so that a <= b <= c. 
+Make a conjecture about a triangle for which c^2 < a^2 + b^2.
+Make another conjecture about a triangle for which c^2 > a^2 + b^2.
+
+Activity Synthesis
+The purpose of this discussion is to verify the converse of the Pythagorean Theorem as well as to classify triangles as acute, right, or obtuse based on their side lengths.
+
+Invite students to share their observations about triangles ABC, DEF and LMN and their reasoning for those observations. Highlight students who classify the triangles as acute, right, or obtuse.
+
+Then, invite students to share their conjectures about triangles based on the inequalities given. Write the conjectures for all to see.
+
+“A triangle has sides of length a, b, and c so that a <= b <= c.
+
+If c^2 = a^2 + b^2, then it is a right triangle.
+If c^2 < a^2 + b^2, then it is an acute triangle.
+If c^2 > a^2 + b^2, then it is an obtuse triangle.”
+Tell students that they will not prove the conjectures, but that the conjectures are true.
+
+If time allows, ask students,
+
+“How could you verify these statements for equilateral triangles?” (In an equilateral triangle, all the sides are the same length and all angles are 60 degrees, so it is acute. Because all of the sides are the same length and not zero, we can write a^2 + a^2 = 2a^2 > a^2 which matches with the statement that says it is an acute triangle.)
+“A triangle has sides of length 8, 9, and 15. Is this triangle acute, right, or obtuse? Explain your reasoning.” (The triangle is obtuse because 15^2 > 8^2 + 9^2.)
+“A triangle has sides of length 10 and 11. How long must the third side be so that the angle between the sides of length 10 and 11 is obtuse?” (Greater than sqrt(221) because 10^2 + 11^2 = 221.)
+
+Activity Narrative
+In this activity, students explore triangles that have side lengths a, b, and c to arrive at the triangle inequality: a + b < c. A proof of the inequality is not included here, but students should be able to make sense of the inequality using their intuition about triangles.
+
+Student Task Statement
+Triangle ABC is constructed so that BC = 5 and AC = 3. Is there a maximum length of AB? Explain your reasoning.
+Is it possible for a triangle to have sides of length 1, 16, and 20? Explain or show your reasoning.
+A triangle has sides of length a, b and c. Write an inequality that shows the maximum length for c.
+
+Activity Synthesis
+The purpose of the discussion is for students to understand that the length of any side of a triangle must be less than the sum of the other two sides of the triangle.
+
+Invite students to share their inequality and reasoning.
+
+Ask students,
+
+“A triangle has sides of length 5 and 9. What is the longest the other side can be? What is the shortest it can be?” (It must be less than 14. It must be greater than 4.)
+“A triangle has sides of length  and . What is the longest the other side can be? What is the shortest it can be?” (It must be less than a+b. It must be greater than a-b and b-a, which can be combined as being greater than abs(a-b)).
+“How does the inequality show that the shortest distance between two points is a straight line?” (If another path is taken so that it goes through a point not on the line between the two points, then the sum of the distance from the start to that point plus the distance from that point to the end must be greater than the segment that connects the start and the end.)
+
+Lesson Synthesis
+The purpose of this discussion is for students to understand the relationship between the side lengths of a triangle and how to classify a triangle by its angles.
+
+Ask students,
+
+“What is the converse of the Pythagorean Theorem?” (If a triangle has side lengths a, b and c and a^2 + b^2 = c^2, then it is a right triangle.)
+“How can you use the side lengths of a triangle to classify the triangle as acute, right, or obtuse based on its angles?” (Label the triangle with sides a, b, and c with the longest side labeled as c. If a^2 + b^2 = c^2, then it is a right triangle. If c^2 < a^2 + b^2, then it is an acute triangle. If c^2 > a^2 + b^2 it is an obtuse triangle.)
+“If you know two side lengths of a triangle, what are the maximum and minimum values for the length of the third side?” (The third side must be less than the sum of the other two sides and greater than the positive difference of the other two sides.)
+
+Student Lesson Summary
+The Pythagorean Theorem describes a relationship among the side lengths of a right triangle. In particular, if the sides are labeled  and  with , as the longest side, then   
+
+The converse of this theorem is also true. In fact, if we know the lengths of all three sides, we can classify the triangle as either acute, right, or obtuse.
+
+If c^2 = a^2 + b^2, then the triangle has a right angle.
+If c^2 > a^2 + b^2, then the triangle has an obtuse angle.
+If c^2 < a^2 + b^2, then the triangle has only acute angles.
+A key reason this is true is due to the relationship between an angle and the side opposite the angle in a triangle. If the two segments making up the angle are constant, then when the angle is made greater, the opposite side must also be greater.
+
+Another relationship among the sides of a triangle is due to limitations from the ways the ends of the segments can be connected. The length of any side of a triangle must be less than the sum of the other two side lengths in the triangle and must be greater than the positive difference between the other two side lengths. For a triangle with side lengths a, b and c, this can be written as
+
+a + b > C
+abs(a-b) < C
+  
+If the third side is too long, then putting the other two sides end to end will not be enough to reach both ends of the third side. If the third side is too short, then putting it at the end of one of the other sides will not be enough to reach the end of the other side.
+
+Problem 1
+A triangle has sides of length 8, 10, and x. What value of x makes it the hypotenuse of a right triangle?
+
+Problem 2
+Complete each inequality so that it describes possible lengths to make a triangle.
+
+6, 8, x
+
+___ < x < ___ 
+
+13, 17, y
+
+___ < y < ___ 
+
+5, 5, z
+
+___ < z < ___ 
+
+98, 100, a
+
+___ < a < ___ 
+
+Problem 3
+A triangle has sides of length 5, 7, and x.
+
+Complete the inequality so that it describes possible lengths for x in an acute triangle.
+
+___ < x < ___ 
+
+Complete the inequality so that it describes possible lengths for x in an obtuse triangle.
+
+___ < x < ___  
+  

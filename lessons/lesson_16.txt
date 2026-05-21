@@ -1,0 +1,151 @@
+Lesson Narrative
+This lesson invites students to practice the strategies they have used to find unknown lengths in similar right triangles. A key strategy for students to practice in this lesson is using proportional relationships within similar triangles to find unknown lengths in other triangles. In a subsequent unit students will study trigonometry through similar right triangles, and the ratios in trigonometry tables are ratios within triangles.
+
+The Information Gap routine requires students to make sense of a problem by determining what information is necessary, and then to ask for the information they need to solve the problem. This may take several rounds of discussion if their first requests do not yield the information they need (MP1). It also allows them to refine the language they use and to ask increasingly more precise questions until they get the information they need (MP6).
+
+Learning Goals
+Use similarity, proportionality, and the Pythagorean Theorem to solve problems involving right triangles (using words and other representations).
+Student-Facing Goal
+Let’s find all the unknown values in right triangles.
+Student-Facing Targets
+I can solve problems involving similar right triangles.
+
+Activity Narrative
+This Warm-up prompts students to compare four images. It gives students a reason to use language precisely (MP6). It gives the teacher an opportunity to hear how students use terminology and talk about characteristics of the items in comparison to one another.
+
+Which three go together? Why do they go together?
+
+A
+<p><strong>Right triangle on grid. Short leg 3 units, long leg 4 units. Angle between long leg and hypotenuse labeled 36 point 9 degrees.</strong></p>
+
+B
+<p><strong>Right triangle. Leg, 5. Hypotenuse, 13. Angle between given leg and hypotenuse, 67 point 4.</strong></p>
+
+C
+<p><strong>Triangle. Short side labeled 5, long side labeled 11, diagonal labeled 12.</strong></p>
+
+D
+<p><strong>Right triangle. Side leg labeled one. Angle between bottom leg and diagonal labeled 45 degrees.</strong></p>
+
+Activity Synthesis
+Invite each group to share one reason why a particular set of three go together. Record and display the responses for all to see. After each response, ask the class if they agree or disagree. Because there is no single correct answer to the question of which three go together, attend to students’ explanations, and ensure that the reasons given are correct.
+
+During the discussion, prompt students to explain the meaning of any geometric terminology they use, such as “right triangle” or “horizontal,” and to clarify their reasoning as needed. Consider asking:
+
+“How do you know_____?”
+“What do you mean by _____?”
+“Can you say that in another way?”
+
+Activity Narrative
+In this activity, students calculate side lengths of similar right triangles but do not initially have enough information to do so. To bridge the gap, they need to exchange questions and ideas.
+
+The Information Gap structure requires students to make sense of a problem by determining what information is necessary, and then to ask for the information they need to solve the problem. This may take several rounds of discussion if their first requests do not yield the information they need (MP1). It also allows them to refine the language they use and to ask increasingly more precise questions until they get the information they need (MP6).
+
+Monitor for students using:
+
+A scale factor between triangles (XY  = 2/3 * PQ).
+Equivalent ratios between triangles (XY/PQ = YZ/QR).
+Equivalent ratios within triangles (XZ/ZY = PR/RQ).
+
+Your teacher will give you either a problem card or a data card. Do not show or read your card to your partner.
+
+If your teacher gives you the problem card:
+
+Silently read your card, and think about what information you need to answer the question.
+
+Ask your partner for the specific information that you need. “Can you tell me ____?”
+
+Explain to your partner how you are using the information to solve the problem. “I need to know ____ because ____.”
+
+Continue to ask questions until you have enough information to solve the problem.
+
+Once you have enough information, share the problem card with your partner, and solve the problem independently.
+
+Read the data card, and discuss your reasoning.
+
+If your teacher gives you the data card:
+
+Silently read your card. Wait for your partner to ask for information.
+
+Before telling your partner any information, ask, “Why do you need to know ____?”
+
+Listen to your partner’s reasoning, and ask clarifying questions. Give only information that is on your card. Do not figure out anything for your partner!
+
+These steps may be repeated.
+
+Once your partner has enough information to solve the problem, read the problem card, and solve the problem independently.
+
+Share the data card, and discuss your reasoning.
+
+
+Activity Synthesis
+After students have completed their work, share the correct answers, and ask students to discuss the process of solving the problems. Here are some questions for discussion:
+
+“Did anyone use the Pythagorean Theorem to find a missing side?”
+“How did you know you could use the Pythagorean Theorem?” (The triangle has a right angle, and I know two of the sides.)
+“What other methods did you use to find side lengths?” (Ratios of side lengths because the triangles are similar.)
+Highlight for students that the Pythagorean Theorem works only with right triangles and that there are multiple ways to use ratios of side lengths with similar triangles.
+
+Math Community
+
+Conclude the discussion by inviting 2–3 students to share a norm they identified in action. Provide this sentence frame to help students organize their thoughts in a clear, precise way:
+
+“I noticed our norm ‘____’ in action today, and it really helped me/my group because _____.”
+
+Activity Narrative
+This activity gives students a chance to recall all of the relationships within similar right triangles that they know to be true, and to attempt to use those relationships creatively to best estimate the side lengths of the unknown triangle. Monitor for students:
+
+Estimating the length of one side.
+Using tracing paper and other materials to help with the estimation.
+Estimating a scale factor or establishing a scale factor based on an estimated side.
+Using the Pythagorean theorem.
+
+Student Task Statement
+<p><strong>Right triangles A B C and A prime B prime C prime. A B labeled 6, A C labeled 8. Triangle A prime B prime C prime slightly smaller than triangle A B C.</strong></p>
+Triangle ABC is similar to triangle A'B'C'. Give reasonable measurements for all 3 sides of triangle A'B'C'. Explain your reasoning.
+
+Activity Synthesis
+Invite students to share all the different tools they used in their estimation. If possible, ask students who used the tools listed in the Activity Narrative to share how they estimated the side lengths.
+
+“When finding all the unknown values in similar right triangles, you have choices: You can use proportional relationships or the Pythagorean Theorem. Which would you use for each of these examples, and why?”
+
+<p>Triangle A B C and D E F.</p> Angle B is congruent to Angle E. 
+(The larger triangle is a scaled copy of the smaller one with a scale factor of 2, so it’s straightforward to find the missing lengths by multiplying the corresponding lengths by 2, so ED is 6 and FD is 8.)
+
+ 
+<p>Triangles J K L and M N O.</p> Angle K is congruent to Angle N. 
+(OMN is a right triangle so I can use the Pythagorean Theorem to find the missing length. That’s more direct than finding the scale factor between 8.45 and 13. OM is 12. Finding JK will involve fractions either way, but I’ll use the scale factor from 13 to 8.45 and apply that to MN and JK. JK is 3.25.)
+
+After students choose and defend their thinking, encourage them to check each other’s work using another method. Why should both methods give the same answer? (The side lengths don’t change just because the way that we calculate them changes.)
+
+
+Student Lesson Summary
+We have multiple strategies to find unknown side lengths in similar right triangles.
+
+ 
+<p>2 right triangles.</p>
+Two right triangles, F G H and A B C.  Angles G F H and B A C are marked congruent, Angles F G H and A B C are marked right angles. Side F G labeled y, Side G H labeled 12 over 5, Side F H labeled 4. Side A B labeled 4, side B C labeled 3, Side C A labeled 5.
+Because triangle ABC is a right triangle, 4^2 + x^2 = 5^2. Because triangle FGH is a right triangle, y^2 + (12/5)^2 = 4^2. Because triangle ABC is similar to triangle FGH, there are many equations to write using proportional relationships. We can use any combination of these equations to solve for x and y.
+
+By similarity, 5/4 * y = 4 so y = 16/5. Substituting y = 16/5 into the Pythagorean Theorem gives (16/5)^2 + (12/5)^2 = 4^2 which is true.
+
+By the Pythagorean Theorem, x^2 = 5^2 - 4^2 = 9, so x = 3. By similarity x = 12/5 * 5/4, which also equals 3.
+
+Problem 1
+In the right triangles shown, the measure of angle ABC is the same as the measure of angle EBD.  ​​​What is the length of side BE?
+
+<p>Two right triangles, A B C and E B D. Angles C and D are right angles and D is above C on B C. Side A B is 5, A C is 3 and D E is 2. Angle A B C is congruent to angle E B D.</p>
+
+Problem 2
+In right triangle ABC, angle C is a right angle, AB = 13, and BC = 5. What is the length of AC?
+
+Problem 3
+In this diagram, lines AC and DE are parallel, and line DC is perpendicular to each of them. What is a reasonable estimate for the length of side BE?
+
+Parallel line segments A C and D E. Segment D C is perpendicular to A C and D E. Point B on segment D C, segment A E drawn passing through B. A B labeled 5, B C labeled 4.
+
+A. 1/3
+B. 1
+C. 5/3
+D. 5
+

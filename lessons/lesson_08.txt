@@ -1,0 +1,172 @@
+Lesson Narrative
+In this lesson, students conjecture and reason about whether all shapes in a certain category must be similar, such as whether all circles, or all rectangles, are similar. Then they prove that all equilateral triangles are similar and that all circles are similar, and they critique an argument with faulty reasoning that all rectangles are similar (MP3). The proof that all circles are similar is used again in a subsequent unit when it is used to rigorously define angle measure, connect angle measure to arc length, and connect degrees to radians.
+
+Students get a chance to apply the theorem that they proved in previous lessons, that if two triangles have all pairs of corresponding angles congruent and all pairs of corresponding side lengths in the same proportion, then the triangles are similar. This simplifies the proof that all equilateral triangles are congruent. 
+
+Technology isn’t required for this lesson, but there are opportunities for students to choose to use appropriate technology to solve problems. We recommend making technology available.
+
+Learning Goals
+Critique a proof that uses similarity (in writing).
+Prove theorems about triangles and other figures using similarity.
+Student-Facing Goal
+Let’s prove that figures are similar.
+Student-Facing Targets
+I can critique proofs that use similarity.
+I can write proofs using the definition of similarity.
+
+This Warm-up gives students an opportunity to use the definition of similarity in an argument. Monitor for students who produce arguments such as:
+
+They aren’t similar because one is skinnier than the other.
+They aren’t similar because pairs of corresponding side lengths aren’t all in the same proportion.
+They aren’t similar because if you dilate based on the scale factor that makes these sides match, the other sides won’t match, and vice versa.
+
+Student Task Statement
+Are these rectangles similar? Explain your reasoning.
+
+<p>Rectangles A B C D labeled Q and rectangle E F G H labeled R drawn on a square grid.</p>
+
+Building on Student Thinking
+If students are unsure where to start or argue that one figure is a dilation of the other because it’s stretched out, remind them of the distorted video game controllers from the beginning of this unit. If these rectangles had photographs inside them, would it be a proper enlargement or distort the image?
+
+Activity Narrative
+In this activity, students analyze a faulty proof for why all rectangles are similar. Although it is incorrect, Tyler’s proof gives students a chance to see the structure of a similarity proof. In addition, it gives students a chance to correct the reasoning of others and provides another way to explain why not all rectangles are similar (MP3). Students should recognize many of the moves and justifications from proofs about congruence in a previous unit, and proofs about dilations earlier in this unit.
+
+This activity also gives the class an opportunity to discuss the proof process. Sometimes students who struggle in geometry assume that they should just know if a statement is true, and try to jump to proof before they have explored. Mathematicians spend much of their time experimenting, wondering, guessing, sketching, and being unsure. Tyler’s mistake probably came from not experimenting and sketching before he began writing a proof. In subsequent activities, students will benefit from exploring and thinking about whether each statement is true before trying to prove it.
+
+Making dynamic geometry software available gives students an opportunity to choose appropriate tools strategically (MP5).
+
+Student Task Statement
+Tyler wrote a proof that all rectangles are similar. Make the image Tyler describes in each step in his proof. Which step makes a false assumption? Why is it false?
+
+Step 1. Draw 2 rectangles. Label one ABCD and the other PQRS.
+
+Step 2. Translate rectangle ABCD by the directed line segment from A to P. A' and P now coincide. The points coincide because that’s how we defined our translation.
+
+Step 3. Rotate rectangle A'B'C'D', using A' as the center, so that D" is along ray PS.
+
+Step 4. Dilate rectangle A"B"C"D", using center A" and a scale factor of PS/AD. Segments A"D" and PS now coincide. The segments coincide because A" was the center of the rotation, so A" and P don’t move, and because D" and S are on the same ray from A", when we dilate D" by the right scale factor, it will stay on ray PS but be the same distance from A" as S is, so S and D" will coincide.
+
+Step 5. Because all angles of a rectangle are right angles, segment A"'B"' now lies on ray PQ. This is because the rays are on the same side of PS and make the same angle with it. (If A"'B"' and PQ don’t coincide, reflect across PS so that the rays are on the same side of PS.)
+
+Step 6. Dilate rectangle A"'B"'C"'D"', using center A"' and a scale factor of PQ/AB. Segments A""B"" and PQ now coincide by the same reasoning as in step 4.
+
+Step 7. Due to the symmetry of a rectangle, if 2 rectangles coincide on 2 sides, they must coincide on all sides.
+
+Activity Synthesis
+Begin the discussion by inviting students to explain what Tyler did well, and what makes a good proof that two figures are similar. (Tyler gave reasons why each of his transformations worked. Tyler used rigid transformations and dilations.) Then, discuss where Tyler went wrong. (When Tyler did the second dilation, it changed the lengths from the first dilation, so the first pair of corresponding sides aren’t congruent anymore.)
+
+Ask students what Tyler could have done before he even wrote the proof to make sure that he didn’t waste time proving something that wasn’t true. Help students see that experimenting, looking for examples and counterexamples, and drawing pictures is part of the proof process. 
+
+Activity Narrative
+After conjecturing, viewing, and critiquing examples of a similarity proof using rigid transformations and dilations, students are ready to write proofs of the two true statements in this activity. Monitor for students who include any of these points in their proof that all circles are similar:
+
+There will always be a dilation that makes the circles have the same radii.
+There will always be a rigid motion that takes one circle’s center onto the other.
+Two circles with the same center and the same radius are the same circle (coincide).
+Making dynamic geometry software available gives students an opportunity to choose appropriate tools strategically (MP5).
+
+Student Task Statement
+Decide if the statement is true. If it is true, write a proof. If it is not, provide a counterexample.
+“All circles are similar.”
+
+Select one of the conjectures from this list, and either prove that it is true or provide a counterexample.
+All equilateral triangles are similar.
+All isosceles triangles are similar.
+All right triangles are similar.
+
+Activity Synthesis
+The purpose of the discussion is for students to understand that a single counterexample is enough to show that a conjecture is incorrect, but a proof must be given to show that the conjecture is true.
+
+Invite a group to share an example of a pair of circles that are similar.
+
+Ask students if having an example of similar circles is enough to show that the conjecture is always true. (No, conjectures are only true if they are true for all examples.)
+
+Invite several groups to share a step in their proof for why all circles are similar. The steps should include:
+
+There will always be a dilation that makes the circles have the same radii.
+There will always be a rigid motion that takes one circle’s center onto the other.
+Two circles with the same center and the same radius are the same circle (coincide).
+Invite additional groups to share their conclusions about the triangle conjectures. Students should understand that a counterexample is enough to prove that the conjectures about isosceles and right triangles are false, but a proof is needed to show that the equilateral conjecture is true.
+
+Add the following theorem to the class reference chart, and ask students to add it to their reference charts:
+
+All circles are similar. (Theorem)
+
+Lesson Synthesis
+Display these two questions.
+
+“What is it about rectangles that means that they are not all similar to each other, while all equilateral triangles are similar to one another?”
+“How do you prove rigorously that a whole set of shapes are similar to one another?”
+Invite students to share their thoughts about any connections between the two questions. Then ask a student to display or share a proof that all equilateral triangles are similar. Ask students to discuss why the proof that all equilateral triangles are similar doesn’t use the same faulty logic that Tyler used to prove all rectangles are similar.
+
+If students struggle to make connections, here are some intermediate questions:
+
+“What went wrong in Tyler’s proof?” (He tried to do two dilations and the second one messed up the first one.)
+“Could someone make that same mistake in another proof?” (Sure, if they try to do two different dilations. The second dilation, unless the scale factor is 1, will change all the lengths.)
+“Did we accidentally make that mistake in our proof that all equilateral triangles are similar?” (No, we had to use only one dilation.)
+“Does it work to use only one dilation in our proof?” (Yes.) “Are you sure we shouldn’t have done one dilation to get the first pair of sides to line up and another dilation to get the second pair of sides to line up?” (No, the same dilation works for all three sides, because all the sides in an equilateral triangle are congruent to each other, so the same scale factor will work for all three pairs of corresponding sides.)
+“Why did Tyler try to use two dilations?” (If you need to use two scale factors, that is a sign that the figures aren’t really similar. He needed one dilation for one dimension of the rectangle and another dilation for the other dimension, but having two different scale factors means the figures aren’t similar.)
+Conclude the discussion by referring back to the two displayed questions and by telling students “In equilateral triangles, scaling one side length automatically scales the other side lengths by the same scale factor. In rectangles, it is possible that different scale factors are needed to make the corresponding sides congruent. To prove that all figures in a category are similar, a general sequence of rigid transformations and a dilation is needed.”
+
+Student Lesson Summary
+One figure is similar to another if there is a sequence of rigid motions and dilations that takes the first figure so that it fits exactly over the second. Consider any two circles, one centered at A, with a radius of length r, and the other centered at B, with a radius of length R. Translate the circle centered at A along directed line segment AB.
+
+<p>Small circle A located below large circle B.</p>
+<p>Small circle A located below  large circle B. circle A translated along line segment A B. Center B equals center A prime.</p>
+Now dilate the image using center B and a scale factor of R/r. The circles should now coincide, proving that these circles are similar. Because any two circles could be described by the initial statement, this proves that any two circles are similar.
+
+We can also show that all equilateral triangles are similar. Because we are talking about triangles, we can use the theorem that having all pairs of corresponding angles congruent and all pairs of corresponding side lengths in the same proportion is enough to prove that the triangles are similar. All the pairs of corresponding angles are congruent because all the angles in any equilateral triangle measure 60 degrees. All the pairs of corresponding side lengths must be in the same proportion, because within each triangle, all the sides are congruent. Therefore, whatever scale factor works for one pair of sides will work for all 3 pairs of corresponding sides. If all pairs of corresponding sides are in the same proportion and all pairs of corresponding angles are congruent, then all equilateral triangles are similar.
+
+Problem 1
+This is an incorrect proof that all isosceles triangles are similar. Explain why the proof is incorrect.
+
+Step 1. Draw 2 isosceles triangles ABC and DEF where AC = BC and  DF = EF.
+
+Step 2. Dilate triangle ABC to a new triangle A'B'C using center C and a scale factor of DF/AC, so that A'C = B'C = DF.
+
+Step 3. Translate by directed line segment CF to take A'B'C to a new triangle A"B"F. Because translation preserves distance, A"F = A'C = DF and B"F = B'C = EF.
+
+Step 4. Because A"F = DF, we can rotate using center F to take A" to D.
+
+Step 5. Because B"F = EF, we can rotate using center F to take B" to E.
+
+Step 6. We have now established a sequence of dilations, translations, and rotations that takes A to D, B to E, and C to F, so the triangles are similar.
+
+Problem 2
+Which statement provides a valid justification for why all circles are similar?
+
+A. All circles have the same shape—a circle—so they must be similar.
+
+B. All circles have no angles and no sides, so they must be similar.
+
+C. I can translate any circle exactly onto another, so they must be similar.
+
+D. I can translate the center of any circle to the center of another, and then dilate from that center by an appropriate scale factor, so they must be similar.
+
+Problem 3
+Which pair of polygons is similar? 
+
+ A. 
+<p>Right triangle with side lengths 5, 12, 13.</p>
+<p>Right triangle with side lengths 3, 4, 5.<br>
+ </p>
+
+B. 
+<p>Quadrilateral. 4 right angles. Each side length 4.<br>
+ </p>
+<p>Quadrilateral. Each side length 4.<br>
+ </p>
+ 
+C. 
+<p>Quadrilateral. 4 right angles. Side lengths 1, 5, 1, 5.<br>
+ </p>
+<p>Quadrilateral. 4 right angles. Side lengths 2, 10, 2, 10.<br>
+ </p>
+ 
+D. 
+<p>riangle. Base length, 6. Side lengths, 10.<br>
+ </p>
+<p>Triangle. Base length, 6. Side lengths, 5.<br>
+ </p>
+
+

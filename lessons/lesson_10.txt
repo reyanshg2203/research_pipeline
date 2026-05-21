@@ -1,0 +1,121 @@
+Lesson Narrative
+This lesson is optional, as it goes beyond the scope of the standards. While the standards require only that students prove the Angle-Angle Triangle Similarity Theorem, proving other similarity theorems gives students more opportunities to practice creating viable arguments (MP3). In a previous lesson, students saw how the Angle-Side-Angle Triangle Congruence Theorem could be used to prove the Angle-Angle Triangle Similarity Theorem. In this lesson, they see why the Side-Side-Side Triangle Congruence Theorem implies the Side-Side-Side Triangle Similarity Theorem, and why the Side-Angle-Side Triangle Congruence Theorem implies the Side-Angle-Side Triangle Similarity Theorem. Students have a chance to use repeated reasoning (MP8) as they apply what worked in one case to additional cases.
+
+Technology isn’t required for this lesson, but there are opportunities for students to choose to use appropriate technology to solve problems. We recommend making technology available.
+
+Learning Goals
+Prove the Side-Angle-Side and Side-Side-Side Triangle Similarity Theorems (in writing).
+Student-Facing Goal
+Let’s prove that more triangles are similar.
+Student-Facing Targets
+I can explain why the Side-Angle-Side and Side-Side-Side Triangle Similarity Theorems work.
+
+Activity Narrative
+The purpose of this activity is to remind students of strategies they can use to show that triangles are congruent. Students must use the structure of the images to find additional angles or sides that can be shown to be congruent (MP7). Because the triangles have multiple ways in which they could be proven to be congruent, comparing ideas brings out structure.
+
+Student Task Statement
+Is there enough information to determine if the pairs of triangles are congruent? If so, what theorem(s) would you use? If not, what additional piece of information could you use?
+
+Triangle LMN and triangle LKN
+  
+Segment KM is perpendicular to Segment NL. Segment KL is congruent to Segment ML. 
+<p>Triangle K L M. Sides K L and L M have single ticks marks. Point N is on side K M and segment L N intersects side K M at a right angle.</p>
+Triangle ACE and triangle BCD
+ 
+Angle E is congruent to Angle D. 
+<p>Circle with 2 segments, A C B and E C D, that cross the circle and intersect at point C. Segments connect E to A and D to B, creating 2 triangles. Angles E and D have arcs and single ticks.</p>
+Triangle GHI and triangle IFG
+ 
+Segment HI is congruent to Segment FG. 
+<p>Quadrilateral I H G F. Segment connecting I to G. Sides I H and F G are marked with single ticks.</p>
+
+Activity Synthesis
+Ask students to share their strategies for each problem. Record and display their responses for all to see. After each response, ask students if anyone found another way to show congruence or has another explanation for why the triangles are not congruent.
+
+Activity Narrative
+In this lesson, students draw additional connections between triangle congruence theorems and possible triangle similarity theorems. A key concept is that students need to define what must be true about the sides for “Side-Angle-Side” to stand for something useful for proving that triangles are similar.
+
+Making dynamic geometry software available gives students an opportunity to choose appropriate tools strategically (MP5).
+Student Task Statement
+Andre remembers lots of ways to prove that triangles are congruent. He asks Clare, “Can we use Angle-Side-Angle to prove that triangles are similar?”
+
+Clare: “Sure, but we don’t need the Side part because Angle-Angle is enough to prove that triangles are similar.”
+
+Andre: “Hmm, what about Side-Angle-Side or Side-Side-Side? What if we don’t know 2 angles?”
+
+Clare: “Oh! I don’t know. Let’s draw a picture and see if we can prove it.”
+
+Andre: “Uh-oh. If ‘side’ means corresponding sides with the same length, then we’ll only get congruent triangles.”
+
+What could “side” stand for to prove triangles similar?
+Draw a diagram that would help you prove the Side-Angle-Side Triangle Similarity Theorem.
+Write a proof.
+
+Activity Synthesis
+The main idea to draw out of this activity is that knowing that the Side-Angle-Side Triangle Congruence Theorem is true makes it much easier to prove the Side-Angle-Side Triangle Similarity Theorem.
+
+Some students might use the dilation-first argument, and other students might define a specific sequence of rigid motions and a dilation, without mentioning the Side-Angle-Side Triangle Congruence Theorem. Compare the two methods, and discuss how the Side-Angle-Side Triangle Congruence Theorem gives us an opportunity to shorten our proof, by making use of a structure that has already been proven.
+
+Activity Narrative
+In this activity, students continue to understand and prove triangle similarity theorems by adding the Side-Side-Side Triangle Similarity Theorem. 
+
+Student Task Statement
+Prove that these 2 triangles must be similar.
+
+<p>Triangle A B C and D E F. Length of B C is a, A C is b, A B is c, E F is k a, D F is K B, and D E is k c.</p>
+
+Activity Synthesis
+Some students might use the dilation-first argument outlined in the student response, and other students might define a specific sequence of rigid motions and a dilation without mentioning the Side-Side-Side Triangle Similarity Theorem. This provides an opportunity to compare the two methods and to discuss how the Side-Side-Side Triangle Similarity Theorem gives an opportunity to shorten the proof by making use of structure.
+
+Lesson Synthesis
+Ask students, “Which of these pairs of triangles can we now prove are similar using one of our shortcuts?” (The pair of triangles in A are similar by the Angle-Angle Triangle Similarity Theorem. The pair of triangles in B are similar by the Side-Angle-Side Triangle Similarity Theorem. There’s not enough information to decide if the triangles in C or D are similar. The triangles in E are congruent by the Side-Side-Side Triangle Congruence Theorem, and all congruent triangles are similar.)
+
+A
+<p>Two similar triangles with congruent angles.</p>
+
+B
+<p>2 triangles. The smaller triangle has sides labeled e and f. The corresponding sides in the larger triangle are labeled k e and k f. In both triangles, the included angle is marked with 1 tick.</p>
+
+C
+<p>2 triangles. The smaller triangle has sides labeled e and f. The corresponding sides in the larger triangle are labeled k e and k f.</p>
+
+D
+<p>Two triangles.</p>
+
+E
+<p>Two similar triangles.</p>
+
+Student Lesson Summary
+Besides the Angle-Angle Triangle Similarity Theorem, what other criteria are sufficient to prove triangles similar?
+
+When two sides of one triangle are proportional to two corresponding sides of a second triangle, using the same scale factor, , and the pair of angles between these sides are congruent, then the triangles are similar by the Side-Angle-Side Triangle Similarity Theorem.
+
+For example, angles EDF and BDC are vertical angles and so they are congruent, and there are two pairs of corresponding sides with the same scale factor.
+
+<p>Two triangles, E D F and B D C. Angles E D F and B D C are vertical angles. Segment D C labeled k h. Segment D B labeled k j. Segment F D labeled h. Segment E D labeled j.<br>
+ </p>
+<p>Two triangles.</p>
+Two triangles, E D F and B D C. Angles E D F and B D C are vertical angles. Point E prime plotted on segment D E. Point F prime plotted on segment F D. Segment E prime F prime drawn. Segment D C labeled k h. Segment D B labeled k j. Segment D E prime labeled k j. Segment D F prime labeled k h.  
+Dilate triangle DEF using center D and a scale factor of k. Because BD/ED = CD/FD = k, BD is now congruent to E'D, and CD is congruent to F'D. The dilation did not change the size of the angles. Therefore, triangle E'DF' is congruent to triangle BDC by the Side-Angle-Side Triangle Congruence Theorem. This means that there is a sequence of rigid motions that takes triangle E'DF' to triangle BDC. That means that triangle BDC is similar to triangle EDF because there is a dilation and a sequence of rigid motions that takes one to the other. There wasn’t anything special about these two triangles. Therefore, any pair of triangles with two pairs of sides whose lengths are in the same proportion and with the angle between them congruent must be similar.
+
+We can also show that if all three pairs of corresponding sides are proportional and use the same scale factor, k, this is sufficient to prove that the triangles are similar. We call this the Side-Side-Side Triangle Similarity Theorem.
+
+Problem 1
+Explain how we know that triangle ABC and triangle DEF are similar.
+What does that tell us about angle D?
+<p>Triangle A B C and D E F. A B is 4, B C is 5 and A C is 8. D E is 6, E F is 7 point 5 and D F is 12.</p>
+
+Problem 2
+Find the length of EF.
+Find the measure of angle E.
+Find the measure of angle F.
+<p>Triangles A B C and D E F. </p>
+Angle A measures 60 degrees, Angle B measures 84 degrees, Angle C measures 36 degrees. AB has length 7.5, BC has length 11.1, AC has length 12.7. Angle D has measure 60 degrees. DE has length 25.4. DF has length 15. 
+
+Problem 3
+Decide whether triangles ABC and DEC are similar. Explain or show your reasoning.
+
+<p><strong>Triangles A B C, below and point right, and D E C, above and pointing left, sharing vertex C. Side lengths as follows: D C, 2, E C, 6, A C, 4, C B, 12.</strong></p>
+
+
+
