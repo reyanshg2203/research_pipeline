@@ -264,30 +264,55 @@ def judge_problem(
     """
     prompt = _build_judge_prompt(nl_problem, lesson_text, lesson_id)
 
-    message = client.messages.create(
-        model=model,
-        max_tokens=2000,
-        messages=[{"role": "user", "content": prompt}],
-        tools=[
-            {
-                "name": "submit_judgment",
-                "description": "Submit your rubric evaluation of the geometry problem.",
-                "input_schema": JUDGMENT_SCHEMA,
-            }
-        ],
-        tool_choice={"type": "tool", "name": "submit_judgment"},
-    )
+    raw = None
+    last_reason = None
+    for attempt in range(2):  # one retry on a bad/truncated payload
+        message = client.messages.create(
+            model=model,
+            max_tokens=4096,  # was 2000 — too low; truncated the tool JSON on long judgments
+            messages=[{"role": "user", "content": prompt}],
+            tools=[
+                {
+                    "name": "submit_judgment",
+                    "description": "Submit your rubric evaluation of the geometry problem.",
+                    "input_schema": JUDGMENT_SCHEMA,
+                }
+            ],
+            tool_choice={"type": "tool", "name": "submit_judgment"},
+        )
+        last_reason = message.stop_reason
 
-    tool_use = None
-    for block in message.content:
-        if block.type == "tool_use":
-            tool_use = block
+        tool_use = next(
+            (b for b in message.content if b.type == "tool_use"), None
+        )
+        candidate = tool_use.input if tool_use else None
+
+        # Some SDK paths hand back tool input as a JSON string — parse it.
+        if isinstance(candidate, str):
+            try:
+                candidate = json.loads(candidate)
+            except json.JSONDecodeError:
+                candidate = None
+
+        required = ("scores", "rationales", "feedback_for_haiku", "specific_issues")
+        if (
+            message.stop_reason != "max_tokens"
+            and isinstance(candidate, dict)
+            and all(k in candidate for k in required)
+        ):
+            raw = candidate
             break
-    if tool_use is None:
-        raise RuntimeError("Judge did not return a tool_use block.")
 
-    raw = tool_use.input
+    if raw is None:
+        raise RuntimeError(
+            f"Judge returned an unusable judgment after retry "
+            f"(stop_reason={last_reason}); the tool JSON was likely truncated "
+            f"or malformed."
+        )
+
     scores = raw["scores"]
+    if isinstance(scores, str):
+        scores = json.loads(scores)
     overall = _compute_overall(scores)
 
     return {

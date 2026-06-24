@@ -1,0 +1,215 @@
+=== lesson 01 ===
+
+============================================================
+Refining schema_lesson_01_001.json (problem_id=GEOM_L01_001, lesson=lesson_01), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=3 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=GEOM_L01_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass error_count=0 [PASS]
+  Validator passed — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_GEOM_L01_001_functional.txt
+  Prose NL:      schema_GEOM_L01_001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_GEOM_L01_001_refined.json
+  NL:     validated/schema_GEOM_L01_001_refined.txt
+  Trace:  validated/schema_GEOM_L01_001_refined_trace.json
+=== lesson 03 ===
+
+============================================================
+Refining schema_lesson_03_001.json (problem_id=DILATION_001, lesson=lesson_03), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=3 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=DILATION_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass error_count=0 [PASS]
+  Validator passed — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_DILATION_001_functional.txt
+  Prose NL:      schema_DILATION_001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_DILATION_001_refined.json
+  NL:     validated/schema_DILATION_001_refined.txt
+  Trace:  validated/schema_DILATION_001_refined_trace.json
+=== lesson 05 ===
+
+============================================================
+Refining schema_lesson_05_001.json (problem_id=L05_P01, lesson=lesson_05), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=8 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=L05_P01
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail error_count=5 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=L05_P01
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail error_count=7 [FAIL]
+  Max iterations reached — keeping last schema.
+--- Haiku prose layer ---
+  Functional NL: schema_L05_P01_functional.txt
+  Prose NL:      schema_L05_P01_refined.txt
+
+  Done [FAIL] errors=7 iterations=3
+  Schema: validated/schema_L05_P01_refined.json
+  NL:     validated/schema_L05_P01_refined.txt
+  Trace:  validated/schema_L05_P01_refined_trace.json
+exit 1
+=== lesson 06 ===
+
+============================================================
+Refining schema_lesson_06_001.json (problem_id=06_001, lesson=06), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=2 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=06_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass error_count=0 [PASS]
+  Validator passed — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_06_001_functional.txt
+  Prose NL:      schema_06_001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_06_001_refined.json
+  NL:     validated/schema_06_001_refined.txt
+  Trace:  validated/schema_06_001_refined_trace.json
+=== lesson 08 ===
+
+============================================================
+Refining schema_lesson_08_001.json (problem_id=P001, lesson=lesson_08), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=4 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=P001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass error_count=0 [PASS]
+  Validator passed — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_P001_functional.txt
+  Prose NL:      schema_P001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_P001_refined.json
+  NL:     validated/schema_P001_refined.txt
+  Trace:  validated/schema_P001_refined_trace.json
+=== lesson 09 ===
+
+============================================================
+Refining schema_lesson_09_001.json (problem_id=AA_sim_01, lesson=lesson_09), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=3 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=AA_sim_01
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail error_count=6 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=AA_sim_01
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail error_count=2 [FAIL]
+  Max iterations reached — keeping last schema.
+--- Haiku prose layer ---
+  Functional NL: schema_AA_sim_01_functional.txt
+  Prose NL:      schema_AA_sim_01_refined.txt
+
+  Done [FAIL] errors=2 iterations=3
+  Schema: validated/schema_AA_sim_01_refined.json
+  NL:     validated/schema_AA_sim_01_refined.txt
+  Trace:  validated/schema_AA_sim_01_refined_trace.json
+exit 1
+=== lesson 10 ===
+
+============================================================
+Refining schema_lesson_10_001.json (problem_id=P1, lesson=lesson_10), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=pass error_count=0 [PASS]
+  Validator passed — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_P1_functional.txt
+  Prose NL:      schema_P1_refined.txt
+
+  Done [PASS] errors=0 iterations=1
+  Schema: validated/schema_P1_refined.json
+  NL:     validated/schema_P1_refined.txt
+  Trace:  validated/schema_P1_refined_trace.json
+=== lesson 14 ===
+
+============================================================
+Refining schema_lesson_14_001.json (problem_id=PT_001, lesson=lesson_14), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Error: Haiku returned an invalid ProblemSchema: 1 validation error for ProblemSchema
+relationships.0.type
+  Input should be 'similar_AA', 'similar_SAS', 'similar_SSS', 'similar_unspecified', 'dilation', 'scaled_copy', 'scaled_copy_unspecified', 'parallel_lines', 'parallel_segments', 'midsegment_parallel', 'transversal_cut', 'vertical_angles', 'adjacent_angles', 'supplementary_angles', 'complementary_angles', 'corresponding_angles', 'alternate_interior_angles', 'alternate_exterior_angles', 'co_interior_angles', 'angle_sum_triangle', 'angle_sum_polygon', 'linear_pair', 'angle_bisector', 'exterior_angle', 'parallel_lines_transversal', 'proportional_segments', 'triangle_proportionality', 'midsegment_ratio', 'altitude_to_hypotenuse', 'geometric_mean_altitude', 'geometric_mean_leg', 'perpendicular_lines', 'perpendicular_segments', 'altitude_perpendicular', 'congruent_angles', 'congruent_segments', 'congruent_triangles', 'collinear_dilation', 'center_on_figure', 'center_off_figure', 'lines_intersect', 'segments_intersect', 'point_on_line' or 'point_interior' [type=enum, input_value='right_triangle', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/enum
+exit 1
+=== lesson 15 ===
+
+============================================================
+Refining schema_lesson_15_001.json (problem_id=15-001, lesson=lesson_15), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=5 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=15-001
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail error_count=1 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=15-001
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail error_count=1 [FAIL]
+  Max iterations reached — keeping last schema.
+--- Haiku prose layer ---
+  Functional NL: schema_15-001_functional.txt
+  Prose NL:      schema_15-001_refined.txt
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_15-001_refined.json
+  NL:     validated/schema_15-001_refined.txt
+  Trace:  validated/schema_15-001_refined_trace.json
+exit 1
+=== lesson 16 ===
+
+============================================================
+Refining schema_lesson_16_001.json (problem_id=L16_001, lesson=lesson_16), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=L16_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass error_count=0 [PASS]
+  Validator passed — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_L16_001_functional.txt
+  Prose NL:      schema_L16_001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_L16_001_refined.json
+  NL:     validated/schema_L16_001_refined.txt
+  Trace:  validated/schema_L16_001_refined_trace.json

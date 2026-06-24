@@ -1,2 +1,8 @@
 .env
 __pycache__/
+.venv/
+outputs/
+outputs_pipeline1_v1_frozen/
+refined/
+validated/
+pipelines/survey_responses/

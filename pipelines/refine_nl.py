@@ -1,5 +1,5 @@
 """
-Pipeline 3: Haiku ↔ Opus refinement loop
+Pipeline 2: Haiku ↔ Opus refinement loop
 
 1. Opus judges the current NL problem (evaluate_schema.judge_problem).
 2. If not passing, Haiku revises the NL using feedback_for_haiku and specific_issues.

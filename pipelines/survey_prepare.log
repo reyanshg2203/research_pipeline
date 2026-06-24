@@ -1,0 +1,2342 @@
+
+--- Calling API for lesson_01.txt ---
+Received 3 problem(s) from API.
+
+--- Problem 1 ---
+{
+  "problem_id": "GEOM_L01_001",
+  "lesson": "lesson_01",
+  "entities": {
+    "triangles": [
+      {
+        "id": "MNO",
+        "sides": {
+          "MN": 8,
+          "NO": 6,
+          "OM": 10
+        }
+      },
+      {
+        "id": "M'N'O'",
+        "sides": {
+          "M'N'": 12,
+          "N'O'": 9,
+          "O'M'": 15
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": "C",
+        "lies_on": [
+          "MNO",
+          "M'N'O'"
+        ]
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "MNO",
+        "M'N'O'"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "center": "C",
+        "pre_image": "MNO",
+        "image": "M'N'O'"
+      }
+    }
+  ],
+  "target": {
+    "entity": "M'N'O'",
+    "attribute": "sides.N'O'"
+  }
+}
+Pydantic validation passed (problem 1)
+Saved to outputs/schema_lesson_01_001.json
+Saved NL text to outputs/schema_lesson_01_001.txt
+
+--- Problem 2 ---
+{
+  "problem_id": "GEOM_L01_002",
+  "lesson": "lesson_01",
+  "entities": {
+    "polygons": [
+      {
+        "id": "ABCD",
+        "n_sides": 4,
+        "sides": {
+          "AB": 20,
+          "BC": 15,
+          "CD": null,
+          "DA": 25
+        }
+      },
+      {
+        "id": "EFGH",
+        "n_sides": 4,
+        "sides": {
+          "EF": 4,
+          "FG": 3,
+          "GH": null,
+          "HE": 5
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "scaled_copy",
+      "entities": [
+        "ABCD",
+        "EFGH"
+      ],
+      "attributes": {
+        "scale_factor": 0.2,
+        "pre_image": "ABCD",
+        "image": "EFGH"
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABCD",
+    "attribute": "sides.CD"
+  }
+}
+Pydantic validation passed (problem 2)
+Saved to outputs/schema_lesson_01_002.json
+Saved NL text to outputs/schema_lesson_01_002.txt
+
+--- Problem 3 ---
+{
+  "problem_id": "GEOM_L01_003",
+  "lesson": "lesson_01",
+  "entities": {
+    "segments": [
+      {
+        "id": "PQ",
+        "length": 18
+      },
+      {
+        "id": "P'Q'",
+        "length": null
+      }
+    ],
+    "points": [
+      {
+        "id": "R"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "collinear_dilation",
+      "entities": [
+        "R",
+        "P",
+        "P'"
+      ],
+      "attributes": {
+        "center": "R",
+        "pre_image_point": "P",
+        "image_point": "P'"
+      }
+    },
+    {
+      "type": "collinear_dilation",
+      "entities": [
+        "R",
+        "Q",
+        "Q'"
+      ],
+      "attributes": {
+        "center": "R",
+        "pre_image_point": "Q",
+        "image_point": "Q'"
+      }
+    },
+    {
+      "type": "dilation",
+      "entities": [
+        "PQ",
+        "P'Q'"
+      ],
+      "attributes": {
+        "scale_factor": 2.5,
+        "center": "R",
+        "pre_image": "PQ",
+        "image": "P'Q'"
+      }
+    }
+  ],
+  "target": {
+    "entity": "P'Q'",
+    "attribute": "length"
+  }
+}
+Pydantic validation passed (problem 3)
+Saved to outputs/schema_lesson_01_003.json
+Saved NL text to outputs/schema_lesson_01_003.txt
+
+Generated 3 problem(s) for lesson_01.txt
+
+--- Calling API for lesson_03.txt ---
+Received 3 problem(s) from API.
+
+--- Problem 1 ---
+{
+  "problem_id": "DILATION_001",
+  "lesson": "lesson_03",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 10,
+          "BC": 15,
+          "AC": 12
+        }
+      },
+      {
+        "id": "A'B'C'"
+      }
+    ],
+    "points": [
+      {
+        "id": "P"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "ABC",
+        "A'B'C'"
+      ],
+      "attributes": {
+        "center": "P",
+        "scale_factor": 2.5,
+        "pre_image": "ABC",
+        "image": "A'B'C'"
+      }
+    }
+  ],
+  "target": {
+    "entity": "A'B'C'",
+    "attribute": "sides.A'B'"
+  }
+}
+Pydantic validation passed (problem 1)
+Saved to outputs/schema_lesson_03_001.json
+Saved NL text to outputs/schema_lesson_03_001.txt
+
+--- Problem 2 ---
+{
+  "problem_id": "DILATION_002",
+  "lesson": "lesson_03",
+  "entities": {
+    "polygons": [
+      {
+        "id": "ABCD",
+        "n_sides": 4,
+        "sides": {
+          "AB": 6,
+          "BC": 8,
+          "CD": 10,
+          "DA": 12
+        }
+      },
+      {
+        "id": "A'B'C'D'"
+      }
+    ],
+    "points": [
+      {
+        "id": "Q"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "ABCD",
+        "A'B'C'D'"
+      ],
+      "attributes": {
+        "center": "Q",
+        "scale_factor": 0.4,
+        "pre_image": "ABCD",
+        "image": "A'B'C'D'"
+      }
+    }
+  ],
+  "target": {
+    "entity": "A'B'C'D'",
+    "attribute": "sides.B'C'"
+  }
+}
+Pydantic validation failed (problem 2): 1 validation error for ProblemSchema
+entities.polygons.1.n_sides
+  Field required [type=missing, input_value={'id': "A'B'C'D'"}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+
+--- Problem 3 ---
+{
+  "problem_id": "DILATION_003",
+  "lesson": "lesson_03",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 9,
+          "QR": 12,
+          "PR": 15
+        }
+      },
+      {
+        "id": "P'Q'R'",
+        "sides": {
+          "P'Q'": 27,
+          "Q'R'": 36,
+          "P'R'": 45
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": "O"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "PQR",
+        "P'Q'R'"
+      ],
+      "attributes": {
+        "center": "O",
+        "scale_factor": null,
+        "pre_image": "PQR",
+        "image": "P'Q'R'"
+      }
+    }
+  ],
+  "target": {
+    "entity": "dilation",
+    "attribute": "scale_factor"
+  }
+}
+Pydantic validation passed (problem 3)
+Saved to outputs/schema_lesson_03_003.json
+Saved NL text to outputs/schema_lesson_03_003.txt
+
+Generated 2 problem(s) for lesson_03.txt
+
+--- Calling API for lesson_05.txt ---
+Received 3 problem(s) from API.
+
+--- Problem 1 ---
+{
+  "problem_id": "L05_P01",
+  "lesson": "lesson_05",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 14,
+          "BC": 18,
+          "AC": 20
+        }
+      },
+      {
+        "id": "MNP",
+        "sides": null
+      }
+    ],
+    "points": [
+      {
+        "id": "M",
+        "lies_on": [
+          "AB"
+        ]
+      },
+      {
+        "id": "N",
+        "lies_on": [
+          "BC"
+        ]
+      },
+      {
+        "id": "P",
+        "lies_on": [
+          "AC"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "id": "MN"
+      },
+      {
+        "id": "NP"
+      },
+      {
+        "id": "MP"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "ABC",
+        "MNP"
+      ],
+      "attributes": {
+        "center": "A",
+        "scale_factor": 0.5,
+        "pre_image": "ABC",
+        "image": "MNP"
+      }
+    },
+    {
+      "type": "collinear_dilation",
+      "entities": [
+        "A",
+        "M",
+        "B"
+      ],
+      "attributes": {
+        "center": "A",
+        "pre_image_point": "B",
+        "image_point": "M"
+      }
+    },
+    {
+      "type": "collinear_dilation",
+      "entities": [
+        "A",
+        "N",
+        "C"
+      ],
+      "attributes": {
+        "center": "A",
+        "pre_image_point": "C",
+        "image_point": "N"
+      }
+    },
+    {
+      "type": "collinear_dilation",
+      "entities": [
+        "A",
+        "P",
+        "C"
+      ],
+      "attributes": {
+        "center": "A",
+        "pre_image_point": "C",
+        "image_point": "P"
+      }
+    },
+    {
+      "type": "parallel_segments",
+      "entities": [
+        "MN",
+        "AC"
+      ]
+    },
+    {
+      "type": "parallel_segments",
+      "entities": [
+        "NP",
+        "AB"
+      ]
+    },
+    {
+      "type": "parallel_segments",
+      "entities": [
+        "MP",
+        "BC"
+      ]
+    }
+  ],
+  "target": {
+    "entity": "MN",
+    "attribute": "length"
+  }
+}
+Pydantic validation passed (problem 1)
+Saved to outputs/schema_lesson_05_001.json
+Saved NL text to outputs/schema_lesson_05_001.txt
+
+--- Problem 2 ---
+{
+  "problem_id": "L05_P02",
+  "lesson": "lesson_05",
+  "entities": {
+    "triangles": [
+      {
+        "id": "XYZ",
+        "sides": {
+          "XY": null,
+          "YZ": 30,
+          "XZ": null
+        }
+      },
+      {
+        "id": "XRS"
+      }
+    ],
+    "points": [
+      {
+        "id": "R",
+        "lies_on": [
+          "XY"
+        ]
+      },
+      {
+        "id": "S",
+        "lies_on": [
+          "XZ"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "id": "RS"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "XYZ",
+        "XRS"
+      ],
+      "attributes": {
+        "center": "X",
+        "scale_factor": 0.6,
+        "pre_image": "XYZ",
+        "image": "XRS"
+      }
+    },
+    {
+      "type": "collinear_dilation",
+      "entities": [
+        "X",
+        "R",
+        "Y"
+      ],
+      "attributes": {
+        "center": "X",
+        "pre_image_point": "Y",
+        "image_point": "R"
+      }
+    },
+    {
+      "type": "collinear_dilation",
+      "entities": [
+        "X",
+        "S",
+        "Z"
+      ],
+      "attributes": {
+        "center": "X",
+        "pre_image_point": "Z",
+        "image_point": "S"
+      }
+    },
+    {
+      "type": "parallel_segments",
+      "entities": [
+        "RS",
+        "YZ"
+      ]
+    }
+  ],
+  "target": {
+    "entity": "RS",
+    "attribute": "length"
+  }
+}
+Pydantic validation passed (problem 2)
+Saved to outputs/schema_lesson_05_002.json
+Saved NL text to outputs/schema_lesson_05_002.txt
+
+--- Problem 3 ---
+{
+  "problem_id": "L05_P03",
+  "lesson": "lesson_05",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 28,
+          "QR": null,
+          "PR": null
+        }
+      },
+      {
+        "id": "PMN"
+      }
+    ],
+    "points": [
+      {
+        "id": "M",
+        "lies_on": [
+          "PQ"
+        ]
+      },
+      {
+        "id": "N",
+        "lies_on": [
+          "PR"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "id": "MN",
+        "is_midsegment": true,
+        "length": 12
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "PQR",
+        "PMN"
+      ],
+      "attributes": {
+        "center": "P",
+        "scale_factor": 0.5,
+        "pre_image": "PQR",
+        "image": "PMN"
+      }
+    },
+    {
+      "type": "collinear_dilation",
+      "entities": [
+        "P",
+        "M",
+        "Q"
+      ],
+      "attributes": {
+        "center": "P",
+        "pre_image_point": "Q",
+        "image_point": "M"
+      }
+    },
+    {
+      "type": "collinear_dilation",
+      "entities": [
+        "P",
+        "N",
+        "R"
+      ],
+      "attributes": {
+        "center": "P",
+        "pre_image_point": "R",
+        "image_point": "N"
+      }
+    },
+    {
+      "type": "parallel_segments",
+      "entities": [
+        "MN",
+        "QR"
+      ]
+    },
+    {
+      "type": "midsegment_ratio",
+      "entities": [
+        "MN",
+        "QR"
+      ],
+      "attributes": {
+        "ratio": 0.5
+      }
+    }
+  ],
+  "target": {
+    "entity": "QR",
+    "attribute": "length"
+  }
+}
+Pydantic validation passed (problem 3)
+Saved to outputs/schema_lesson_05_003.json
+Saved NL text to outputs/schema_lesson_05_003.txt
+
+Generated 3 problem(s) for lesson_05.txt
+
+--- Calling API for lesson_06.txt ---
+Received 3 problem(s) from API.
+
+--- Problem 1 ---
+{
+  "problem_id": "06_001",
+  "lesson": "06",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 6,
+          "BC": 8,
+          "CA": 10
+        },
+        "angles": {
+          "A": null,
+          "B": 90,
+          "C": null
+        }
+      },
+      {
+        "id": "XYZ",
+        "sides": {
+          "XY": 9,
+          "YZ": 12,
+          "ZX": 15
+        },
+        "angles": {
+          "X": null,
+          "Y": 90,
+          "Z": null
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": "O"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_AA",
+      "entities": [
+        "ABC",
+        "XYZ"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "ABC",
+        "image": "XYZ",
+        "congruent_angle_pairs": [
+          [
+            "A",
+            "X"
+          ],
+          [
+            "B",
+            "Y"
+          ],
+          [
+            "C",
+            "Z"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABC",
+    "attribute": "sides.AB"
+  }
+}
+Pydantic validation passed (problem 1)
+Saved to outputs/schema_lesson_06_001.json
+Saved NL text to outputs/schema_lesson_06_001.txt
+
+--- Problem 2 ---
+{
+  "problem_id": "06_002",
+  "lesson": "06",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": null,
+          "QR": 20,
+          "RP": 25
+        }
+      },
+      {
+        "id": "STU",
+        "sides": {
+          "ST": 8,
+          "TU": null,
+          "US": 10
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": "V"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "STU",
+        "PQR"
+      ],
+      "attributes": {
+        "scale_factor": 2.5,
+        "center": "V",
+        "pre_image": "STU",
+        "image": "PQR"
+      }
+    },
+    {
+      "type": "similar_SAS",
+      "entities": [
+        "STU",
+        "PQR"
+      ],
+      "attributes": {
+        "scale_factor": 2.5,
+        "pre_image": "STU",
+        "image": "PQR",
+        "congruent_angle_pairs": [
+          [
+            "S",
+            "P"
+          ],
+          [
+            "T",
+            "Q"
+          ],
+          [
+            "U",
+            "R"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "STU",
+    "attribute": "sides.TU"
+  }
+}
+Pydantic validation passed (problem 2)
+Saved to outputs/schema_lesson_06_002.json
+Saved NL text to outputs/schema_lesson_06_002.txt
+
+--- Problem 3 ---
+{
+  "problem_id": "06_003",
+  "lesson": "06",
+  "entities": {
+    "polygons": [
+      {
+        "id": "ABCD",
+        "n_sides": 4,
+        "sides": {
+          "AB": 12,
+          "BC": 9,
+          "CD": 12,
+          "DA": 9
+        }
+      },
+      {
+        "id": "EFGH",
+        "n_sides": 4,
+        "sides": {
+          "EF": 16,
+          "FG": 12,
+          "GH": 16,
+          "HE": 12
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "scaled_copy",
+      "entities": [
+        "ABCD",
+        "EFGH"
+      ],
+      "attributes": {
+        "scale_factor": 1.333,
+        "pre_image": "ABCD",
+        "image": "EFGH"
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABCD",
+    "attribute": "sides.AB"
+  }
+}
+Pydantic validation passed (problem 3)
+Saved to outputs/schema_lesson_06_003.json
+Saved NL text to outputs/schema_lesson_06_003.txt
+
+Generated 3 problem(s) for lesson_06.txt
+
+--- Calling API for lesson_08.txt ---
+Received 3 problem(s) from API.
+
+--- Problem 1 ---
+{
+  "problem_id": "P001",
+  "lesson": "lesson_08",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "is_equilateral": true,
+        "sides": {
+          "PQ": 8,
+          "QR": 8,
+          "RP": 8
+        }
+      },
+      {
+        "id": "XYZ",
+        "is_equilateral": true,
+        "sides": {
+          "XY": 12,
+          "YZ": 12,
+          "ZX": 12
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_unspecified",
+      "entities": [
+        "PQR",
+        "XYZ"
+      ],
+      "attributes": {
+        "scale_factor": 1.5
+      }
+    }
+  ],
+  "target": {
+    "entity": "PQR",
+    "attribute": "sides.PQ"
+  }
+}
+Pydantic validation passed (problem 1)
+Saved to outputs/schema_lesson_08_001.json
+Saved NL text to outputs/schema_lesson_08_001.txt
+
+--- Problem 2 ---
+{
+  "problem_id": "P002",
+  "lesson": "lesson_08",
+  "entities": {
+    "circles": [
+      {
+        "id": "c1",
+        "radius": 5
+      },
+      {
+        "id": "c2",
+        "radius": null
+      }
+    ],
+    "points": [
+      {
+        "id": "O1"
+      },
+      {
+        "id": "O2"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "c1",
+        "c2"
+      ],
+      "attributes": {
+        "scale_factor": 3,
+        "center": "O1",
+        "pre_image": "c1",
+        "image": "c2"
+      }
+    }
+  ],
+  "target": {
+    "entity": "c2",
+    "attribute": "radius"
+  }
+}
+Pydantic validation passed (problem 2)
+Saved to outputs/schema_lesson_08_002.json
+Saved NL text to outputs/schema_lesson_08_002.txt
+
+--- Problem 3 ---
+{
+  "problem_id": "P003",
+  "lesson": "lesson_08",
+  "entities": {
+    "polygons": [
+      {
+        "id": "ABCD",
+        "n_sides": 4,
+        "sides": {
+          "AB": 6,
+          "BC": 4,
+          "CD": 6,
+          "DA": 4
+        }
+      },
+      {
+        "id": "EFGH",
+        "n_sides": 4,
+        "sides": {
+          "EF": 9,
+          "FG": 6,
+          "GH": 9,
+          "HE": 6
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_unspecified",
+      "entities": [
+        "ABCD",
+        "EFGH"
+      ],
+      "attributes": {
+        "scale_factor": 1.5
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABCD",
+    "attribute": "sides.BC"
+  }
+}
+Pydantic validation passed (problem 3)
+Saved to outputs/schema_lesson_08_003.json
+Saved NL text to outputs/schema_lesson_08_003.txt
+
+Generated 3 problem(s) for lesson_08.txt
+
+--- Calling API for lesson_09.txt ---
+Received 3 problem(s) from API.
+
+--- Problem 1 ---
+{
+  "problem_id": "AA_sim_01",
+  "lesson": "lesson_09",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "angles": {
+          "A": 52,
+          "B": 68,
+          "C": null
+        },
+        "sides": {
+          "AB": 10,
+          "BC": null,
+          "AC": null
+        }
+      },
+      {
+        "id": "PQR",
+        "angles": {
+          "P": null,
+          "Q": 68,
+          "R": 60
+        },
+        "sides": {
+          "PQ": null,
+          "QR": 15,
+          "PR": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "ABC"
+      ],
+      "attributes": {
+        "triangle_id": "ABC",
+        "angles": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "PQR"
+      ],
+      "attributes": {
+        "triangle_id": "PQR",
+        "angles": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "congruent_angles",
+      "entities": [
+        "ABC",
+        "PQR"
+      ],
+      "attributes": {
+        "ids": [
+          "B",
+          "Q"
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABC",
+    "attribute": "similar_to_PQR"
+  }
+}
+Pydantic validation passed (problem 1)
+Saved to outputs/schema_lesson_09_001.json
+Saved NL text to outputs/schema_lesson_09_001.txt
+
+--- Problem 2 ---
+{
+  "problem_id": "AA_sim_02",
+  "lesson": "lesson_09",
+  "entities": {
+    "triangles": [
+      {
+        "id": "DEF",
+        "angles": {
+          "D": 45,
+          "E": null,
+          "F": 75
+        },
+        "sides": {
+          "DE": 12,
+          "EF": null,
+          "DF": null
+        }
+      },
+      {
+        "id": "XYZ",
+        "angles": {
+          "X": 45,
+          "Y": 60,
+          "Z": null
+        },
+        "sides": {
+          "XY": 8,
+          "YZ": null,
+          "XZ": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "DEF"
+      ],
+      "attributes": {
+        "triangle_id": "DEF",
+        "angles": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "XYZ"
+      ],
+      "attributes": {
+        "triangle_id": "XYZ",
+        "angles": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "congruent_angles",
+      "entities": [
+        "DEF",
+        "XYZ"
+      ],
+      "attributes": {
+        "ids": [
+          "D",
+          "X"
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "similar_to_XYZ"
+  }
+}
+Pydantic validation passed (problem 2)
+Saved to outputs/schema_lesson_09_002.json
+Saved NL text to outputs/schema_lesson_09_002.txt
+
+--- Problem 3 ---
+{
+  "problem_id": "AA_sim_03",
+  "lesson": "lesson_09",
+  "entities": {
+    "triangles": [
+      {
+        "id": "JKL",
+        "angles": {
+          "J": 38,
+          "K": 82,
+          "L": null
+        },
+        "sides": {
+          "JK": 20,
+          "KL": null,
+          "JL": null
+        }
+      },
+      {
+        "id": "MNO",
+        "angles": {
+          "M": null,
+          "N": 60,
+          "O": 82
+        },
+        "sides": {
+          "MN": null,
+          "NO": 30,
+          "MO": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "JKL"
+      ],
+      "attributes": {
+        "triangle_id": "JKL",
+        "angles": [
+          "J",
+          "K",
+          "L"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "MNO"
+      ],
+      "attributes": {
+        "triangle_id": "MNO",
+        "angles": [
+          "M",
+          "N",
+          "O"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "congruent_angles",
+      "entities": [
+        "JKL",
+        "MNO"
+      ],
+      "attributes": {
+        "ids": [
+          "K",
+          "O"
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "JKL",
+    "attribute": "similar_to_MNO"
+  }
+}
+Pydantic validation passed (problem 3)
+Saved to outputs/schema_lesson_09_003.json
+Saved NL text to outputs/schema_lesson_09_003.txt
+
+Generated 3 problem(s) for lesson_09.txt
+
+--- Calling API for lesson_10.txt ---
+Received 3 problem(s) from API.
+
+--- Problem 1 ---
+{
+  "problem_id": "P1",
+  "lesson": "lesson_10",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 5,
+          "BC": 8,
+          "AC": 10
+        }
+      },
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": 7.5,
+          "EF": 12,
+          "DF": 15
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_SSS",
+      "entities": [
+        "ABC",
+        "DEF"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "ABC",
+        "image": "DEF",
+        "congruent_angle_pairs": []
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "angles.E"
+  }
+}
+Pydantic validation passed (problem 1)
+Saved to outputs/schema_lesson_10_001.json
+Saved NL text to outputs/schema_lesson_10_001.txt
+
+--- Problem 2 ---
+{
+  "problem_id": "P2",
+  "lesson": "lesson_10",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 6,
+          "QR": 9,
+          "PR": null
+        },
+        "angles": {
+          "Q": 48
+        }
+      },
+      {
+        "id": "XYZ",
+        "sides": {
+          "XY": 10,
+          "YZ": 15,
+          "XZ": null
+        },
+        "angles": {
+          "Y": null
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": "O"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_SAS",
+      "entities": [
+        "PQR",
+        "XYZ"
+      ],
+      "attributes": {
+        "scale_factor": 1.667,
+        "pre_image": "PQR",
+        "image": "XYZ",
+        "congruent_angle_pairs": [
+          [
+            "Q",
+            "Y"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "XYZ",
+    "attribute": "angles.Y"
+  }
+}
+Pydantic validation passed (problem 2)
+Saved to outputs/schema_lesson_10_002.json
+Saved NL text to outputs/schema_lesson_10_002.txt
+
+--- Problem 3 ---
+{
+  "problem_id": "P3",
+  "lesson": "lesson_10",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 8,
+          "BC": 6,
+          "AC": null
+        },
+        "angles": {
+          "B": 62
+        }
+      },
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": 12,
+          "EF": 9,
+          "DF": null
+        },
+        "angles": {
+          "E": 62
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_SAS",
+      "entities": [
+        "ABC",
+        "DEF"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "ABC",
+        "image": "DEF",
+        "congruent_angle_pairs": [
+          [
+            "B",
+            "E"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABC",
+    "attribute": "sides.AC"
+  }
+}
+Pydantic validation passed (problem 3)
+Saved to outputs/schema_lesson_10_003.json
+Saved NL text to outputs/schema_lesson_10_003.txt
+
+Generated 3 problem(s) for lesson_10.txt
+
+--- Calling API for lesson_14.txt ---
+Received 3 problem(s) from API.
+
+--- Problem 1 ---
+{
+  "problem_id": "PT_001",
+  "lesson": "lesson_14",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "is_right": true,
+        "sides": {
+          "AB": 13,
+          "BC": 5,
+          "AC": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "ABC"
+      ],
+      "attributes": {
+        "triangle_id": "ABC",
+        "angles": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sum": 180
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABC",
+    "attribute": "sides.AC"
+  }
+}
+Pydantic validation passed (problem 1)
+Saved to outputs/schema_lesson_14_001.json
+Saved NL text to outputs/schema_lesson_14_001.txt
+
+--- Problem 2 ---
+{
+  "problem_id": "PT_002",
+  "lesson": "lesson_14",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "is_right": true,
+        "sides": {
+          "PQ": 6,
+          "QR": 8,
+          "PR": null
+        }
+      }
+    ],
+    "segments": [
+      {
+        "id": "QS",
+        "is_altitude": true
+      }
+    ],
+    "points": [
+      {
+        "id": "S",
+        "lies_on": [
+          "PR"
+        ]
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "altitude_to_hypotenuse",
+      "entities": [
+        "QS",
+        "PR",
+        "PS",
+        "SR"
+      ],
+      "attributes": {
+        "altitude_id": "QS",
+        "hypotenuse": "PR",
+        "segment1": "PS",
+        "segment2": "SR"
+      }
+    },
+    {
+      "type": "similar_AA",
+      "entities": [
+        "PQR",
+        "PQS"
+      ],
+      "attributes": {
+        "scale_factor": null,
+        "pre_image": "PQR",
+        "image": "PQS",
+        "congruent_angle_pairs": [
+          [
+            "P",
+            "P"
+          ],
+          [
+            "Q",
+            "Q"
+          ],
+          [
+            "R",
+            "S"
+          ]
+        ]
+      }
+    },
+    {
+      "type": "geometric_mean_leg",
+      "entities": [
+        "PQ",
+        "PR",
+        "PS"
+      ],
+      "attributes": {
+        "leg_id": "PQ",
+        "hypotenuse": "PR",
+        "adjacent_segment": "PS"
+      }
+    }
+  ],
+  "target": {
+    "entity": "PQR",
+    "attribute": "sides.PR"
+  }
+}
+Pydantic validation passed (problem 2)
+Saved to outputs/schema_lesson_14_002.json
+Saved NL text to outputs/schema_lesson_14_002.txt
+
+--- Problem 3 ---
+{
+  "problem_id": "PT_003",
+  "lesson": "lesson_14",
+  "entities": {
+    "triangles": [
+      {
+        "id": "XYZ",
+        "is_right": true,
+        "sides": {
+          "XY": 5,
+          "YZ": 12,
+          "XZ": 13
+        }
+      }
+    ],
+    "polygons": [
+      {
+        "id": "XYAB",
+        "n_sides": 4,
+        "sides": {
+          "XY": 5,
+          "YA": 5,
+          "AB": 5,
+          "BX": 5
+        }
+      },
+      {
+        "id": "YZCD",
+        "n_sides": 4,
+        "sides": {
+          "YZ": 12,
+          "ZC": 12,
+          "CD": 12,
+          "DY": 12
+        }
+      },
+      {
+        "id": "XZEF",
+        "n_sides": 4,
+        "sides": {
+          "XZ": 13,
+          "ZE": 13,
+          "EF": 13,
+          "FX": 13
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "scaled_copy",
+      "entities": [
+        "XYAB",
+        "YZCD"
+      ],
+      "attributes": {
+        "scale_factor": 2.4,
+        "pre_image": "XYAB",
+        "image": "YZCD"
+      }
+    }
+  ],
+  "target": {
+    "entity": "XZEF",
+    "attribute": "sides.XZ"
+  }
+}
+Pydantic validation passed (problem 3)
+Saved to outputs/schema_lesson_14_003.json
+Saved NL text to outputs/schema_lesson_14_003.txt
+
+Generated 3 problem(s) for lesson_14.txt
+
+--- Calling API for lesson_15.txt ---
+Received 3 problem(s) from API.
+
+--- Problem 1 ---
+{
+  "problem_id": "15-001",
+  "lesson": "lesson_15",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 7,
+          "QR": 9,
+          "PR": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "triangle_proportionality",
+      "entities": [
+        "PQR"
+      ],
+      "attributes": null
+    }
+  ],
+  "target": {
+    "entity": "PQR",
+    "attribute": "sides.PR"
+  }
+}
+Pydantic validation passed (problem 1)
+Saved to outputs/schema_lesson_15_001.json
+Saved NL text to outputs/schema_lesson_15_001.txt
+
+--- Problem 2 ---
+{
+  "problem_id": "15-002",
+  "lesson": "lesson_15",
+  "entities": {
+    "triangles": [
+      {
+        "id": "XYZ",
+        "sides": {
+          "XY": 6,
+          "YZ": 8,
+          "XZ": 11
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "XYZ"
+      ],
+      "attributes": {
+        "triangle_id": "XYZ",
+        "angles": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "sum": 180
+      }
+    }
+  ],
+  "target": {
+    "entity": "XYZ",
+    "attribute": "is_obtuse"
+  }
+}
+Pydantic validation passed (problem 2)
+Saved to outputs/schema_lesson_15_002.json
+Saved NL text to outputs/schema_lesson_15_002.txt
+
+--- Problem 3 ---
+{
+  "problem_id": "15-003",
+  "lesson": "lesson_15",
+  "entities": {
+    "triangles": [
+      {
+        "id": "MNO",
+        "sides": {
+          "MN": 5,
+          "NO": 12,
+          "MO": null
+        },
+        "is_right": true
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "MNO"
+      ],
+      "attributes": {
+        "triangle_id": "MNO",
+        "angles": [
+          "M",
+          "N",
+          "O"
+        ],
+        "sum": 180
+      }
+    }
+  ],
+  "target": {
+    "entity": "MNO",
+    "attribute": "sides.MO"
+  }
+}
+Pydantic validation passed (problem 3)
+Saved to outputs/schema_lesson_15_003.json
+Saved NL text to outputs/schema_lesson_15_003.txt
+
+Generated 3 problem(s) for lesson_15.txt
+
+--- Calling API for lesson_16.txt ---
+Received 3 problem(s) from API.
+
+--- Problem 1 ---
+{
+  "problem_id": "L16_001",
+  "lesson": "lesson_16",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "is_right": true,
+        "sides": {
+          "PQ": 9,
+          "QR": 12,
+          "PR": null
+        }
+      },
+      {
+        "id": "XYZ",
+        "is_right": true,
+        "sides": {
+          "XY": 6,
+          "YZ": null,
+          "XZ": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_AA",
+      "entities": [
+        "PQR",
+        "XYZ"
+      ],
+      "attributes": {
+        "scale_factor": null,
+        "pre_image": "PQR",
+        "image": "XYZ",
+        "congruent_angle_pairs": [
+          [
+            "P",
+            "X"
+          ],
+          [
+            "Q",
+            "Y"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "XYZ",
+    "attribute": "sides.XZ"
+  }
+}
+Pydantic validation passed (problem 1)
+Saved to outputs/schema_lesson_16_001.json
+Saved NL text to outputs/schema_lesson_16_001.txt
+
+--- Problem 2 ---
+{
+  "problem_id": "L16_002",
+  "lesson": "lesson_16",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "is_right": true,
+        "sides": {
+          "AB": 8,
+          "BC": 15,
+          "AC": null
+        }
+      },
+      {
+        "id": "DEF",
+        "is_right": true,
+        "sides": {
+          "DE": 12,
+          "EF": null,
+          "DF": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_AA",
+      "entities": [
+        "ABC",
+        "DEF"
+      ],
+      "attributes": {
+        "scale_factor": null,
+        "pre_image": "ABC",
+        "image": "DEF",
+        "congruent_angle_pairs": [
+          [
+            "A",
+            "D"
+          ],
+          [
+            "B",
+            "E"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "sides.DF"
+  }
+}
+Pydantic validation passed (problem 2)
+Saved to outputs/schema_lesson_16_002.json
+Saved NL text to outputs/schema_lesson_16_002.txt
+
+--- Problem 3 ---
+{
+  "problem_id": "L16_003",
+  "lesson": "lesson_16",
+  "entities": {
+    "triangles": [
+      {
+        "id": "MNO",
+        "is_right": true,
+        "sides": {
+          "MN": 5,
+          "NO": 12,
+          "MO": null
+        }
+      },
+      {
+        "id": "STU",
+        "is_right": true,
+        "sides": {
+          "ST": null,
+          "TU": 18,
+          "SU": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_AA",
+      "entities": [
+        "MNO",
+        "STU"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "MNO",
+        "image": "STU",
+        "congruent_angle_pairs": [
+          [
+            "N",
+            "T"
+          ],
+          [
+            "O",
+            "U"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "STU",
+    "attribute": "sides.ST"
+  }
+}
+Pydantic validation passed (problem 3)
+Saved to outputs/schema_lesson_16_003.json
+Saved NL text to outputs/schema_lesson_16_003.txt
+
+Generated 3 problem(s) for lesson_16.txt
+
+============================================================
+Refining schema_lesson_01_001.txt (lesson_01), max 3 iteration(s)
+
+--- Iteration 1/3: Opus judging ---
+  Overall: 1.50 [FAIL] (GA=2, LA=1, LC=1)
+--- Iteration 1: Haiku revising ---
+  Revised length: 163 chars
+
+--- Iteration 2/3: Opus judging ---
+  Overall: 2.90 [FAIL] (GA=4, LA=1, LC=3)
+--- Iteration 2: Haiku revising ---
+  Revised length: 256 chars
+
+--- Iteration 3/3: Opus judging ---
+  Overall: 3.40 [PASS] (GA=4, LA=2, LC=4)
+  Max iterations reached — keeping last revision attempt.
+
+  Done [PASS] score=3.40 iterations=3
+  Refined NL: refined/schema_lesson_01_001_refined.txt
+  Trace: refined/schema_lesson_01_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_03_001.txt (lesson_03), max 3 iteration(s)
+
+--- Iteration 1/3: Opus judging ---
+  Overall: 2.70 [FAIL] (GA=4, LA=1, LC=2)
+--- Iteration 1: Haiku revising ---
+  Revised length: 493 chars
+
+--- Iteration 2/3: Opus judging ---
+  Overall: 3.50 [PASS] (GA=4, LA=3, LC=3)
+--- Iteration 2: Haiku revising ---
+  Revised length: 748 chars
+
+--- Iteration 3/3: Opus judging ---
+  Overall: 3.50 [PASS] (GA=4, LA=3, LC=3)
+  Max iterations reached — keeping last revision attempt.
+
+  Done [PASS] score=3.50 iterations=3
+  Refined NL: refined/schema_lesson_03_001_refined.txt
+  Trace: refined/schema_lesson_03_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_05_001.txt (lesson_05), max 3 iteration(s)
+
+--- Iteration 1/3: Opus judging ---
+  Overall: 0.50 [FAIL] (GA=0, LA=1, LC=1)
+--- Iteration 1: Haiku revising ---
+  Revised length: 484 chars
+
+--- Iteration 2/3: Opus judging ---
+  Overall: 3.00 [PASS] (GA=3, LA=3, LC=3)
+--- Iteration 2: Haiku revising ---
+  Revised length: 835 chars
+
+--- Iteration 3/3: Opus judging ---
+  Overall: 3.50 [PASS] (GA=4, LA=3, LC=3)
+  Max iterations reached — keeping last revision attempt.
+
+  Done [PASS] score=3.50 iterations=3
+  Refined NL: refined/schema_lesson_05_001_refined.txt
+  Trace: refined/schema_lesson_05_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_06_001.txt (lesson_06), max 3 iteration(s)
+
+--- Iteration 1/3: Opus judging ---
+  Overall: 1.70 [FAIL] (GA=3, LA=0, LC=1)
+--- Iteration 1: Haiku revising ---
+  Revised length: 453 chars
+
+--- Iteration 2/3: Opus judging ---
+  Overall: 3.50 [PASS] (GA=4, LA=3, LC=3)
+--- Iteration 2: Haiku revising ---
+  Revised length: 854 chars
+
+--- Iteration 3/3: Opus judging ---
+  Overall: 1.80 [FAIL] (GA=1, LA=3, LC=2)
+  Max iterations reached — keeping last revision attempt.
+
+  Done [FAIL] score=1.80 iterations=3
+  Refined NL: refined/schema_lesson_06_001_refined.txt
+  Trace: refined/schema_lesson_06_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_08_001.txt (lesson_08), max 3 iteration(s)
+
+--- Iteration 1/3: Opus judging ---
+  Overall: 0.70 [FAIL] (GA=1, LA=0, LC=1)
+--- Iteration 1: Haiku revising ---
+  Revised length: 301 chars
+
+--- Iteration 2/3: Opus judging ---
+  Overall: 3.20 [PASS] (GA=4, LA=2, LC=3)
+--- Iteration 2: Haiku revising ---
+  Revised length: 807 chars
+
+--- Iteration 3/3: Opus judging ---
+  Overall: 4.00 [PERFECT] (GA=4, LA=4, LC=4)
+  Perfect 4/4 on all criteria — stopping early.
+
+  Done [PERFECT] score=4.00 iterations=3
+  Refined NL: refined/schema_lesson_08_001_refined.txt
+  Trace: refined/schema_lesson_08_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_09_001.txt (lesson_09), max 3 iteration(s)
+
+--- Iteration 1/3: Opus judging ---
+  Overall: 2.30 [FAIL] (GA=3, LA=2, LC=1)
+--- Iteration 1: Haiku revising ---
+  Revised length: 362 chars
+
+--- Iteration 2/3: Opus judging ---
+  Overall: 1.30 [FAIL] (GA=1, LA=2, LC=1)
+--- Iteration 2: Haiku revising ---
+  Revised length: 420 chars
+
+--- Iteration 3/3: Opus judging ---
+  Overall: 2.50 [FAIL] (GA=2, LA=3, LC=3)
+  Max iterations reached — keeping last revision attempt.
+
+  Done [FAIL] score=2.50 iterations=3
+  Refined NL: refined/schema_lesson_09_001_refined.txt
+  Trace: refined/schema_lesson_09_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_10_001.txt (lesson_10), max 3 iteration(s)
+
+--- Iteration 1/3: Opus judging ---
+  Overall: 1.00 [FAIL] (GA=1, LA=1, LC=1)
+--- Iteration 1: Haiku revising ---
+  Revised length: 359 chars
+
+--- Iteration 2/3: Opus judging ---
+  Overall: 3.20 [PASS] (GA=4, LA=2, LC=3)
+--- Iteration 2: Haiku revising ---
+  Revised length: 843 chars
+
+--- Iteration 3/3: Opus judging ---
+  Overall: 2.50 [FAIL] (GA=2, LA=3, LC=3)
+  Max iterations reached — keeping last revision attempt.
+
+  Done [FAIL] score=2.50 iterations=3
+  Refined NL: refined/schema_lesson_10_001_refined.txt
+  Trace: refined/schema_lesson_10_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_14_001.txt (lesson_14), max 3 iteration(s)
+
+--- Iteration 1/3: Opus judging ---
+  Overall: 1.70 [FAIL] (GA=2, LA=1, LC=2)
+--- Iteration 1: Haiku revising ---
+  Revised length: 587 chars
+
+--- Iteration 2/3: Opus judging ---
+  Overall: 3.50 [PASS] (GA=4, LA=3, LC=3)
+--- Iteration 2: Haiku revising ---
+  Revised length: 861 chars
+
+--- Iteration 3/3: Opus judging ---
+  Overall: 3.50 [PASS] (GA=4, LA=3, LC=3)
+  Max iterations reached — keeping last revision attempt.
+
+  Done [PASS] score=3.50 iterations=3
+  Refined NL: refined/schema_lesson_14_001_refined.txt
+  Trace: refined/schema_lesson_14_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_15_001.txt (lesson_15), max 3 iteration(s)
+
+--- Iteration 1/3: Opus judging ---
+  Overall: 0.00 [FAIL] (GA=0, LA=0, LC=0)
+--- Iteration 1: Haiku revising ---
+  Revised length: 229 chars
+
+--- Iteration 2/3: Opus judging ---
+  Overall: 3.00 [PASS] (GA=3, LA=3, LC=3)
+--- Iteration 2: Haiku revising ---
+  Revised length: 319 chars
+
+--- Iteration 3/3: Opus judging ---
+  Overall: 4.00 [PERFECT] (GA=4, LA=4, LC=4)
+  Perfect 4/4 on all criteria — stopping early.
+
+  Done [PERFECT] score=4.00 iterations=3
+  Refined NL: refined/schema_lesson_15_001_refined.txt
+  Trace: refined/schema_lesson_15_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_16_001.txt (lesson_16), max 3 iteration(s)
+
+--- Iteration 1/3: Opus judging ---
+  Overall: 1.50 [FAIL] (GA=1, LA=2, LC=2)
+--- Iteration 1: Haiku revising ---
+  Revised length: 307 chars
+
+--- Iteration 2/3: Opus judging ---
+  Overall: 3.20 [PASS] (GA=4, LA=2, LC=3)
+--- Iteration 2: Haiku revising ---
+  Revised length: 346 chars
+
+--- Iteration 3/3: Opus judging ---
+  Overall: 3.20 [PASS] (GA=4, LA=2, LC=3)
+  Max iterations reached — keeping last revision attempt.
+
+  Done [PASS] score=3.20 iterations=3
+  Refined NL: refined/schema_lesson_16_001_refined.txt
+  Trace: refined/schema_lesson_16_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_01_001.json (problem_id=GEOM_L01_001, lesson=lesson_01), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=3 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=GEOM_L01_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass error_count=0 [PASS]
+  Validator passed — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_GEOM_L01_001_functional.txt
+  Prose NL:      schema_GEOM_L01_001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_GEOM_L01_001_refined.json
+  NL:     validated/schema_GEOM_L01_001_refined.txt
+  Trace:  validated/schema_GEOM_L01_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_03_001.json (problem_id=DILATION_001, lesson=lesson_03), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=3 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=DILATION_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass error_count=0 [PASS]
+  Validator passed — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_DILATION_001_functional.txt
+  Prose NL:      schema_DILATION_001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_DILATION_001_refined.json
+  NL:     validated/schema_DILATION_001_refined.txt
+  Trace:  validated/schema_DILATION_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_05_001.json (problem_id=L05_P01, lesson=lesson_05), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail error_count=8 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=L05_P01
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail error_count=6 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=L05_P01
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail error_count=4 [FAIL]
+  Max iterations reached — keeping last schema.
+--- Haiku prose layer ---
+  Functional NL: schema_L05_P01_functional.txt
+  Prose NL:      schema_L05_P01_refined.txt
+
+  Done [FAIL] errors=4 iterations=3
+  Schema: validated/schema_L05_P01_refined.json
+  NL:     validated/schema_L05_P01_refined.txt
+  Trace:  validated/schema_L05_P01_refined_trace.json
+
+============================================================
+Step 1/3 — Haiku baseline schemas + function-translated NL (all lessons)
+============================================================
+
+============================================================
+Step 2/3 — Opus-judge + Haiku NL refine (lesson 01)
+============================================================
+
+============================================================
+Step 2/3 — Opus-judge + Haiku NL refine (lesson 03)
+============================================================
+
+============================================================
+Step 2/3 — Opus-judge + Haiku NL refine (lesson 05)
+============================================================
+
+============================================================
+Step 2/3 — Opus-judge + Haiku NL refine (lesson 06)
+============================================================
+
+============================================================
+Step 2/3 — Opus-judge + Haiku NL refine (lesson 08)
+============================================================
+
+============================================================
+Step 2/3 — Opus-judge + Haiku NL refine (lesson 09)
+============================================================
+
+============================================================
+Step 2/3 — Opus-judge + Haiku NL refine (lesson 10)
+============================================================
+
+============================================================
+Step 2/3 — Opus-judge + Haiku NL refine (lesson 14)
+============================================================
+
+============================================================
+Step 2/3 — Opus-judge + Haiku NL refine (lesson 15)
+============================================================
+
+============================================================
+Step 2/3 — Opus-judge + Haiku NL refine (lesson 16)
+============================================================
+
+============================================================
+Step 3/3 — Schema validation + Haiku prose (lesson 01)
+============================================================
+
+============================================================
+Step 3/3 — Schema validation + Haiku prose (lesson 03)
+============================================================
+
+============================================================
+Step 3/3 — Schema validation + Haiku prose (lesson 05)
+============================================================
+Failed: /Library/Frameworks/Python.framework/Versions/3.10/bin/python3 pipelines/refine_schema.py --schema outputs/schema_lesson_05_001.json
