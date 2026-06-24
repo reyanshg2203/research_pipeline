@@ -29,17 +29,13 @@ RESPONSES_CSV = RESPONSES_DIR / "evaluator_responses.csv"
 RESPONSES_JSONL = RESPONSES_DIR / "evaluator_responses.jsonl"
 DRAFTS_DIR = RESPONSES_DIR / "drafts"
 
-LESSON_IDS = [
-    "lesson_01",
-    "lesson_03",
-    "lesson_05",
-    "lesson_06",
-    "lesson_08",
-    "lesson_09",
-    "lesson_10",
-    "lesson_14",
-    "lesson_15",
-    "lesson_16",
+LESSONS = ["01", "03", "05", "06", "08", "09", "10", "14", "15", "16"]
+SLOTS = ["001", "002", "003"]
+# All 30 problem slots: (lesson_id, full_stem, slot)
+PROBLEM_SLOTS = [
+    (f"lesson_{l}", f"schema_lesson_{l}_{s}", f"lesson_{l}_{s}")
+    for l in LESSONS
+    for s in SLOTS
 ]
 
 RUBRIC_DIMENSIONS = [
@@ -89,20 +85,16 @@ def _functional_from_trace(problem_id: str) -> str | None:
     return text or None
 
 
-def _problem_id_for_lesson(lesson_id: str) -> tuple[str, str] | None:
-    """Return (problem_id, schema_stem) from outputs_pipeline1_v1_frozen/schema_lesson_XX_001.json."""
-    stem = f"schema_{lesson_id}_001"
-    schema_path = FROZEN_DIR / f"{stem}.json"
+def _problem_id_for_stem(schema_stem: str) -> str | None:
+    """Return problem_id from outputs_pipeline1_v1_frozen/schema_stem.json."""
+    schema_path = FROZEN_DIR / f"{schema_stem}.json"
     if not schema_path.is_file():
         return None
     try:
         data = json.loads(schema_path.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
         return None
-    problem_id = data.get("problem_id")
-    if not problem_id:
-        return None
-    return problem_id, stem
+    return data.get("problem_id") or None
 
 
 def _load_part3_pair(problem_id: str) -> tuple[str | None, str | None, str | None]:
@@ -130,36 +122,35 @@ def _load_part3_pair(problem_id: str) -> tuple[str | None, str | None, str | Non
 
 def load_survey_problems() -> list[SurveyProblem]:
     problems: list[SurveyProblem] = []
-    for lesson_id in LESSON_IDS:
-        lesson_num = _lesson_num(lesson_id)
-        meta = _problem_id_for_lesson(lesson_id)
-        if meta is None:
+    for lesson_id, schema_stem, slot_id in PROBLEM_SLOTS:
+        problem_id = _problem_id_for_stem(schema_stem)
+
+        if problem_id is None:
             problems.append(
                 SurveyProblem(
-                    lesson_id=lesson_id,
-                    lesson_num=lesson_num,
+                    lesson_id=slot_id,
+                    lesson_num=slot_id.replace("lesson_", ""),
                     problem_id="",
-                    schema_stem=f"schema_{lesson_id}_001",
+                    schema_stem=schema_stem,
                     part1_baseline=None,
                     part2_refined_nl=None,
                     part3_functional=None,
                     part3_prose=None,
-                    part1_missing=f"missing {FROZEN_DIR.name}/schema_{lesson_id}_001.txt",
-                    part2_missing=f"missing {REFINED_DIR.name}/schema_{lesson_id}_001_refined.txt",
-                    part3_missing=f"missing validated outputs for {lesson_id}",
+                    part1_missing=f"missing {FROZEN_DIR.name}/{schema_stem}.txt",
+                    part2_missing=f"missing {REFINED_DIR.name}/{schema_stem}_refined.txt",
+                    part3_missing=f"missing validated outputs for {slot_id}",
                 )
             )
             continue
 
-        problem_id, schema_stem = meta
         part1 = _read_text(FROZEN_DIR / f"{schema_stem}.txt")
         part2 = _read_text(REFINED_DIR / f"{schema_stem}_refined.txt")
         part3_functional, part3_prose, part3_missing = _load_part3_pair(problem_id)
 
         problems.append(
             SurveyProblem(
-                lesson_id=lesson_id,
-                lesson_num=lesson_num,
+                lesson_id=slot_id,
+                lesson_num=slot_id.replace("lesson_", ""),
                 problem_id=problem_id,
                 schema_stem=schema_stem,
                 part1_baseline=part1,
@@ -167,9 +158,7 @@ def load_survey_problems() -> list[SurveyProblem]:
                 part3_functional=part3_functional,
                 part3_prose=part3_prose,
                 part1_missing=None if part1 else f"missing {FROZEN_DIR.name}/{schema_stem}.txt",
-                part2_missing=None
-                if part2
-                else f"missing {REFINED_DIR.name}/{schema_stem}_refined.txt",
+                part2_missing=None if part2 else f"missing {REFINED_DIR.name}/{schema_stem}_refined.txt",
                 part3_missing=part3_missing,
             )
         )
@@ -280,10 +269,11 @@ def _save_response(payload: dict) -> None:
 def _render_sidebar(problems: list[SurveyProblem]) -> None:
     ready = _readiness(problems)
     st.sidebar.header("Survey materials")
+    total = len(PROBLEM_SLOTS)
     st.sidebar.markdown(
-        f"- **Round 1**: {ready['part1']}/10\n"
-        f"- **Round 2**: {ready['part2']}/10\n"
-        f"- **Round 3**: {ready['part3']}/10"
+        f"- **Round 1**: {ready['part1']}/{total}\n"
+        f"- **Round 2**: {ready['part2']}/{total}\n"
+        f"- **Round 3**: {ready['part3']}/{total}"
     )
     with st.sidebar.expander("Missing files"):
         for p in problems:
