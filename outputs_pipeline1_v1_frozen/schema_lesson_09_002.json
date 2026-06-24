@@ -1,0 +1,70 @@
+{
+  "problem_id": "lesson_09_002",
+  "lesson": "lesson_09",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "angles": {
+          "P": 35,
+          "Q": 65,
+          "R": null
+        },
+        "sides": {
+          "PQ": 12,
+          "QR": 9,
+          "PR": null
+        }
+      },
+      {
+        "id": "XYZ",
+        "angles": {
+          "X": null,
+          "Y": 80,
+          "Z": 35
+        },
+        "sides": {
+          "XY": null,
+          "YZ": 18,
+          "XZ": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "PQR"
+      ],
+      "attributes": {
+        "triangle_id": "PQR",
+        "angles": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "XYZ"
+      ],
+      "attributes": {
+        "triangle_id": "XYZ",
+        "angles": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "sum": 180
+      }
+    }
+  ],
+  "target": {
+    "entity": "XYZ",
+    "attribute": "angles.X"
+  }
+}

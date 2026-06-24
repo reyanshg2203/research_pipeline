@@ -1,0 +1,98 @@
+{
+  "problem_id": "lesson_05_001",
+  "lesson": "lesson_05",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 14,
+          "BC": 16,
+          "AC": 10
+        }
+      },
+      {
+        "id": "MNP",
+        "sides": {
+          "MN": null,
+          "NP": 8,
+          "MP": 5
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": "M",
+        "lies_on": [
+          "AB"
+        ]
+      },
+      {
+        "id": "N",
+        "lies_on": [
+          "BC"
+        ]
+      },
+      {
+        "id": "P",
+        "lies_on": [
+          "AC"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "id": "MN",
+        "is_midsegment": true
+      },
+      {
+        "id": "NP",
+        "is_midsegment": true
+      },
+      {
+        "id": "MP",
+        "is_midsegment": true
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "ABC",
+        "MNP"
+      ],
+      "attributes": {
+        "center": "A",
+        "scale_factor": 0.5,
+        "pre_image": "ABC",
+        "image": "MNP"
+      }
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "MN",
+        "AC"
+      ]
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "NP",
+        "AB"
+      ]
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "MP",
+        "BC"
+      ]
+    }
+  ],
+  "target": {
+    "entity": "MN",
+    "attribute": "length"
+  }
+}

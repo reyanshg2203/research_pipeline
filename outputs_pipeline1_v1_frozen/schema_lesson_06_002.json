@@ -1,0 +1,47 @@
+{
+  "problem_id": "lesson_06_002",
+  "lesson": "lesson_06",
+  "entities": {
+    "polygons": [
+      {
+        "id": "PQRS",
+        "n_sides": 4,
+        "sides": {
+          "PQ": 4,
+          "QR": 6,
+          "RS": 8,
+          "SP": 5
+        }
+      },
+      {
+        "id": "WXYZ",
+        "n_sides": 4,
+        "sides": {
+          "WX": 6,
+          "XY": 9,
+          "YZ": 12,
+          "ZW": 7.5
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_SSS",
+      "entities": [
+        "PQRS",
+        "WXYZ"
+      ],
+      "attributes": {
+        "pre_image": "PQRS",
+        "image": "WXYZ",
+        "scale_factor": 1.5,
+        "congruent_angle_pairs": []
+      }
+    }
+  ],
+  "target": {
+    "entity": "PQRS",
+    "attribute": "sides.RS"
+  }
+}

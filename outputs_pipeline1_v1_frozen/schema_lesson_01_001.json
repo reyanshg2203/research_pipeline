@@ -1,0 +1,53 @@
+{
+  "problem_id": "lesson_01_001",
+  "lesson": "lesson_01",
+  "entities": {
+    "polygons": [
+      {
+        "id": "ABCD",
+        "n_sides": 4,
+        "sides": {
+          "AB": 8,
+          "BC": 6,
+          "CD": 10,
+          "DA": 12
+        }
+      },
+      {
+        "id": "MNPQ",
+        "n_sides": 4,
+        "sides": {
+          "MN": null,
+          "NP": 3,
+          "PQ": 5,
+          "QM": null
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": "P_center",
+        "lies_on": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "ABCD",
+        "MNPQ"
+      ],
+      "attributes": {
+        "center": "P_center",
+        "scale_factor": 0.5,
+        "pre_image": "ABCD",
+        "image": "MNPQ"
+      }
+    }
+  ],
+  "target": {
+    "entity": "MNPQ",
+    "attribute": "sides.MN"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "problem_id": "lesson_05_002",
+  "lesson": "lesson_05",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 30,
+          "QR": null,
+          "PR": null
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": "X",
+        "lies_on": [
+          "PQ"
+        ]
+      },
+      {
+        "id": "Y",
+        "lies_on": [
+          "PR"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "id": "XY"
+      },
+      {
+        "id": "PX",
+        "length": 12
+      },
+      {
+        "id": "PY",
+        "length": 9
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "proportional_segments",
+      "entities": [
+        "PX",
+        "XQ",
+        "PY",
+        "YR"
+      ],
+      "attributes": {
+        "ratio": 0.6
+      }
+    },
+    {
+      "type": "triangle_proportionality",
+      "entities": [
+        "XY",
+        "QR",
+        "PQR"
+      ],
+      "attributes": {
+        "parallel_side": "QR",
+        "segment1": "PX",
+        "segment2": "PY"
+      }
+    }
+  ],
+  "target": {
+    "entity": "XY",
+    "attribute": "length"
+  }
+}

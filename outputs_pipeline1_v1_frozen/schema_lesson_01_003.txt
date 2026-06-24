@@ -1,0 +1,1 @@
+Lesson context: lesson_01. Let triangle RST be a 3-sided figure with RS = 12, ST = 9, TR = 15. Let triangle UVW be a 3-sided figure with UV = 4, VW = 3, WU = 5. UVW is a scaled copy of RST. Find the length of RS in RST.

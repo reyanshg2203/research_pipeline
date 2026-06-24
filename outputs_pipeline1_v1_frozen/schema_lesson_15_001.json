@@ -1,0 +1,37 @@
+{
+  "problem_id": "lesson_15_001",
+  "lesson": "lesson_15",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 12,
+          "BC": 9,
+          "AC": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "ABC"
+      ],
+      "attributes": {
+        "triangle_id": "ABC",
+        "angles": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sum": 180
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABC",
+    "attribute": "sides.AC"
+  }
+}

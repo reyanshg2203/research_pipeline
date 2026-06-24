@@ -1,0 +1,1 @@
+Lesson context: lesson_15. Let triangle XYZ be a triangle with sides XY = 6, YZ = 8. The interior angles of triangle XYZ (∠X, ∠Y, ∠Z) sum to 180°. Find the length of XZ in XYZ.

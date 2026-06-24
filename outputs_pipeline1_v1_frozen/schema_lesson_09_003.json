@@ -1,0 +1,70 @@
+{
+  "problem_id": "lesson_09_003",
+  "lesson": "lesson_09",
+  "entities": {
+    "triangles": [
+      {
+        "id": "JKL",
+        "angles": {
+          "J": 28,
+          "K": null,
+          "L": 112
+        },
+        "sides": {
+          "JK": 5,
+          "KL": null,
+          "JL": null
+        }
+      },
+      {
+        "id": "MNO",
+        "angles": {
+          "M": null,
+          "N": 40,
+          "O": 112
+        },
+        "sides": {
+          "MN": 8,
+          "NO": null,
+          "MO": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "JKL"
+      ],
+      "attributes": {
+        "triangle_id": "JKL",
+        "angles": [
+          "J",
+          "K",
+          "L"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "MNO"
+      ],
+      "attributes": {
+        "triangle_id": "MNO",
+        "angles": [
+          "M",
+          "N",
+          "O"
+        ],
+        "sum": 180
+      }
+    }
+  ],
+  "target": {
+    "entity": "JKL",
+    "attribute": "angles.K"
+  }
+}

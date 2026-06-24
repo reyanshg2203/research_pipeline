@@ -1,0 +1,44 @@
+{
+  "problem_id": "lesson_14_002",
+  "lesson": "lesson_14",
+  "entities": {
+    "triangles": [
+      {
+        "id": "DEF",
+        "is_right": true,
+        "sides": {
+          "DE": 7,
+          "EF": 24,
+          "DF": null
+        }
+      }
+    ],
+    "segments": [
+      {
+        "id": "GE",
+        "is_altitude": true,
+        "perpendicular_to": "DF"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "altitude_to_hypotenuse",
+      "entities": [
+        "DEF",
+        "GE",
+        "DF"
+      ],
+      "attributes": {
+        "altitude_id": "GE",
+        "hypotenuse": "DF",
+        "segment1": "DG",
+        "segment2": "GF"
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "sides.DF"
+  }
+}

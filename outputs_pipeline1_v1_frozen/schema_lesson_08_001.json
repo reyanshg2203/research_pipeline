@@ -1,0 +1,54 @@
+{
+  "problem_id": "lesson_08_001",
+  "lesson": "lesson_08",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "is_equilateral": true,
+        "sides": {
+          "AB": 8,
+          "BC": 8,
+          "AC": 8
+        },
+        "angles": {
+          "A": 60,
+          "B": 60,
+          "C": 60
+        }
+      },
+      {
+        "id": "DEF",
+        "is_equilateral": true,
+        "sides": {
+          "DE": 12,
+          "EF": 12,
+          "DF": 12
+        },
+        "angles": {
+          "D": 60,
+          "E": 60,
+          "F": 60
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_SSS",
+      "entities": [
+        "ABC",
+        "DEF"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "ABC",
+        "image": "DEF"
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABC",
+    "attribute": "sides.AB"
+  }
+}

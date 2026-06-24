@@ -1,0 +1,37 @@
+{
+  "problem_id": "lesson_15_003",
+  "lesson": "lesson_15",
+  "entities": {
+    "triangles": [
+      {
+        "id": "XYZ",
+        "sides": {
+          "XY": 6,
+          "YZ": 8,
+          "XZ": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "XYZ"
+      ],
+      "attributes": {
+        "triangle_id": "XYZ",
+        "angles": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "sum": 180
+      }
+    }
+  ],
+  "target": {
+    "entity": "XYZ",
+    "attribute": "sides.XZ"
+  }
+}

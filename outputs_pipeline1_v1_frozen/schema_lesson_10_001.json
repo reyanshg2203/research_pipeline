@@ -1,0 +1,43 @@
+{
+  "problem_id": "lesson_10_001",
+  "lesson": "lesson_10",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 9,
+          "QR": 12,
+          "PR": 15
+        }
+      },
+      {
+        "id": "XYZ",
+        "sides": {
+          "XY": 6,
+          "YZ": 8,
+          "XZ": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_SSS",
+      "entities": [
+        "PQR",
+        "XYZ"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "XYZ",
+        "image": "PQR",
+        "congruent_angle_pairs": []
+      }
+    }
+  ],
+  "target": {
+    "entity": "XYZ",
+    "attribute": "sides.XZ"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "problem_id": "lesson_06_003",
+  "lesson": "lesson_06",
+  "entities": {
+    "triangles": [
+      {
+        "id": "MNO",
+        "angles": {
+          "M": 45,
+          "N": 65,
+          "O": 70
+        },
+        "sides": {
+          "MN": 10,
+          "NO": 14,
+          "MO": 12
+        }
+      },
+      {
+        "id": "PQR",
+        "angles": {
+          "P": 45,
+          "Q": 65,
+          "R": 70
+        },
+        "sides": {
+          "PQ": null,
+          "QR": 21,
+          "PR": 18
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_AA",
+      "entities": [
+        "MNO",
+        "PQR"
+      ],
+      "attributes": {
+        "pre_image": "MNO",
+        "image": "PQR",
+        "scale_factor": 1.5,
+        "congruent_angle_pairs": [
+          [
+            "M",
+            "P"
+          ],
+          [
+            "N",
+            "Q"
+          ],
+          [
+            "O",
+            "R"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "PQR",
+    "attribute": "sides.PQ"
+  }
+}

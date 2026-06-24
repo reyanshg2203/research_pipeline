@@ -1,0 +1,41 @@
+{
+  "problem_id": "lesson_01_002",
+  "lesson": "lesson_01",
+  "entities": {
+    "segments": [
+      {
+        "id": "EF",
+        "length": null
+      },
+      {
+        "id": "GH",
+        "length": 15
+      }
+    ],
+    "points": [
+      {
+        "id": "O",
+        "lies_on": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "EF",
+        "GH"
+      ],
+      "attributes": {
+        "center": "O",
+        "scale_factor": 2.5,
+        "pre_image": "EF",
+        "image": "GH"
+      }
+    }
+  ],
+  "target": {
+    "entity": "EF",
+    "attribute": "length"
+  }
+}

@@ -1,0 +1,1 @@
+Lesson context: lesson_14. Let triangle DEF be a right triangle with sides DE = 7, EF = 24. Let segment GE be a altitude segment perpendicular to DF. Altitude GE is drawn to hypotenuse DF, dividing it into segments DG and GF. Find the length of DF in DEF.

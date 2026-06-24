@@ -1,0 +1,93 @@
+{
+  "problem_id": "lesson_16_002",
+  "lesson": "lesson_16",
+  "entities": {
+    "triangles": [
+      {
+        "id": "DEF",
+        "is_right": true,
+        "sides": {
+          "DE": 5,
+          "EF": 12,
+          "DF": null
+        }
+      },
+      {
+        "id": "GHI",
+        "is_right": true,
+        "sides": {
+          "GH": null,
+          "HI": 18,
+          "GI": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "DEF"
+      ],
+      "attributes": {
+        "triangle_id": "DEF",
+        "angles": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "GHI"
+      ],
+      "attributes": {
+        "triangle_id": "GHI",
+        "angles": [
+          "G",
+          "H",
+          "I"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "congruent_angles",
+      "entities": [
+        "E",
+        "H"
+      ],
+      "attributes": {
+        "ids": [
+          "E",
+          "H"
+        ]
+      }
+    },
+    {
+      "type": "similar_AA",
+      "entities": [
+        "DEF",
+        "GHI"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "DEF",
+        "image": "GHI",
+        "congruent_angle_pairs": [
+          [
+            "E",
+            "H"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "GHI",
+    "attribute": "sides.GH"
+  }
+}

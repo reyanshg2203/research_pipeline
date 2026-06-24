@@ -1,0 +1,38 @@
+{
+  "problem_id": "lesson_03_003",
+  "lesson": "lesson_03",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR"
+      },
+      {
+        "id": "P'Q'R'"
+      }
+    ],
+    "points": [
+      {
+        "id": "C"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "PQR",
+        "P'Q'R'"
+      ],
+      "attributes": {
+        "scale_factor": null,
+        "center": "C",
+        "pre_image": "PQR",
+        "image": "P'Q'R'"
+      }
+    }
+  ],
+  "target": {
+    "entity": "P'Q'R'",
+    "attribute": "sides.P'Q'"
+  }
+}

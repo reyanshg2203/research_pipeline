@@ -1,0 +1,43 @@
+{
+  "problem_id": "lesson_06_001",
+  "lesson": "lesson_06",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 6,
+          "BC": 8,
+          "AC": 10
+        }
+      },
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": 9,
+          "EF": 12,
+          "DF": 15
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_SSS",
+      "entities": [
+        "ABC",
+        "DEF"
+      ],
+      "attributes": {
+        "pre_image": "ABC",
+        "image": "DEF",
+        "scale_factor": 1.5,
+        "congruent_angle_pairs": []
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "sides.EF"
+  }
+}

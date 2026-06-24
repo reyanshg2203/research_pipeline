@@ -1,0 +1,98 @@
+{
+  "problem_id": "lesson_05_003",
+  "lesson": "lesson_05",
+  "entities": {
+    "triangles": [
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": null,
+          "EF": 20,
+          "DF": null
+        }
+      },
+      {
+        "id": "GHI",
+        "sides": {
+          "GH": 7,
+          "HI": 10,
+          "GI": 8
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": "G",
+        "lies_on": [
+          "DE"
+        ]
+      },
+      {
+        "id": "H",
+        "lies_on": [
+          "EF"
+        ]
+      },
+      {
+        "id": "I",
+        "lies_on": [
+          "DF"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "id": "GH",
+        "is_midsegment": true
+      },
+      {
+        "id": "HI",
+        "is_midsegment": true
+      },
+      {
+        "id": "GI",
+        "is_midsegment": true
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "DEF",
+        "GHI"
+      ],
+      "attributes": {
+        "center": "E",
+        "scale_factor": 0.5,
+        "pre_image": "DEF",
+        "image": "GHI"
+      }
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "GH",
+        "DF"
+      ]
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "HI",
+        "DE"
+      ]
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "GI",
+        "EF"
+      ]
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "sides.DE"
+  }
+}

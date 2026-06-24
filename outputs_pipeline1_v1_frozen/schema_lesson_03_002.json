@@ -1,0 +1,52 @@
+{
+  "problem_id": "lesson_03_002",
+  "lesson": "lesson_03",
+  "entities": {
+    "polygons": [
+      {
+        "id": "ABCD",
+        "n_sides": 4,
+        "sides": {
+          "AB": 5,
+          "BC": 7,
+          "CD": 6,
+          "DA": 8
+        }
+      },
+      {
+        "id": "A'B'C'D'",
+        "n_sides": 4,
+        "sides": {
+          "A'B'": null,
+          "B'C'": null,
+          "C'D'": null,
+          "D'A'": null
+        }
+      }
+    ],
+    "points": [
+      {
+        "id": "O"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "ABCD",
+        "A'B'C'D'"
+      ],
+      "attributes": {
+        "center": "O",
+        "scale_factor": 0.5,
+        "pre_image": "ABCD",
+        "image": "A'B'C'D'"
+      }
+    }
+  ],
+  "target": {
+    "entity": "A'B'C'D'",
+    "attribute": "sides.B'C'"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "problem_id": "lesson_15_002",
+  "lesson": "lesson_15",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 7,
+          "QR": 24,
+          "PR": 25
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "PQR"
+      ],
+      "attributes": {
+        "triangle_id": "PQR",
+        "angles": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "sum": 180
+      }
+    }
+  ],
+  "target": {
+    "entity": "PQR",
+    "attribute": "is_right"
+  }
+}

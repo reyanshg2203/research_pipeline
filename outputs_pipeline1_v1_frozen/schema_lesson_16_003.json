@@ -1,0 +1,93 @@
+{
+  "problem_id": "lesson_16_003",
+  "lesson": "lesson_16",
+  "entities": {
+    "triangles": [
+      {
+        "id": "JKL",
+        "is_right": true,
+        "sides": {
+          "JK": 8,
+          "KL": 6,
+          "JL": null
+        }
+      },
+      {
+        "id": "MNO",
+        "is_right": true,
+        "sides": {
+          "MN": 12,
+          "NO": null,
+          "MO": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "JKL"
+      ],
+      "attributes": {
+        "triangle_id": "JKL",
+        "angles": [
+          "J",
+          "K",
+          "L"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "MNO"
+      ],
+      "attributes": {
+        "triangle_id": "MNO",
+        "angles": [
+          "M",
+          "N",
+          "O"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "congruent_angles",
+      "entities": [
+        "L",
+        "O"
+      ],
+      "attributes": {
+        "ids": [
+          "L",
+          "O"
+        ]
+      }
+    },
+    {
+      "type": "similar_AA",
+      "entities": [
+        "JKL",
+        "MNO"
+      ],
+      "attributes": {
+        "scale_factor": null,
+        "pre_image": "JKL",
+        "image": "MNO",
+        "congruent_angle_pairs": [
+          [
+            "L",
+            "O"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "MNO",
+    "attribute": "sides.NO"
+  }
+}

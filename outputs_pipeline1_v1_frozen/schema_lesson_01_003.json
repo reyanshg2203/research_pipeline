@@ -1,0 +1,44 @@
+{
+  "problem_id": "lesson_01_003",
+  "lesson": "lesson_01",
+  "entities": {
+    "polygons": [
+      {
+        "id": "RST",
+        "n_sides": 3,
+        "sides": {
+          "RS": 12,
+          "ST": 9,
+          "TR": 15
+        }
+      },
+      {
+        "id": "UVW",
+        "n_sides": 3,
+        "sides": {
+          "UV": 4,
+          "VW": 3,
+          "WU": 5
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "scaled_copy",
+      "entities": [
+        "RST",
+        "UVW"
+      ],
+      "attributes": {
+        "scale_factor": null,
+        "pre_image": "RST",
+        "image": "UVW"
+      }
+    }
+  ],
+  "target": {
+    "entity": "RST",
+    "attribute": "sides.RS"
+  }
+}

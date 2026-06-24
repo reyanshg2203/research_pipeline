@@ -1,0 +1,1 @@
+Lesson context: lesson_06. Let quadrilateral PQRS be a 4-sided figure with PQ = 4, QR = 6, RS = 8, SP = 5. Let quadrilateral WXYZ be a 4-sided figure with WX = 6, XY = 9, YZ = 12, ZW = 7.5. Triangle PQRS is similar to triangle WXYZ by SSS similarity with scale factor 1.5. Find the length of RS in PQRS.

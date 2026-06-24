@@ -1,0 +1,67 @@
+{
+  "problem_id": "lesson_14_003",
+  "lesson": "lesson_14",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "is_right": true,
+        "sides": {
+          "PQ": 9,
+          "QR": 12,
+          "PR": 15
+        }
+      },
+      {
+        "id": "PSR",
+        "is_right": true,
+        "sides": {
+          "PS": null,
+          "SR": null,
+          "PR": 15
+        }
+      }
+    ],
+    "segments": [
+      {
+        "id": "QS",
+        "is_altitude": true,
+        "perpendicular_to": "PR",
+        "length": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "altitude_to_hypotenuse",
+      "entities": [
+        "PQR",
+        "QS",
+        "PR"
+      ],
+      "attributes": {
+        "altitude_id": "QS",
+        "hypotenuse": "PR",
+        "segment1": "PS",
+        "segment2": "SR"
+      }
+    },
+    {
+      "type": "geometric_mean_altitude",
+      "entities": [
+        "QS",
+        "PS",
+        "SR"
+      ],
+      "attributes": {
+        "altitude_id": "QS",
+        "segment1": "PS",
+        "segment2": "SR"
+      }
+    }
+  ],
+  "target": {
+    "entity": "QS",
+    "attribute": "length"
+  }
+}

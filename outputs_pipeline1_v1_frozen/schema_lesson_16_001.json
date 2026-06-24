@@ -1,0 +1,93 @@
+{
+  "problem_id": "lesson_16_001",
+  "lesson": "lesson_16",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "is_right": true,
+        "sides": {
+          "PQ": 9,
+          "QR": 12,
+          "PR": null
+        }
+      },
+      {
+        "id": "XYZ",
+        "is_right": true,
+        "sides": {
+          "XY": 6,
+          "YZ": null,
+          "XZ": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "PQR"
+      ],
+      "attributes": {
+        "triangle_id": "PQR",
+        "angles": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "XYZ"
+      ],
+      "attributes": {
+        "triangle_id": "XYZ",
+        "angles": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "congruent_angles",
+      "entities": [
+        "Q",
+        "Y"
+      ],
+      "attributes": {
+        "ids": [
+          "Q",
+          "Y"
+        ]
+      }
+    },
+    {
+      "type": "similar_AA",
+      "entities": [
+        "PQR",
+        "XYZ"
+      ],
+      "attributes": {
+        "scale_factor": null,
+        "pre_image": "PQR",
+        "image": "XYZ",
+        "congruent_angle_pairs": [
+          [
+            "Q",
+            "Y"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "XYZ",
+    "attribute": "sides.YZ"
+  }
+}

@@ -1,0 +1,1 @@
+Lesson context: lesson_03. Let triangle PQR be a triangle. Let triangle P'Q'R' be a triangle. PQR is dilated to form P'Q'R' with scale factor unknown, centered at point C. Find the length of P'Q' in P'Q'R'.

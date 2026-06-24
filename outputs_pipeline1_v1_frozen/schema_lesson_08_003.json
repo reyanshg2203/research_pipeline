@@ -1,0 +1,64 @@
+{
+  "problem_id": "lesson_08_003",
+  "lesson": "lesson_08",
+  "entities": {
+    "polygons": [
+      {
+        "id": "ABCD",
+        "n_sides": 4,
+        "sides": {
+          "AB": 4,
+          "BC": 6,
+          "CD": 4,
+          "DA": 6
+        },
+        "angles": {
+          "A": 90,
+          "B": 90,
+          "C": 90,
+          "D": 90
+        }
+      },
+      {
+        "id": "PQRS",
+        "n_sides": 4,
+        "sides": {
+          "PQ": 6,
+          "QR": 9,
+          "RS": 6,
+          "SP": 9
+        },
+        "angles": {
+          "P": 90,
+          "Q": 90,
+          "R": 90,
+          "S": 90
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_SAS",
+      "entities": [
+        "ABCD",
+        "PQRS"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "ABCD",
+        "image": "PQRS",
+        "congruent_angle_pairs": [
+          [
+            "A",
+            "P"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABCD",
+    "attribute": "sides.BC"
+  }
+}

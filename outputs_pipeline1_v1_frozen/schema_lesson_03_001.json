@@ -1,0 +1,43 @@
+{
+  "problem_id": "lesson_03_001",
+  "lesson": "lesson_03",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 5,
+          "BC": 7,
+          "AC": 8
+        }
+      },
+      {
+        "id": "A'B'C'"
+      }
+    ],
+    "points": [
+      {
+        "id": "P"
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "ABC",
+        "A'B'C'"
+      ],
+      "attributes": {
+        "scale_factor": 0.6,
+        "center": "P",
+        "pre_image": "ABC",
+        "image": "A'B'C'"
+      }
+    }
+  ],
+  "target": {
+    "entity": "A'B'C'",
+    "attribute": "sides.A'B'"
+  }
+}

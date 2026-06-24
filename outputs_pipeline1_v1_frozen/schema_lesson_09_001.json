@@ -1,0 +1,92 @@
+{
+  "problem_id": "lesson_09_001",
+  "lesson": "lesson_09",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "angles": {
+          "A": 52,
+          "B": 68,
+          "C": null
+        },
+        "sides": {
+          "AB": 10,
+          "BC": null,
+          "AC": null
+        }
+      },
+      {
+        "id": "DEF",
+        "angles": {
+          "D": 52,
+          "E": null,
+          "F": 60
+        },
+        "sides": {
+          "DE": 15,
+          "EF": null,
+          "DF": null
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "ABC"
+      ],
+      "attributes": {
+        "triangle_id": "ABC",
+        "angles": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "DEF"
+      ],
+      "attributes": {
+        "triangle_id": "DEF",
+        "angles": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sum": 180
+      }
+    },
+    {
+      "type": "similar_AA",
+      "entities": [
+        "ABC",
+        "DEF"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "ABC",
+        "image": "DEF",
+        "congruent_angle_pairs": [
+          [
+            "A",
+            "D"
+          ],
+          [
+            "B",
+            "E"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "angles.E"
+  }
+}

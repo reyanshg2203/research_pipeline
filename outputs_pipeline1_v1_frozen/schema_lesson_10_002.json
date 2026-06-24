@@ -1,0 +1,54 @@
+{
+  "problem_id": "lesson_10_002",
+  "lesson": "lesson_10",
+  "entities": {
+    "triangles": [
+      {
+        "id": "MNO",
+        "sides": {
+          "MN": 10,
+          "NO": 14,
+          "MO": null
+        },
+        "angles": {
+          "N": 48
+        }
+      },
+      {
+        "id": "RST",
+        "sides": {
+          "RS": 15,
+          "ST": 21,
+          "RT": null
+        },
+        "angles": {
+          "S": 48
+        }
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "similar_SAS",
+      "entities": [
+        "MNO",
+        "RST"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "MNO",
+        "image": "RST",
+        "congruent_angle_pairs": [
+          [
+            "N",
+            "S"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "RST",
+    "attribute": "angles.T"
+  }
+}
