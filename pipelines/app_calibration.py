@@ -13,15 +13,13 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-import pandas as pd
 import streamlit as st
+
+import storage
 
 ROOT = Path(__file__).resolve().parent.parent
 PROBLEMS_PATH = ROOT / "pipelines" / "survey_data" / "calibration_problems.json"
-CAL_DIR = ROOT / "pipelines" / "calibration_responses"
-CAL_CSV = CAL_DIR / "calibration_responses.csv"
-CAL_JSONL = CAL_DIR / "calibration_responses.jsonl"
-DRAFTS_DIR = CAL_DIR / "drafts"
+SCOPE = "cal"
 
 RUBRIC = [
     ("geometric_accuracy", "Geometric Accuracy", "50%",
@@ -79,39 +77,22 @@ def load_problems() -> tuple[str, list[dict]]:
     return data.get("lesson_context", ""), probs
 
 
-def _safe(e: str) -> str:
-    return e.strip().lower().replace("@", "_at_").replace(".", "_")
-
-
 def save_draft(email, name, ratings, idx) -> None:
-    DRAFTS_DIR.mkdir(parents=True, exist_ok=True)
-    (DRAFTS_DIR / f"{_safe(email)}.json").write_text(json.dumps(
-        {"evaluator_name": name, "evaluator_email": email,
-         "index": idx, "ratings": ratings}, indent=2), encoding="utf-8")
+    storage.save_draft(SCOPE, email, {"evaluator_name": name, "index": idx,
+                                      "ratings": ratings})
+    answered = sum(1 for v in ratings.values() if len(v) == len(RUBRIC))
+    storage.save_progress(SCOPE, email, name, answered, 10,
+                          f"problem {idx + 1} of 10")
 
 
 def load_draft(email: str) -> dict | None:
-    p = DRAFTS_DIR / f"{_safe(email)}.json"
-    if not p.is_file():
-        return None
-    try:
-        return json.loads(p.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return None
+    return storage.load_draft(SCOPE, email)
 
 
 def submit(email, name, ratings) -> None:
-    CAL_DIR.mkdir(parents=True, exist_ok=True)
-    payload = {"submitted_at": datetime.now(timezone.utc).isoformat(),
-               "evaluator_name": name, "evaluator_email": email, "ratings": ratings}
-    rows = [{"evaluator_name": name, "evaluator_email": email, "item_id": iid, **scores}
-            for iid, scores in ratings.items()]
-    df = pd.DataFrame(rows)
-    if CAL_CSV.is_file():
-        df = pd.concat([pd.read_csv(CAL_CSV), df], ignore_index=True)
-    df.to_csv(CAL_CSV, index=False)
-    with CAL_JSONL.open("a", encoding="utf-8") as f:
-        f.write(json.dumps(payload) + "\n")
+    storage.submit_response(SCOPE, email, name, ratings,
+                            [f for f, _, _, _ in RUBRIC])
+    storage.delete_draft(SCOPE, email)
 
 
 def sidebar(context: str, answered: int, total: int) -> None:
@@ -132,8 +113,6 @@ def sidebar(context: str, answered: int, total: int) -> None:
 
 def main() -> None:
     st.set_page_config(page_title="Rater Calibration", page_icon="🎯", layout="centered")
-    st.sidebar.caption(f"backend: {storage.backend_name()}")
-    st.sidebar.caption(f"secrets keys: {list(st.secrets.keys())}")
     context, problems = load_problems()
     total = len(problems)
 
