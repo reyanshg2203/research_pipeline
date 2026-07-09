@@ -1,0 +1,82 @@
+{
+  "_README": [
+    "Calibration set for rater training. 10 problems deliberately spanning the rubric.",
+    "The `expected` block is the RESEARCHER's key — it is never shown to raters and is not",
+    "ground truth, only the design intent. Use it to check whether disagreement is a rater",
+    "problem or a rubric problem.",
+    "IMPORTANT: none of these problems appear in the 90-item main survey. Keep it that way."
+  ],
+  "lesson_context": "All problems are intended for a unit on dilations and similar triangles: scale factor, corresponding sides, and AA / SSS / SAS similarity. A well-aligned problem should require one of these ideas, in roughly 2 solution steps.",
+  "problems": [
+    {
+      "item_id": "cal_01",
+      "design": "GOOD — clean, correct, aligned, clear",
+      "text": "Triangle ABC has side lengths AB = 9, BC = 12, and AC = 15. Triangle A'B'C' is the image of triangle ABC under a dilation centered at point P with scale factor 0.75. Find the length of B'C'.",
+      "expected": {"geometric_accuracy": 4, "lesson_alignment": 3, "linguistic_clarity": 4},
+      "note": "B'C' = 12 x 0.75 = 9. Correct and unambiguous, though only one step."
+    },
+    {
+      "item_id": "cal_02",
+      "design": "GOOD — correct, well-aligned two-step, clear",
+      "text": "Triangle ABC is similar to triangle DEF. In triangle ABC, AB = 6 and BC = 8. In triangle DEF, the side corresponding to AB has length DE = 9. Find the length of EF.",
+      "expected": {"geometric_accuracy": 4, "lesson_alignment": 4, "linguistic_clarity": 4},
+      "note": "Find k = 9/6 = 1.5, then EF = 8 x 1.5 = 12. Two steps, squarely on the lesson skill."
+    },
+    {
+      "item_id": "cal_03",
+      "design": "BROKEN — the target is already given (nothing to solve)",
+      "text": "Triangle ABC is similar to triangle DEF by AA similarity. In triangle ABC, AB = 9 and BC = 12. In triangle DEF, DE = 18. Find the length of DE.",
+      "expected": {"geometric_accuracy": 1, "lesson_alignment": 1, "linguistic_clarity": 3},
+      "note": "DE is stated as 18 and then asked for. The problem has nothing to solve. Wording is clear, which is why clarity stays high — this separates accuracy from clarity."
+    },
+    {
+      "item_id": "cal_04",
+      "design": "BROKEN — under-determined, no unique answer",
+      "text": "Triangle PQR has PQ = 11 and QR = 13. Triangle XYZ has XY = 11, YZ = 13, and XZ = 15. Find the length of PR.",
+      "expected": {"geometric_accuracy": 0, "lesson_alignment": 1, "linguistic_clarity": 3},
+      "note": "No relationship links PQR to XYZ, and PQR has no right angle. PR is not determinable. A rater must notice the missing relationship — this is the item most likely to split the group."
+    },
+    {
+      "item_id": "cal_05",
+      "design": "BROKEN — impossible triangle (violates the triangle inequality)",
+      "text": "Triangle ABC has AB = 3, BC = 4, and AC = 9. Triangle ABC is dilated by a scale factor of 2 centered at the origin. Find the length of the image of AC.",
+      "expected": {"geometric_accuracy": 0, "lesson_alignment": 2, "linguistic_clarity": 3},
+      "note": "3 + 4 < 9, so no such triangle exists. The dilation arithmetic (18) is fine, which is the trap: a rater who only checks the last step will miss it."
+    },
+    {
+      "item_id": "cal_06",
+      "design": "BROKEN — internal contradiction (Pythagorean)",
+      "text": "Right triangle ABC has a right angle at B, with AB = 5, BC = 12, and AC = 14. Triangle DEF is similar to triangle ABC with a scale factor of 2. Find the length of DF.",
+      "expected": {"geometric_accuracy": 1, "lesson_alignment": 2, "linguistic_clarity": 3},
+      "note": "With legs 5 and 12 the hypotenuse must be 13, not 14. Contradicts the stated right angle."
+    },
+    {
+      "item_id": "cal_07",
+      "design": "MIDDLE — mathematically perfect, but tests the WRONG skill",
+      "text": "In triangle ABC, angle A measures 52 degrees and angle C measures 63 degrees. Triangle ABC is similar to triangle DEF. Find the measure of angle B.",
+      "expected": {"geometric_accuracy": 4, "lesson_alignment": 1, "linguistic_clarity": 4},
+      "note": "Angle B = 65 by the triangle angle sum. The similarity statement is decorative — it is never used. This is the key accuracy-vs-alignment separator: a correct, clear problem that does not teach the lesson."
+    },
+    {
+      "item_id": "cal_08",
+      "design": "MIDDLE — correct and aligned, but verbose with redundant facts",
+      "text": "Consider a triangle, which we will call triangle ABC, that exists in the plane. This triangle ABC has three sides, and one of those sides, the side AB, has a length equal to 6 units. It is known that triangle ABC has been dilated, and the dilation that was applied to it used a scale factor whose value is 2.5, and the center of this dilation is a point that we call O. The resulting image is triangle A'B'C'. Determine, if you can, the length of the side A'B' of the image triangle A'B'C'.",
+      "expected": {"geometric_accuracy": 4, "lesson_alignment": 3, "linguistic_clarity": 1},
+      "note": "A'B' = 15. The math is right and on-topic; the prose is padded with trivially true statements ('has three sides', 'exists in the plane')."
+    },
+    {
+      "item_id": "cal_09",
+      "design": "MIDDLE — correct and on-topic, but trivially easy for the lesson",
+      "text": "Triangle ABC is dilated by a scale factor of 2. If AB = 5, find the length of A'B'.",
+      "expected": {"geometric_accuracy": 4, "lesson_alignment": 2, "linguistic_clarity": 4},
+      "note": "A'B' = 10 in one step. Correct and clear, but well below the lesson's intended difficulty and it names no dilation center."
+    },
+    {
+      "item_id": "cal_10",
+      "design": "MIDDLE — solvable, but depends on a figure that is never described",
+      "text": "In the figure, DE is parallel to BC. Given that AD = 4, DB = 6, and AE = 6, find the length of EC.",
+      "expected": {"geometric_accuracy": 2, "lesson_alignment": 3, "linguistic_clarity": 1},
+      "note": "EC = 9 by triangle proportionality, but only if you assume D lies on AB and E on AC — the figure is referenced and never given. Tests whether raters penalize unstated assumptions."
+    }
+  ]
+}

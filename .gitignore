@@ -2,7 +2,9 @@
 __pycache__/
 .venv/
 outputs/
-outputs_pipeline1_v1_frozen/
 refined/
 validated/
 pipelines/survey_responses/
+.env
+*credentials*.json
+pipelines/survey_data/survey_key.json
