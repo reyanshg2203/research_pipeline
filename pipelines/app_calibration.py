@@ -132,6 +132,8 @@ def sidebar(context: str, answered: int, total: int) -> None:
 
 def main() -> None:
     st.set_page_config(page_title="Rater Calibration", page_icon="🎯", layout="centered")
+    st.sidebar.caption(f"backend: {storage.backend_name()}")
+    st.sidebar.caption(f"secrets keys: {list(st.secrets.keys())}")
     context, problems = load_problems()
     total = len(problems)
 
