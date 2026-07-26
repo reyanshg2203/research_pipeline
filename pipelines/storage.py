@@ -68,6 +68,7 @@ def _now() -> str:
 
 # ------------------------------------------------------------------ sheets
 _sheet_cache: Any = None
+_ws_cache: dict = {}  # worksheet title -> gspread Worksheet handle (persists across reruns)
 
 
 def _sheet():
@@ -88,13 +89,36 @@ def _sheet():
     return _sheet_cache
 
 
+def _retry(fn, tries: int = 5, base: float = 0.8):
+    """Run a Sheets call, backing off and retrying on 429 rate-limit errors."""
+    import time
+    for i in range(tries):
+        try:
+            return fn()
+        except Exception as e:  # gspread raises APIError; match by message to stay lazy
+            msg = str(e)
+            if ("429" in msg or "Quota exceeded" in msg) and i < tries - 1:
+                time.sleep(base * (2 ** i))
+                continue
+            raise
+
+
+def _ws(name: str):
+    """Return a cached worksheet handle. Avoids a metadata fetch on every call."""
+    ws = _ws_cache.get(name)
+    if ws is None:
+        ws = _retry(lambda: _sheet().worksheet(name))
+        _ws_cache[name] = ws
+    return ws
+
+
 def _tab(scope: str, kind: str):
-    return _sheet().worksheet(TABS[scope][kind])
+    return _ws(TABS[scope][kind])
 
 
 def _find_row(ws, email: str, extra_match: str | None = None) -> int | None:
     """Row index (1-based) whose col A == email (and col B == extra_match)."""
-    for i, row in enumerate(ws.get_all_values(), start=1):
+    for i, row in enumerate(_retry(ws.get_all_values), start=1):
         if i == 1 or not row:
             continue
         if row[0].strip().lower() == email.strip().lower():
@@ -112,9 +136,10 @@ def save_draft(scope: str, email: str, payload: dict) -> None:
         blob = json.dumps(payload)
         row = _find_row(ws, email)
         if row:
-            ws.update(f"A{row}:C{row}", [[email, payload["updated_at"], blob]])
+            _retry(lambda: ws.update(f"A{row}:C{row}",
+                                     [[email, payload["updated_at"], blob]]))
         else:
-            ws.append_row([email, payload["updated_at"], blob])
+            _retry(lambda: ws.append_row([email, payload["updated_at"], blob]))
     else:
         d = LOCAL_DIR[scope] / "drafts"
         d.mkdir(parents=True, exist_ok=True)
@@ -130,7 +155,7 @@ def load_draft(scope: str, email: str) -> dict | None:
         row = _find_row(ws, email)
         if not row:
             return None
-        vals = ws.row_values(row)
+        vals = _retry(lambda: ws.row_values(row))
         if len(vals) < 3:
             return None
         try:
@@ -151,7 +176,7 @@ def delete_draft(scope: str, email: str) -> None:
         ws = _tab(scope, "drafts")
         row = _find_row(ws, email)
         if row:
-            ws.delete_rows(row)
+            _retry(lambda: ws.delete_rows(row))
         return
     p = LOCAL_DIR[scope] / "drafts" / f"{_safe(email)}.json"
     p.unlink(missing_ok=True)
@@ -166,9 +191,9 @@ def save_progress(scope: str, email: str, name: str, answered: int, total: int,
         row = _find_row(ws, email, extra_match=scope)
         vals = [email, scope, name, answered, total, pct, where, _now()]
         if row:
-            ws.update(f"A{row}:H{row}", [vals])
+            _retry(lambda: ws.update(f"A{row}:H{row}", [vals]))
         else:
-            ws.append_row(vals)
+            _retry(lambda: ws.append_row(vals))
     else:
         d = LOCAL_DIR[scope] / "progress"
         d.mkdir(parents=True, exist_ok=True)
@@ -187,7 +212,7 @@ def submit_response(scope: str, email: str, name: str, ratings: dict,
             for item_id, scores in sorted(ratings.items())]
     if _backend() == "sheets":
         ws = _tab(scope, "responses")
-        ws.append_rows(rows)
+        _retry(lambda: ws.append_rows(rows))
         return
     import pandas as pd
     d = LOCAL_DIR[scope]
@@ -204,7 +229,7 @@ def has_submitted(scope: str, email: str) -> bool:
     if _backend() == "sheets":
         ws = _tab(scope, "responses")
         return any(r and r[0].strip().lower() == email.strip().lower()
-                   for r in ws.get_all_values()[1:])
+                   for r in _retry(ws.get_all_values)[1:])
     csv = LOCAL_DIR[scope] / ("calibration_responses.csv" if scope == "cal"
                               else "responses.csv")
     if not csv.is_file():
@@ -226,7 +251,8 @@ def log_consent(scope: str, pid: str, agreed: bool,
     row = [pid, scope, "agreed" if agreed else "declined",
            study_id, session_id, _now()]
     if _backend() == "sheets":
-        _sheet().worksheet(CONSENT_TAB).append_row(row)
+        ws = _ws(CONSENT_TAB)
+        _retry(lambda: ws.append_row(row))
     else:
         d = LOCAL_DIR[scope] / "consent"
         d.mkdir(parents=True, exist_ok=True)

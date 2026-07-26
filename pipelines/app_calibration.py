@@ -239,12 +239,14 @@ def main() -> None:
         if idx == total - 1 and not complete:
             st.caption("Rate all 10 problems on all three dimensions to submit.")
 
-    save_draft(email, name, ratings, idx)
-
+    # Persist only on navigation, not on every rerun, to stay well under the
+    # Google Sheets API rate limit.
     if prev_click:
+        save_draft(email, name, ratings, idx - 1)
         st.session_state.idx = idx - 1
         st.rerun()
     elif next_click:
+        save_draft(email, name, ratings, idx + 1)
         st.session_state.idx = idx + 1
         st.rerun()
     elif submit_click:

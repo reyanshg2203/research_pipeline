@@ -33,8 +33,8 @@ SCOPE = "cal_prolific"
 # Set these two per Prolific study before you publish.
 # Prolific gives you a completion code (and a matching completion URL) in the
 # study's "How to record completion" step. Paste that code here.
-COMPLETION_CODE = "CGUGWE4I"  
-COMPLETION_URL = f"https://app.prolific.com/submissions/complete?cc=CGUGWE4I"
+COMPLETION_CODE = "CHANGE_ME"  # e.g. "C1AB23CD"
+COMPLETION_URL = f"https://app.prolific.com/submissions/complete?cc={COMPLETION_CODE}"
 
 # Contact shown on the consent screen (matches the IRB consent form on file).
 CONTACT_EMAIL = "saurabh3005@gmail.com"
@@ -122,6 +122,13 @@ def completion_screen() -> None:
     st.link_button("Complete on Prolific →", COMPLETION_URL, type="primary")
 
 
+def declined_screen() -> None:
+    st.markdown("## Study ended")
+    st.info("You chose not to participate, so the study has ended and no ratings "
+            "were recorded. You may now close this window and return the study on "
+            "Prolific. Thank you for your time.")
+
+
 # ------------------------------------------------------------------ main
 def main() -> None:
     st.set_page_config(page_title="Geometry Problem Evaluation",
@@ -144,8 +151,7 @@ def main() -> None:
 
     # ---------- terminal states ----------
     if st.session_state.step == "declined":
-        st.info("You have chosen not to participate. You may now return the study "
-                "on Prolific. Thank you for your time.")
+        declined_screen()
         return
 
     if st.session_state.step == "done":
@@ -241,12 +247,14 @@ def main() -> None:
         if idx == total - 1 and not complete:
             st.caption(f"Rate all {total} problems on all three dimensions to submit.")
 
-    save_draft(pid, ratings, idx, total)
-
+    # Persist only when the rater actually moves between problems, not on every
+    # rerun — otherwise each radio click writes to Sheets and blows the API quota.
     if prev_click:
+        save_draft(pid, ratings, idx - 1, total)
         st.session_state.idx = idx - 1
         st.rerun()
     elif next_click:
+        save_draft(pid, ratings, idx + 1, total)
         st.session_state.idx = idx + 1
         st.rerun()
     elif submit_click:
