@@ -1,0 +1,61 @@
+{
+    "_README": [
+      "Few-shot exemplar corpus for ProblemForge schema generation.",
+      "Each value holds that lesson's own at-level practice problems (IM, CC BY 4.0),",
+      "rendered in natural language with any figure described inline so the problem is",
+      "self-contained from words and numbers alone. Drawn from the same lesson text that",
+      "is already passed to every pipeline, so this adds salience, not information.",
+      "Loaded by generate_schema.py. Keys starting with '_' are ignored; a value left as",
+      "a placeholder (empty or starting with '<') is treated as unfilled.",
+      "This file belongs at <repo_root>/pipelines/exemplars.json (next to exemplars.py)."
+    ],
+    "lesson_01": [
+      "Polygon P is a scaled copy of Polygon Q. Both are 4-sided polygons. One side of P is 4 and its corresponding side in Q is 3. Another side of P is x, and its corresponding side in Q is y. If x is 6, what is the value of y? What is the scale factor?",
+      "Figure f is a scaled copy of Figure e. In figure e, segments AB and DC intersect at C, with DC = 3 and AB = 6. In figure f, segments XY and ZW intersect at W, with ZW = a and XY = 4. Given AB = 6, CD = 3, XY = 4, and ZW = a, select all true equations. A. 6/3 = 4/a  B. 6/4 = 3/a  C. 3/4 = 6/a  D. 6/3 = a/4  E. 6/4 = a/3  F. 3/4 = a/6",
+      "Solve each equation for the unknown. 1. 2/5 = x/15   2. 4/3 = x/7   3. 7/5 = 28/x   4. 11/4 = 5/x"
+    ],
+    "lesson_03": [
+      "Pentagon A'B'C'D'E' is the image of pentagon ABCDE after a dilation centered at F. What is the scale factor of this dilation?",
+      "A polygon has a perimeter of 12 units. It is dilated with a scale factor of 3/4. What is the perimeter of its image? (9 units, 12 units, 16 units, or it cannot be determined?)",
+      "Triangle ABC is taken to triangle A'B'C' by a dilation. Which of these scale factors would result in an image larger than the original figure? (3/5, 13/17, 1, 4/3)"
+    ],
+    "lesson_05": [
+      "In triangle ABC, segment A'B' is drawn with A' on side AC and B' on side BC. AA' = 2 and A'C = 4; BB' = 3 and B'C = 6. Angle B is 40 degrees. What is the measure of angle A'B'C'? (20, 40, 60, or 80 degrees?)",
+      "Triangle DEF is formed by connecting the midpoints of the sides of triangle ABC: D is the midpoint of AB, E is the midpoint of BC, and F is the midpoint of AC. The sides of triangle DEF are DE = 2, EF = 3, and DF = 4. What is the length of AB?"
+    ],
+    "lesson_06": [
+      "Square ABCD has side length AB = 5 and square EFGH has side length EF = 2. Find a sequence of rigid motions and dilations that takes square ABCD to square EFGH.",
+      "Quadrilaterals P and Q are similar. P has sides (from the top) measuring 4, 3, and 2; the corresponding sides of Q are 5, an unknown length, and 2.5. What is the scale factor of the dilation that takes P to Q? What is the scale factor of the dilation that takes Q to P?",
+      "What is the definition of 'similarity'? A. If two figures have the same angles, they are similar. B. If two figures have proportional side lengths, they are similar. C. If there is a sequence of rigid transformations taking one figure to another, they are similar. D. If there is a sequence of rigid transformations and dilations taking one figure to the other, they are similar."
+    ],
+    "lesson_08": [
+      "The following is an incorrect proof that all isosceles triangles are similar. Explain why it is incorrect. Step 1: Draw isosceles triangles ABC and DEF with AC = BC and DF = EF. Step 2: Dilate ABC using center C and scale factor DF/AC so that A'C = B'C = DF. Step 3: Translate along CF to take A'B'C to A''B''F, so A''F = DF and B''F = EF. Step 4: Rotate about F to take A'' to D. Step 5: Rotate about F to take B'' to E. Step 6: This sequence of dilations, translations, and rotations takes A to D, B to E, C to F, so the triangles are similar.",
+      "Which statement provides a valid justification for why all circles are similar? A. All circles have the same shape, so they must be similar. B. All circles have no angles and no sides, so they must be similar. C. I can translate any circle exactly onto another, so they must be similar. D. I can translate the center of any circle onto the center of another and then dilate by an appropriate scale factor, so they must be similar.",
+      "Which pair of polygons is similar? A. A right triangle with sides 5, 12, 13 and a right triangle with sides 3, 4, 5. B. A square with side length 4 and a rhombus (non-right) with side length 4. C. A rectangle with sides 1, 5, 1, 5 and a rectangle with sides 2, 10, 2, 10. D. A triangle with base 6 and legs 10, and a triangle with base 6 and legs 5."
+    ],
+    "lesson_09": [
+      "Triangles ABC and DEF are given. In ABC: angle B = 44 degrees, angle A = 68 degrees, AC = 6, AB = 8. In DEF: angle F = 44 degrees, angle D = 68 degrees, DE = 18. What is the length of segment DF?",
+      "In triangle ABC, angle A is 35 degrees and angle B is 20 degrees. Select all triangles similar to ABC. A. DEF with angle D = 35, angle E = 20. B. GHI with angle G = 35, angle I = 30. C. JKL with angle J = 35, angle L = 125. D. MNO with angle N = 20, angle O = 125. E. PQR with angle Q = 20, angle R = 30.",
+      "Triangles ABC and DEC share vertex C. In ABC, angle CAB = 36 degrees and angle ABC = 21 degrees. In DEC, angle CDE = 36 degrees and angle DCE = 123 degrees. Decide whether triangles ABC and DEC are similar, and explain your reasoning."
+    ],
+    "lesson_10": [
+      "Triangles ABC and DEF are given, with AB = 4, BC = 5, AC = 8 and DE = 6, EF = 7.5, DF = 12. Explain how we know triangle ABC and triangle DEF are similar. What does that tell us about angle D?",
+      "Triangles ABC and DEF are given. In ABC: angle A = 60 degrees, angle B = 84 degrees, angle C = 36 degrees, AB = 7.5, BC = 11.1, AC = 12.7. In DEF: angle D = 60 degrees, DE = 25.4, DF = 15. Find the length of EF, the measure of angle E, and the measure of angle F.",
+      "Triangles ABC and DEC share vertex C. The side lengths are DC = 2, EC = 6, AC = 4, and CB = 12. Decide whether triangles ABC and DEC are similar, and explain your reasoning."
+    ],
+    "lesson_14": [
+      "Which of the following are right triangles? A. Triangle ABC with AC = 6, BC = 9, AB = 12. B. Triangle DEF with DE = 8, EF = 10, FD = 13. C. Triangle GHI with GI = 9, HI = 12, GH = 15. D. Triangle JKL with JL = 10, KL = 13, JK = 17.",
+      "In right triangle ABC, a square is drawn on each side (squares BGHC, ACIJ, and AFEB). An altitude CD is drawn to the hypotenuse AB and extended to side FE of the opposite square. Elena observed that a^2 = xc and Diego observed that b^2 = yc, where x and y are the hypotenuse segments and c is the hypotenuse. Which rectangle has the same area as square BGHC? Which rectangle has the same area as square ACIJ?",
+      "In triangle ABC, AB = 4 and AC = 3. Andre says he can find the length of the third side and that it is 5 units. Mai disagrees and thinks the length is unknown. Do you agree with either of them? Explain your reasoning."
+    ],
+    "lesson_15": [
+      "A triangle has sides of length 8, 10, and x. What value of x makes it the hypotenuse of a right triangle?",
+      "Complete each inequality so it describes possible side lengths that make a triangle. For 6, 8, x: ___ < x < ___. For 13, 17, y: ___ < y < ___. For 5, 5, z: ___ < z < ___. For 98, 100, a: ___ < a < ___.",
+      "A triangle has sides of length 5, 7, and x. Complete the inequality describing possible x for an acute triangle: ___ < x < ___. Complete the inequality describing possible x for an obtuse triangle: ___ < x < ___."
+    ],
+    "lesson_16": [
+      "Two right triangles ABC and EBD are shown, with right angles at C and D, and D on segment BC above C. AB = 5, AC = 3, and DE = 2. The measure of angle ABC equals the measure of angle EBD. What is the length of side BE?",
+      "In right triangle ABC, angle C is a right angle, AB = 13, and BC = 5. What is the length of AC?",
+      "Lines AC and DE are parallel, and line DC is perpendicular to each of them. Point B lies on segment DC, and segment AE is drawn passing through B. AB = 5 and BC = 4. What is a reasonable estimate for the length of side BE? A. 1/3  B. 1  C. 5/3  D. 5"
+    ]
+  }

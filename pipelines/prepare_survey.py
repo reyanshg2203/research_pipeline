@@ -99,11 +99,13 @@ def step1_generate(py: str) -> None:
 
 def step2_refine_nl(py: str) -> None:
     for lesson in LESSONS:
-        run(
-            [py, "pipelines/refine_nl.py", "--problem", f"outputs/{_stem(lesson)}.txt"],
-            f"Step 2/3 — Part 2: Opus-judge + Haiku NL refine (lesson {lesson})",
-        )
-
+        for slot in ["001", "002", "003"]:
+            stem = f"schema_lesson_{lesson}_{slot}"
+            run(
+                [py, "pipelines/refine_nl.py", "--problem", f"outputs/{stem}.txt"],
+                f"Step 2/3 — Part 2: Opus-judge + Haiku NL refine (lesson {lesson} slot {slot})",
+                allow_fail=True,
+            )
 
 def step3_refine_schema(py: str) -> None:
     for lesson in LESSONS:

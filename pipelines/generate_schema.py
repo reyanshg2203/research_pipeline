@@ -185,7 +185,7 @@ angle_sum_polygon:
 All other relationship types use an empty attributes dictionary."""
 
 
-def _save_problem(lesson_path: Path, problem: dict, index: int) -> Path | None:
+def _save_problem(lesson_path: Path, problem: dict, index: int, output_dir: Path = OUTPUTS_DIR) -> Path | None:
     print(f"\n--- Problem {index} ---")
 
     # Force the canonical lesson id, overriding whatever the model wrote.
@@ -203,7 +203,7 @@ def _save_problem(lesson_path: Path, problem: dict, index: int) -> Path | None:
         return None
 
     out_name = f"schema_{lesson_path.stem}_{index:03d}.json"
-    out_path = OUTPUTS_DIR / out_name
+    out_path = output_dir / out_name
     out_path.write_text(json.dumps(problem, indent=2), encoding="utf-8")
     print(f"Saved to {out_path.relative_to(ROOT)}")
 
@@ -213,7 +213,7 @@ def _save_problem(lesson_path: Path, problem: dict, index: int) -> Path | None:
     return out_path
 
 
-def generate_for_lesson(lesson_path: Path, *, count: int = DEFAULT_PROBLEMS_PER_LESSON) -> list[Path]:
+def generate_for_lesson(lesson_path: Path, *, count: int = DEFAULT_PROBLEMS_PER_LESSON, output_dir: Path = OUTPUTS_DIR) -> list[Path]:
     lesson_content = lesson_path.read_text(encoding="utf-8")
     if not lesson_content.strip():
         print(f"Skipping empty file: {lesson_path.name}")
@@ -260,12 +260,12 @@ def generate_for_lesson(lesson_path: Path, *, count: int = DEFAULT_PROBLEMS_PER_
         print("No tool_use block in response; skipping save.")
         return []
 
-    OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
     saved_paths: list[Path] = []
 
     if count == 1:
         problem = tool_use.input
-        path = _save_problem(lesson_path, problem, 1)
+        path = _save_problem(lesson_path, problem, 1, output_dir=output_dir)
         if path:
             saved_paths.append(path)
     else:
@@ -273,7 +273,7 @@ def generate_for_lesson(lesson_path: Path, *, count: int = DEFAULT_PROBLEMS_PER_
         problems = raw.get("problems", [])
         print(f"Received {len(problems)} problem(s) from API.")
         for i, problem in enumerate(problems[:count], start=1):
-            path = _save_problem(lesson_path, problem, i)
+            path = _save_problem(lesson_path, problem, i, output_dir=output_dir)
             if path:
                 saved_paths.append(path)
 
@@ -292,6 +292,12 @@ def main() -> None:
         help='Only run one file, e.g. "03" or "3" for lessons/lesson_03.txt',
     )
     parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=OUTPUTS_DIR,
+        help="Where to write schema JSON + NL txt (default: outputs/).",
+    )
+    parser.add_argument(
         "--count",
         type=int,
         default=DEFAULT_PROBLEMS_PER_LESSON,
@@ -308,7 +314,7 @@ def main() -> None:
     paths = _lesson_paths(args.lesson)
     for lesson_path in paths:
         try:
-            results = generate_for_lesson(lesson_path, count=args.count)
+            results = generate_for_lesson(lesson_path, count=args.count, output_dir=args.output_dir)
             print(f"\nGenerated {len(results)} problem(s) for {lesson_path.name}")
         except Exception as e:
             print(f"Error on {lesson_path.name}: {e}")

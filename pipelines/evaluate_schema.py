@@ -31,7 +31,7 @@ Output:
     ]
   }
 
-For a Haiku ↔ Opus repair loop (up to 3 iterations, early stop only on 4/4), use:
+For a Haiku <-> Opus repair loop (up to 3 iterations, early stop only on 4/4), use:
   python3 pipelines/refine_nl.py --problem outputs/schema_lesson_XX_YYY.txt
 """
 
@@ -69,30 +69,30 @@ Score each criterion 0-4 (integers only). The weighted overall score is computed
 
   overall = 0.50 * geometric_accuracy + 0.30 * lesson_alignment + 0.20 * linguistic_clarity
 
-HARD CAP: If geometric_accuracy <= 1, the overall score cannot exceed 2.0
-regardless of other dimensions. Apply this cap when computing the overall.
-
 ---
 
 CRITERION 1: GEOMETRIC ACCURACY (weight 50%)
 
-  4 - All geometric relationships are mathematically correct and consistent.
-      Angles, lengths, proportions, and relationships are accurate. No internal
-      contradictions. Figures described are completely accurate.
+  4 - All geometric relationships within the problem are mathematically correct
+      and consistent. Angles, lengths, proportions, and relationships are
+      accurate. No internal contradictions. Figures described are completely
+      accurate.
 
   3 - All major relationships are correct; minor deviations or
       underdeterminations exist that do not meaningfully affect interpretation.
       (The kind of issue only a very attentive student would notice.)
 
-  2 - One major geometric relationship is incorrect OR multiple minor
-      inconsistencies exist. Problem remains mostly interpretable but contains
-      noticeable errors.
+  2 - One major geometric relationship is incorrect/unsolvable OR multiple
+      minor inconsistencies exist. Problem remains mostly interpretable but
+      contains noticeable errors.
 
   1 - Multiple major problem violations exist. Relationships are misleading or
-      inconsistent. Problem has multiple interpretations or shifts mid-sentence.
+      inconsistent. Problem has multiple interpretations or shifts assumptions
+      mid-sentence.
 
   0 - Problem is internally inconsistent or mathematically invalid. Core
-      relationships are incorrect. Completely nonsensical.
+      relationships are incorrect, the answer is provided in the question, or
+      the problem is completely nonsensical.
 
 ---
 
@@ -101,15 +101,14 @@ CRITERION 2: LESSON ALIGNMENT (weight 30%)
   4 - Tightly aligned and integrates a supporting lesson concept; pushes to the
       productive edge of difficulty.
 
-  3 - Cleanly aligned to the lesson skill, appropriately challenging (requires
-      genuine application), and original enough that pattern-matching won't
-      solve it.
+  3 - Cleanly aligned to the lesson skill and appropriately challenging
+      requiring genuine application, not just direct recall or pattern-matching.
 
-  2 - Targets the right skill with a multi-step problem but is generic,
-      uninspired, or has a minor content gap.
+  2 - Targets the right skill but is generic, uninspired, or has a minor content
+      gap.
 
-  1 - Exercises a related but imprecise skill; trivially easy (single-step or
-      direct recall); or reskinned from an existing problem with only surface
+  1 - Exercises a related but imprecise skill; trivially easy or way too
+      difficult; and/or reskinned from an existing problem with only surface
       changes.
 
   0 - Wrong skill, off-topic, or copied verbatim from a lesson example.
@@ -118,14 +117,19 @@ CRITERION 2: LESSON ALIGNMENT (weight 30%)
 
 CRITERION 3: LINGUISTIC CLARITY (weight 20%)
 
-  4 - Every term is deliberate; framing naturally scaffolds the student toward
-      the right approach without giving it away. Fresh and engaging context.
+  4 - Every term is deliberate; the problem is wrapped in a fresh, concrete
+      real-world scenario, with the final question asked from inside that
+      scenario, and every quantity preserved exactly. (Genuinely abstract
+      problems reach 4 with clean, motivated prose and no forced scenario — see
+      the framing examples below.)
 
-  3 - Well-phrased, appropriately concise, and pitched at the right reading
-      level. A student can read it once and know exactly what is being asked.
+  3 - Well-phrased and pitched at the right reading level, but flat or list-like:
+      a bare sequence of asserted facts ("Let triangle ABC... Find DE") with no
+      scenario giving the quantities a reason to exist.
 
   2 - Unambiguous and grammatically sound; the task is clear, but phrasing is
-      clunky, verbose, or slightly mismatched to the audience's level.
+      clunky, verbose, repetitive, or slightly mismatched to the audience's
+      level.
 
   1 - Decipherable with effort but contains ambiguous phrasing, undefined
       variables, or wording that could support multiple interpretations.
@@ -137,6 +141,37 @@ CRITERION 3: LINGUISTIC CLARITY (weight 20%)
 """
 
 
+# Framing examples for LC, matching the worked examples the prose layer gets,
+# so the judge scores and gives feedback to the same standard.
+
+LC_FRAMING_GUIDANCE = """
+=== LINGUISTIC CLARITY: FRAMING EXAMPLES ===
+
+LC=3 (flat): "Triangle ABC has AB = 10, BC = 15, AC = 12. ABC is dilated by
+  scale factor 2.5 centered at P to form DEF. Find DE."
+LC=4 (framed, same quantities): "A landscape architect sketches a triangular
+  garden bed ABC, with AB = 10 ft, BC = 15 ft, AC = 12 ft. She enlarges it from
+  anchor stake P by a scale factor of 2.5 to build the full-size bed DEF. How
+  many feet of edging should she order for side DE?"
+
+LC=3 (flat): "Right triangle PQR has PQ = 12, QR = 9, right angle at Q. Find PR."
+LC=4 (framed, same quantities): "A carpenter braces a gate with a diagonal board,
+  forming right triangle PQR. The sides meeting at the square corner Q measure
+  PQ = 12 in and QR = 9 in. How long should the brace PR be cut?"
+
+LC=4 via fallback (abstract, no scenario): "Triangle XYZ has XY = 7, YZ = 24,
+  XZ = 25. Without measuring any angle, decide whether XYZ is right, acute, or
+  obtuse, and justify from the side lengths alone." Forcing a scenario here would
+  imply stakes that aren't there — do not require one or dock for its absence.
+
+When you score LC=3 for flat framing, your feedback_for_haiku must tell the
+writer to wrap the problem in a concrete scenario — preserving every quantity,
+label, and relationship — and to put the final question inside it.
+
+=== END FRAMING EXAMPLES ===
+"""
+
+
 # ---------------------------------------------------------------------
 # Prompt construction
 # ---------------------------------------------------------------------
@@ -145,6 +180,8 @@ def _build_judge_prompt(nl_problem: str, lesson_text: str, lesson_id: str) -> st
     return f"""You are an expert math curriculum reviewer grading an AI-generated geometry problem.
 
 {RUBRIC_TEXT}
+
+{LC_FRAMING_GUIDANCE}
 
 === LESSON SOURCE MATERIAL ({lesson_id}) ===
 
@@ -164,7 +201,10 @@ Then write a single "feedback_for_haiku" paragraph that:
   - Is addressed directly to the AI model that wrote the problem (use "you" / "your problem")
   - Identifies the most important fixable issues in plain language
   - Gives concrete, actionable repair instructions (NOT vague suggestions)
-  - Does NOT mention rubric scores or grading — Haiku just needs to know what to fix
+  - If you scored Linguistic Clarity below 4 for flat framing, follow the framing
+    examples above: tell the writer to add a concrete scenario (preserving every
+    quantity) with the question inside it. Skip this for abstract problems.
+  - Does NOT mention rubric scores or grading -- Haiku just needs to know what to fix
 
 Then itemize specific issues. For each issue, provide:
   - category: one of "geometric_accuracy", "lesson_alignment", "linguistic_clarity"

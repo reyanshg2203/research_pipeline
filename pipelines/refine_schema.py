@@ -36,15 +36,25 @@ from validate import ValidationEngineError, validate  # noqa: E402
 
 # Scope/difficulty gate, run AFTER validation passes but BEFORE the prose layer.
 # Validation says "solvable by SOME path"; calibration says "solvable IN SCOPE."
-# A problem solvable only via a forbidden theorem (e.g. law_of_cosines in a
-# similarity unit) passes validation but must NOT reach prose, or the prose will
-# faithfully narrate an intended method that doesn't actually work.
+# A problem solvable only via a method the lesson does not teach passes
+# validation but must NOT reach prose, or the prose will faithfully narrate an
+# intended method that doesn't actually work.
 try:
     from calibrate import calibrate  # noqa: E402
 
     _CALIBRATION_AVAILABLE = True
 except Exception:  # calibration.pl / lesson_data.pl absent, or import failure
     _CALIBRATION_AVAILABLE = False
+
+# Pipeline-3-only few-shot: the lesson's own at-level problems, surfaced to Haiku
+# during repair. This is the ONLY place lesson-specific guidance now enters the
+# repair loop — it replaces the hand-authored per-lesson/per-unit prompt rules,
+# which were researcher bias. Degrades to a no-op if the helper/corpus is absent.
+try:
+    from exemplars import format_exemplar_block  # noqa: E402
+except Exception:
+    def format_exemplar_block(_lesson_id: str, **_kwargs: Any) -> str:  # type: ignore
+        return ""
 
 load_dotenv(ROOT / ".env")
 
@@ -62,44 +72,32 @@ SYSTEM_PROMPT = """You are repairing a structured 10th-grade geometry problem sc
 You receive:
 1. The current schema (facts, relationships, target).
 2. Output from a deterministic Prolog validator listing every failing gate.
+3. Optionally, an at-level example problem from this lesson, as a guide to what an in-scope, on-topic problem looks like.
 
 Your job is to produce a corrected schema that resolves EVERY validator error while preserving the problem's pedagogical intent (same lesson topic, same kind of question, same target quantity).
 
 Rules:
-- Make the SMALLEST change that fixes a Prolog gate error — but when the feedback includes a LESSON-SCOPE / DIFFICULTY FAILURE (see the determinacy section below), a larger structural restructure is required and expected. Do not add rubric commentary or NL prose.
+- Make the SMALLEST change that fixes a Prolog gate error — but when the feedback includes a LESSON-SCOPE / DIFFICULTY / ALIGNMENT FAILURE, a larger structural restructure is required and expected. Do not add rubric commentary or NL prose.
 - All declared numeric values must remain internally consistent.
 - Use null for unknown values (not omitted keys where the schema expects them).
 - Relationship types must be valid enum values.
 - The target must be uniquely derivable from declared facts after your edits.
-- Do not invoke similarity and dilation redundantly on the same entity pair unless the validator allows it.
+- Do not invoke two relationships redundantly on the same entity pair unless the validator allows it.
 - Remove vacuous relationships (e.g. angle_sum_triangle with no declared angles) or add the angles needed to make them meaningful.
 - Follow naming conventions: triangle ids ABC (3 caps), segment AB, point A, line m, circle c; target uses dot notation (e.g. sides.AB).
 - Only declare entities that have an independent role; do not declare vertices as separate Point entities.
 - Use only allowed attribute keys per relationship type.
 - Angle correspondences use the key `congruent_angle_pairs` with a list of two-element lists, e.g. [["B","Y"]]. NEVER use a key like `corresponding_angles` and NEVER use a dict like {"B":"Y"}.
-- If two triangles' angles already force similarity via Angle-Angle, you may leave the similarity undeclared (the validator can derive it) rather than adding a malformed similarity relationship.
 - NEVER fill in the target attribute's value; the target must stay null so there is something to solve.
 
 CRITICAL - DETERMINACY PRINCIPLE (a green Prolog validation is necessary but NOT sufficient):
-A correct repair must leave the target reachable from the GIVEN (non-null) values through an IN-SCOPE method for this lesson. If the only way to reach the target is a theorem the lesson does not teach (e.g. the Law of Cosines or Law of Sines), the repair is WRONG even though Prolog passes. When the feedback below includes a LESSON-SCOPE / DIFFICULTY FAILURE, you must RESTRUCTURE the problem so an allowed method reaches the target — changing which quantity is given, changing the target, or changing the declared relationship as needed. Do not merely tweak attributes to silence Prolog.
-
-To restructure, ensure the target satisfies the reachability rule for its method (these are the only methods in this unit):
-- Similarity/dilation, target is a SIDE: the CORRESPONDING side on the other triangle must be known, so the ratio scales to the target. (If the target's corresponding side is null, the side is reachable only by Law of Cosines — out of scope. Fix by giving the corresponding side, or retargeting to a side whose correspondent IS known.)
-- Similarity, target is an ANGLE: at least one corresponding angle must be known on the OTHER triangle, so similarity transfers it. (All sides known but no angle known means the angle is reachable only by Law of Cosines — out of scope. Fix by giving a corresponding angle, or retargeting to a side.)
-- SAS similarity: BOTH triangles need their two enclosing sides AND the included angle; the target is a THIRD side.
-- The matched angle in any similarity must sit at the vertex where that triangle's two given sides meet (if sides XY and ZX are given, they meet at X, so the matched vertex is X). If a gate reports an included-angle vertex mismatch, MOVE the matched angle to that shared vertex — do not change the side lengths.
-- Dilation: the pre-image of the target must be known; declare exactly one dilation feeding the target.
-- Midsegment / triangle_proportionality: the parent side being halved or cut must be known.
-- Geometric-mean / altitude-to-hypotenuse: give the altitude-foot segments or one hypotenuse segment plus a leg — NOT both legs (both legs makes it plain-Pythagorean, bypassing the geometric-mean method).
+A correct repair must leave the target reachable from the GIVEN (non-null) values through a method that is in scope for this lesson. If the only way to reach the target is a method the lesson does not teach, the repair is WRONG even though Prolog passes. When the feedback below includes a LESSON-SCOPE / DIFFICULTY / ALIGNMENT FAILURE, you must RESTRUCTURE the problem so an in-scope method reaches the target — changing which quantity is given, changing the target, or changing the declared relationship as needed. Do not merely tweak attributes to silence Prolog.
 
 CRITICAL - Restructuring uses ONLY existing schema keys. NEVER invent a new attribute key to express a restructure:
-- A restructure changes VALUES (which sides/angles are null vs. given), the TARGET, the relationship TYPE, or the congruent_angle_pairs — it NEVER adds new attribute keys. The allowed keys per relationship type are fixed; if you think you need a key that is not in the allowed list, the information is already expressed another way.
-- The two enclosing sides of an SAS similarity are NOT named by attribute keys. They are implied: leave the two enclosing sides non-null and the third side null on each triangle, and name the included angle via `congruent_angle_pairs` (e.g. [["Q","Y"]]). Do NOT add keys like `sides_pre_image`, `sides_image`, `included_angle_vertex_pre_image`, or `included_angle_vertex_image` — these do not exist and will fail validation.
-- To make a SIDE target reachable in scope, set the target's CORRESPONDING side (non-null) on the other triangle and leave the target side null — do not add new keys; just change which side values are given.
-- To make an ANGLE reachable in scope, declare a known angle by setting that angle's VALUE in the triangle's `angles` map (not via a new relationship key like `known_angles`). If you give a triangle a right angle, the 90 degrees must be at the vertex OPPOSITE the LONGEST side (the hypotenuse); placing it elsewhere creates a Pythagorean contradiction.
+A restructure changes VALUES (which sides/angles are null vs. given), the TARGET, the relationship TYPE, or the congruent_angle_pairs — it NEVER adds new attribute keys. The allowed keys per relationship type are fixed; if you think you need a key that is not in the allowed list, the information is already expressed another way.
 
 CRITICAL - Do not introduce NEW errors while repairing:
-- Do NOT invent a relationship the target does not need, and do NOT add one to satisfy a connection gate if the figures are already tied by a midsegment, altitude, or shared side.
+- Do NOT invent a relationship the target does not need, and do NOT add one to satisfy a connection gate if the figures are already tied by a shared side, segment, or existing relationship.
 - NEVER strip the attributes off a relationship that already had them and was not the source of the error. Repairs are additive/corrective, never destructive to already-valid relationships.
 - NEVER introduce a geometrically impossible figure: keep the triangle inequality (each known side < sum of the other two) and right-triangle consistency (the side opposite a 90-degree vertex is the longest; leg^2 + leg^2 = hypotenuse^2). If a value is unknown, leave it null rather than inventing a number that breaks these.
 
@@ -125,48 +123,15 @@ def _format_validation_errors(validation: dict[str, Any]) -> str:
     return "\n\n".join(lines)
 
 
-# Concept-level remediation hints, keyed on the forbidden theorem that calibration
-# reports. These describe the SCOPE BOUNDARY (why the lesson's method can't reach the
-# target, and what in-scope shape avoids it) — NOT the specific numeric answer. They are
-# emitted only when that concept is the actual blocker, so the always-on system prompt
-# stays lean and the guidance is targeted to the failure at hand.
-_OUT_OF_SCOPE_REMEDIATION: dict[str, str] = {
-    "law_of_cosines": (
-        "law_of_cosines is required when a side or angle is reachable ONLY from three "
-        "known sides with no transferable angle. To make it in-scope:\n"
-        "  - If the target is an ANGLE: declare a KNOWN corresponding angle on the OTHER "
-        "triangle AND list that correspondence in `congruent_angle_pairs` so similarity "
-        "can transfer it (giving the angle WITHOUT declaring the pair does NOT work — the "
-        "engine cannot map it). Or change the target to a side.\n"
-        "  - If the target is a SIDE: set its CORRESPONDING side (non-null) on the other "
-        "triangle so the scale-factor ratio reaches it, and leave the target side null."
-    ),
-    "law_of_sines": (
-        "law_of_sines is required when a side/angle is reachable only by relating a side "
-        "to its opposite angle within one triangle. To make it in-scope, route the target "
-        "through similarity instead: give a known corresponding side (for a side target) "
-        "or a known corresponding angle plus its declared `congruent_angle_pairs` (for an "
-        "angle target) on the other triangle."
-    ),
-    "triangle_classification": (
-        "triangle_classification (deciding right/acute/obtuse from side lengths) is out of "
-        "scope here. Do not make the target an is_right / classification attribute. "
-        "Retarget to a side or angle that an allowed similarity/dilation/midsegment method "
-        "reaches from the given values."
-    ),
-    "pythagorean": (
-        "the Pythagorean theorem is not allowed for this lesson. Do not give a right "
-        "triangle with two known sides and ask for the third. Reach the target through the "
-        "lesson's intended method instead (e.g. similarity ratio, midsegment, or the "
-        "geometric-mean relationships), giving quantities that make that method necessary."
-    ),
-}
-
-
 def _format_calibration_feedback(calibration: dict[str, Any] | None) -> str:
     """Render the calibration verdict as an actionable repair instruction.
-    Only emitted when calibration is present and NOT accepted (out_of_scope, or
-    off-band under a strict policy)."""
+    Only emitted when calibration is present and NOT accepted (out_of_scope,
+    alignment_fail, or off-band under a strict policy).
+
+    Guidance here is UNIT-AGNOSTIC: it names the failure and the general
+    restructuring lever, but never hard-codes per-lesson or per-theorem hints.
+    The lesson-specific signal comes from the at-level exemplar surfaced in the
+    repair prompt, not from prose written here."""
     if not calibration or calibration.get("accepted", True):
         return ""
     verdict = calibration.get("verdict", "?")
@@ -181,30 +146,15 @@ def _format_calibration_feedback(calibration: dict[str, Any] | None) -> str:
     if verdict == "out_of_scope":
         if concepts:
             lines.append(
-                f"forbidden concept(s) the target depends on: {', '.join(concepts)}"
+                f"the target depends on concept(s) this lesson does not teach: {', '.join(concepts)}"
             )
         lines.append(
             "This problem is solvable ONLY by a method this lesson does not teach. "
-            "A green Prolog validation is NOT enough. You must RESTRUCTURE the problem "
-            "so the target is reachable by an ALLOWED method — even if that means "
-            "changing which quantity is given, changing the target, or changing the "
-            "declared relationship. Do not merely tweak attributes."
+            "A green Prolog validation is NOT enough. RESTRUCTURE the problem so the "
+            "target is reachable by an in-scope method — change which quantity is given, "
+            "change the target, or change the declared relationship. Do not merely tweak "
+            "attributes to silence Prolog."
         )
-        # Concept-specific, boundary-level remediation for each blocker.
-        hinted = False
-        for concept in concepts:
-            hint = _OUT_OF_SCOPE_REMEDIATION.get(concept)
-            if hint:
-                lines.append("")
-                lines.append(f"HOW TO FIX ({concept}): {hint}")
-                hinted = True
-        if not hinted:
-            lines.append(
-                "Make the target reachable from the given values by an allowed method: "
-                "for a side target, give its corresponding side on the other figure; for "
-                "an angle target, give a known corresponding angle and declare the "
-                "correspondence in `congruent_angle_pairs`."
-            )
     elif verdict == "too_easy":
         lines.append(
             "The problem is solvable in fewer steps than this lesson intends. Make the "
@@ -216,6 +166,16 @@ def _format_calibration_feedback(calibration: dict[str, Any] | None) -> str:
             "The problem requires more steps than this lesson intends. Simplify the "
             "structure so the target is reached within the lesson's step range."
         )
+    elif verdict == "alignment_fail":
+        lines.append(
+            "This problem is well-posed and in scope, but it does NOT exercise this "
+            "lesson's own skill — it is solvable by a prior-lesson method, or a cheaper "
+            "prior-lesson shortcut exists. A green Prolog validation is NOT enough. "
+            "REBUILD so the lesson's intended method is the load-bearing step: change the "
+            "TARGET, the GIVENS, or the declared RELATIONSHIP so the intended method is "
+            "required to reach the target. Do not merely tweak attributes. Use the at-level "
+            "example problem shown above as a guide to what this lesson's own skill looks like."
+        )
     return "\n".join(lines)
 
 
@@ -226,6 +186,12 @@ def _build_repair_user_prompt(
     calibration: dict[str, Any] | None = None,
 ) -> str:
     schema_json = json.dumps(schema.model_dump(), indent=2)
+
+    # Pipeline-3-only few-shot: the lesson's own at-level problems. Empty string
+    # when the corpus is absent/unfilled, so this is a no-op in that case.
+    exemplar_block = format_exemplar_block(schema.lesson)
+    exemplar_section = f"\n{exemplar_block}\n" if exemplar_block else ""
+
     prolog_section = f"""=== PROLOG VALIDATOR OUTPUT ===
 
 status: {validation.get("status")}
@@ -242,7 +208,7 @@ error_count: {validation.get("error_count", 0)}
     return f"""=== ITERATION {iteration} — SCHEMA TO REPAIR ===
 
 {schema_json}
-
+{exemplar_section}
 {prolog_section}{calibration_section}
 
 Submit the corrected schema using the tool."""
@@ -476,6 +442,8 @@ def _save_results(
     calibration_blocks_prose = bool(
         calibration_result is not None
         and not calibration_result.get("accepted", True)
+        and not force_prose          # <-- force_prose overrides the gate
+    )
     )
     if calibration_blocks_prose:
         print(

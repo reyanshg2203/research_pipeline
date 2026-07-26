@@ -10,10 +10,12 @@ Backend selection, in priority order:
   3. "local"                               (default — safe for testing)
 
 The Sheet must have these tabs (exact names):
-    cal_drafts, cal_responses, drafts, progress, responses
+    cal_drafts, cal_responses, drafts, progress, responses,
+    cal_prolific_drafts, cal_prolific_responses, consent_log
 
-Every function takes a `scope`: "cal" for the calibration app, "main" for the
-90-problem app. That keeps the two studies' data separate in one spreadsheet.
+Every function takes a `scope`: "cal" for the (internal) calibration app,
+"cal_prolific" for the Prolific calibration app, "main" for the 90-problem app.
+That keeps every study's data separate in one spreadsheet.
 """
 from __future__ import annotations
 
@@ -28,12 +30,18 @@ ROOT = Path(__file__).resolve().parent.parent
 # tab names per scope
 TABS = {
     "cal": {"drafts": "cal_drafts", "responses": "cal_responses", "progress": "progress"},
+    "cal_prolific": {"drafts": "cal_prolific_drafts",
+                     "responses": "cal_prolific_responses", "progress": "progress"},
     "main": {"drafts": "drafts", "responses": "responses", "progress": "progress"},
 }
+
+# the shared consent-audit tab (one row per participant consent decision)
+CONSENT_TAB = "consent_log"
 
 # local directories per scope
 LOCAL_DIR = {
     "cal": ROOT / "pipelines" / "calibration_responses",
+    "cal_prolific": ROOT / "pipelines" / "calibration_prolific_responses",
     "main": ROOT / "pipelines" / "survey_responses",
 }
 
@@ -204,6 +212,30 @@ def has_submitted(scope: str, email: str) -> bool:
     import pandas as pd
     df = pd.read_csv(csv)
     return email.strip().lower() in df["evaluator_email"].str.lower().values
+
+
+def log_consent(scope: str, pid: str, agreed: bool,
+                study_id: str = "", session_id: str = "") -> None:
+    """Append one immutable row recording a participant's consent decision.
+
+    This is the auditable consent record you cite in the IRB package: it proves
+    each participant was shown the consent screen and made an explicit choice
+    before any rating data was collected. Rows are append-only (never updated),
+    so a decision is never silently overwritten.
+    """
+    row = [pid, scope, "agreed" if agreed else "declined",
+           study_id, session_id, _now()]
+    if _backend() == "sheets":
+        _sheet().worksheet(CONSENT_TAB).append_row(row)
+    else:
+        d = LOCAL_DIR[scope] / "consent"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / f"{_safe(pid)}.json").write_text(json.dumps({
+            "prolific_pid": pid, "scope": scope,
+            "consent": "agreed" if agreed else "declined",
+            "study_id": study_id, "session_id": session_id,
+            "logged_at": _now(),
+        }, indent=2), encoding="utf-8")
 
 
 def backend_name() -> str:
