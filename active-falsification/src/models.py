@@ -26,10 +26,25 @@ from schemas import Generation
 
 @dataclass
 class ModelSpec:
+    """Static description of a supported model.
+
+    ``thinking_mode`` records how reasoning is controlled for THIS model
+    (calibration spec S.6).  There is no blanket ``use_thinking`` flag: applying
+    one generic switch across models with different chat templates would either
+    silently do nothing or raise, and either way the recorded configuration
+    would not describe what actually ran.
+
+      "chat_template_flag"  the tokenizer's chat template takes an
+                            ``enable_thinking`` argument; we pass it explicitly
+      "native"              the model reasons by default with no switch to set
+      "instruct"            an ordinary instruct model; no reasoning mode
+    """
+
     alias: str
     model_id: str
     size_note: str
-    supports_thinking: bool = False
+    thinking_mode: str = "instruct"
+    merge_system_into_user: bool = False
     gated: bool = False
     note: str = ""
 
@@ -39,25 +54,33 @@ MODEL_REGISTRY: Dict[str, ModelSpec] = {
         alias="qwen3_8b",
         model_id="Qwen/Qwen3-8B",
         size_note="8B",
-        supports_thinking=True,
+        thinking_mode="chat_template_flag",
+        note="Qwen3 chat template accepts enable_thinking; thinking mode is on",
     ),
     "deepseek_r1_llama_8b": ModelSpec(
         alias="deepseek_r1_llama_8b",
         model_id="deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
         size_note="8B",
-        supports_thinking=False,
-        note="reasoning-distilled; emits <think> spans by default",
+        thinking_mode="native",
+        merge_system_into_user=True,
+        note=(
+            "reasoning-distilled; reasons by default with no flag. The model card "
+            "advises against a separate system prompt, so the instruction is "
+            "merged into the user turn."
+        ),
     ),
     "smollm3_3b": ModelSpec(
         alias="smollm3_3b",
         model_id="HuggingFaceTB/SmolLM3-3B",
         size_note="3B",
-        supports_thinking=True,
+        thinking_mode="chat_template_flag",
+        note="SmolLM3 chat template accepts enable_thinking; thinking mode is on",
     ),
     "llama32_3b": ModelSpec(
         alias="llama32_3b",
         model_id="meta-llama/Llama-3.2-3B-Instruct",
         size_note="3B",
+        thinking_mode="instruct",
         gated=True,
         note="requires Hugging Face licence acceptance and an HF token",
     ),
@@ -65,19 +88,29 @@ MODEL_REGISTRY: Dict[str, ModelSpec] = {
         alias="phi35_mini",
         model_id="microsoft/Phi-3.5-mini-instruct",
         size_note="3.8B",
+        thinking_mode="instruct",
         note=(
-            "NON-GATED FALLBACK. This model is ~3.8B parameters, NOT an exact 3B "
-            "model. Any table that mixes it with the 3B robustness models must "
-            "say so."
+            "NON-GATED FALLBACK. ~3.8B parameters, NOT an exact 3B model. Using "
+            "it in place of llama32_3b requires explicit author approval and must "
+            "be stated wherever the numbers appear."
         ),
     ),
     "mock": ModelSpec(
         alias="mock",
         model_id="mock://deterministic",
         size_note="n/a",
+        thinking_mode="instruct",
         note="offline pipeline test harness; produces NO scientific results",
     ),
 }
+
+
+class GatedModelError(RuntimeError):
+    """A gated model could not be loaded.
+
+    Calibration stops rather than silently substituting a different model
+    (calibration spec S.2).
+    """
 
 
 # --------------------------------------------------------------------------
@@ -146,6 +179,7 @@ class BaseModel:
             "note": self.spec.note,
             "is_mock": self.is_mock,
             "precision": self.config.get("precision"),
+            "thinking_mode": self.spec.thinking_mode,
         }
 
 
@@ -159,6 +193,10 @@ class HFModel(BaseModel):
 
     Output token accounting is exact: we count generated token ids, not
     characters and not an estimate.
+
+    Reasoning behaviour is resolved per model from ``spec.thinking_mode`` and
+    recorded in :meth:`describe`, so the manifest states what actually ran
+    rather than what a generic flag requested.
     """
 
     def __init__(self, spec: ModelSpec, config: Dict[str, Any]):
@@ -181,9 +219,7 @@ class HFModel(BaseModel):
                 bnb_4bit_use_double_quant=True,
             )
         else:
-            supports_bf16 = (
-                torch.cuda.is_available() and torch.cuda.is_bf16_supported()
-            )
+            supports_bf16 = torch.cuda.is_available() and torch.cuda.is_bf16_supported()
             kwargs["torch_dtype"] = torch.bfloat16 if supports_bf16 else torch.float16
         kwargs["device_map"] = "auto" if torch.cuda.is_available() else None
 
@@ -191,33 +227,55 @@ class HFModel(BaseModel):
         if token:
             kwargs["token"] = token
 
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            spec.model_id, trust_remote_code=True, token=token
-        )
-        self.model = AutoModelForCausalLM.from_pretrained(spec.model_id, **kwargs)
+        try:
+            self.tokenizer = AutoTokenizer.from_pretrained(
+                spec.model_id, trust_remote_code=True, token=token
+            )
+            self.model = AutoModelForCausalLM.from_pretrained(spec.model_id, **kwargs)
+        except Exception as exc:  # noqa: BLE001
+            if spec.gated:
+                raise GatedModelError(
+                    f"could not load gated model {spec.model_id!r} ({exc.__class__.__name__}: "
+                    f"{exc}).\n"
+                    f"Accept the licence on its Hugging Face page and export HF_TOKEN, "
+                    f"or re-run with an EXPLICIT substitution:\n"
+                    f"    python scripts/run_calibration.py --config <cfg> "
+                    f"--substitute {spec.alias}=phi35_mini\n"
+                    f"Nothing is substituted automatically."
+                ) from exc
+            raise
+
         self.model.eval()
         self.revision = getattr(self.model.config, "_commit_hash", None)
-        self.enable_thinking = bool(
-            spec.supports_thinking and config.get("use_thinking", True)
-        )
+        self.thinking_mode = spec.thinking_mode
+        # resolved lazily on the first call, then recorded
+        self.chat_template_flag_accepted: Optional[bool] = None
 
-    def _apply_template(self, system: str, user: str) -> str:
-        messages = [
+    # -- chat templating --------------------------------------------------
+    def _messages(self, system: str, user: str) -> List[Dict[str, str]]:
+        if self.spec.merge_system_into_user:
+            return [{"role": "user", "content": f"{system}\n\n{user}"}]
+        return [
             {"role": "system", "content": system},
             {"role": "user", "content": user},
         ]
-        kwargs: Dict[str, Any] = {"tokenize": False, "add_generation_prompt": True}
-        if self.enable_thinking:
-            # Only pass enable_thinking when the template actually accepts it.
+
+    def _apply_template(self, system: str, user: str) -> str:
+        messages = self._messages(system, user)
+        base: Dict[str, Any] = {"tokenize": False, "add_generation_prompt": True}
+        if self.spec.thinking_mode == "chat_template_flag":
             try:
-                return self.tokenizer.apply_chat_template(
-                    messages, enable_thinking=True, **kwargs
+                text = self.tokenizer.apply_chat_template(
+                    messages, enable_thinking=True, **base
                 )
+                self.chat_template_flag_accepted = True
+                return text
             except TypeError:
-                pass
+                # the template does not take the argument; do NOT force it
+                self.chat_template_flag_accepted = False
         try:
-            return self.tokenizer.apply_chat_template(messages, **kwargs)
-        except Exception:
+            return self.tokenizer.apply_chat_template(messages, **base)
+        except Exception:  # pragma: no cover - templateless models
             return f"{system}\n\n{user}\n\n"
 
     def _generate(
@@ -248,6 +306,24 @@ class HFModel(BaseModel):
         output_tokens = int(new_ids.shape[-1])
         response = self.tokenizer.decode(new_ids, skip_special_tokens=True)
         return response, output_tokens, prompt_len
+
+    def describe(self) -> Dict[str, Any]:
+        info = super().describe()
+        info.update({
+            "revision": self.revision,
+            "tokenizer": getattr(self.tokenizer, "name_or_path", None),
+            "tokenizer_class": type(self.tokenizer).__name__,
+            "thinking_mode": self.thinking_mode,
+            "chat_template_enable_thinking_accepted": self.chat_template_flag_accepted,
+            "merge_system_into_user": self.spec.merge_system_into_user,
+            "generation": {
+                "do_sample": True,
+                "temperature": self.config.get("temperature"),
+                "top_p": self.config.get("top_p"),
+                "top_k": self.config.get("top_k"),
+            },
+        })
+        return info
 
     def unload(self) -> None:
         try:
@@ -342,6 +418,24 @@ def load_model(alias: str, config: Dict[str, Any]) -> BaseModel:
     if alias == "mock":
         return MockModel(spec, config)
     return HFModel(spec, config)
+
+
+def resolve_substitutions(
+    aliases: List[str], substitutions: Dict[str, str]
+) -> List[str]:
+    """Apply EXPLICIT, user-approved model substitutions.
+
+    Nothing is ever substituted automatically (calibration spec S.2): a gated
+    model that cannot be loaded raises :class:`GatedModelError`, and only an
+    explicit ``--substitute a=b`` on the command line changes the model list.
+    """
+    resolved = []
+    for alias in aliases:
+        target = substitutions.get(alias, alias)
+        if target not in MODEL_REGISTRY:
+            raise KeyError(f"unknown substitution target {target!r}")
+        resolved.append(target)
+    return resolved
 
 
 def environment_report() -> Dict[str, Any]:

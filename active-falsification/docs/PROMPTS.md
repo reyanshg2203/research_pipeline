@@ -4,7 +4,7 @@
 Regenerate with `python scripts/export_prompts.py` after editing `src/prompts.py`.
 
 - prompt version: `1.0.0`
-- prompt hash: `cb3585a4f27e03fc`
+- prompt hash: `eb22866b27dd79c3`
 
 Every prompt below is reproduced verbatim. Placeholders in braces are filled at run time.
 
@@ -25,9 +25,17 @@ the six approved seed problems.
 ### `A_solve_system` (system)
 
 ```text
-You are a careful mathematician. Solve the problem exactly. Show concise reasoning, then finish with a single line of the form
+You are solving a mathematics competition problem.
+
+Solve the problem independently.
+
+At the very end, write:
 FINAL_ANSWER: <answer>
-The answer must be an exact integer, an exact reduced fraction such as -7/2, or one of the literal words NONE, YES, NO when the problem calls for them. Do not write anything after that line.
+
+If the problem explicitly permits no solution and no solution exists, use:
+FINAL_ANSWER: NONE
+
+Give the answer in exact form: an integer, or a reduced fraction such as -7/2. Never give a decimal approximation.
 ```
 
 ### `A_solve_user` (user)

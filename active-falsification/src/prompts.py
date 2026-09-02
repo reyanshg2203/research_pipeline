@@ -22,16 +22,30 @@ from schemas import Observation, Problem, stable_hash
 PROMPT_VERSION = "1.0.0"
 
 # --------------------------------------------------------------------------
-# A. zero-shot solver (calibration + seed screening)
+# A. zero-shot solver (Stage 1 calibration; also used for seed screening)
 # --------------------------------------------------------------------------
+#
+# Ordinary zero-shot prompting: no worked examples, no seed demonstrations, no
+# canonical strategy description, no H0, no features, no applicability labels,
+# no hint about the intended strategy, and nothing about difficulty selection.
+#
+# NOTE -- one deliberate addition to the wording in the calibration spec S.5:
+# the final line about exact form. Family 3 answers are reduced fractions, and
+# without it a model that solves the problem correctly can still be scored wrong
+# for returning a decimal. That would measure formatting compliance rather than
+# mathematics and would inflate the parse-failure rate the spec asks us to watch
+# (S.12). It says nothing about any strategy.
+# HUMAN_REVIEW_REQUIRED
 
 SOLVE_SYSTEM = (
-    "You are a careful mathematician. Solve the problem exactly. "
-    "Show concise reasoning, then finish with a single line of the form\n"
-    "FINAL_ANSWER: <answer>\n"
-    "The answer must be an exact integer, an exact reduced fraction such as -7/2, "
-    "or one of the literal words NONE, YES, NO when the problem calls for them. "
-    "Do not write anything after that line."
+    "You are solving a mathematics competition problem.\n\n"
+    "Solve the problem independently.\n\n"
+    "At the very end, write:\n"
+    "FINAL_ANSWER: <answer>\n\n"
+    "If the problem explicitly permits no solution and no solution exists, use:\n"
+    "FINAL_ANSWER: NONE\n\n"
+    "Give the answer in exact form: an integer, or a reduced fraction such as "
+    "-7/2. Never give a decimal approximation."
 )
 
 SOLVE_USER = "{problem_text}"
@@ -40,7 +54,7 @@ SOLVE_USER = "{problem_text}"
 def solve_prompt(problem: Problem) -> Dict[str, str]:
     return {
         "system": SOLVE_SYSTEM,
-        "user": SOLVE_USER.format(problem_text=problem.text),
+        "user": SOLVE_USER.format(problem_text=problem.public_view()["text"]),
     }
 
 

@@ -112,6 +112,90 @@ also reports one-sided implications (observable facts the model must learn, not
 leaks) and the smallest determining conjunctions, which are scientifically
 material and belong in the paper.
 
+## Stage 1 — zero-shot difficulty calibration (run this first)
+
+Calibration is a **standalone stage**. It answers one question — which
+difficulty tier gives meaningful but nontrivial zero-shot solving accuracy —
+and it runs none of the strategy-boundary experiment. `scripts/run_calibration.py`
+does not import Active, Passive, seed induction or evaluation, and a test
+asserts that.
+
+### Exact command for the co-author with the lab GPU
+
+```bash
+git checkout <FROZEN_CALIBRATION_COMMIT>
+pip install -r requirements.txt
+python scripts/self_test.py
+python scripts/run_calibration.py --config configs/calibration.yaml
+```
+
+Then return the entire `outputs/<RUN_ID>/` directory.
+
+That is 3 families × 3 tiers × 10 problems = 90 generations per model, 360 in
+total across the four models, **one attempt per problem** — no majority vote, no
+self-consistency, no retries.
+
+If `meta-llama/Llama-3.2-3B-Instruct` cannot be loaded, the run **stops** with
+instructions. Nothing is substituted automatically. To substitute, say so
+explicitly:
+
+```bash
+python scripts/run_calibration.py --config configs/calibration.yaml --substitute llama32_3b=phi35_mini
+```
+
+`phi35_mini` is ~3.8B, not an exact 3B model, and that must be stated wherever
+the numbers appear.
+
+### Smaller runs
+
+```bash
+python scripts/run_calibration.py --config configs/calibration_mock.yaml --skip-self-test  # offline, no GPU
+python scripts/run_calibration.py --config configs/calibration_smoke.yaml                  # 4-bit GPU smoke test
+```
+
+Smoke-test accuracies must **not** be used to select a tier.
+
+### The predeclared selection rule
+
+Fixed in `src/calibration.py` before any model ran:
+
+> Among tiers whose **pooled** zero-shot accuracy lies in **[0.20, 0.70]**,
+> select the tier closest to **0.45**. If no tier qualifies, select nothing and
+> mark the family `NO_VIABLE_TIER`. An exact tie goes to human review unless a
+> tie-breaker was predeclared.
+
+It is a pure function of zero-shot solving accuracy and reads no later-stage
+result, which is what makes post-hoc difficulty selection impossible.
+Diagnostics (difficulty inversion, ceiling, floor, parse-failure rate,
+ceiling-vs-floor disagreement between models) are reported as warnings and never
+change the selection.
+
+### Calibration outputs
+
+```
+outputs/<RUN_ID>/
+  run_manifest.json                          model ids, revisions, tokenizers,
+                                             per-model reasoning config, GPU,
+                                             versions, seeds, the exact prompt
+  config.yaml
+  calibration_problem_bank.json              the ONE shared bank, frozen before inference
+  calibration_problem_bank_researcher.json   researcher-side metadata (never prompted)
+  calibration_runs.jsonl                     one row per attempt, with raw response
+  calibration_summary.csv                    model x family x difficulty
+  pooled_difficulty_summary.csv              family x difficulty, pooled
+  selected_difficulties.json                 the rule's output, or NO_VIABLE_TIER
+  calibration_report.md                      human-readable
+  errors.log
+```
+
+### Colab
+
+[`COLAB_CALIBRATION.ipynb`](COLAB_CALIBRATION.ipynb) runs calibration only:
+install, GPU check, self-tests, the exact prompt, a bank preview, the offline
+plumbing check, the 4-bit smoke test, the summary — then stops.
+
+---
+
 ## Offline end-to-end pipeline test (no GPU)
 
 ```bash
@@ -185,13 +269,15 @@ calibration summary, and then optionally runs the second small model.
 ## Repository layout
 
 ```
-configs/     pilot / final / mock experiment settings
+configs/     calibration (stage 1) and pilot / final / mock (stage 2) settings
 data/        optional author-curated competition OOD problems (ships empty)
 docs/        FAMILY_SPEC, PROMPTS (generated), EXPERIMENT_PROTOCOL, AUTHOR_REVIEW_CHECKLIST
 src/         families/, models, prompts, grading, sampling, metrics,
-             calibration, seed_induction, active, passive, evaluation, runner
+             calibration (stage 1 only), seed_screening, seed_induction,
+             active, passive, evaluation, runner
 scripts/     self_test, generate_preview, audit_schema, export_prompts,
-             run_mock / run_pilot / run_final, make_tables
+             run_calibration (stage 1), run_mock / run_pilot / run_final,
+             make_tables
 tests/       mathematical unit tests, leakage tests, sampling tests
 outputs/     one directory per run
 ```

@@ -1,0 +1,26 @@
+# Stage-1 calibration SMOKE TEST -- local / Colab only.
+#
+# Purpose: verify that the calibration code executes end to end on a GPU.
+# These accuracies must NOT be used to select a difficulty tier
+# (calibration spec S.9).
+
+models:
+  - smollm3_3b
+
+precision: 4bit
+
+families:
+  - order_minus_one
+  - lte_valuation
+  - recurrence_substitution
+
+master_seed: 20260901
+
+temperature: 0.6
+top_p: 0.95
+top_k: 20
+
+calibration_per_tier: 2
+
+max_new_tokens:
+  solve: 2048

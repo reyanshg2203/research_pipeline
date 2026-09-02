@@ -34,13 +34,18 @@ import yaml
 import prompts as prompt_module
 from active import run_active
 from calibration import (
-    TARGET_BAND,
+    PREFERRED_RANGE,
     TARGET_POINT,
-    run_difficulty_calibration,
+    build_problem_bank,
+    pooled_by_difficulty,
+    run_zero_shot_calibration,
+    select_difficulty,
+    summarise_by_cell,
+)
+from seed_screening import (
     screen_seed_candidates,
     seed_review_markdown,
     select_seed_set,
-    select_difficulty,
 )
 from evaluation import evaluate_hypothesis
 from families import get_family
@@ -72,6 +77,11 @@ DEFAULTS: Dict[str, Any] = {
     "passive_max_rounds": 40,
     "balanced_tests": True,
     "show_features_in_observations": False,
+    # EXPLICIT tier override, e.g. {order_minus_one: medium}. Only for offline
+    # plumbing tests, or to pin tiers the authors approved from a standalone
+    # calibration run. It is recorded in the manifest with a visible warning and
+    # never applied silently.
+    "override_difficulties": {},
     "difficulties": ["easy", "medium", "hard"],
     "max_new_tokens": {
         "solve": 2048,
@@ -209,7 +219,7 @@ class Runner:
             "prompt_version": prompt_module.PROMPT_VERSION,
             "prompt_hash": prompt_module.prompts_hash(),
             "calibration_rule": {
-                "target_band": list(TARGET_BAND),
+                "preferred_range": list(PREFERRED_RANGE),
                 "target_point": TARGET_POINT,
             },
             "seed_streams": {
@@ -232,6 +242,13 @@ class Runner:
                 "4-bit NF4 quantisation is a PILOT/COLAB setting. These numbers "
                 "must not be mixed with full-precision results without a visible "
                 "warning in the paper (spec S.3)."
+            )
+        if self.config.get("override_difficulties"):
+            manifest["WARNING_difficulty_override"] = (
+                f"Difficulty tiers were PINNED by config.override_difficulties "
+                f"{dict(self.config['override_difficulties'])}; the predeclared "
+                f"selection rule was not applied to those families. This must be "
+                f"stated wherever the results appear."
             )
         if self.has_mock:
             manifest["WARNING_mock"] = (
@@ -261,40 +278,84 @@ class Runner:
 
     # --------------------------------------------------------- stage 1 + 2
     def stage_calibration(self) -> None:
+        """Stage 1 inside the full pipeline.
+
+        Delegates to the same Stage-1 code the standalone
+        ``scripts/run_calibration.py`` uses, so the two cannot diverge.  Prefer
+        running calibration standalone and freezing the chosen tiers.
+        """
         print("\n=== stage 1: zero-shot difficulty calibration ===")
         per_tier = int(self.config["calibration_per_tier"])
-        all_runs: List[Dict[str, Any]] = []
-        summaries: List[Dict[str, Any]] = []
+        built = build_problem_bank(
+            self.families, per_tier, self.master_seed, self.config["difficulties"]
+        )
+        bank = built["bank"]
+        for failure in built["validation_failures"]:
+            with open(self.errors_path, "a", encoding="utf-8") as fh:
+                fh.write(f"calibration bank validation failure: {failure}\n")
+
+        all_rows: List[Dict[str, Any]] = []
         for alias in self.model_aliases:
             model = load_model(alias, self._model_config())
             try:
-                for name, fam in self.families.items():
-                    res = run_difficulty_calibration(
-                        [model], fam, per_tier,
-                        self.config["max_new_tokens"]["solve"],
-                        self.master_seed, self.config["difficulties"],
-                    )
-                    all_runs.extend(res["runs"])
-                    print(f"  {alias}/{name}: {len(res['runs'])} zero-shot solves")
+                all_rows.extend(run_zero_shot_calibration(
+                    model, self.families, bank,
+                    self.config["max_new_tokens"]["solve"], self.master_seed,
+                ))
             finally:
                 model.unload()
-        from calibration import summarise_calibration
 
-        summaries = summarise_calibration(all_runs)
-        self.append_jsonl("calibration_runs.jsonl", all_runs)
-        self.write_csv("calibration_summary.csv", summaries)
+        per_cell = summarise_by_cell(all_rows)
+        pooled = pooled_by_difficulty(all_rows)
+        self.append_jsonl("calibration_runs.jsonl", all_rows)
+        self.write_csv("calibration_summary.csv", per_cell)
+        self.write_csv("pooled_difficulty_summary.csv", pooled)
 
+        overrides = dict(self.config.get("override_difficulties") or {})
         selected = {}
+        unviable = []
         for name in self.families:
-            sel = select_difficulty(summaries, name, self.config["difficulties"])
+            if name in overrides:
+                tier = overrides[name]
+                if tier not in self.config["difficulties"]:
+                    raise ValueError(
+                        f"override_difficulties[{name}] = {tier!r} is not a known tier"
+                    )
+                pooled_acc = next(
+                    (r["accuracy_pooled"] for r in pooled
+                     if r["family"] == name and r["difficulty"] == tier), float("nan")
+                )
+                selected[name] = {
+                    "family": name, "selected": tier, "status": "EXPLICIT_OVERRIDE",
+                    "pooled_accuracy": pooled_acc,
+                    "accuracies": {r["difficulty"]: r["accuracy_pooled"]
+                                   for r in pooled if r["family"] == name},
+                    "reason": (
+                        "tier pinned by config.override_difficulties; the "
+                        "predeclared rule was NOT used for this family"
+                    ),
+                }
+                print(f"  [!] {name}: difficulty '{tier}' PINNED by explicit "
+                      f"override; the predeclared rule was not applied")
+                continue
+            sel = select_difficulty(pooled, name)
             selected[name] = sel
-            flag = "" if sel["in_band"] else "   <-- OUTSIDE PREDECLARED BAND"
-            print(
-                f"  selected difficulty for {name}: {sel['selected_difficulty']} "
-                f"(pooled zero-shot acc {sel['pooled_accuracy']:.3f}){flag}"
-            )
+            if sel.get("selected"):
+                print(f"  selected difficulty for {name}: {sel['selected']} "
+                      f"(pooled zero-shot acc {sel['pooled_accuracy']:.3f})")
+            else:
+                unviable.append(name)
+                print(f"  {name}: {sel['status']} -- " + ", ".join(
+                    f"{d}={a:.3f}" for d, a in sorted(sel["accuracies"].items())))
         self.selected = selected
         self.write_json("selected_difficulties.json", selected)
+        if unviable:
+            # Spec S.11: a family is never dropped or forced silently.
+            raise RuntimeError(
+                f"no viable difficulty tier for {unviable}. The predeclared rule "
+                f"selected nothing; run calibration standalone and have the "
+                f"authors review the generator before continuing."
+            )
 
     def stage_seeds(self) -> None:
         print("\n=== stage 2: seed-candidate screening (COMMON seed set) ===")
@@ -305,7 +366,7 @@ class Runner:
             model = load_model(alias, self._model_config())
             try:
                 for name, fam in self.families.items():
-                    difficulty = self.selected[name]["selected_difficulty"]
+                    difficulty = self.selected[name]["selected"]
                     res = screen_seed_candidates(
                         [model], fam,
                         int(self.config["seed_candidates"]),
@@ -341,7 +402,7 @@ class Runner:
                 f"seeds_{name}.json",
                 {
                     "family": name,
-                    "difficulty": self.selected[name]["selected_difficulty"],
+                    "difficulty": self.selected[name]["selected"],
                     "common_seed_set_across_models": True,
                     "pooled_solve_counts": counts,
                     "seeds": [p.to_json() for p in chosen],
@@ -360,7 +421,7 @@ class Runner:
             print(f"  loaded author-curated competition OOD sets for "
                   f"{sorted(self.ood)}")
         for name, fam in self.families.items():
-            difficulty = self.selected[name]["selected_difficulty"]
+            difficulty = self.selected[name]["selected"]
             seed_keys = {p.content_key() for p in self.seeds[name]}
 
             pilot = fam.generate_iid_test(
@@ -445,7 +506,7 @@ class Runner:
     def _run_model_family(self, model: BaseModel, fam: ProblemFamily, repeat: int) -> None:
         name = fam.name
         alias = model.spec.alias
-        difficulty = self.selected[name]["selected_difficulty"]
+        difficulty = self.selected[name]["selected"]
         mnt = self.config["max_new_tokens"]
         seed = derive_seed(self.master_seed, "repeat", repeat) % (2 ** 31)
         print(f"\n  --- {alias} / {name} / repeat {repeat} (difficulty={difficulty}) ---")

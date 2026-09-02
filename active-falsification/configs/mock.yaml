@@ -23,6 +23,14 @@ adaptation_repeats: 1
 passive_max_rounds: 6
 balanced_tests: true
 
+# The mock model answers at random, so no tier can pass the predeclared
+# selection rule. Pin the tiers explicitly so this offline plumbing test can
+# run end to end. NEVER do this for a real run.
+override_difficulties:
+  order_minus_one: easy
+  lte_valuation: easy
+  recurrence_substitution: easy
+
 max_new_tokens:
   solve: 256
   induce: 256

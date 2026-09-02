@@ -1,0 +1,38 @@
+# Stage-1 zero-shot difficulty calibration -- the real run, on the lab GPU.
+#
+# 3 families x 3 tiers x 10 problems = 90 generations per model.
+# 4 models = 360 generations total.
+#
+# If meta-llama/Llama-3.2-3B-Instruct is not accessible, the run STOPS with a
+# clear message. Nothing is substituted automatically. To substitute, pass the
+# approval explicitly on the command line:
+#
+#   python scripts/run_calibration.py --config configs/calibration.yaml \
+#       --substitute llama32_3b=phi35_mini
+#
+# phi35_mini is ~3.8B, not an exact 3B model, and that must be stated wherever
+# the numbers appear.
+
+models:
+  - qwen3_8b
+  - deepseek_r1_llama_8b
+  - smollm3_3b
+  - llama32_3b
+
+precision: bf16_or_fp16
+
+families:
+  - order_minus_one
+  - lte_valuation
+  - recurrence_substitution
+
+master_seed: 20260901
+
+temperature: 0.6
+top_p: 0.95
+top_k: 20
+
+calibration_per_tier: 10
+
+max_new_tokens:
+  solve: 2048
