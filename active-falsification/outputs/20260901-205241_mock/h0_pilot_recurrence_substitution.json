@@ -1,0 +1,406 @@
+{
+  "family": "recurrence_substitution",
+  "difficulty": "easy",
+  "balance": {
+    "n": 8,
+    "positive": 4,
+    "negative": 4
+  },
+  "problems": [
+    {
+      "id": "recurrence_substitution-compute_term-3788360-1935977303",
+      "family": "recurrence_substitution",
+      "template": "compute_term",
+      "difficulty": "easy",
+      "text": "A sequence of rational numbers satisfies x_0 = -5/2 and x_(n+1) = (2) / (2x_n - 1) for all n \u2265 0. Compute x_3. Give the exact value as an integer or a reduced fraction.",
+      "exact_answer": "-10/17",
+      "strategy_applies": false,
+      "features": {
+        "shift_structure": "mismatched",
+        "numerator_structure": "proportional_to_shifted_x",
+        "denominator_relation": "perturbed",
+        "transformed_dynamics": "non_affine",
+        "singularity_risk": "none_in_horizon",
+        "horizon_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "num": [
+          0,
+          2
+        ],
+        "den": [
+          2,
+          -1
+        ],
+        "x0": "-5/2",
+        "horizon": 3,
+        "c_designated": "-1",
+        "r": -2,
+        "s": 1,
+        "perturbation": "denominator_slope",
+        "linearising_shifts": [],
+        "instance_key": "[0, 2]|[2, -1]|-5/2|3",
+        "terms": [
+          "-5/2",
+          "-1/3",
+          "-6/5",
+          "-10/17"
+        ]
+      },
+      "generation_seed": 1935977303
+    },
+    {
+      "id": "recurrence_substitution-find_index-76512166-1533046805",
+      "family": "recurrence_substitution",
+      "template": "find_index",
+      "difficulty": "easy",
+      "text": "A sequence of rational numbers satisfies x_0 = 2 and x_(n+1) = (3x_n - 1) / (5x_n) for all n \u2265 0. There is exactly one index N with 1 \u2264 N \u2264 8 for which x_N = -2/5. Find N. Answer with a single integer.",
+      "exact_answer": "3",
+      "strategy_applies": false,
+      "features": {
+        "shift_structure": "mismatched",
+        "numerator_structure": "proportional_to_shifted_x",
+        "denominator_relation": "perturbed",
+        "transformed_dynamics": "non_affine",
+        "singularity_risk": "none_in_horizon",
+        "horizon_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "num": [
+          3,
+          -1
+        ],
+        "den": [
+          5,
+          0
+        ],
+        "x0": "2",
+        "horizon": 3,
+        "c_designated": "1",
+        "r": 2,
+        "s": 2,
+        "perturbation": "denominator_slope",
+        "linearising_shifts": [],
+        "instance_key": "[3, -1]|[5, 0]|2|3",
+        "terms": [
+          "2",
+          "1/2",
+          "1/5",
+          "-2/5"
+        ],
+        "index_search_range": [
+          1,
+          8
+        ]
+      },
+      "generation_seed": 1533046805
+    },
+    {
+      "id": "recurrence_substitution-compute_term-26394636-1453117836",
+      "family": "recurrence_substitution",
+      "template": "compute_term",
+      "difficulty": "easy",
+      "text": "A sequence of rational numbers satisfies x_0 = 1/2 and x_(n+1) = (2x_n - 4) / (3x_n - 7) for all n \u2265 0. Compute x_3. Give the exact value as an integer or a reduced fraction.",
+      "exact_answer": "172/317",
+      "strategy_applies": false,
+      "features": {
+        "shift_structure": "mismatched",
+        "numerator_structure": "proportional_to_shifted_x",
+        "denominator_relation": "perturbed",
+        "transformed_dynamics": "non_affine",
+        "singularity_risk": "none_in_horizon",
+        "horizon_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "num": [
+          2,
+          -4
+        ],
+        "den": [
+          3,
+          -7
+        ],
+        "x0": "1/2",
+        "horizon": 3,
+        "c_designated": "1",
+        "r": 2,
+        "s": -3,
+        "perturbation": "denominator_constant",
+        "linearising_shifts": [],
+        "instance_key": "[2, -4]|[3, -7]|1/2|3",
+        "terms": [
+          "1/2",
+          "6/11",
+          "32/59",
+          "172/317"
+        ]
+      },
+      "generation_seed": 1453117836
+    },
+    {
+      "id": "recurrence_substitution-find_index-93665055-1955507944",
+      "family": "recurrence_substitution",
+      "template": "find_index",
+      "difficulty": "easy",
+      "text": "A sequence of rational numbers satisfies x_0 = 0 and x_(n+1) = (9x_n - 22) / (4x_n - 10) for all n \u2265 0. There is exactly one index N with 1 \u2264 N \u2264 8 for which x_N = 33/16. Find N. Answer with a single integer.",
+      "exact_answer": "3",
+      "strategy_applies": true,
+      "features": {
+        "shift_structure": "aligned",
+        "numerator_structure": "proportional_to_shifted_x",
+        "denominator_relation": "affine_compatible",
+        "transformed_dynamics": "affine",
+        "singularity_risk": "none_in_horizon",
+        "horizon_size": "small"
+      },
+      "human_solution": "Look for a constant c making the map fix c: solving f(c) = c gives c = 2. Substitute y_n = 1/(x_n - 2). A short computation turns the recurrence into the affine recurrence y_(n+1) = -2\u00b7y_n + 4. From x_0 = 0 we get y_0 = -1/2. Iterating the affine recurrence 3 times gives y_3 = 16. Inverting, x_3 = 2 + 1/y_3 = 33/16. The requested quantity is therefore 3.",
+      "latent_parameters": {
+        "num": [
+          9,
+          -22
+        ],
+        "den": [
+          4,
+          -10
+        ],
+        "x0": "0",
+        "horizon": 3,
+        "c_designated": "2",
+        "r": -2,
+        "s": 4,
+        "perturbation": null,
+        "linearising_shifts": [
+          [
+            "2",
+            "-2",
+            "4"
+          ],
+          [
+            "11/4",
+            "-1/2",
+            "-2"
+          ]
+        ],
+        "instance_key": "[9, -22]|[4, -10]|0|3",
+        "terms": [
+          "0",
+          "11/5",
+          "11/6",
+          "33/16"
+        ],
+        "index_search_range": [
+          1,
+          8
+        ]
+      },
+      "generation_seed": 1955507944
+    },
+    {
+      "id": "recurrence_substitution-compute_term-88202420-2064345618",
+      "family": "recurrence_substitution",
+      "template": "compute_term",
+      "difficulty": "easy",
+      "text": "A sequence of rational numbers satisfies x_0 = 3 and x_(n+1) = (-13x_n - 48) / (3x_n + 11) for all n \u2265 0. Compute x_3. Give the exact value as an integer or a reduced fraction.",
+      "exact_answer": "-255/62",
+      "strategy_applies": true,
+      "features": {
+        "shift_structure": "aligned",
+        "numerator_structure": "proportional_to_shifted_x",
+        "denominator_relation": "affine_compatible",
+        "transformed_dynamics": "affine",
+        "singularity_risk": "none_in_horizon",
+        "horizon_size": "small"
+      },
+      "human_solution": "Look for a constant c making the map fix c: solving f(c) = c gives c = -4. Substitute y_n = 1/(x_n - -4). A short computation turns the recurrence into the affine recurrence y_(n+1) = 1\u00b7y_n + -3. From x_0 = 3 we get y_0 = 1/7. Iterating the affine recurrence 3 times gives y_3 = -62/7. Inverting, x_3 = -4 + 1/y_3 = -255/62.",
+      "latent_parameters": {
+        "num": [
+          -13,
+          -48
+        ],
+        "den": [
+          3,
+          11
+        ],
+        "x0": "3",
+        "horizon": 3,
+        "c_designated": "-4",
+        "r": 1,
+        "s": -3,
+        "perturbation": null,
+        "linearising_shifts": [
+          [
+            "-4",
+            "1",
+            "-3"
+          ]
+        ],
+        "instance_key": "[-13, -48]|[3, 11]|3|3",
+        "terms": [
+          "3",
+          "-87/20",
+          "-171/41",
+          "-255/62"
+        ]
+      },
+      "generation_seed": 2064345618
+    },
+    {
+      "id": "recurrence_substitution-find_index-55937242-719309015",
+      "family": "recurrence_substitution",
+      "template": "find_index",
+      "difficulty": "easy",
+      "text": "A sequence of rational numbers satisfies x_0 = 7/2 and x_(n+1) = (-9x_n - 14) / (4x_n + 6) for all n \u2265 0. There is exactly one index N with 1 \u2264 N \u2264 8 for which x_N = -595/292. Find N. Answer with a single integer.",
+      "exact_answer": "3",
+      "strategy_applies": true,
+      "features": {
+        "shift_structure": "aligned",
+        "numerator_structure": "proportional_to_shifted_x",
+        "denominator_relation": "affine_compatible",
+        "transformed_dynamics": "affine",
+        "singularity_risk": "none_in_horizon",
+        "horizon_size": "small"
+      },
+      "human_solution": "Look for a constant c making the map fix c: solving f(c) = c gives c = -2. Substitute y_n = 1/(x_n - -2). A short computation turns the recurrence into the affine recurrence y_(n+1) = 2\u00b7y_n + -4. From x_0 = 7/2 we get y_0 = 2/11. Iterating the affine recurrence 3 times gives y_3 = -292/11. Inverting, x_3 = -2 + 1/y_3 = -595/292. The requested quantity is therefore 3.",
+      "latent_parameters": {
+        "num": [
+          -9,
+          -14
+        ],
+        "den": [
+          4,
+          6
+        ],
+        "x0": "7/2",
+        "horizon": 3,
+        "c_designated": "-2",
+        "r": 2,
+        "s": -4,
+        "perturbation": null,
+        "linearising_shifts": [
+          [
+            "-2",
+            "2",
+            "-4"
+          ],
+          [
+            "-7/4",
+            "1/2",
+            "-2"
+          ]
+        ],
+        "instance_key": "[-9, -14]|[4, 6]|7/2|3",
+        "terms": [
+          "7/2",
+          "-91/40",
+          "-259/124",
+          "-595/292"
+        ],
+        "index_search_range": [
+          1,
+          8
+        ]
+      },
+      "generation_seed": 719309015
+    },
+    {
+      "id": "recurrence_substitution-compute_term-65172008-2138046065",
+      "family": "recurrence_substitution",
+      "template": "compute_term",
+      "difficulty": "easy",
+      "text": "A sequence of rational numbers satisfies x_0 = -3/2 and x_(n+1) = (-9x_n - 32) / (2x_n + 7) for all n \u2265 0. Compute x_4. Give the exact value as an integer or a reduced fraction.",
+      "exact_answer": "-157/38",
+      "strategy_applies": true,
+      "features": {
+        "shift_structure": "aligned",
+        "numerator_structure": "proportional_to_shifted_x",
+        "denominator_relation": "affine_compatible",
+        "transformed_dynamics": "affine",
+        "singularity_risk": "none_in_horizon",
+        "horizon_size": "small"
+      },
+      "human_solution": "Look for a constant c making the map fix c: solving f(c) = c gives c = -4. Substitute y_n = 1/(x_n - -4). A short computation turns the recurrence into the affine recurrence y_(n+1) = 1\u00b7y_n + -2. From x_0 = -3/2 we get y_0 = 2/5. Iterating the affine recurrence 4 times gives y_4 = -38/5. Inverting, x_4 = -4 + 1/y_4 = -157/38.",
+      "latent_parameters": {
+        "num": [
+          -9,
+          -32
+        ],
+        "den": [
+          2,
+          7
+        ],
+        "x0": "-3/2",
+        "horizon": 4,
+        "c_designated": "-4",
+        "r": 1,
+        "s": -2,
+        "perturbation": null,
+        "linearising_shifts": [
+          [
+            "-4",
+            "1",
+            "-2"
+          ]
+        ],
+        "instance_key": "[-9, -32]|[2, 7]|-3/2|4",
+        "terms": [
+          "-3/2",
+          "-37/8",
+          "-77/18",
+          "-117/28",
+          "-157/38"
+        ]
+      },
+      "generation_seed": 2138046065
+    },
+    {
+      "id": "recurrence_substitution-find_index-20588550-598775989",
+      "family": "recurrence_substitution",
+      "template": "find_index",
+      "difficulty": "easy",
+      "text": "A sequence of rational numbers satisfies x_0 = 2 and x_(n+1) = (-11x_n - 27) / (4x_n + 9) for all n \u2265 0. There is exactly one index N with 1 \u2264 N \u2264 8 for which x_N = -281/67. Find N. Answer with a single integer.",
+      "exact_answer": "3",
+      "strategy_applies": false,
+      "features": {
+        "shift_structure": "mismatched",
+        "numerator_structure": "proportional_to_shifted_x",
+        "denominator_relation": "perturbed",
+        "transformed_dynamics": "non_affine",
+        "singularity_risk": "none_in_horizon",
+        "horizon_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "num": [
+          -11,
+          -27
+        ],
+        "den": [
+          4,
+          9
+        ],
+        "x0": "2",
+        "horizon": 3,
+        "c_designated": "-3",
+        "r": -2,
+        "s": 4,
+        "perturbation": "denominator_constant",
+        "linearising_shifts": [],
+        "instance_key": "[-11, -27]|[4, 9]|2|3",
+        "terms": [
+          "2",
+          "-49/17",
+          "-80/43",
+          "-281/67"
+        ],
+        "index_search_range": [
+          1,
+          8
+        ]
+      },
+      "generation_seed": 598775989
+    }
+  ]
+}

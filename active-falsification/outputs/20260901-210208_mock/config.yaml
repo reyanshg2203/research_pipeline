@@ -1,0 +1,35 @@
+active_batch_size: 2
+active_rounds: 1
+active_schema_profile: full
+adaptation_repeats: 1
+balanced_tests: true
+calibration_per_tier: 2
+challenge_test_size: 6
+difficulties:
+- easy
+- medium
+- hard
+families:
+- order_minus_one
+- lte_valuation
+- recurrence_substitution
+h0_pilot_size: 8
+iid_test_size: 8
+master_seed: 20260101
+max_new_tokens:
+  classify: 32
+  induce: 256
+  query: 128
+  revise: 256
+  solve: 256
+models:
+- mock
+passive_max_rounds: 6
+precision: none
+seed_candidates: 8
+seed_count: 6
+show_features_in_observations: false
+temperature: 0.6
+top_k: 20
+top_p: 0.95
+use_thinking: false

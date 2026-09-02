@@ -1,0 +1,195 @@
+{
+  "family": "lte_valuation",
+  "difficulty": "easy",
+  "balance": {
+    "n": 6,
+    "positive": 3,
+    "negative": 3
+  },
+  "templates": [
+    "largest_k",
+    "factor_out_prime"
+  ],
+  "problems": [
+    {
+      "id": "lte_valuation-largest_k-23-10-5-11-338692431",
+      "family": "lte_valuation",
+      "template": "largest_k",
+      "difficulty": "easy",
+      "text": "Find the largest integer k \u2265 0 such that 23^k divides 10^11 - 5^11. Answer with a single non-negative integer.",
+      "exact_answer": "1",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "odd",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 10,
+        "b": 5,
+        "n": 11,
+        "p": 23,
+        "instance_key": "v_23(10^11-5^11)",
+        "actual_valuation": 1,
+        "shortcut_prediction": 0
+      },
+      "generation_seed": 338692431
+    },
+    {
+      "id": "lte_valuation-factor_out_prime-2-6-4-12-1207616783",
+      "family": "lte_valuation",
+      "template": "factor_out_prime",
+      "difficulty": "easy",
+      "text": "Write 6^12 - 4^12 = 2^k \u00b7 M where M is an integer not divisible by 2. Determine k. Answer with a single non-negative integer.",
+      "exact_answer": "12",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "two",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "yes",
+        "p_divides_a_or_b": "yes",
+        "n_parity": "even",
+        "n_divisible_by_p": "yes",
+        "difference_valuation": "1",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 6,
+        "b": 4,
+        "n": 12,
+        "p": 2,
+        "instance_key": "v_2(6^12-4^12)",
+        "actual_valuation": 12,
+        "shortcut_prediction": 3
+      },
+      "generation_seed": 1207616783
+    },
+    {
+      "id": "lte_valuation-largest_k-2-35-26-10-1669670350",
+      "family": "lte_valuation",
+      "template": "largest_k",
+      "difficulty": "easy",
+      "text": "Find the largest integer k \u2265 0 such that 2^k divides 35^10 - 26^10. Answer with a single non-negative integer.",
+      "exact_answer": "0",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "two",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "yes",
+        "n_parity": "even",
+        "n_divisible_by_p": "yes",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 35,
+        "b": 26,
+        "n": 10,
+        "p": 2,
+        "instance_key": "v_2(35^10-26^10)",
+        "actual_valuation": 0,
+        "shortcut_prediction": 1
+      },
+      "generation_seed": 1669670350
+    },
+    {
+      "id": "lte_valuation-factor_out_prime-23-4-8-12-1355136965",
+      "family": "lte_valuation",
+      "template": "factor_out_prime",
+      "difficulty": "easy",
+      "text": "Write 4^12 - 8^12 = 23^k \u00b7 M where M is an integer not divisible by 23. Determine k. Answer with a single non-negative integer.",
+      "exact_answer": "0",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "even",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 4^12 - 8^12. First, 4 - 8 = -4 and v_23(-4) = 0. Neither 4 nor 8 is divisible by 23. Writing 4^12 - 8^12 = (4 - 8) \u00b7 \u03a3_{i=0}^{12-1} 4^i 8^{12-1-i}, the valuation of the cofactor is governed by v_23(12) = 0. This gives v_23(N) = v_23(4 - 8) + v_23(12) = 0 + 0 = 0. Hence the answer is 0.",
+      "latent_parameters": {
+        "a": 4,
+        "b": 8,
+        "n": 12,
+        "p": 23,
+        "instance_key": "v_23(4^12-8^12)",
+        "actual_valuation": 0,
+        "shortcut_prediction": 0
+      },
+      "generation_seed": 1355136965
+    },
+    {
+      "id": "lte_valuation-largest_k-31-29-9-7-81850008",
+      "family": "lte_valuation",
+      "template": "largest_k",
+      "difficulty": "easy",
+      "text": "Find the largest integer k \u2265 0 such that 31^k divides 29^7 - 9^7. Answer with a single non-negative integer.",
+      "exact_answer": "0",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "odd",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 29^7 - 9^7. First, 29 - 9 = 20 and v_31(20) = 0. Neither 29 nor 9 is divisible by 31. Writing 29^7 - 9^7 = (29 - 9) \u00b7 \u03a3_{i=0}^{7-1} 29^i 9^{7-1-i}, the valuation of the cofactor is governed by v_31(7) = 0. This gives v_31(N) = v_31(29 - 9) + v_31(7) = 0 + 0 = 0. Hence the answer is 0.",
+      "latent_parameters": {
+        "a": 29,
+        "b": 9,
+        "n": 7,
+        "p": 31,
+        "instance_key": "v_31(29^7-9^7)",
+        "actual_valuation": 0,
+        "shortcut_prediction": 0
+      },
+      "generation_seed": 81850008
+    },
+    {
+      "id": "lte_valuation-factor_out_prime-13-20-8-5-258302986",
+      "family": "lte_valuation",
+      "template": "factor_out_prime",
+      "difficulty": "easy",
+      "text": "Write 20^5 - 8^5 = 13^k \u00b7 M where M is an integer not divisible by 13. Determine k. Answer with a single non-negative integer.",
+      "exact_answer": "0",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "odd",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 20^5 - 8^5. First, 20 - 8 = 12 and v_13(12) = 0. Neither 20 nor 8 is divisible by 13. Writing 20^5 - 8^5 = (20 - 8) \u00b7 \u03a3_{i=0}^{5-1} 20^i 8^{5-1-i}, the valuation of the cofactor is governed by v_13(5) = 0. This gives v_13(N) = v_13(20 - 8) + v_13(5) = 0 + 0 = 0. Hence the answer is 0.",
+      "latent_parameters": {
+        "a": 20,
+        "b": 8,
+        "n": 5,
+        "p": 13,
+        "instance_key": "v_13(20^5-8^5)",
+        "actual_valuation": 0,
+        "shortcut_prediction": 0
+      },
+      "generation_seed": 258302986
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "family": "lte_valuation",
+  "difficulty": "easy",
+  "balance": {
+    "n": 8,
+    "positive": 4,
+    "negative": 4
+  },
+  "problems": [
+    {
+      "id": "lte_valuation-valuation-13-13-26-5-97800151",
+      "family": "lte_valuation",
+      "template": "valuation",
+      "difficulty": "easy",
+      "text": "Let N = 13^5 - 26^5. Compute v_13(N), the exponent of the prime 13 in the prime factorization of N. Answer with a single non-negative integer.",
+      "exact_answer": "5",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "yes",
+        "p_divides_a_or_b": "yes",
+        "n_parity": "odd",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "1",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 13,
+        "b": 26,
+        "n": 5,
+        "p": 13,
+        "instance_key": "v_13(13^5-26^5)",
+        "actual_valuation": 5,
+        "shortcut_prediction": 1
+      },
+      "generation_seed": 97800151
+    },
+    {
+      "id": "lte_valuation-exponent_in_factorization-3-3-24-4-799634469",
+      "family": "lte_valuation",
+      "template": "exponent_in_factorization",
+      "difficulty": "easy",
+      "text": "Find the exponent of 3 in the prime factorization of 3^4 - 24^4. Answer with a single non-negative integer.",
+      "exact_answer": "6",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "yes",
+        "p_divides_a_or_b": "yes",
+        "n_parity": "even",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "1",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 3,
+        "b": 24,
+        "n": 4,
+        "p": 3,
+        "instance_key": "v_3(3^4-24^4)",
+        "actual_valuation": 6,
+        "shortcut_prediction": 1
+      },
+      "generation_seed": 799634469
+    },
+    {
+      "id": "lte_valuation-valuation-2-8-2-8-2104545280",
+      "family": "lte_valuation",
+      "template": "valuation",
+      "difficulty": "easy",
+      "text": "Let N = 8^8 - 2^8. Compute v_2(N), the exponent of the prime 2 in the prime factorization of N. Answer with a single non-negative integer.",
+      "exact_answer": "8",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "two",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "yes",
+        "p_divides_a_or_b": "yes",
+        "n_parity": "even",
+        "n_divisible_by_p": "yes",
+        "difference_valuation": "1",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 8,
+        "b": 2,
+        "n": 8,
+        "p": 2,
+        "instance_key": "v_2(8^8-2^8)",
+        "actual_valuation": 8,
+        "shortcut_prediction": 4
+      },
+      "generation_seed": 2104545280
+    },
+    {
+      "id": "lte_valuation-exponent_in_factorization-31-15-13-2-377511173",
+      "family": "lte_valuation",
+      "template": "exponent_in_factorization",
+      "difficulty": "easy",
+      "text": "Find the exponent of 31 in the prime factorization of 15^2 - 13^2. Answer with a single non-negative integer.",
+      "exact_answer": "0",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "even",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 15^2 - 13^2. First, 15 - 13 = 2 and v_31(2) = 0. Neither 15 nor 13 is divisible by 31. Writing 15^2 - 13^2 = (15 - 13) \u00b7 \u03a3_{i=0}^{2-1} 15^i 13^{2-1-i}, the valuation of the cofactor is governed by v_31(2) = 0. This gives v_31(N) = v_31(15 - 13) + v_31(2) = 0 + 0 = 0. Hence the answer is 0.",
+      "latent_parameters": {
+        "a": 15,
+        "b": 13,
+        "n": 2,
+        "p": 31,
+        "instance_key": "v_31(15^2-13^2)",
+        "actual_valuation": 0,
+        "shortcut_prediction": 0
+      },
+      "generation_seed": 377511173
+    },
+    {
+      "id": "lte_valuation-valuation-19-41-22-4-1300919772",
+      "family": "lte_valuation",
+      "template": "valuation",
+      "difficulty": "easy",
+      "text": "Let N = 41^4 - 22^4. Compute v_19(N), the exponent of the prime 19 in the prime factorization of N. Answer with a single non-negative integer.",
+      "exact_answer": "1",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "even",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "1",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 41^4 - 22^4. First, 41 - 22 = 19 and v_19(19) = 1, so 19 divides 41 - 22 Neither 41 nor 22 is divisible by 19. Writing 41^4 - 22^4 = (41 - 22) \u00b7 \u03a3_{i=0}^{4-1} 41^i 22^{4-1-i}, the valuation of the cofactor is governed by v_19(4) = 0. This gives v_19(N) = v_19(41 - 22) + v_19(4) = 1 + 0 = 1. Hence the answer is 1.",
+      "latent_parameters": {
+        "a": 41,
+        "b": 22,
+        "n": 4,
+        "p": 19,
+        "instance_key": "v_19(41^4-22^4)",
+        "actual_valuation": 1,
+        "shortcut_prediction": 1
+      },
+      "generation_seed": 1300919772
+    },
+    {
+      "id": "lte_valuation-exponent_in_factorization-37-53-16-9-1670586614",
+      "family": "lte_valuation",
+      "template": "exponent_in_factorization",
+      "difficulty": "easy",
+      "text": "Find the exponent of 37 in the prime factorization of 53^9 - 16^9. Answer with a single non-negative integer.",
+      "exact_answer": "1",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "odd",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "1",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 53^9 - 16^9. First, 53 - 16 = 37 and v_37(37) = 1, so 37 divides 53 - 16 Neither 53 nor 16 is divisible by 37. Writing 53^9 - 16^9 = (53 - 16) \u00b7 \u03a3_{i=0}^{9-1} 53^i 16^{9-1-i}, the valuation of the cofactor is governed by v_37(9) = 0. This gives v_37(N) = v_37(53 - 16) + v_37(9) = 1 + 0 = 1. Hence the answer is 1.",
+      "latent_parameters": {
+        "a": 53,
+        "b": 16,
+        "n": 9,
+        "p": 37,
+        "instance_key": "v_37(53^9-16^9)",
+        "actual_valuation": 1,
+        "shortcut_prediction": 1
+      },
+      "generation_seed": 1670586614
+    },
+    {
+      "id": "lte_valuation-valuation-19-29-15-9-1793772277",
+      "family": "lte_valuation",
+      "template": "valuation",
+      "difficulty": "easy",
+      "text": "Let N = 29^9 - 15^9. Compute v_19(N), the exponent of the prime 19 in the prime factorization of N. Answer with a single non-negative integer.",
+      "exact_answer": "1",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "odd",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 29,
+        "b": 15,
+        "n": 9,
+        "p": 19,
+        "instance_key": "v_19(29^9-15^9)",
+        "actual_valuation": 1,
+        "shortcut_prediction": 0
+      },
+      "generation_seed": 1793772277
+    },
+    {
+      "id": "lte_valuation-exponent_in_factorization-23-24-3-12-1077377211",
+      "family": "lte_valuation",
+      "template": "exponent_in_factorization",
+      "difficulty": "easy",
+      "text": "Find the exponent of 23 in the prime factorization of 24^12 - 3^12. Answer with a single non-negative integer.",
+      "exact_answer": "0",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "even",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 24^12 - 3^12. First, 24 - 3 = 21 and v_23(21) = 0. Neither 24 nor 3 is divisible by 23. Writing 24^12 - 3^12 = (24 - 3) \u00b7 \u03a3_{i=0}^{12-1} 24^i 3^{12-1-i}, the valuation of the cofactor is governed by v_23(12) = 0. This gives v_23(N) = v_23(24 - 3) + v_23(12) = 0 + 0 = 0. Hence the answer is 0.",
+      "latent_parameters": {
+        "a": 24,
+        "b": 3,
+        "n": 12,
+        "p": 23,
+        "instance_key": "v_23(24^12-3^12)",
+        "actual_valuation": 0,
+        "shortcut_prediction": 0
+      },
+      "generation_seed": 1077377211
+    }
+  ]
+}

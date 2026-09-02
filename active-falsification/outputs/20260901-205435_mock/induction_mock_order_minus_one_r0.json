@@ -1,0 +1,44 @@
+{
+  "model": "mock",
+  "family": "order_minus_one",
+  "strategy": "MOCK STRATEGY: apply the shared method from the examples.",
+  "hypothesis": "MOCK HYPOTHESIS v0: the method works unless the problem shows an obvious structural obstruction.",
+  "attempts": 1,
+  "seed_ids": [
+    "order_minus_one-least_n_congruence-10-23-1217540276",
+    "order_minus_one-least_n_congruence-30-47-868881799",
+    "order_minus_one-least_n_congruence-72-89-888018540",
+    "order_minus_one-least_n_congruence-8-11-1155420311",
+    "order_minus_one-least_n_divisibility-10-19-1619328863",
+    "order_minus_one-least_n_divisibility-10-89-1698824592"
+  ],
+  "generations": [
+    {
+      "stage": "induce",
+      "model": "mock",
+      "family": "order_minus_one",
+      "prompt": "{\"system\": \"You are a mathematician studying a collection of solved problems in order to extract a reusable solution method and to state precisely when that method works.\", \"user\": \"Below are 6 solved problems. They were all solved by the same underlying method.\\n\\n--- Example 1 ---\\nProblem: Find the least positive integer n such that 10^n \\u2261 -1 (mod 23). If no such n exists, answer NONE.\\nSolution: Since gcd(10, 23) = 1, the base is a unit modulo 23. The multiplicative order of 10 modulo 23 is d = 22. If 10^n \\u2261 -1 (mod 23) then squaring gives 10^(2n) \\u2261 1, so d | 2n, while d does not divide n. Therefore n must be an odd multiple of d/2 = 11. Direct computation gives 10^11 \\u2261 22 \\u2261 -1 (mod 23), so the exponent d/2 does produce -1. The least such n is therefore 11.\\nAnswer: 11\\n\\n--- Example 2 ---\\nProblem: Find the least positive integer n such that 30^n \\u2261 -1 (mod 47). If no such n exists, answer NONE.\\nSolution: Since gcd(30, 47) = 1, the base is a unit modulo 47. The multiplicative order of 30 modulo 47 is d = 46. If 30^n \\u2261 -1 (mod 47) then squaring gives 30^(2n) \\u2261 1, so d | 2n, while d does not divide n. Therefore n must be an odd multiple of d/2 = 23. Direct computation gives 30^23 \\u2261 46 \\u2261 -1 (mod 47), so the exponent d/2 does produce -1. The least such n is therefore 23.\\nAnswer: 23\\n\\n--- Example 3 ---\\nProblem: Find the least positive integer n such that 72^n \\u2261 -1 (mod 89). If no such n exists, answer NONE.\\nSolution: Since gcd(72, 89) = 1, the base is a unit modulo 89. The multiplicative order of 72 modulo 89 is d = 44. If 72^n \\u2261 -1 (mod 89) then squaring gives 72^(2n) \\u2261 1, so d | 2n, while d does not divide n. Therefore n must be an odd multiple of d/2 = 22. Direct computation gives 72^22 \\u2261 88 \\u2261 -1 (mod 89), so the exponent d/2 does produce -1. The least such n is therefore 22.\\nAnswer: 22\\n\\n--- Example 4 ---\\nProblem: Find the least positive integer n such that 8^n \\u2261 -1 (mod 11). If no such n exists, answer NONE.\\nSolution: Since gcd(8, 11) = 1, the base is a unit modulo 11. The multiplicative order of 8 modulo 11 is d = 10. If 8^n \\u2261 -1 (mod 11) then squaring gives 8^(2n) \\u2261 1, so d | 2n, while d does not divide n. Therefore n must be an odd multiple of d/2 = 5. Direct computation gives 8^5 \\u2261 10 \\u2261 -1 (mod 11), so the exponent d/2 does produce -1. The least such n is therefore 5.\\nAnswer: 5\\n\\n--- Example 5 ---\\nProblem: Find the least positive integer n such that 19 divides 10^n + 1. If no such n exists, answer NONE.\\nSolution: Since gcd(10, 19) = 1, the base is a unit modulo 19. The multiplicative order of 10 modulo 19 is d = 18. If 10^n \\u2261 -1 (mod 19) then squaring gives 10^(2n) \\u2261 1, so d | 2n, while d does not divide n. Therefore n must be an odd multiple of d/2 = 9. Direct computation gives 10^9 \\u2261 18 \\u2261 -1 (mod 19), so the exponent d/2 does produce -1. The least such n is therefore 9.\\nAnswer: 9\\n\\n--- Example 6 ---\\nProblem: Find the least positive integer n such that 89 divides 10^n + 1. If no such n exists, answer NONE.\\nSolution: Since gcd(10, 89) = 1, the base is a unit modulo 89. The multiplicative order of 10 modulo 89 is d = 44. If 10^n \\u2261 -1 (mod 89) then squaring gives 10^(2n) \\u2261 1, so d | 2n, while d does not divide n. Therefore n must be an odd multiple of d/2 = 22. Direct computation gives 10^22 \\u2261 88 \\u2261 -1 (mod 89), so the exponent d/2 does produce -1. The least such n is therefore 22.\\nAnswer: 22\\n\\nDo two things.\\n\\n1. STRATEGY: describe, in your own words, the general reusable method these solutions share. Describe the method itself, not the individual numbers.\\n\\n2. HYPOTHESIS: state a falsifiable rule for WHEN this method will succeed on a new problem of this kind, and when it will fail. The rule must be checkable from the statement of a new problem. It must be a genuine applicability condition, not a restatement of the method. It must be specific enough that some problems of this kind would violate it.\\n\\nRespond with a single JSON object and nothing else:\\n\\n{\\\"strategy\\\": \\\"...\\\", \\\"hypothesis\\\": \\\"...\\\"}\"}",
+      "response": "{\"strategy\": \"MOCK STRATEGY: apply the shared method from the examples.\", \"hypothesis\": \"MOCK HYPOTHESIS v0: the method works unless the problem shows an obvious structural obstruction.\"}",
+      "output_tokens": 46,
+      "prompt_tokens": 983,
+      "meta": {
+        "max_new_tokens": 256,
+        "seed": 1955189756,
+        "seconds": 0.0,
+        "attempt": 0,
+        "seed_ids": [
+          "order_minus_one-least_n_congruence-10-23-1217540276",
+          "order_minus_one-least_n_congruence-30-47-868881799",
+          "order_minus_one-least_n_congruence-72-89-888018540",
+          "order_minus_one-least_n_congruence-8-11-1155420311",
+          "order_minus_one-least_n_divisibility-10-19-1619328863",
+          "order_minus_one-least_n_divisibility-10-89-1698824592"
+        ]
+      }
+    }
+  ],
+  "output_tokens": 46,
+  "h0_pilot_accuracy": 0.375,
+  "h0_pilot_band": "likely_too_unclear",
+  "repeat": 0
+}

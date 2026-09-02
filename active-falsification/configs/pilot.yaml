@@ -1,0 +1,45 @@
+# Pilot configuration -- small models, 4-bit, small counts.
+# 4-bit numbers are PILOT ONLY and must never be pooled with full-precision
+# results without a visible warning (spec S.3).
+
+models:
+  - smollm3_3b
+  - phi35_mini          # swap for llama32_3b if you have accepted its licence
+
+precision: 4bit
+use_thinking: true
+
+families:
+  - order_minus_one
+  - lte_valuation
+  - recurrence_substitution
+
+master_seed: 20260101
+temperature: 0.6
+top_p: 0.95
+top_k: 20
+
+calibration_per_tier: 4
+seed_candidates: 10
+seed_count: 6
+h0_pilot_size: 20
+active_rounds: 3
+active_batch_size: 3
+iid_test_size: 40
+challenge_test_size: 20
+adaptation_repeats: 1
+passive_max_rounds: 40
+balanced_tests: true
+show_features_in_observations: false
+
+max_new_tokens:
+  solve: 2048
+  induce: 1800
+  query: 800
+  revise: 1200
+  classify: 500
+
+# Active query schema: 'full' is the spec default. 'label_decoupled' removes
+# the features that determine the oracle label (see scripts/audit_schema.py)
+# and is the stronger, opt-in variant of the experiment.
+active_schema_profile: full

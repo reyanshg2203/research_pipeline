@@ -1,0 +1,251 @@
+{
+  "family": "lte_valuation",
+  "difficulty": "easy",
+  "balance": {
+    "n": 8,
+    "positive": 4,
+    "negative": 4
+  },
+  "problems": [
+    {
+      "id": "lte_valuation-valuation-7-34-20-2-782473967",
+      "family": "lte_valuation",
+      "template": "valuation",
+      "difficulty": "easy",
+      "text": "Let N = 34^2 - 20^2. Compute v_7(N), the exponent of the prime 7 in the prime factorization of N. Answer with a single non-negative integer.",
+      "exact_answer": "1",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "even",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "1",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 34^2 - 20^2. First, 34 - 20 = 14 and v_7(14) = 1, so 7 divides 34 - 20 Neither 34 nor 20 is divisible by 7. Writing 34^2 - 20^2 = (34 - 20) \u00b7 \u03a3_{i=0}^{2-1} 34^i 20^{2-1-i}, the valuation of the cofactor is governed by v_7(2) = 0. This gives v_7(N) = v_7(34 - 20) + v_7(2) = 1 + 0 = 1. Hence the answer is 1.",
+      "latent_parameters": {
+        "a": 34,
+        "b": 20,
+        "n": 2,
+        "p": 7,
+        "instance_key": "v_7(34^2-20^2)",
+        "actual_valuation": 1,
+        "shortcut_prediction": 1
+      },
+      "generation_seed": 782473967
+    },
+    {
+      "id": "lte_valuation-exponent_in_factorization-2-20-14-6-1270105843",
+      "family": "lte_valuation",
+      "template": "exponent_in_factorization",
+      "difficulty": "easy",
+      "text": "Find the exponent of 2 in the prime factorization of 20^6 - 14^6. Answer with a single non-negative integer.",
+      "exact_answer": "6",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "two",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "yes",
+        "p_divides_a_or_b": "yes",
+        "n_parity": "even",
+        "n_divisible_by_p": "yes",
+        "difference_valuation": "1",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 20,
+        "b": 14,
+        "n": 6,
+        "p": 2,
+        "instance_key": "v_2(20^6-14^6)",
+        "actual_valuation": 6,
+        "shortcut_prediction": 2
+      },
+      "generation_seed": 1270105843
+    },
+    {
+      "id": "lte_valuation-valuation-53-69-16-10-2138712005",
+      "family": "lte_valuation",
+      "template": "valuation",
+      "difficulty": "easy",
+      "text": "Let N = 69^10 - 16^10. Compute v_53(N), the exponent of the prime 53 in the prime factorization of N. Answer with a single non-negative integer.",
+      "exact_answer": "1",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "even",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "1",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 69^10 - 16^10. First, 69 - 16 = 53 and v_53(53) = 1, so 53 divides 69 - 16 Neither 69 nor 16 is divisible by 53. Writing 69^10 - 16^10 = (69 - 16) \u00b7 \u03a3_{i=0}^{10-1} 69^i 16^{10-1-i}, the valuation of the cofactor is governed by v_53(10) = 0. This gives v_53(N) = v_53(69 - 16) + v_53(10) = 1 + 0 = 1. Hence the answer is 1.",
+      "latent_parameters": {
+        "a": 69,
+        "b": 16,
+        "n": 10,
+        "p": 53,
+        "instance_key": "v_53(69^10-16^10)",
+        "actual_valuation": 1,
+        "shortcut_prediction": 1
+      },
+      "generation_seed": 2138712005
+    },
+    {
+      "id": "lte_valuation-exponent_in_factorization-17-31-14-4-594165502",
+      "family": "lte_valuation",
+      "template": "exponent_in_factorization",
+      "difficulty": "easy",
+      "text": "Find the exponent of 17 in the prime factorization of 31^4 - 14^4. Answer with a single non-negative integer.",
+      "exact_answer": "1",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "even",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "1",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 31^4 - 14^4. First, 31 - 14 = 17 and v_17(17) = 1, so 17 divides 31 - 14 Neither 31 nor 14 is divisible by 17. Writing 31^4 - 14^4 = (31 - 14) \u00b7 \u03a3_{i=0}^{4-1} 31^i 14^{4-1-i}, the valuation of the cofactor is governed by v_17(4) = 0. This gives v_17(N) = v_17(31 - 14) + v_17(4) = 1 + 0 = 1. Hence the answer is 1.",
+      "latent_parameters": {
+        "a": 31,
+        "b": 14,
+        "n": 4,
+        "p": 17,
+        "instance_key": "v_17(31^4-14^4)",
+        "actual_valuation": 1,
+        "shortcut_prediction": 1
+      },
+      "generation_seed": 594165502
+    },
+    {
+      "id": "lte_valuation-valuation-23-6-3-11-1194445827",
+      "family": "lte_valuation",
+      "template": "valuation",
+      "difficulty": "easy",
+      "text": "Let N = 6^11 - 3^11. Compute v_23(N), the exponent of the prime 23 in the prime factorization of N. Answer with a single non-negative integer.",
+      "exact_answer": "1",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "odd",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 6,
+        "b": 3,
+        "n": 11,
+        "p": 23,
+        "instance_key": "v_23(6^11-3^11)",
+        "actual_valuation": 1,
+        "shortcut_prediction": 0
+      },
+      "generation_seed": 1194445827
+    },
+    {
+      "id": "lte_valuation-exponent_in_factorization-2-33-30-2-143682946",
+      "family": "lte_valuation",
+      "template": "exponent_in_factorization",
+      "difficulty": "easy",
+      "text": "Find the exponent of 2 in the prime factorization of 33^2 - 30^2. Answer with a single non-negative integer.",
+      "exact_answer": "0",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "two",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "yes",
+        "n_parity": "even",
+        "n_divisible_by_p": "yes",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 33,
+        "b": 30,
+        "n": 2,
+        "p": 2,
+        "instance_key": "v_2(33^2-30^2)",
+        "actual_valuation": 0,
+        "shortcut_prediction": 1
+      },
+      "generation_seed": 143682946
+    },
+    {
+      "id": "lte_valuation-valuation-43-30-28-7-241721419",
+      "family": "lte_valuation",
+      "template": "valuation",
+      "difficulty": "easy",
+      "text": "Let N = 30^7 - 28^7. Compute v_43(N), the exponent of the prime 43 in the prime factorization of N. Answer with a single non-negative integer.",
+      "exact_answer": "1",
+      "strategy_applies": false,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "no",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "odd",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "0",
+        "exponent_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 30,
+        "b": 28,
+        "n": 7,
+        "p": 43,
+        "instance_key": "v_43(30^7-28^7)",
+        "actual_valuation": 1,
+        "shortcut_prediction": 0
+      },
+      "generation_seed": 241721419
+    },
+    {
+      "id": "lte_valuation-exponent_in_factorization-7-59-10-2-51439400",
+      "family": "lte_valuation",
+      "template": "exponent_in_factorization",
+      "difficulty": "easy",
+      "text": "Find the exponent of 7 in the prime factorization of 59^2 - 10^2. Answer with a single non-negative integer.",
+      "exact_answer": "2",
+      "strategy_applies": true,
+      "features": {
+        "prime_type": "odd",
+        "p_divides_difference": "yes",
+        "p_divides_sum": "no",
+        "p_divides_a_or_b": "no",
+        "n_parity": "even",
+        "n_divisible_by_p": "no",
+        "difference_valuation": "2plus",
+        "exponent_size": "small"
+      },
+      "human_solution": "Set N = 59^2 - 10^2. First, 59 - 10 = 49 and v_7(49) = 2, so 7 divides 59 - 10 Neither 59 nor 10 is divisible by 7. Writing 59^2 - 10^2 = (59 - 10) \u00b7 \u03a3_{i=0}^{2-1} 59^i 10^{2-1-i}, the valuation of the cofactor is governed by v_7(2) = 0. This gives v_7(N) = v_7(59 - 10) + v_7(2) = 2 + 0 = 2. Hence the answer is 2.",
+      "latent_parameters": {
+        "a": 59,
+        "b": 10,
+        "n": 2,
+        "p": 7,
+        "instance_key": "v_7(59^2-10^2)",
+        "actual_valuation": 2,
+        "shortcut_prediction": 2
+      },
+      "generation_seed": 51439400
+    }
+  ]
+}

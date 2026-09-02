@@ -1,0 +1,79 @@
+{
+  "condition": "active",
+  "model": "mock",
+  "family": "lte_valuation",
+  "h0": "MOCK HYPOTHESIS v0: the method works unless the problem shows an obvious structural obstruction.",
+  "strategy": "MOCK STRATEGY: apply the shared method from the examples.",
+  "final_hypothesis": "MOCK HYPOTHESIS v11: refined from the evidence.",
+  "rounds": [
+    {
+      "round_index": 0,
+      "hypothesis_before": "MOCK HYPOTHESIS v0: the method works unless the problem shows an obvious structural obstruction.",
+      "hypothesis_after": "MOCK HYPOTHESIS v11: refined from the evidence.",
+      "constraints": {
+        "difference_valuation": "1"
+      },
+      "constraint_reason": "MOCK reason.",
+      "unsatisfiable_attempts": 0,
+      "observations": [
+        {
+          "problem_id": "lte_valuation-valuation-13-41-15-5-30044512",
+          "text": "Let N = 41^5 - 15^5. Compute v_13(N), the exponent of the prime 13 in the prime factorization of N. Answer with a single non-negative integer.",
+          "outcome": "SUCCESS",
+          "shown_features": {}
+        },
+        {
+          "problem_id": "lte_valuation-exponent_in_factorization-2-6-4-3-125379211",
+          "text": "Find the exponent of 2 in the prime factorization of 6^3 - 4^3. Answer with a single non-negative integer.",
+          "outcome": "FAILURE",
+          "shown_features": {}
+        }
+      ],
+      "generations": [
+        {
+          "stage": "query",
+          "model": "mock",
+          "family": "lte_valuation",
+          "prompt": "{\"system\": \"You are designing experiments to test and refine your own hypothesis. You cannot write code and you cannot choose specific numbers. You may only request problems by specifying values for the listed categorical features.\", \"user\": \"Method:\\nMOCK STRATEGY: apply the shared method from the examples.\\n\\nYour current rule for when the method works:\\nMOCK HYPOTHESIS v0: the method works unless the problem shows an obvious structural obstruction.\\n\\nThis is your first experiment.\\n\\nYou may now request a batch of 2 fresh problems by constraining between 1 and 3 of the following features. Every problem you receive will satisfy your constraints, and you will be told, for each one, whether applying the method actually succeeded.\\n\\nAvailable features and their allowed values:\\n- prime_type: odd, two\\n- p_divides_difference: yes, no\\n- p_divides_sum: yes, no\\n- p_divides_a_or_b: yes, no\\n- n_parity: odd, even\\n- n_divisible_by_p: yes, no\\n- difference_valuation: 0, 1, 2plus\\n- exponent_size: small, medium, large\\n\\nChoose constraints that are most likely to FALSIFY or sharpen your current rule: pick a region where your rule makes a confident prediction that you are least sure of.\\n\\nRespond with a single JSON object and nothing else:\\n\\n{\\\"constraints\\\": {\\\"feature_name\\\": \\\"allowed_value\\\"}, \\\"reason\\\": \\\"one or two sentences\\\"}\"}",
+          "response": "{\"constraints\": {\"difference_valuation\": \"1\"}, \"reason\": \"MOCK reason.\"}",
+          "output_tokens": 18,
+          "prompt_tokens": 323,
+          "meta": {
+            "max_new_tokens": 128,
+            "seed": 1464908,
+            "seconds": 0.0,
+            "round": 0
+          }
+        },
+        {
+          "stage": "revise",
+          "model": "mock",
+          "family": "lte_valuation",
+          "prompt": "{\"system\": \"You update a hypothesis in the light of new evidence. Be precise and conservative: keep what the evidence supports and change what it refutes.\", \"user\": \"Method:\\nMOCK STRATEGY: apply the shared method from the examples.\\n\\nYour current rule for when the method works:\\nMOCK HYPOTHESIS v0: the method works unless the problem shows an obvious structural obstruction.\\n\\nNew evidence. Each problem below was solved with the method, and the outcome says whether the method produced the correct result.\\n\\n--- Observation 1 ---\\nProblem: Let N = 41^5 - 15^5. Compute v_13(N), the exponent of the prime 13 in the prime factorization of N. Answer with a single non-negative integer.\\nOutcome of applying the strategy: SUCCESS\\n\\n--- Observation 2 ---\\nProblem: Find the exponent of 2 in the prime factorization of 6^3 - 4^3. Answer with a single non-negative integer.\\nOutcome of applying the strategy: FAILURE\\n\\nRevise your rule so that it is consistent with all of the evidence you have seen. The revised rule must still be a falsifiable, checkable condition stated in terms of features of a problem statement, not a list of the specific problems above.\\n\\nRespond with a single JSON object and nothing else:\\n\\n{\\\"hypothesis\\\": \\\"...\\\"}\"}",
+          "response": "{\"hypothesis\": \"MOCK HYPOTHESIS v11: refined from the evidence.\"}",
+          "output_tokens": 16,
+          "prompt_tokens": 299,
+          "meta": {
+            "max_new_tokens": 256,
+            "seed": 1486815382,
+            "seconds": 0.0,
+            "tag": "active-r0",
+            "n_observations": 2
+          }
+        }
+      ]
+    }
+  ],
+  "adaptation_output_tokens": 34,
+  "n_observations": 2,
+  "n_revisions": 1,
+  "n_unsatisfiable": 0,
+  "n_query_generations": 1,
+  "notes": {
+    "difficulty": "easy",
+    "batch_size": 2,
+    "show_features_in_observations": false,
+    "fallback_policy": "random",
+    "unsat_rate": 0.0
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "family": "order_minus_one",
+  "difficulty": "easy",
+  "balance": {
+    "n": 8,
+    "positive": 4,
+    "negative": 4
+  },
+  "problems": [
+    {
+      "id": "order_minus_one-least_n_congruence-69-83-1169681672",
+      "family": "order_minus_one",
+      "template": "least_n_congruence",
+      "difficulty": "easy",
+      "text": "Find the least positive integer n such that 69^n \u2261 -1 (mod 83). If no such n exists, answer NONE.",
+      "exact_answer": "NONE",
+      "strategy_applies": false,
+      "features": {
+        "modulus_structure": "prime",
+        "base_coprime": "yes",
+        "global_order_parity": "odd",
+        "local_order_2adic_pattern": "contains_odd",
+        "number_of_components": "1",
+        "modulus_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 69,
+        "m": 83,
+        "instance_key": "69^n=-1 mod 83",
+        "least_n": null,
+        "components": [
+          83
+        ],
+        "global_order": 41,
+        "local_orders": {
+          "83": 41
+        }
+      },
+      "generation_seed": 1169681672
+    },
+    {
+      "id": "order_minus_one-least_n_divisibility-7-79-1156524863",
+      "family": "order_minus_one",
+      "template": "least_n_divisibility",
+      "difficulty": "easy",
+      "text": "Find the least positive integer n such that 79 divides 7^n + 1. If no such n exists, answer NONE.",
+      "exact_answer": "39",
+      "strategy_applies": true,
+      "features": {
+        "modulus_structure": "prime",
+        "base_coprime": "yes",
+        "global_order_parity": "even",
+        "local_order_2adic_pattern": "aligned_positive",
+        "number_of_components": "1",
+        "modulus_size": "small"
+      },
+      "human_solution": "Since gcd(7, 79) = 1, the base is a unit modulo 79. The multiplicative order of 7 modulo 79 is d = 78. If 7^n \u2261 -1 (mod 79) then squaring gives 7^(2n) \u2261 1, so d | 2n, while d does not divide n. Therefore n must be an odd multiple of d/2 = 39. Direct computation gives 7^39 \u2261 78 \u2261 -1 (mod 79), so the exponent d/2 does produce -1. The least such n is therefore 39.",
+      "latent_parameters": {
+        "a": 7,
+        "m": 79,
+        "instance_key": "7^n=-1 mod 79",
+        "least_n": 39,
+        "components": [
+          79
+        ],
+        "global_order": 78,
+        "local_orders": {
+          "79": 78
+        }
+      },
+      "generation_seed": 1156524863
+    },
+    {
+      "id": "order_minus_one-least_n_congruence-30-49-413334638",
+      "family": "order_minus_one",
+      "template": "least_n_congruence",
+      "difficulty": "easy",
+      "text": "Find the least positive integer n such that 30^n \u2261 -1 (mod 49). If no such n exists, answer NONE.",
+      "exact_answer": "NONE",
+      "strategy_applies": false,
+      "features": {
+        "modulus_structure": "prime_power",
+        "base_coprime": "yes",
+        "global_order_parity": "odd",
+        "local_order_2adic_pattern": "contains_odd",
+        "number_of_components": "1",
+        "modulus_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 30,
+        "m": 49,
+        "instance_key": "30^n=-1 mod 49",
+        "least_n": null,
+        "components": [
+          49
+        ],
+        "global_order": 3,
+        "local_orders": {
+          "49": 3
+        }
+      },
+      "generation_seed": 413334638
+    },
+    {
+      "id": "order_minus_one-least_n_divisibility-25-37-1396825173",
+      "family": "order_minus_one",
+      "template": "least_n_divisibility",
+      "difficulty": "easy",
+      "text": "Find the least positive integer n such that 37 divides 25^n + 1. If no such n exists, answer NONE.",
+      "exact_answer": "9",
+      "strategy_applies": true,
+      "features": {
+        "modulus_structure": "prime",
+        "base_coprime": "yes",
+        "global_order_parity": "even",
+        "local_order_2adic_pattern": "aligned_positive",
+        "number_of_components": "1",
+        "modulus_size": "small"
+      },
+      "human_solution": "Since gcd(25, 37) = 1, the base is a unit modulo 37. The multiplicative order of 25 modulo 37 is d = 18. If 25^n \u2261 -1 (mod 37) then squaring gives 25^(2n) \u2261 1, so d | 2n, while d does not divide n. Therefore n must be an odd multiple of d/2 = 9. Direct computation gives 25^9 \u2261 36 \u2261 -1 (mod 37), so the exponent d/2 does produce -1. The least such n is therefore 9.",
+      "latent_parameters": {
+        "a": 25,
+        "m": 37,
+        "instance_key": "25^n=-1 mod 37",
+        "least_n": 9,
+        "components": [
+          37
+        ],
+        "global_order": 18,
+        "local_orders": {
+          "37": 18
+        }
+      },
+      "generation_seed": 1396825173
+    },
+    {
+      "id": "order_minus_one-least_n_congruence-42-53-77746484",
+      "family": "order_minus_one",
+      "template": "least_n_congruence",
+      "difficulty": "easy",
+      "text": "Find the least positive integer n such that 42^n \u2261 -1 (mod 53). If no such n exists, answer NONE.",
+      "exact_answer": "NONE",
+      "strategy_applies": false,
+      "features": {
+        "modulus_structure": "prime",
+        "base_coprime": "yes",
+        "global_order_parity": "odd",
+        "local_order_2adic_pattern": "contains_odd",
+        "number_of_components": "1",
+        "modulus_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 42,
+        "m": 53,
+        "instance_key": "42^n=-1 mod 53",
+        "least_n": null,
+        "components": [
+          53
+        ],
+        "global_order": 13,
+        "local_orders": {
+          "53": 13
+        }
+      },
+      "generation_seed": 77746484
+    },
+    {
+      "id": "order_minus_one-least_n_divisibility-67-71-1003419646",
+      "family": "order_minus_one",
+      "template": "least_n_divisibility",
+      "difficulty": "easy",
+      "text": "Find the least positive integer n such that 71 divides 67^n + 1. If no such n exists, answer NONE.",
+      "exact_answer": "35",
+      "strategy_applies": true,
+      "features": {
+        "modulus_structure": "prime",
+        "base_coprime": "yes",
+        "global_order_parity": "even",
+        "local_order_2adic_pattern": "aligned_positive",
+        "number_of_components": "1",
+        "modulus_size": "small"
+      },
+      "human_solution": "Since gcd(67, 71) = 1, the base is a unit modulo 71. The multiplicative order of 67 modulo 71 is d = 70. If 67^n \u2261 -1 (mod 71) then squaring gives 67^(2n) \u2261 1, so d | 2n, while d does not divide n. Therefore n must be an odd multiple of d/2 = 35. Direct computation gives 67^35 \u2261 70 \u2261 -1 (mod 71), so the exponent d/2 does produce -1. The least such n is therefore 35.",
+      "latent_parameters": {
+        "a": 67,
+        "m": 71,
+        "instance_key": "67^n=-1 mod 71",
+        "least_n": 35,
+        "components": [
+          71
+        ],
+        "global_order": 70,
+        "local_orders": {
+          "71": 70
+        }
+      },
+      "generation_seed": 1003419646
+    },
+    {
+      "id": "order_minus_one-least_n_congruence-7-9-1959847384",
+      "family": "order_minus_one",
+      "template": "least_n_congruence",
+      "difficulty": "easy",
+      "text": "Find the least positive integer n such that 7^n \u2261 -1 (mod 9). If no such n exists, answer NONE.",
+      "exact_answer": "NONE",
+      "strategy_applies": false,
+      "features": {
+        "modulus_structure": "prime_power",
+        "base_coprime": "yes",
+        "global_order_parity": "odd",
+        "local_order_2adic_pattern": "contains_odd",
+        "number_of_components": "1",
+        "modulus_size": "small"
+      },
+      "human_solution": "",
+      "latent_parameters": {
+        "a": 7,
+        "m": 9,
+        "instance_key": "7^n=-1 mod 9",
+        "least_n": null,
+        "components": [
+          9
+        ],
+        "global_order": 3,
+        "local_orders": {
+          "9": 3
+        }
+      },
+      "generation_seed": 1959847384
+    },
+    {
+      "id": "order_minus_one-least_n_divisibility-39-43-1322165544",
+      "family": "order_minus_one",
+      "template": "least_n_divisibility",
+      "difficulty": "easy",
+      "text": "Find the least positive integer n such that 43 divides 39^n + 1. If no such n exists, answer NONE.",
+      "exact_answer": "7",
+      "strategy_applies": true,
+      "features": {
+        "modulus_structure": "prime",
+        "base_coprime": "yes",
+        "global_order_parity": "even",
+        "local_order_2adic_pattern": "aligned_positive",
+        "number_of_components": "1",
+        "modulus_size": "small"
+      },
+      "human_solution": "Since gcd(39, 43) = 1, the base is a unit modulo 43. The multiplicative order of 39 modulo 43 is d = 14. If 39^n \u2261 -1 (mod 43) then squaring gives 39^(2n) \u2261 1, so d | 2n, while d does not divide n. Therefore n must be an odd multiple of d/2 = 7. Direct computation gives 39^7 \u2261 42 \u2261 -1 (mod 43), so the exponent d/2 does produce -1. The least such n is therefore 7.",
+      "latent_parameters": {
+        "a": 39,
+        "m": 43,
+        "instance_key": "39^n=-1 mod 43",
+        "least_n": 7,
+        "components": [
+          43
+        ],
+        "global_order": 14,
+        "local_orders": {
+          "43": 14
+        }
+      },
+      "generation_seed": 1322165544
+    }
+  ]
+}
