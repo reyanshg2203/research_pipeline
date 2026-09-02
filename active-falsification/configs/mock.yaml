@@ -29,8 +29,3 @@ max_new_tokens:
   query: 128
   revise: 256
   classify: 32
-
-# Active query schema: 'full' is the spec default. 'label_decoupled' removes
-# the features that determine the oracle label (see scripts/audit_schema.py)
-# and is the stronger, opt-in variant of the experiment.
-active_schema_profile: full

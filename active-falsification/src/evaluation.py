@@ -59,7 +59,11 @@ def evaluate_hypothesis(
                 "gold_strategy_applies": problem.strategy_applies,
                 "predicted": pred,
                 "parsed": pred is not None,
-                "correct": (pred is not None and pred == problem.strategy_applies),
+                # Revision memo S.5: this is the model's BOUNDARY prediction being
+                # right, not the model solving the problem and not applicability.
+                "model_boundary_correct": (
+                    pred is not None and pred == problem.strategy_applies
+                ),
                 "raw_response": gen.response,
                 "output_tokens": gen.output_tokens,
             }

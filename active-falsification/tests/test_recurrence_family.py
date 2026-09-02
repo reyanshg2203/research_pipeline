@@ -17,12 +17,14 @@ from sympy import Poly, Rational, cancel, symbols, together
 from families.recurrence_substitution import (
     RecurrenceSubstitutionFamily,
     frac_str,
+    has_linearising_shift,
     iterate_terms,
     linearising_shifts,
     normalise,
     poly_eval as poly_eval_local,
     rational_fixed_points,
-    strategy_succeeds,
+    strategy_succeeds_on,
+    usable_shifts,
 )
 
 X, Y = symbols("x y")
@@ -68,7 +70,7 @@ def test_mobius_oracle_matches_the_discriminant_criterion():
         A2, B2 = num
         C2, D2 = den
         expected = is_square((D2 - A2) ** 2 + 4 * C2 * B2)
-        assert strategy_succeeds(num, den) == expected, (num, den)
+        assert has_linearising_shift(num, den) == expected, (num, den)
         checked += 1
     assert checked > 200
 
@@ -94,15 +96,19 @@ def test_only_fixed_points_can_linearise():
 
 
 def test_family_oracle_agrees_with_independent_sympy_check():
+    """Revision memo S.3 condition 4: verified symbolically, not by a flag."""
     rng = random.Random(2)
     fam = RecurrenceSubstitutionFamily()
     for difficulty in ("easy", "medium", "hard"):
         for want in (True, False):
             for _ in range(12):
                 p = fam.sample_random(rng, difficulty, "compute_term", want_applies=want)
-                num, den = p.latent_parameters["num"], p.latent_parameters["den"]
+                lp = p.latent_parameters
+                num, den = lp["num"], lp["den"]
+                terms = iterate_terms(num, den, Fraction(lp["x0"]), lp["horizon"])
                 independent = any(
                     sympy_linearises(num, den, c) is not None
+                    and all(t != c for t in terms)
                     for c in rational_fixed_points(num, den)
                 )
                 assert independent == p.strategy_applies, (num, den)
@@ -133,13 +139,105 @@ def test_positive_instances_transform_to_an_affine_recurrence_and_match_terms():
     assert checked == 60
 
 
+def test_oracle_requires_the_substitution_to_be_defined_on_the_trajectory():
+    """Revision memo S.3 condition 3.
+
+    x_(n+1) = (2x - 1)/x has fixed point 1 and is linearisable, but a trajectory
+    that passes through 1 makes y = 1/(x-1) undefined there, so the strategy is
+    not usable on that instance.
+    """
+    num, den = normalise([2, -1], [1, 0])
+    assert has_linearising_shift(num, den) is True
+    assert Fraction(1) in rational_fixed_points(num, den)
+    # a trajectory that never reaches the fixed point: usable
+    assert strategy_succeeds_on(num, den, Fraction(3), 3) is True
+    # starting exactly at the fixed point: y is undefined at every index
+    assert strategy_succeeds_on(num, den, Fraction(1), 3) is False
+    assert usable_shifts(num, den, Fraction(1), 3) == []
+
+
+def test_every_generated_positive_has_a_usable_shift_on_its_own_trajectory():
+    rng = random.Random(21)
+    fam = RecurrenceSubstitutionFamily()
+    for _ in range(40):
+        p = fam.sample_random(rng, "medium", "compute_term", want_applies=True)
+        lp = p.latent_parameters
+        x0 = Fraction(lp["x0"])
+        shifts = usable_shifts(lp["num"], lp["den"], x0, lp["horizon"])
+        assert shifts, (lp["num"], lp["den"])
+        terms = iterate_terms(lp["num"], lp["den"], x0, lp["horizon"])
+        c = shifts[0][0]
+        assert all(t != c for t in terms)
+        assert p.oracle_features["substitution_defined_on_trajectory"] == "yes"
+
+
+def test_no_singularity_over_the_requested_horizon_for_valid_positives():
+    """Revision memo S.7: positives must be well defined across the horizon."""
+    rng = random.Random(22)
+    fam = RecurrenceSubstitutionFamily()
+    for difficulty in ("easy", "medium", "hard"):
+        for _ in range(15):
+            p = fam.sample_random(rng, difficulty, "compute_term", want_applies=True)
+            lp = p.latent_parameters
+            terms = iterate_terms(
+                lp["num"], lp["den"], Fraction(lp["x0"]), lp["horizon"]
+            )
+            assert terms is not None and len(terms) == lp["horizon"] + 1
+
+
+def test_negative_perturbations_fail_the_symbolic_affine_test():
+    """Revision memo S.3: negatives are VERIFIED, never trusted from a flag."""
+    rng = random.Random(23)
+    fam = RecurrenceSubstitutionFamily()
+    for _ in range(40):
+        p = fam.sample_random(rng, "medium", "compute_term", want_applies=False)
+        lp = p.latent_parameters
+        assert lp["perturbation"] is not None, "negatives must be perturbations"
+        # independent symbolic re-check, not the stored flag
+        for c in rational_fixed_points(lp["num"], lp["den"]):
+            assert sympy_linearises(lp["num"], lp["den"], c) is None, lp
+        assert lp["symbolic_affine_check"] == "non_affine"
+
+
+def test_challenge_templates_never_reveal_the_substitution():
+    """Revision memo S.3: the removed `transformed_value` template leaked 1/(x-c)."""
+    fam = RecurrenceSubstitutionFamily()
+    assert "transformed_value" not in fam.challenge_templates
+    assert fam.challenge_templates == ["implicit_form", "shifted_index"]
+    rng = random.Random(24)
+    for template in fam.base_templates + fam.challenge_templates:
+        for want in (True, False):
+            for _ in range(6):
+                p = fam.sample_random(rng, "medium", template, want_applies=want)
+                text = p.text
+                assert "1/(x" not in text.replace(" ", "")
+                assert "y_" not in text
+                for c in p.latent_parameters["linearising_shifts"]:
+                    assert f"1/(x_{{}} - {c[0]})" not in text
+                assert "substitut" not in text.lower()
+
+
+def test_shifted_index_template_is_the_same_mathematics():
+    rng = random.Random(25)
+    fam = RecurrenceSubstitutionFamily()
+    for _ in range(20):
+        p = fam.sample_random(rng, "medium", "shifted_index", want_applies=None)
+        lp = p.latent_parameters
+        assert lp["index_offset"] == 1
+        assert f"x_1 = {lp['x0']}" in p.text
+        assert f"Compute x_{lp['horizon'] + 1}" in p.text
+        terms = iterate_terms(lp["num"], lp["den"], Fraction(lp["x0"]), lp["horizon"])
+        assert p.exact_answer == frac_str(terms[lp["horizon"]])
+
+
 def test_negative_instances_admit_no_linearising_shift_at_all():
     rng = random.Random(4)
     fam = RecurrenceSubstitutionFamily()
     for _ in range(60):
         p = fam.sample_random(rng, "medium", "compute_term", want_applies=False)
         num, den = p.latent_parameters["num"], p.latent_parameters["den"]
-        assert linearising_shifts(num, den) == []
+        assert usable_shifts(num, den, Fraction(p.latent_parameters["x0"]),
+                             p.latent_parameters["horizon"]) == []
         assert rational_fixed_points(num, den) == [] or all(
             sympy_linearises(num, den, c) is None
             for c in rational_fixed_points(num, den)
@@ -163,7 +261,7 @@ def test_irreducible_quadratic_maps_are_never_linearisable():
 
         if poly_eval(num, Fraction(-den[1], den[0])) == 0:
             continue
-        assert strategy_succeeds(num, den) is False, (num, den)
+        assert has_linearising_shift(num, den) is False, (num, den)
         checked += 1
     assert checked > 100
 
@@ -172,7 +270,7 @@ def test_reducible_quadratic_map_is_correctly_treated_as_affine():
     """(-x^2-3x+4)/(5x-5) reduces to -(x+4)/5, which IS linearisable."""
     num, den = normalise([-1, -3, 4], [5, -5])
     assert poly_eval_local(num, Fraction(1)) == 0 and poly_eval_local(den, Fraction(1)) == 0
-    assert strategy_succeeds(num, den) is True
+    assert has_linearising_shift(num, den) is True
 
 
 def test_generator_never_emits_a_reducible_quadratic():
@@ -210,6 +308,22 @@ def test_generated_problems_never_have_an_undefined_orbit():
                                       lp["horizon"])
                         is not None
                     )
+
+
+def test_positive_has_a_verified_rational_fixed_point():
+    """Revision memo S.7: the fixed point is exact and re-verifiable."""
+    rng = random.Random(26)
+    fam = RecurrenceSubstitutionFamily()
+    for _ in range(30):
+        p = fam.sample_random(rng, "medium", "compute_term", want_applies=True)
+        lp = p.latent_parameters
+        num, den = lp["num"], lp["den"]
+        c = Fraction(lp["usable_shifts"][0][0])
+        # f(c) == c, checked directly from the coefficients
+        fc = poly_eval_local(num, c) / poly_eval_local(den, c)
+        assert fc == c, (num, den, c)
+        assert p.oracle_features["has_rational_fixed_point"] == "yes"
+        assert p.oracle_features["transformed_dynamics"] == "affine"
 
 
 def test_rearranged_rendering_preserves_the_same_recurrence():

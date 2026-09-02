@@ -111,15 +111,15 @@ def test_unsatisfiable_request_triggers_one_reformulation_and_then_succeeds():
     retry_prompt = model.calls[1]["user"]
     assert retry_prompt.startswith("UNSATISFIABLE_REQUEST")
     assert "unknown feature name" in retry_prompt
-    for feature in fam.queryable_schema():
+    for feature in fam.query_schema():
         assert feature in retry_prompt
 
 
 def test_two_failed_requests_fall_back_to_the_passive_distribution_and_log_it():
     fam = get_family("order_minus_one")
     model = ScriptedModel([
-        constraints_response({"number_of_components": "3"}),  # outside 'easy'
-        constraints_response({"still": "wrong"}),             # invalid again
+        constraints_response({"number_of_factors": "3"}),  # outside 'easy'
+        constraints_response({"still": "wrong"}),           # invalid again
         revision_response("H1"),
     ])
     result = run_active(model, fam, "S", "H0", "easy", rounds=1, batch_size=2,
@@ -134,7 +134,7 @@ def test_two_failed_requests_fall_back_to_the_passive_distribution_and_log_it():
 def test_out_of_tier_request_reports_the_tier_in_the_reason():
     fam = get_family("order_minus_one")
     model = ScriptedModel([
-        constraints_response({"number_of_components": "3"}),
+        constraints_response({"number_of_factors": "3"}),
         constraints_response({"base_coprime": "yes"}),
         revision_response("H1"),
     ])
@@ -249,10 +249,11 @@ def test_passive_excludes_frozen_instances():
     assert len(ids) == len(set(ids))
 
 
-def test_label_decoupled_profile_hides_the_label_features_from_active():
-    fam = get_family("recurrence_substitution", "label_decoupled")
+def test_oracle_features_are_invisible_and_unrequestable_in_the_active_loop():
+    """Revision memo S.4: asking for an oracle feature is an unknown-name error."""
+    fam = get_family("recurrence_substitution")
     model = ScriptedModel([
-        constraints_response({"transformed_dynamics": "non_affine"}),  # now unknown
+        constraints_response({"transformed_dynamics": "non_affine"}),  # oracle-only
         constraints_response({"horizon_size": "small"}),
         revision_response("H1"),
     ])
@@ -260,5 +261,21 @@ def test_label_decoupled_profile_hides_the_label_features_from_active():
                         max_new_tokens=MNT, master_seed=13, exclude_keys=set())
     assert result.n_unsatisfiable == 1
     assert "unknown feature name" in model.calls[1]["user"]
-    assert "transformed_dynamics" not in model.calls[0]["user"]
+    # the schema shown in the FIRST prompt never mentioned it
+    for feature in fam.oracle_feature_schema:
+        assert feature not in model.calls[0]["user"]
     assert result.rounds[0].constraints == {"horizon_size": "small"}
+
+
+def test_active_can_steer_the_task_form():
+    fam = get_family("lte_valuation")
+    model = ScriptedModel([
+        constraints_response({"task_form": "exponent_in_factorization"}),
+        revision_response("H1"),
+    ])
+    result = run_active(model, fam, "S", "H0", "medium", rounds=1, batch_size=3,
+                        max_new_tokens=MNT, master_seed=14, exclude_keys=set())
+    assert result.rounds[0].constraints == {"task_form": "exponent_in_factorization"}
+    assert result.rounds[0].observations
+    for obs in result.rounds[0].observations:
+        assert "prime factorization of" in obs.text

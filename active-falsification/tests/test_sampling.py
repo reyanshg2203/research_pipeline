@@ -35,11 +35,45 @@ def test_unknown_feature_names_and_values_are_rejected():
             fam.sample_conditioned(rng, {"not_a_feature": "x"}, "medium",
                                    fam.base_templates[0])
         assert "unknown feature" in str(exc.value)
-        feature = list(fam.active_query_schema)[0]
+        feature = list(fam.query_schema())[0]
         with pytest.raises(UnsatisfiableConstraints) as exc:
             fam.sample_conditioned(rng, {feature: "not_a_value"}, "medium",
                                    fam.base_templates[0])
         assert "not allowed" in str(exc.value)
+
+
+def test_oracle_feature_names_are_rejected_like_unknown_names():
+    """Revision memo S.4: the model must not learn that oracle features exist."""
+    for name, fam in all_families().items():
+        for key in fam.oracle_feature_schema:
+            value = fam.oracle_feature_schema[key][0]
+            with pytest.raises(UnsatisfiableConstraints) as exc:
+                fam.sample_conditioned(
+                    random.Random(0), {key: value}, "medium", fam.base_templates[0]
+                )
+            assert "unknown feature" in str(exc.value), (name, key)
+
+
+def test_task_form_constraint_switches_the_rendered_template():
+    for name, fam in all_families().items():
+        rng = random.Random(1)
+        for template in fam.base_templates:
+            p = fam.sample_conditioned(
+                rng, {"task_form": template}, "medium", fam.base_templates[0]
+            )
+            assert p is not None
+            assert p.template == template
+            assert p.query_features["task_form"] == template
+
+
+def test_challenge_templates_cannot_be_requested_by_active():
+    for name, fam in all_families().items():
+        for challenge in fam.challenge_templates:
+            with pytest.raises(UnsatisfiableConstraints):
+                fam.sample_conditioned(
+                    random.Random(2), {"task_form": challenge}, "medium",
+                    fam.base_templates[0],
+                )
 
 
 def test_more_than_three_constraints_is_rejected():
@@ -47,7 +81,7 @@ def test_more_than_three_constraints_is_rejected():
     constraints = {
         "prime_type": "odd",
         "n_parity": "even",
-        "difference_valuation": "1",
+        "p_divides_difference": "yes",
         "exponent_size": "small",
     }
     with pytest.raises(UnsatisfiableConstraints) as exc:
@@ -62,31 +96,22 @@ def test_empty_constraints_are_rejected():
 
 
 def test_contradictory_constraints_raise_with_an_explanation():
-    fam = get_family("lte_valuation")
+    fam = get_family("order_minus_one")
     with pytest.raises(UnsatisfiableConstraints) as exc:
         fam.sample_conditioned(
             random.Random(0),
-            {"p_divides_difference": "yes", "difference_valuation": "0"},
+            {"modulus_type": "prime", "number_of_factors": "2"},
             "medium",
-            "valuation",
+            "least_n_congruence",
         )
-    assert "contradicts" in str(exc.value) or "does NOT divide" in str(exc.value)
-
-    fam3 = get_family("recurrence_substitution")
-    with pytest.raises(UnsatisfiableConstraints):
-        fam3.sample_conditioned(
-            random.Random(0),
-            {"shift_structure": "aligned", "transformed_dynamics": "non_affine"},
-            "medium",
-            "compute_term",
-        )
+    assert "contradicts" in str(exc.value)
 
 
 def test_out_of_tier_constraints_raise():
     fam = get_family("order_minus_one")
     with pytest.raises(UnsatisfiableConstraints) as exc:
         fam.sample_conditioned(
-            random.Random(0), {"number_of_components": "3"}, "easy",
+            random.Random(0), {"number_of_factors": "3"}, "easy",
             "least_n_congruence",
         )
     assert "difficulty" in str(exc.value)
@@ -96,7 +121,9 @@ def test_satisfiable_constraints_are_honoured_exactly():
     checks = {
         "order_minus_one": ({"base_coprime": "yes"}, "least_n_congruence"),
         "lte_valuation": ({"prime_type": "odd", "n_parity": "even"}, "valuation"),
-        "recurrence_substitution": ({"transformed_dynamics": "affine"}, "compute_term"),
+        "recurrence_substitution": (
+            {"numerator_degree": "linear", "horizon_size": "small"}, "compute_term"
+        ),
     }
     for name, (constraints, template) in checks.items():
         fam = get_family(name)
@@ -106,17 +133,17 @@ def test_satisfiable_constraints_are_honoured_exactly():
             assert p is not None, (name, constraints)
             fam.validate_problem(p)
             for key, value in constraints.items():
-                assert str(p.features[key]) == value
+                assert str(p.query_features[key]) == value
 
 
 def test_subset_constraints_are_supported():
     fam = get_family("lte_valuation")
     rng = random.Random(2)
     p = fam.sample_conditioned(
-        rng, {"difference_valuation": ["1", "2plus"]}, "medium", "valuation"
+        rng, {"exponent_size": ["small", "medium"]}, "medium", "valuation"
     )
     assert p is not None
-    assert p.features["difference_valuation"] in ("1", "2plus")
+    assert p.query_features["exponent_size"] in ("small", "medium")
 
 
 def test_splits_are_disjoint_and_balanced():
@@ -141,6 +168,25 @@ def test_assert_disjoint_detects_overlap():
     with pytest.raises(ValueError) as exc:
         assert_disjoint({"a": items, "b": items[:2]})
     assert "leakage" in str(exc.value)
+
+
+def test_query_and_oracle_namespaces_are_disjoint():
+    """Revision memo S.4: two namespaces, never overlapping."""
+    for name, fam in all_families().items():
+        assert not (set(fam.queryable_features) & set(fam.oracle_feature_schema))
+        rng = random.Random(3)
+        p = fam.sample_random(rng, "medium", fam.base_templates[0])
+        assert not (set(p.query_features) & set(p.oracle_features))
+        assert set(p.oracle_features) == set(fam.oracle_feature_schema)
+
+
+def test_every_problem_carries_an_applicability_reason():
+    for name, fam in all_families().items():
+        rng = random.Random(4)
+        for want in (True, False):
+            p = fam.sample_random(rng, "medium", fam.base_templates[0],
+                                  want_applies=want)
+            assert p.applicability_reason.strip()
 
 
 def test_seed_candidates_are_all_positive_and_carry_solutions():
@@ -169,3 +215,12 @@ def test_validate_problem_rejects_a_tampered_answer():
     with pytest.raises(ValueError) as exc:
         fam.validate_problem(p)
     assert "answer mismatch" in str(exc.value)
+
+
+def test_validate_problem_rejects_an_oracle_feature_in_the_query_namespace():
+    fam = get_family("recurrence_substitution")
+    p = fam.sample_random(random.Random(10), "medium", "compute_term")
+    p.query_features["transformed_dynamics"] = "affine"
+    with pytest.raises(ValueError) as exc:
+        fam.validate_problem(p)
+    assert "not in schema" in str(exc.value)

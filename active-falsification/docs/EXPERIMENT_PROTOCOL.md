@@ -78,6 +78,13 @@ Three disjoint sets per family, each from its own derived RNG stream, each
 | hidden IID | `iid_test_size` | unseen instances, base templates |
 | hidden challenge | `challenge_test_size` | held-out templates, same boundary |
 
+The challenge split changes the *manifestation* only, never the applicability
+definition: existence/counting wording for Family 1, largest-k / factor-out-p
+wording for Family 2, implicit form and a shifted indexing convention for
+Family 3. It is never merely "bigger numbers", and it never reveals a latent
+transformation — the old `transformed_value` template, which asked for
+`1/(x_N - c)`, was removed for exactly that reason.
+
 `assert_disjoint` raises if any mathematical instance appears in two sets, and
 adaptation draws exclude every frozen key. Hidden tests are never regenerated
 mid-run.
@@ -105,8 +112,8 @@ cite the predeclared calibration criteria and be logged.
 
 Per round:
 
-1. the model is shown `S_hat`, the current `H_t`, the allowed feature schema and
-   a compact summary of its recent experiments;
+1. the model is shown `S_hat`, the current `H_t`, the **query** feature schema
+   (never the oracle features) and a compact summary of its recent experiments;
 2. it returns 1–3 feature constraints plus a reason;
 3. every feature name and value is validated; subset constraints (a list of
    allowed values) are supported;
@@ -115,7 +122,13 @@ Per round:
    everything already seen;
 5. the **programmatic oracle** labels each as SUCCESS or FAILURE;
 6. the model is shown problem text and outcome — feature values are withheld
-   unless `show_features_in_observations` is enabled — and revises `H_t → H_(t+1)`.
+   unless `show_features_in_observations` is enabled, and even then only *query*
+   features can ever be shown — and revises `H_t → H_(t+1)`.
+
+Asking for an oracle feature by name returns `unknown feature name`, exactly as
+an invented name would, so the model never learns those features exist. A
+challenge template is likewise not requestable via `task_form`, so a held-out
+surface can never appear during adaptation.
 
 **Invalid or unsatisfiable requests.** The model receives a literal
 `UNSATISFIABLE_REQUEST` message carrying the reason and the allowed schema, and
@@ -191,6 +204,9 @@ overclaim.
 
 | safeguard | implementation |
 |---|---|
+| two feature namespaces | `query_features` vs `oracle_features`; `validate_problem` rejects any overlap, and constraints validate against the query schema only |
+| no query feature is a label synonym | measured, not asserted: `scripts/audit_schema.py` and a unit test both fail the build if one appears |
+| three concepts kept distinct | `exact_answer` / `strategy_applies` / `model_answer_correct` / `model_boundary_correct`; no bare `success` or `correct` anywhere |
 | no post-hoc family tuning | difficulty rule is predeclared in `src/calibration.py` and recorded in the manifest; no code path reads adaptation results |
 | H0 calibration logged | `induction_*.json` stores `h0_pilot_accuracy` and its band, written before adaptation |
 | common seed set | one seed set per family for all models; model-specific seeds would need a config flag and a visible warning |

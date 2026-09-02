@@ -44,6 +44,10 @@ def solve_once(
         meta={"problem_id": problem.id, "tag": tag},
     )
     result = grade(gen.response, problem.exact_answer)
+    graded = result.to_json()
+    # Revision memo S.5: never call this bare "correct".  It is the model's
+    # answer to the mathematical problem, not strategy applicability.
+    graded["model_answer_correct"] = graded.pop("correct")
     return {
         "model": model.spec.alias,
         "family": family_name,
@@ -51,11 +55,11 @@ def solve_once(
         "problem_id": problem.id,
         "template": problem.template,
         "difficulty": problem.difficulty,
-        "gold_answer": problem.exact_answer,
+        "exact_answer": problem.exact_answer,
         "strategy_applies": problem.strategy_applies,  # researcher-side only
         "output_tokens": gen.output_tokens,
         "raw_response": gen.response,
-        **result.to_json(),
+        **graded,
     }
 
 
@@ -124,7 +128,7 @@ def summarise_calibration(runs: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]
 
 def _acc_row(family: str, difficulty: str, model: str, sel: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     n = len(sel)
-    correct = sum(1 for r in sel if r["correct"])
+    correct = sum(1 for r in sel if r["model_answer_correct"])
     parse_fail = sum(1 for r in sel if r["parse_failed"])
     tokens = sum(r["output_tokens"] for r in sel)
     return {
@@ -209,7 +213,7 @@ def screen_seed_candidates(
 
     solve_counts: Dict[str, int] = {p.id: 0 for p in candidates}
     for r in runs:
-        if r["correct"]:
+        if r["model_answer_correct"]:
             solve_counts[r["problem_id"]] += 1
 
     return {

@@ -7,12 +7,17 @@ Every box is a claim **you** are making, not one the code can make for you.
 
 ## A. Mathematics
 
-- [ ] I understand the exact mathematical strategy **S1** (multiplicative order / `a^n ≡ -1`).
+- [ ] I understand the exact mathematical strategy **S1**, and that it is the NARROW half-order shortcut (compute `d = ord_m(a)`; when `d` is even try `n = d/2`) — not a full compatibility analysis.
 - [ ] I understand the **S1 applicability oracle** and I have manually checked worked examples, including a composite modulus where the global order is even but the half-order power is not `-1`.
-- [ ] I understand **S2** (Lifting the Exponent) and I have manually checked both the theorem boundary and the *operational* boundary the paper actually uses (`actual == shortcut`), including a `p = 2` even-exponent case and a `p | a, p | b` case.
+- [ ] I have confirmed that "the S1 shortcut does not apply" is never treated as "the problem has no solution": the exact answer always comes from independent enumeration.
+- [ ] I understand that **S2 applicability is the theorem's domain** (`p` odd, `p | a-b`, `p ∤ a`, `p ∤ b`), NOT numerical agreement, and I have checked an accidental-match negative where the shortcut returns the right number outside the domain.
 - [ ] I understand **S3** (shift-and-reciprocal linearisation), the proof that a linearising shift must be a fixed point, and the discriminant criterion for Möbius maps, and I have manually verified a positive and a negative instance.
+- [ ] I have confirmed that S3 negatives are verified symbolically rather than trusted from a generator flag, and that condition 3 (the substitution is defined along the trajectory) is actually checked.
 - [ ] I have read the **deviation notes** in `docs/FAMILY_SPEC.md` and I accept them:
   - [ ] Family 1 template D is realised as a count (`count_up_to`) rather than a free-text classification.
+  - [ ] Family 1 seeds mix prime, prime-power and composite moduli, so the seeds alone do not suggest "the shortcut works iff the modulus is prime".
+  - [ ] Family 2 positive seeds span exact valuations 1, 2 and 3+, and none has valuation 0.
+  - [ ] Family 3's `transformed_value` challenge template is removed, since it revealed `1/(x - c)`.
   - [ ] Family 1's `existence` challenge template makes the boundary question identical to the problem question.
   - [ ] Family 3's oracle uses the **existential** reading of "there exists a shift `c`", not a hidden designated constant.
   - [ ] Family 3 renders all instances from normalised coefficients so the surface form does not leak the label.
@@ -30,10 +35,11 @@ Every box is a claim **you** are making, not one the code can make for you.
 
 - [ ] I have read every prompt in `docs/PROMPTS.md` verbatim.
 - [ ] I confirm no prompt contains `strategy_applies`, a canonical strategy description, hidden test membership, or latent parameters not visible in the problem.
-- [ ] I have inspected the **Active feature schema** actually shown to the model (`queryable_schemas` in `run_manifest.json`).
-- [ ] I have read the **schema/label determinacy** table in `docs/FAMILY_SPEC.md` and the output of `python scripts/audit_schema.py`.
-- [ ] I have decided which `active_schema_profile` the paper reports (`full` or `label_decoupled`) and the paper states it explicitly.
-- [ ] If `full`: the paper discusses that `local_order_2adic_pattern` (Family 1) and `transformed_dynamics` (Family 3) are effectively the label, so Active can request failures directly.
+- [ ] I have inspected the **Active query schema** actually shown to the model (`active_query_schemas` in `run_manifest.json`) and confirmed every value is observable from a problem statement.
+- [ ] I have inspected `oracle_only_feature_schemas` in the manifest and confirmed none of those names is requestable.
+- [ ] I have read the **measured determinacy summary** in `docs/FAMILY_SPEC.md` and the output of `python scripts/audit_schema.py`, and it reports PASS.
+- [ ] I accept that for `lte_valuation` the conjunction `prime_type=odd ∧ p_divides_difference=yes ∧ p_divides_a_or_b=no` determines the label exactly, that Active can request all three at once, and that **the paper states this**.
+- [ ] I accept that a quadratic numerator (Family 3) and a non-coprime base (Family 1) are visible one-sided predictors of non-applicability, and the paper does not present Active gains concentrated there as evidence of falsification-driven learning without saying so.
 - [ ] I understand how invalid Active requests are handled (one `UNSATISFIABLE_REQUEST` reformulation, then a logged neutral fallback).
 
 ## D. Protocol integrity
@@ -95,7 +101,7 @@ src/families/order_minus_one.py          module docstring; strategy_succeeds
 src/families/lte_valuation.py            module docstring; construction modes
 src/families/recurrence_substitution.py  module docstring (oracle reading);
                                          quadratic perturbation weighting
-src/families/base.py                     label_determining_features
+src/families/base.py                     preview_extras; query vs oracle namespaces
 src/calibration.py                       predeclared difficulty band and target
 docs/FAMILY_SPEC.md                      every family oracle; deviation notes;
                                          schema/label determinacy

@@ -66,18 +66,32 @@ def main() -> int:
         "",
         "## Active query schemas shown to the model",
         "",
-        "These are the ONLY family internals the Active condition ever sees. "
-        "The `full` profile follows the spec; `label_decoupled` removes the "
-        "features that determine the oracle label.",
+        "These are the ONLY family internals the Active condition ever sees.",
+        "Every value is observable directly from a problem statement.",
         "",
     ]
-    for profile in ("full", "label_decoupled"):
-        lines += [f"### profile `{profile}`", ""]
-        for name, fam in all_families(profile).items():
-            lines += [f"**{name}**", ""]
-            for feature, values in fam.queryable_schema().items():
-                lines.append(f"- `{feature}`: {', '.join(f'`{v}`' for v in values)}")
-            lines.append("")
+    for name, fam in all_families().items():
+        lines += [f"**{name}**", ""]
+        for feature, values in fam.query_schema().items():
+            lines.append(f"- `{feature}`: {', '.join(f'`{v}`' for v in values)}")
+        lines.append("")
+
+    lines += [
+        "---",
+        "",
+        "## Oracle-only features -- NEVER shown to any model",
+        "",
+        "These researcher-side diagnostics are used for validation, balancing and",
+        "audit. Several are deterministic synonyms for the hidden label, which is",
+        "exactly why they are confined to this namespace and are rejected as",
+        "unknown feature names if a model asks for one.",
+        "",
+    ]
+    for name, fam in all_families().items():
+        lines += [f"**{name}**", ""]
+        for feature, values in fam.oracle_feature_schema.items():
+            lines.append(f"- `{feature}`: {', '.join(f'`{v}`' for v in values)}")
+        lines.append("")
 
     out = os.path.join(ROOT, "docs", "PROMPTS.md")
     with open(out, "w", encoding="utf-8") as fh:

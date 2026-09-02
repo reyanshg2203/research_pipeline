@@ -82,13 +82,14 @@ def observations_from(
 ) -> List[Observation]:
     """Turn oracle labels into the SUCCESS / FAILURE feedback shown to the model.
 
-    Default (spec S.12.5): problem text and outcome only.  Feature values are
-    withheld unless ``show_features`` is explicitly enabled in the config.
+    Default (spec S.12.5): problem text and outcome only.  Even when
+    ``show_features`` is enabled, ONLY query features can be shown -- oracle
+    features are never rendered anywhere a model can see them.
     """
     out = []
     for p in problems:
         shown = (
-            {k: p.features[k] for k in schema_keys if k in p.features}
+            {k: p.query_features[k] for k in schema_keys if k in p.query_features}
             if show_features
             else {}
         )
@@ -170,7 +171,7 @@ def run_active(
         prompt = query_prompt(
             strategy,
             hypothesis,
-            family.queryable_schema(),
+            family.query_schema(),
             batch_size,
             render_history(history),
         )
@@ -216,7 +217,7 @@ def run_active(
             if attempt == 1:
                 break
             uprompt = unsat_prompt(
-                requested_display, failure_reason, family.queryable_schema()
+                requested_display, failure_reason, family.query_schema()
             )
             seed2 = derive_seed(
                 master_seed, "unsat", model.spec.alias, family.name, round_index
@@ -254,7 +255,7 @@ def run_active(
                 seen.add(p.content_key())
 
         observations = observations_from(
-            problems, show_features, list(family.active_query_schema)
+            problems, show_features, list(family.query_schema())
         )
         hypothesis_before = hypothesis
         hypothesis, rev_gen = revise_hypothesis(

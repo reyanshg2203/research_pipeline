@@ -192,63 +192,65 @@ Respond with a single JSON object and nothing else:
 
 ## Active query schemas shown to the model
 
-These are the ONLY family internals the Active condition ever sees. The `full` profile follows the spec; `label_decoupled` removes the features that determine the oracle label.
-
-### profile `full`
+These are the ONLY family internals the Active condition ever sees.
+Every value is observable directly from a problem statement.
 
 **order_minus_one**
 
-- `modulus_structure`: `prime`, `prime_power`, `two_coprime_prime_power_factors`, `three_coprime_prime_power_factors`
+- `modulus_type`: `prime`, `prime_power`, `composite`
+- `number_of_factors`: `1`, `2`, `3`
 - `base_coprime`: `yes`, `no`
+- `modulus_size`: `small`, `medium`, `large`
+- `task_form`: `least_n_congruence`, `least_n_divisibility`
+
+**lte_valuation**
+
+- `prime_type`: `odd`, `two`
+- `p_divides_difference`: `yes`, `no`
+- `p_divides_a_or_b`: `yes`, `no`
+- `n_parity`: `odd`, `even`
+- `exponent_size`: `small`, `medium`, `large`
+- `task_form`: `valuation`, `exponent_in_factorization`
+
+**recurrence_substitution**
+
+- `numerator_degree`: `linear`, `quadratic`
+- `coefficient_size`: `small`, `medium`, `large`
+- `denominator_constant_zero`: `yes`, `no`
+- `leading_coefficients_same_sign`: `yes`, `no`
+- `horizon_size`: `small`, `medium`, `large`
+- `task_form`: `compute_term`, `find_index`
+
+---
+
+## Oracle-only features -- NEVER shown to any model
+
+These researcher-side diagnostics are used for validation, balancing and
+audit. Several are deterministic synonyms for the hidden label, which is
+exactly why they are confined to this namespace and are rejected as
+unknown feature names if a model asks for one.
+
+**order_minus_one**
+
 - `global_order_parity`: `even`, `odd`, `undefined`
 - `local_order_2adic_pattern`: `aligned_positive`, `misaligned`, `contains_odd`, `undefined`
-- `number_of_components`: `1`, `2`, `3`
-- `modulus_size`: `small`, `medium`, `large`
+- `half_order_gives_minus_one`: `yes`, `no`, `undefined`
+- `solution_exists`: `yes`, `no`
 
 **lte_valuation**
 
-- `prime_type`: `odd`, `two`
-- `p_divides_difference`: `yes`, `no`
-- `p_divides_sum`: `yes`, `no`
-- `p_divides_a_or_b`: `yes`, `no`
-- `n_parity`: `odd`, `even`
-- `n_divisible_by_p`: `yes`, `no`
 - `difference_valuation`: `0`, `1`, `2plus`
-- `exponent_size`: `small`, `medium`, `large`
+- `p_divides_sum`: `yes`, `no`
+- `n_divisible_by_p`: `yes`, `no`
+- `exact_valuation_bucket`: `0`, `1`, `2`, `3plus`
+- `accidental_match_outside_domain`: `yes`, `no`
+- `nonapplicability_reason`: `none`, `p_is_two`, `p_divides_a_or_b`, `p_does_not_divide_difference`
 
 **recurrence_substitution**
 
-- `shift_structure`: `aligned`, `mismatched`
-- `numerator_structure`: `proportional_to_shifted_x`, `additive_perturbation`
-- `denominator_relation`: `affine_compatible`, `perturbed`
+- `has_rational_fixed_point`: `yes`, `no`
+- `designated_shift_is_fixed_point`: `yes`, `no`
 - `transformed_dynamics`: `affine`, `non_affine`
+- `substitution_defined_on_trajectory`: `yes`, `no`, `not_applicable`
 - `singularity_risk`: `none_in_horizon`, `boundary_case`
-- `horizon_size`: `small`, `medium`, `large`
-
-### profile `label_decoupled`
-
-**order_minus_one**
-
-- `modulus_structure`: `prime`, `prime_power`, `two_coprime_prime_power_factors`, `three_coprime_prime_power_factors`
-- `base_coprime`: `yes`, `no`
-- `global_order_parity`: `even`, `odd`, `undefined`
-- `number_of_components`: `1`, `2`, `3`
-- `modulus_size`: `small`, `medium`, `large`
-
-**lte_valuation**
-
-- `prime_type`: `odd`, `two`
-- `p_divides_difference`: `yes`, `no`
-- `p_divides_sum`: `yes`, `no`
-- `p_divides_a_or_b`: `yes`, `no`
-- `n_parity`: `odd`, `even`
-- `n_divisible_by_p`: `yes`, `no`
-- `difference_valuation`: `0`, `1`, `2plus`
-- `exponent_size`: `small`, `medium`, `large`
-
-**recurrence_substitution**
-
-- `numerator_structure`: `proportional_to_shifted_x`, `additive_perturbation`
-- `denominator_relation`: `affine_compatible`, `perturbed`
-- `singularity_risk`: `none_in_horizon`, `boundary_case`
-- `horizon_size`: `small`, `medium`, `large`
+- `perturbation_kind`: `none`, `numerator_constant`, `numerator_slope`, `denominator_constant`, `denominator_slope`, `quadratic_term`

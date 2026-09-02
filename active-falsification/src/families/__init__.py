@@ -16,11 +16,11 @@ _REGISTRY = {
 ALL_FAMILIES: List[str] = list(_REGISTRY)
 
 
-def get_family(name: str, schema_profile: str = "full") -> ProblemFamily:
+def get_family(name: str) -> ProblemFamily:
     if name not in _REGISTRY:
         raise KeyError(f"unknown family {name!r}; known: {ALL_FAMILIES}")
-    return _REGISTRY[name](schema_profile)
+    return _REGISTRY[name]()
 
 
-def all_families(schema_profile: str = "full") -> Dict[str, ProblemFamily]:
-    return {name: cls(schema_profile) for name, cls in _REGISTRY.items()}
+def all_families() -> Dict[str, ProblemFamily]:
+    return {name: cls() for name, cls in _REGISTRY.items()}

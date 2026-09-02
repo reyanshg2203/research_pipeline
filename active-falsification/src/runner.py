@@ -72,9 +72,6 @@ DEFAULTS: Dict[str, Any] = {
     "passive_max_rounds": 40,
     "balanced_tests": True,
     "show_features_in_observations": False,
-    # 'full' follows the spec's feature list exactly; 'label_decoupled' drops the
-    # features that determine the oracle label (see scripts/audit_schema.py).
-    "active_schema_profile": "full",
     "difficulties": ["easy", "medium", "hard"],
     "max_new_tokens": {
         "solve": 2048,
@@ -122,9 +119,8 @@ class Runner:
             with open(self.errors_path, "w", encoding="utf-8") as fh:
                 fh.write(f"# errors for run {os.path.basename(run_dir)}\n")
         self.master_seed = int(config["master_seed"])
-        self.schema_profile = str(config.get("active_schema_profile", "full"))
         self.families: Dict[str, ProblemFamily] = {
-            name: get_family(name, self.schema_profile) for name in config["families"]
+            name: get_family(name) for name in config["families"]
         }
         self.model_aliases: List[str] = list(config["models"])
         self.is_mock_run = all(a == "mock" for a in self.model_aliases)
@@ -202,9 +198,13 @@ class Runner:
             "family_versions": {
                 name: fam.version_hash() for name, fam in self.families.items()
             },
-            "active_schema_profile": self.schema_profile,
-            "queryable_schemas": {
-                name: fam.queryable_schema() for name, fam in self.families.items()
+            # exactly what Active may see and constrain, and the researcher-only
+            # diagnostics it may not (revision memo S.4)
+            "active_query_schemas": {
+                name: fam.query_schema() for name, fam in self.families.items()
+            },
+            "oracle_only_feature_schemas": {
+                name: fam.oracle_feature_schema for name, fam in self.families.items()
             },
             "prompt_version": prompt_module.PROMPT_VERSION,
             "prompt_hash": prompt_module.prompts_hash(),

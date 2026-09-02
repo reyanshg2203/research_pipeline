@@ -22,42 +22,39 @@ from typing import Any, Dict, List, Optional
 # --------------------------------------------------------------------------
 
 #: Keys that must never be rendered into a prompt.
-HIDDEN_KEYS = ("strategy_applies", "latent_parameters", "features", "human_solution")
+HIDDEN_KEYS = (
+    "strategy_applies",
+    "latent_parameters",
+    "oracle_features",
+    "applicability_reason",
+    "human_solution",
+)
 
 
 @dataclass
 class Problem:
     """A single generated mathematical problem.
 
-    Attributes
-    ----------
-    id
-        Stable identifier, unique inside a run.
-    family
-        Registry name of the generating family.
-    template
-        Surface-form identifier (families render the same mathematical content
-        through several templates; challenge splits use held-out templates).
-    difficulty
-        'easy' | 'medium' | 'hard'.
-    text
-        The problem statement shown to the model.  PUBLIC.
-    exact_answer
-        Canonical answer string, produced by exact arithmetic (never by an LLM).
-    strategy_applies
-        Programmatic oracle label: does the family's intended strategy S yield
-        the correct result on this instance?  HIDDEN.
-    features
-        Categorical researcher-side features.  These form the vocabulary the
-        Active condition may use to request experiments.  HIDDEN as labels;
-        only the *schema* (names and allowed values) is shown to the model.
-    human_solution
-        Worked solution used for seed demonstrations.  Shown to the model ONLY
-        for the six seed problems during strategy/H0 induction.
-    latent_parameters
-        Generator internals.  HIDDEN.
-    generation_seed
-        Seed of the RNG stream that produced this problem.
+    THREE CONCEPTS ARE KEPT STRICTLY SEPARATE (revision memo S.5):
+
+    ``exact_answer``
+        the correct answer to the mathematical problem as posed;
+    ``strategy_applies``
+        whether the intended strategy S is mathematically applicable;
+    model answer correctness
+        whether a tested model got something right on a given run -- this lives
+        in run records as ``model_answer_correct`` / ``model_boundary_correct``
+        and never on a Problem.
+
+    TWO FEATURE NAMESPACES ARE KEPT STRICTLY SEPARATE (revision memo S.4):
+
+    ``query_features``
+        observable experimental controls the Active condition may request.
+        Every one is readable off the problem statement by a competent solver.
+    ``oracle_features``
+        researcher-only diagnostics used for validation, balancing and audit.
+        Several of them are deterministic synonyms for ``strategy_applies``.
+        They are NEVER shown to a model and never appear in the query schema.
     """
 
     id: str
@@ -67,7 +64,9 @@ class Problem:
     text: str
     exact_answer: str
     strategy_applies: bool
-    features: Dict[str, Any] = field(default_factory=dict)
+    query_features: Dict[str, Any] = field(default_factory=dict)
+    oracle_features: Dict[str, Any] = field(default_factory=dict)
+    applicability_reason: str = ""
     human_solution: str = ""
     latent_parameters: Dict[str, Any] = field(default_factory=dict)
     generation_seed: int = 0
@@ -80,7 +79,7 @@ class Problem:
     def seed_view(self) -> Dict[str, Any]:
         """Public view plus the verified worked solution.
 
-        Used ONLY for the six seed demonstrations during induction (spec S.11).
+        Used ONLY for the seed demonstrations during induction (spec S.11).
         """
         return {
             "id": self.id,
@@ -112,11 +111,6 @@ class Problem:
     @staticmethod
     def from_json(d: Dict[str, Any]) -> "Problem":
         return Problem(**d)
-
-
-# --------------------------------------------------------------------------
-# Adaptation records
-# --------------------------------------------------------------------------
 
 
 @dataclass

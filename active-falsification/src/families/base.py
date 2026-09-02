@@ -4,7 +4,19 @@ A family owns:
   * the mathematical generator,
   * the exact answer computation,
   * the programmatic applicability oracle for its intended strategy S,
-  * the categorical feature schema the Active condition may query.
+  * TWO separate feature namespaces (revision memo S.4).
+
+Feature namespaces
+------------------
+``query_schema()``
+    The observable experimental controls the Active condition may request.
+    Every value must be readable off the problem statement by a competent
+    solver, so that choosing a region is an experiment rather than a lookup.
+
+``oracle_feature_schema``
+    Researcher-only diagnostics for validation, balancing and audit.  Several
+    are deterministic synonyms for ``strategy_applies`` -- that is precisely why
+    they live here and are never shown to a model or accepted in a constraint.
 
 Nothing in this module may ever put a hidden label into a prompt.
 """
@@ -42,44 +54,12 @@ class ProblemFamily(ABC):
     #: Never rendered into any prompt; the model must induce its own S_hat.
     strategy_description: str = ""
 
-    #: feature_name -> list of allowed categorical values.  The *schema* is
-    #: shown to the Active condition; feature *values of specific problems*
-    #: are not (unless config.show_features_in_observations is enabled).
-    active_query_schema: Dict[str, List[str]] = {}
+    #: Observable controls Active may constrain.  feature -> allowed values.
+    #: ``task_form`` is added automatically from ``base_templates``.
+    queryable_features: Dict[str, List[str]] = {}
 
-    #: Features whose value determines the hidden oracle label (or very nearly).
-    #: They are part of the schema the spec prescribes, so the DEFAULT profile
-    #: exposes them; the opt-in 'label_decoupled' profile removes them so that
-    #: Active cannot request the answer directly.  Run
-    #: `python scripts/audit_schema.py` to see the measured conditional label
-    #: rates behind this list.
-    # HUMAN_REVIEW_REQUIRED
-    label_determining_features: List[str] = []
-
-    #: 'full' (spec default) or 'label_decoupled'
-    schema_profile: str = "full"
-
-    def __init__(self, schema_profile: str = "full"):
-        if schema_profile not in ("full", "label_decoupled"):
-            raise ValueError(
-                f"unknown schema_profile {schema_profile!r}; "
-                "expected 'full' or 'label_decoupled'"
-            )
-        self.schema_profile = schema_profile
-
-    def queryable_schema(self) -> Dict[str, List[str]]:
-        """The schema the Active condition may see and constrain.
-
-        Always a subset of ``active_query_schema``; ``validate_problem`` keeps
-        checking generated features against the FULL schema.
-        """
-        if self.schema_profile == "label_decoupled":
-            return {
-                k: v
-                for k, v in self.active_query_schema.items()
-                if k not in self.label_determining_features
-            }
-        return dict(self.active_query_schema)
+    #: Researcher-only diagnostics.  NEVER exposed to a model.
+    oracle_feature_schema: Dict[str, List[str]] = {}
 
     #: templates used for seeds / calibration / IID practice+test
     base_templates: List[str] = []
@@ -88,6 +68,27 @@ class ProblemFamily(ABC):
     challenge_templates: List[str] = []
 
     difficulties: List[str] = ["easy", "medium", "hard"]
+
+    # ------------------------------------------------------------- schemas
+    def query_schema(self) -> Dict[str, List[str]]:
+        """What the Active condition sees and may constrain.
+
+        ``task_form`` lists only the BASE templates: the challenge surfaces are
+        held out, so Active must never be able to request one during adaptation.
+        """
+        schema = dict(self.queryable_features)
+        schema["task_form"] = list(self.base_templates)
+        return schema
+
+    def _validation_domain(self) -> Dict[str, List[str]]:
+        """Allowed query-feature values for validation.
+
+        Identical to :meth:`query_schema` except that ``task_form`` also admits
+        the challenge templates, since challenge problems carry one.
+        """
+        domain = dict(self.queryable_features)
+        domain["task_form"] = list(self.base_templates) + list(self.challenge_templates)
+        return domain
 
     # ---------------------------------------------------------------- sampling
     @abstractmethod
@@ -149,23 +150,39 @@ class ProblemFamily(ABC):
                 f"{problem.id}: oracle mismatch stored={problem.strategy_applies} "
                 f"recomputed={applies}"
             )
-        for key, value in problem.features.items():
-            if key not in self.active_query_schema:
-                raise ValueError(f"{problem.id}: feature {key!r} not in query schema")
-            allowed = self.active_query_schema[key]
-            if str(value) not in allowed:
+        domain = self._validation_domain()
+        for key, value in problem.query_features.items():
+            if key not in domain:
+                raise ValueError(f"{problem.id}: query feature {key!r} not in schema")
+            if str(value) not in domain[key]:
                 raise ValueError(
-                    f"{problem.id}: feature {key}={value!r} not in allowed {allowed}"
+                    f"{problem.id}: query feature {key}={value!r} not in {domain[key]}"
                 )
+        for key, value in problem.oracle_features.items():
+            if key not in self.oracle_feature_schema:
+                raise ValueError(f"{problem.id}: oracle feature {key!r} not in schema")
+            if str(value) not in self.oracle_feature_schema[key]:
+                raise ValueError(
+                    f"{problem.id}: oracle feature {key}={value!r} not in "
+                    f"{self.oracle_feature_schema[key]}"
+                )
+        overlap = set(problem.query_features) & set(problem.oracle_features)
+        if overlap:
+            raise ValueError(
+                f"{problem.id}: features {sorted(overlap)} appear in both namespaces"
+            )
+        if not problem.applicability_reason:
+            raise ValueError(f"{problem.id}: missing applicability_reason")
         if "instance_key" not in problem.latent_parameters:
             raise ValueError(f"{problem.id}: missing latent_parameters['instance_key']")
         return True
 
     # --------------------------------------------------------- constraint util
     def check_constraints_wellformed(self, constraints: Dict[str, str]) -> None:
-        """Validate feature names/values against the schema.
+        """Validate feature names/values against the QUERY schema.
 
-        Raises :class:`UnsatisfiableConstraints` with a descriptive reason.
+        Oracle feature names are rejected exactly like unknown names: the model
+        must not learn that they exist.
         """
         if not isinstance(constraints, dict) or not constraints:
             raise UnsatisfiableConstraints("no constraints supplied", constraints or {})
@@ -173,7 +190,7 @@ class ProblemFamily(ABC):
             raise UnsatisfiableConstraints(
                 f"at most 3 constraints allowed, got {len(constraints)}", constraints
             )
-        schema = self.queryable_schema()
+        schema = self.query_schema()
         for key, value in constraints.items():
             if key not in schema:
                 raise UnsatisfiableConstraints(
@@ -197,32 +214,80 @@ class ProblemFamily(ABC):
                 return False
         return True
 
-    # ------------------------------------------------------------ convenience
+    @staticmethod
+    def requested_template(
+        constraints: Dict[str, str], default: str
+    ) -> str:
+        """Honour a ``task_form`` constraint by switching the rendered template."""
+        want = constraints.get("task_form")
+        if want is None:
+            return default
+        options = _as_value_list(want)
+        return default if default in options else options[0]
+
+    # ------------------------------------------------------------ seed strata
+    def seed_strata(self, n_seeds: int) -> List[Dict[str, str]]:
+        """Constraint dicts stratifying the seed demonstrations.
+
+        Revision memo S.1/S.2: the successful demonstrations must not all share
+        one surface property (all-prime moduli, or all valuation-0 instances),
+        or the model can induce a trivially wrong rule from the seeds alone.
+        Strata are advisory: one that is unsatisfiable at the selected difficulty
+        falls back to an unconstrained draw and is recorded as such.
+        """
+        return [{} for _ in range(n_seeds)]
+
     def generate_seed_candidates(
         self, rng: random.Random, n: int, difficulty: str
     ) -> List[Problem]:
         """Successful (strategy_applies=True) demonstrations with worked solutions."""
+        strata = self.seed_strata(n)
         out: List[Problem] = []
         seen = set()
-        guard = 0
-        while len(out) < n and guard < 200 * n:
-            guard += 1
-            template = self.base_templates[len(out) % len(self.base_templates)]
-            p = self.sample_random(rng, difficulty, template, want_applies=True)
+        for index in range(n):
+            stratum = strata[index % len(strata)] if strata else {}
+            problem = self._draw_seed(rng, difficulty, stratum, seen, index)
+            if problem is None:
+                problem = self._draw_seed(rng, difficulty, {}, seen, index)
+            if problem is None:
+                raise RuntimeError(
+                    f"{self.name}: could not build seed candidate {index + 1}/{n} "
+                    f"at difficulty={difficulty} (stratum={stratum})"
+                )
+            seen.add(problem.content_key())
+            out.append(problem)
+        return out
+
+    def _draw_seed(
+        self,
+        rng: random.Random,
+        difficulty: str,
+        stratum: Dict[str, str],
+        seen: set,
+        index: int,
+    ) -> Optional[Problem]:
+        template = self.base_templates[index % len(self.base_templates)]
+        for _ in range(400):
+            if stratum:
+                try:
+                    p = self.sample_conditioned(rng, stratum, difficulty, template)
+                except UnsatisfiableConstraints:
+                    return None
+                if p is None:
+                    return None
+                if not p.strategy_applies:
+                    continue
+            else:
+                p = self.sample_random(rng, difficulty, template, want_applies=True)
             if not p.strategy_applies or not p.human_solution:
                 continue
             if p.content_key() in seen:
                 continue
             self.validate_problem(p)
-            seen.add(p.content_key())
-            out.append(p)
-        if len(out) < n:
-            raise RuntimeError(
-                f"{self.name}: only produced {len(out)}/{n} seed candidates at "
-                f"difficulty={difficulty}"
-            )
-        return out
+            return p
+        return None
 
+    # ------------------------------------------------------------ test splits
     def generate_iid_test(
         self,
         rng: random.Random,
@@ -288,13 +353,22 @@ class ProblemFamily(ABC):
                 break
         return out
 
+    # ---------------------------------------------------------------- preview
+    def preview_extras(self, problem: Problem) -> Dict[str, str]:
+        """Family-specific researcher-side fields for the human review preview.
+
+        Revision memo S.8.  Purely for inspection; nothing in the pipeline reads
+        this.
+        """
+        return {}
+
     # -------------------------------------------------------------- versioning
     def version_hash(self) -> str:
         return stable_hash(
             {
                 "name": self.name,
-                "schema": self.active_query_schema,
-                "schema_profile": self.schema_profile,
+                "query_schema": self.query_schema(),
+                "oracle_schema": self.oracle_feature_schema,
                 "base_templates": self.base_templates,
                 "challenge_templates": self.challenge_templates,
                 "strategy": self.strategy_description,

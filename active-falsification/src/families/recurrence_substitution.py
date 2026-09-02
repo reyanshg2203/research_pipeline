@@ -1,29 +1,36 @@
-"""Family 3 -- nonlinear rational recurrence linearised by y_n = 1/(x_n - c).
+"""Family 3 -- rational recurrences linearised by y_n = 1/(x_n - c).
 
-MATHEMATICAL BASIS (see docs/FAMILY_SPEC.md S.3 for the full note)
-------------------------------------------------------------------
-For a rational map f and a constant c, put y = 1/(x - c).  As y -> infinity we
-have x -> c, so y_{n+1} = 1/(f(x_n) - c) stays bounded unless f(c) = c.  Hence
+CANONICAL STRATEGY S3
 
-    y = 1/(x - c) can linearise f  ONLY IF c is a fixed point of f,
+    For x_(n+1) = f(x_n), find a rational fixed point c with f(c) = c, substitute
+    y_n = 1/(x_n - c), solve the resulting affine recurrence y_(n+1) = A y_n + B
+    in closed form, and invert.
 
-and for a Mobius map f(x) = (Ax+B)/(Cx+D) with C != 0 the substitution at a
-fixed point c always yields an affine recurrence.  Therefore
+APPLICABILITY ORACLE (revision memo S.3) -- all five conditions, checked:
 
-    strategy_applies  <=>  f has a RATIONAL fixed point
-                      <=>  disc = (D-A)^2 + 4CB is a perfect square   (Mobius case)
+    1. there is a candidate rational shift c;
+    2. c is genuinely a fixed point of f  (exact rational-root search);
+    3. y = 1/(x_n - c) is well defined along the whole requested trajectory;
+    4. substituting y = 1/(x - c) simplifies EXACTLY to an affine function of y,
+       verified symbolically with SymPy, not inferred from a generator flag;
+    5. no singularity invalidates the requested horizon.
 
-Both equivalences are verified symbolically in tests/test_recurrence_family.py.
+Why the fixed-point condition is necessary: put y = 1/(x - c), so x = c + 1/y.
+As y -> infinity, x -> c and y_(n+1) = 1/(f(x) - c) tends to the finite constant
+1/(f(c) - c) unless f(c) = c.  An affine non-constant map is unbounded, so a
+linearising shift must be a fixed point.  For a Mobius map the converse also
+holds, giving the closed form
 
-# HUMAN_REVIEW_REQUIRED  (most important review item in the repository)
-The spec (S.9.3) phrases the oracle as "there EXISTS the designated seed-family
-shift c".  We implement the EXISTENTIAL reading: the oracle searches every
-rational shift, not one privileged value.  Rationale: a boundary defined by a
-hidden designated constant that is invisible in the rendered problem would be
-unlearnable in principle, and several perturbations suggested by the spec
-(e.g. "add a small constant to the numerator") frequently leave the map
-linearisable through a *different* rational fixed point.  Every generated
-negative is therefore verified to admit no linearising shift at all.
+    a linearising shift exists  <=>  disc = (D-A)^2 + 4CB is a perfect square,
+
+which tests/test_recurrence_family.py cross-checks against the symbolic oracle.
+
+Negatives are produced by controlled structural perturbations and then
+INDEPENDENTLY VERIFIED to admit no linearising shift; a perturbation that
+happens to remain linearisable through another rational fixed point is
+relabelled a positive rather than trusted as a negative.
+
+# HUMAN_REVIEW_REQUIRED
 """
 
 from __future__ import annotations
@@ -237,8 +244,12 @@ def _verify_shift(
     )
 
 
-def strategy_succeeds(num: List[int], den: List[int]) -> bool:
-    """Programmatic oracle for Family 3."""
+def has_linearising_shift(num: List[int], den: List[int]) -> bool:
+    """Map-level test: does ANY rational shift linearise this map?
+
+    The full applicability oracle is :func:`strategy_succeeds_on`, which also
+    requires the substitution to be defined along the requested trajectory.
+    """
     return len(linearising_shifts(num, den)) > 0
 
 
@@ -290,6 +301,108 @@ def render_linear(coeffs: List[int], var: str) -> str:
 
 
 # --------------------------------------------------------------------------
+# instance-level oracle (revision memo S.3, conditions 3 and 5)
+# --------------------------------------------------------------------------
+
+
+def usable_shifts(
+    num: List[int], den: List[int], x0: Fraction, horizon: int
+) -> List[Tuple[Fraction, Fraction, Fraction]]:
+    """Linearising shifts that are also usable on THIS trajectory.
+
+    A shift is usable only when y_n = 1/(x_n - c) is defined at every index the
+    problem refers to, i.e. no trajectory point equals c.
+    """
+    terms = iterate_terms(num, den, x0, horizon)
+    if terms is None:
+        return []
+    out = []
+    for c, r, s in linearising_shifts(num, den):
+        if any(t == c for t in terms):
+            continue
+        out.append((c, r, s))
+    return out
+
+
+def strategy_succeeds_on(
+    num: List[int], den: List[int], x0: Fraction, horizon: int
+) -> bool:
+    """The Family 3 applicability oracle, evaluated on a concrete instance."""
+    return len(usable_shifts(num, den, x0, horizon)) > 0
+
+
+def _affine_str(r: Fraction, s: Fraction) -> str:
+    """Render 'r*y + s' with a single sign on the constant term."""
+    coef = "y" if r == 1 else ("-y" if r == -1 else f"{frac_str(r)}·y")
+    if s == 0:
+        return coef
+    return f"{coef} - {frac_str(-s)}" if s < 0 else f"{coef} + {frac_str(s)}"
+
+
+def _shift_expr(c: Fraction) -> str:
+    """Render (x - c) with a single sign, e.g. '(x + 6)' rather than '(x - -6)'."""
+    if c == 0:
+        return "x"
+    return f"(x + {frac_str(-c)})" if c < 0 else f"(x - {frac_str(c)})"
+
+
+def _quadratic_str(a: int, b: int, c: int) -> str:
+    """Render a c^2 + b c + c0 = 0 with tidy signs."""
+    return render_terms([(a, "c^2"), (b, "c"), (c, "")]).replace(" ", " ").strip() + " = 0"
+
+
+def applicability_reason(
+    num: List[int], den: List[int], x0: Fraction, horizon: int
+) -> str:
+    fps = rational_fixed_points(num, den)
+    shifts = linearising_shifts(num, den)
+    usable = usable_shifts(num, den, x0, horizon)
+    if usable:
+        c, r, s = usable[0]
+        return (
+            f"f has the rational fixed point c = {frac_str(c)}; substituting "
+            f"y = 1/{_shift_expr(c)} simplifies the recurrence symbolically to the "
+            f"affine recurrence y_(n+1) = {_affine_str(r, s)}, and no "
+            f"trajectory point x_0..x_{horizon} equals {frac_str(c)}, so the "
+            f"substitution is defined throughout"
+        )
+    if not fps:
+        if len(num) > 2:
+            return (
+                "the map has a genuine quadratic numerator and no rational fixed "
+                "point, so no shift-and-reciprocal substitution linearises it"
+            )
+        A, B = num
+        C, D = den
+        disc = (D - A) ** 2 + 4 * C * B
+        return (
+            f"the fixed-point equation {_quadratic_str(C, D - A, -B)} has discriminant "
+            f"{disc}, which is not a perfect square, so f has no rational fixed point "
+            f"and no shift-and-reciprocal substitution linearises the recurrence"
+        )
+    if not shifts:
+        return (
+            f"f has rational fixed point(s) {[frac_str(c) for c in fps]}, but "
+            f"substituting y = 1/(x - c) does not reduce the recurrence to an affine "
+            f"function of y"
+        )
+    blocked = [frac_str(c) for c, _, _ in shifts]
+    return (
+        f"the only linearising shift(s) {blocked} lie on the trajectory "
+        f"x_0..x_{horizon}, so y = 1/(x_n - c) is undefined at some requested index"
+    )
+
+
+def coefficient_size_bucket(num: List[int], den: List[int]) -> str:
+    biggest = max(abs(v) for v in num + den)
+    if biggest <= 12:
+        return "small"
+    if biggest <= 60:
+        return "medium"
+    return "large"
+
+
+# --------------------------------------------------------------------------
 # family
 # --------------------------------------------------------------------------
 
@@ -298,40 +411,96 @@ class RecurrenceSubstitutionFamily(ProblemFamily):
     name = "recurrence_substitution"
 
     strategy_description = (
-        "Recognise that a rational recurrence x_{n+1} = f(x_n) becomes affine under "
-        "the shift-and-reciprocal substitution y_n = 1/(x_n - c), where c is a fixed "
-        "point of f; solve the resulting affine recurrence in closed form and invert."
+        "Find a rational fixed point c of the rational map f, substitute "
+        "y_n = 1/(x_n - c) to turn the recurrence into an affine recurrence "
+        "y_(n+1) = A y_n + B, solve that in closed form, and invert."
     )
 
-    active_query_schema = {
-        "shift_structure": ["aligned", "mismatched"],
-        "numerator_structure": ["proportional_to_shifted_x", "additive_perturbation"],
-        "denominator_relation": ["affine_compatible", "perturbed"],
-        "transformed_dynamics": ["affine", "non_affine"],
-        "singularity_risk": ["none_in_horizon", "boundary_case"],
+    #: Observable controls Active may request.  Every one of these is read
+    #: straight off the printed recurrence -- the degree of the numerator, how
+    #: big the coefficients are, whether the denominator has a constant term,
+    #: whether the two leading coefficients share a sign, how far out the
+    #: requested term is, and which task form is asked.
+    queryable_features = {
+        "numerator_degree": ["linear", "quadratic"],
+        "coefficient_size": ["small", "medium", "large"],
+        "denominator_constant_zero": ["yes", "no"],
+        "leading_coefficients_same_sign": ["yes", "no"],
         "horizon_size": ["small", "medium", "large"],
     }
 
-    label_determining_features = ["transformed_dynamics", "shift_structure"]
+    #: Researcher-only.  `transformed_dynamics` IS the label, and
+    #: `designated_shift_is_fixed_point` is nearly so; both are confined here.
+    oracle_feature_schema = {
+        "has_rational_fixed_point": ["yes", "no"],
+        "designated_shift_is_fixed_point": ["yes", "no"],
+        "transformed_dynamics": ["affine", "non_affine"],
+        "substitution_defined_on_trajectory": ["yes", "no", "not_applicable"],
+        "singularity_risk": ["none_in_horizon", "boundary_case"],
+        "perturbation_kind": [
+            "none", "numerator_constant", "numerator_slope",
+            "denominator_constant", "denominator_slope", "quadratic_term",
+        ],
+    }
 
     base_templates = ["compute_term", "find_index"]
-    challenge_templates = ["implicit_form", "transformed_value"]
+    #: Revision memo S.3: the old `transformed_value` template asked for
+    #: 1/(x_N - c), which is the latent substitution itself, so it leaked the
+    #: strategy.  It is replaced by a changed indexing convention.
+    challenge_templates = ["implicit_form", "shifted_index"]
+
+    # ---------------------------------------------------------------- features
+    def compute_query_features(
+        self, num: List[int], den: List[int], horizon: int, template: str
+    ) -> Dict[str, str]:
+        return {
+            "numerator_degree": "quadratic" if len(num) > 2 else "linear",
+            "coefficient_size": coefficient_size_bucket(num, den),
+            "denominator_constant_zero": "yes" if den[-1] == 0 else "no",
+            "leading_coefficients_same_sign": (
+                "yes" if num[0] * den[0] > 0 else "no"
+            ),
+            "horizon_size": horizon_bucket(horizon),
+            "task_form": template,
+        }
+
+    def compute_oracle_features(
+        self, num: List[int], den: List[int], x0: Fraction, horizon: int,
+        c_designated: Fraction, perturbation: Optional[str],
+    ) -> Dict[str, str]:
+        fps = rational_fixed_points(num, den)
+        shifts = linearising_shifts(num, den)
+        usable = usable_shifts(num, den, x0, horizon)
+        extended = iterate_terms(num, den, x0, horizon + 2)
+        if not shifts:
+            defined = "not_applicable"
+        else:
+            defined = "yes" if usable else "no"
+        return {
+            "has_rational_fixed_point": "yes" if fps else "no",
+            "designated_shift_is_fixed_point": (
+                "yes" if c_designated in fps else "no"
+            ),
+            "transformed_dynamics": "affine" if usable else "non_affine",
+            "substitution_defined_on_trajectory": defined,
+            "singularity_risk": (
+                "none_in_horizon" if extended is not None else "boundary_case"
+            ),
+            "perturbation_kind": perturbation or "none",
+        }
 
     # ------------------------------------------------------------ construction
     def _positive_map(self, rng: random.Random, coef: int) -> Optional[Dict[str, Any]]:
         """Build (A,B,C,D) from a hidden (c, r, s) so that y=1/(x-c) linearises it.
 
-        x_{n+1} = c + (x_n - c) / (r + s*(x_n - c))
+        x_(n+1) = c + (x_n - c) / (r + s*(x_n - c))
                 = ((c*s+1) x + c*r - c^2*s - c) / (s x + r - s*c)
         """
         for _ in range(80):
             c = rng.randint(-coef, coef)
             r = rng.choice([1, 2, -1, 3, -2, 2, 3])
             s = rng.choice([k for k in range(-coef, coef + 1) if k != 0])
-            A = c * s + 1
-            B = c * r - c * c * s - c
-            C = s
-            D = r - s * c
+            A, B, C, D = c * s + 1, c * r - c * c * s - c, s, r - s * c
             if C == 0 or A * D - B * C == 0:
                 continue
             num, den = normalise([A, B], [C, D])
@@ -343,58 +512,37 @@ class RecurrenceSubstitutionFamily(ProblemFamily):
     def _perturb(
         self, rng: random.Random, base: Dict[str, Any], coef: int
     ) -> Optional[Dict[str, Any]]:
-        """Controlled perturbation of a positive map (spec S.9.3).
+        """Controlled structural perturbation of a positive map.
 
-        The perturbation is applied to the normalised rational coefficients so
-        that the rendered surface form is indistinguishable from a positive.
-        The caller re-runs the oracle: perturbations that happen to remain
-        linearisable through some other rational fixed point are kept, but
-        relabelled as positives rather than mislabelled as negatives.
+        Applied to the NORMALISED coefficients so the rendered surface form is
+        indistinguishable from a positive.  The caller re-runs the oracle: a
+        perturbation that stays linearisable is relabelled, never mislabelled.
         """
-        num = list(base["num"])
-        den = list(base["den"])
-        # A quadratic numerator is a *perfect* predictor of non-applicability
-        # (a genuine degree-2 map is never linearised by a shift-and-reciprocal
-        # substitution), so it is down-weighted to keep that shortcut from
-        # dominating the negative class.  scripts/audit_schema.py reports how
-        # much of the label it explains.
-        # HUMAN_REVIEW_REQUIRED
+        num, den = list(base["num"]), list(base["den"])
+        # A quadratic numerator is a perfect predictor of non-applicability, so
+        # it is down-weighted; scripts/audit_schema.py reports how much of the
+        # label it explains.  # HUMAN_REVIEW_REQUIRED
         kind = rng.choices(
-            [
-                "numerator_constant",
-                "numerator_slope",
-                "denominator_constant",
-                "denominator_slope",
-                "quadratic_term",
-            ],
+            ["numerator_constant", "numerator_slope", "denominator_constant",
+             "denominator_slope", "quadratic_term"],
             weights=[3, 3, 3, 3, 1],
         )[0]
         delta = rng.choice([-3, -2, -1, 1, 2, 3])
         if kind == "numerator_constant":
             num[-1] += delta
-            nstruct, dstruct = "additive_perturbation", "affine_compatible"
         elif kind == "numerator_slope":
             num[-2] += delta
-            nstruct, dstruct = "additive_perturbation", "affine_compatible"
         elif kind == "denominator_constant":
             den[-1] += delta
-            nstruct, dstruct = "proportional_to_shifted_x", "perturbed"
         elif kind == "denominator_slope":
             den[-2] += delta
-            nstruct, dstruct = "proportional_to_shifted_x", "perturbed"
         else:
             num = [delta] + num
-            nstruct, dstruct = "additive_perturbation", "affine_compatible"
-            # A quadratic numerator sharing the denominator's root cancels down
-            # to an affine map (e.g. (-x^2-3x+4)/(5x-5) = -(x+4)/5), which then
-            # DOES admit a linearising shift.  Such instances are mathematically
-            # fine but render as an unreduced fraction, so we drop them and keep
-            # every degree-2 instance genuinely degree-2.
+            # a quadratic numerator sharing the denominator's root cancels to an
+            # affine map, which renders as an unreduced fraction; drop those
             if den[0] != 0 and poly_eval(num, Fraction(-den[1], den[0])) == 0:
                 return None
-        if all(v == 0 for v in den):
-            return None
-        if all(v == 0 for v in num):
+        if all(v == 0 for v in den) or all(v == 0 for v in num):
             return None
         num, den = normalise(num, den)
         if len(num) == 2 and len(den) == 2:
@@ -404,21 +552,12 @@ class RecurrenceSubstitutionFamily(ProblemFamily):
                 return None
         if max(abs(v) for v in num + den) > 60 * coef:
             return None
-        return {
-            "num": num,
-            "den": den,
-            "c": base["c"],
-            "r": base["r"],
-            "s": base["s"],
-            "numerator_structure": nstruct,
-            "denominator_relation": dstruct,
-            "perturbation": kind,
-        }
+        return {"num": num, "den": den, "c": base["c"], "r": base["r"],
+                "s": base["s"], "perturbation": kind}
 
     def _choose_x0(
         self, rng: random.Random, num: List[int], den: List[int], horizon: int, coef: int
-    ) -> Optional[Tuple[Fraction, List[Fraction], str]]:
-        """Pick x_0 with a well-defined orbit; classify singularity risk."""
+    ) -> Optional[Tuple[Fraction, List[Fraction]]]:
         cands = [Fraction(k) for k in range(-coef, coef + 1)]
         cands += [Fraction(k, 2) for k in range(-2 * coef, 2 * coef + 1) if k % 2]
         rng.shuffle(cands)
@@ -428,178 +567,125 @@ class RecurrenceSubstitutionFamily(ProblemFamily):
                 continue
             if len(set(terms)) < len(terms):
                 continue  # periodic / constant orbits are degenerate
-            extended = iterate_terms(num, den, x0, horizon + 2)
-            risk = "none_in_horizon" if extended is not None else "boundary_case"
-            return x0, terms, risk
+            return x0, terms
         return None
 
     # ---------------------------------------------------------------- building
     def _build(
-        self,
-        rng: random.Random,
-        spec: Dict[str, Any],
-        difficulty: str,
-        template: str,
-        horizon: int,
-        x0: Fraction,
-        terms: List[Fraction],
-        risk: str,
-        seed_value: int,
+        self, rng: random.Random, spec: Dict[str, Any], difficulty: str, template: str,
+        horizon: int, x0: Fraction, terms: List[Fraction], seed_value: int,
     ) -> Optional[Problem]:
         num, den = spec["num"], spec["den"]
-        shifts = linearising_shifts(num, den)
-        applies = len(shifts) > 0
         c_designated = Fraction(spec["c"])
-        aligned = any(c == c_designated for c, _, _ in shifts)
-
-        features = {
-            "shift_structure": "aligned" if aligned else "mismatched",
-            "numerator_structure": spec.get(
-                "numerator_structure", "proportional_to_shifted_x"
-            ),
-            "denominator_relation": spec.get(
-                "denominator_relation", "affine_compatible"
-            ),
-            "transformed_dynamics": "affine" if applies else "non_affine",
-            "singularity_risk": risk,
-            "horizon_size": horizon_bucket(horizon),
-        }
+        usable = usable_shifts(num, den, x0, horizon)
+        applies = bool(usable)
 
         latent: Dict[str, Any] = {
-            "num": num,
-            "den": den,
-            "x0": frac_str(x0),
-            "horizon": horizon,
-            "c_designated": frac_str(c_designated),
-            "r": spec["r"],
-            "s": spec["s"],
+            "num": num, "den": den, "x0": frac_str(x0), "horizon": horizon,
+            "c_designated": frac_str(c_designated), "r": spec["r"], "s": spec["s"],
             "perturbation": spec.get("perturbation"),
-            "linearising_shifts": [
-                [frac_str(c), frac_str(r), frac_str(s)] for c, r, s in shifts
+            "rational_fixed_points": [
+                frac_str(c) for c in rational_fixed_points(num, den)
             ],
+            "linearising_shifts": [
+                [frac_str(c), frac_str(r), frac_str(s)]
+                for c, r, s in linearising_shifts(num, den)
+            ],
+            "usable_shifts": [
+                [frac_str(c), frac_str(r), frac_str(s)] for c, r, s in usable
+            ],
+            "symbolic_affine_check": "affine" if applies else "non_affine",
             "instance_key": f"{num}|{den}|{frac_str(x0)}|{horizon}",
             "terms": [frac_str(t) for t in terms],
         }
 
-        num_s = render_linear(num, "x_n")
-        den_s = render_linear(den, "x_n")
-        rec = f"x_(n+1) = ({num_s}) / ({den_s})"
+        rec = f"x_(n+1) = ({render_linear(num, 'x_n')}) / ({render_linear(den, 'x_n')})"
 
         if template == "compute_term":
-            text = (
-                f"A sequence of rational numbers satisfies "
-                f"x_0 = {frac_str(x0)} and {rec} for all n ≥ 0. "
-                f"Compute x_{horizon}. "
-                f"Give the exact value as an integer or a reduced fraction."
-            )
+            text = (f"A sequence of rational numbers satisfies x_0 = {frac_str(x0)} and "
+                    f"{rec} for all n ≥ 0. Compute x_{horizon}. "
+                    f"Give the exact value as an integer or a reduced fraction.")
             answer = frac_str(terms[horizon])
         elif template == "find_index":
             target = terms[horizon]
             lo, hi = 1, max(HORIZON_BUCKETS["large"][1], horizon)
             probe = iterate_terms(num, den, x0, hi)
-            if probe is None:
+            if probe is None or sum(1 for t in probe[lo:] if t == target) != 1:
                 return None
-            if sum(1 for t in probe[lo:] if t == target) != 1:
-                return None
-            text = (
-                f"A sequence of rational numbers satisfies "
-                f"x_0 = {frac_str(x0)} and {rec} for all n ≥ 0. "
-                f"There is exactly one index N with {lo} ≤ N ≤ {hi} for which "
-                f"x_N = {frac_str(target)}. Find N. "
-                f"Answer with a single integer."
-            )
+            text = (f"A sequence of rational numbers satisfies x_0 = {frac_str(x0)} and "
+                    f"{rec} for all n ≥ 0. There is exactly one index N with "
+                    f"{lo} ≤ N ≤ {hi} for which x_N = {frac_str(target)}. Find N. "
+                    f"Answer with a single integer.")
             answer = str(horizon)
             latent["index_search_range"] = [lo, hi]
         elif template == "implicit_form":
-            # x_(n+1) * (den0*x_n + den1) = num(x_n), written out flat
-            lhs = render_terms(
-                [(den[0], "x_n x_(n+1)"), (den[1], "x_(n+1)")]
-            )
-            rhs = render_linear(num, "x_n")
-            text = (
-                f"A sequence of rational numbers satisfies x_0 = {frac_str(x0)} and "
-                f"{lhs} = {rhs} for all n ≥ 0. "
-                f"Compute x_{horizon}. "
-                f"Give the exact value as an integer or a reduced fraction."
-            )
+            lhs = render_terms([(den[0], "x_n x_(n+1)"), (den[1], "x_(n+1)")])
+            text = (f"A sequence of rational numbers satisfies x_0 = {frac_str(x0)} and "
+                    f"{lhs} = {render_linear(num, 'x_n')} for all n ≥ 0. "
+                    f"Compute x_{horizon}. "
+                    f"Give the exact value as an integer or a reduced fraction.")
             answer = frac_str(terms[horizon])
-        elif template == "transformed_value":
-            k = c_designated
-            if terms[horizon] == k:
-                return None
-            text = (
-                f"A sequence of rational numbers satisfies "
-                f"x_0 = {frac_str(x0)} and {rec} for all n ≥ 0. "
-                f"Compute the exact value of 1/(x_{horizon} - ({frac_str(k)})). "
-                f"Give the exact value as an integer or a reduced fraction."
-            )
-            answer = frac_str(1 / (terms[horizon] - k))
-            latent["transformed_shift"] = frac_str(k)
+        elif template == "shifted_index":
+            # identical mathematics, indices shifted to start at 1
+            text = (f"A sequence of rational numbers satisfies x_1 = {frac_str(x0)} and "
+                    f"{rec} for all n ≥ 1. Compute x_{horizon + 1}. "
+                    f"Give the exact value as an integer or a reduced fraction.")
+            answer = frac_str(terms[horizon])
+            latent["index_offset"] = 1
         else:
             raise ValueError(f"unknown template {template!r}")
 
         if len(answer) > 44:
             return None
 
-        solution = (
-            self._write_solution(spec, shifts, x0, horizon, terms, answer, template)
-            if applies
-            else ""
-        )
-        # zlib.crc32, NOT the built-in hash(): string hashing is salted per
-        # process, so ids built from hash() would differ between runs and break
-        # reproducibility of the frozen test files.
-        digest = zlib.crc32(latent["instance_key"].encode("utf-8"))
-        pid = f"{self.name}-{template}-{digest:08x}-{seed_value}"
         return Problem(
-            id=pid,
+            id=f"{self.name}-{template}-"
+               f"{zlib.crc32(latent['instance_key'].encode('utf-8')):08x}-{seed_value}",
             family=self.name,
             template=template,
             difficulty=difficulty,
             text=text,
             exact_answer=answer,
             strategy_applies=applies,
-            features=features,
-            human_solution=solution,
+            query_features=self.compute_query_features(num, den, horizon, template),
+            oracle_features=self.compute_oracle_features(
+                num, den, x0, horizon, c_designated, spec.get("perturbation")
+            ),
+            applicability_reason=applicability_reason(num, den, x0, horizon),
+            human_solution=(
+                self._write_solution(usable, x0, horizon, terms, answer, template)
+                if applies else ""
+            ),
             latent_parameters=latent,
             generation_seed=seed_value,
         )
 
     def _write_solution(
-        self,
-        spec: Dict[str, Any],
-        shifts: List[Tuple[Fraction, Fraction, Fraction]],
-        x0: Fraction,
-        horizon: int,
-        terms: List[Fraction],
-        answer: str,
-        template: str,
+        self, usable: List[Tuple[Fraction, Fraction, Fraction]], x0: Fraction,
+        horizon: int, terms: List[Fraction], answer: str, template: str,
     ) -> str:
-        c, r, s = shifts[0]
-        y0 = 1 / (x0 - c)
-        ys = [y0]
+        c, r, s = usable[0]
+        y = 1 / (x0 - c)
+        ys = [y]
         for _ in range(horizon):
             ys.append(r * ys[-1] + s)
         if c == 0:
-            shift = "x_n"
+            shift, invert = "x_n", "1/y"
         elif c < 0:
-            shift = f"(x_n + {frac_str(-c)})"
+            shift, invert = f"(x_n + {frac_str(-c)})", f"{frac_str(c)} + 1/y"
         else:
-            shift = f"(x_n - {frac_str(c)})"
+            shift, invert = f"(x_n - {frac_str(c)})", f"{frac_str(c)} + 1/y"
         coef = "" if r == 1 else ("-" if r == -1 else f"{frac_str(r)}·")
         tail = "" if s == 0 else (f" - {frac_str(-s)}" if s < 0 else f" + {frac_str(s)}")
-        invert = "1/y" if c == 0 else f"{frac_str(c)} + 1/y"
         lines = [
-            f"Look for a constant c fixed by the map: solving f(c) = c gives "
-            f"c = {frac_str(c)}.",
+            f"Look for a constant fixed by the map: solving f(c) = c gives c = {frac_str(c)}.",
             f"Substitute y_n = 1/{shift}.",
             f"A short computation turns the recurrence into the affine recurrence "
             f"y_(n+1) = {coef}y_n{tail}.",
-            f"From x_0 = {frac_str(x0)} we get y_0 = {frac_str(y0)}.",
+            f"From the initial term {frac_str(x0)} we get y_0 = {frac_str(ys[0])}.",
             f"Iterating the affine recurrence {horizon} times gives "
             f"y_{horizon} = {frac_str(ys[horizon])}.",
-            f"Inverting, x_{horizon} = {invert}_{horizon} = "
-            f"{frac_str(terms[horizon])}.",
+            f"Inverting, {invert}_{horizon} = {frac_str(terms[horizon])}.",
         ]
         if template != "compute_term":
             lines.append(f"The requested quantity is therefore {answer}.")
@@ -607,10 +693,7 @@ class RecurrenceSubstitutionFamily(ProblemFamily):
 
     # ------------------------------------------------------------------- API
     def sample_random(
-        self,
-        rng: random.Random,
-        difficulty: str,
-        template: str,
+        self, rng: random.Random, difficulty: str, template: str,
         want_applies: Optional[bool] = None,
     ) -> Problem:
         tier = TIERS[difficulty]
@@ -619,31 +702,23 @@ class RecurrenceSubstitutionFamily(ProblemFamily):
             base = self._positive_map(rng, coef)
             if base is None:
                 continue
-            # Positives are used directly; candidate negatives are perturbations
-            # of a positive, so every negative is near the boundary.
             make_negative = (
-                want_applies is False
-                if want_applies is not None
-                else rng.random() < 0.5
+                want_applies is False if want_applies is not None else rng.random() < 0.5
             )
             spec = base
             if make_negative:
                 spec = self._perturb(rng, base, coef)
                 if spec is None:
                     continue
-            # A perturbation may stay linearisable through a *different* rational
-            # fixed point.  Such instances are genuine near-boundary positives;
-            # the oracle in _build assigns the true label and the want_applies
-            # check below discards anything the caller did not ask for.
             bucket = rng.choice(tier["horizons"])
             hlo, hhi = HORIZON_BUCKETS[bucket]
             horizon = rng.randint(hlo, hhi)
             chosen = self._choose_x0(rng, spec["num"], spec["den"], horizon, coef)
             if chosen is None:
                 continue
-            x0, terms, risk = chosen
+            x0, terms = chosen
             problem = self._build(
-                rng, spec, difficulty, template, horizon, x0, terms, risk,
+                rng, spec, difficulty, template, horizon, x0, terms,
                 rng.randrange(2 ** 31),
             )
             if problem is None:
@@ -657,14 +732,12 @@ class RecurrenceSubstitutionFamily(ProblemFamily):
         )
 
     def sample_conditioned(
-        self,
-        rng: random.Random,
-        constraints: Dict[str, str],
-        difficulty: str,
+        self, rng: random.Random, constraints: Dict[str, str], difficulty: str,
         template: str,
     ) -> Optional[Problem]:
         self.check_constraints_wellformed(constraints)
         tier = TIERS[difficulty]
+        template = self.requested_template(constraints, template)
 
         want_h = constraints.get("horizon_size")
         if want_h is not None:
@@ -672,60 +745,68 @@ class RecurrenceSubstitutionFamily(ProblemFamily):
             if not wanted & set(tier["horizons"]):
                 raise UnsatisfiableConstraints(
                     f"difficulty '{difficulty}' only produces horizon sizes "
-                    f"{tier['horizons']}",
-                    constraints,
-                )
-        shift = constraints.get("shift_structure")
-        dyn = constraints.get("transformed_dynamics")
-        if shift is not None and dyn is not None:
-            if {str(v) for v in _listify(shift)} == {"aligned"} and {
-                str(v) for v in _listify(dyn)
-            } == {"non_affine"}:
-                raise UnsatisfiableConstraints(
-                    "shift_structure='aligned' means the designated shift does "
-                    "linearise the recurrence, so transformed_dynamics is 'affine'",
-                    constraints,
-                )
-
-        want_applies = None
-        if dyn is not None:
-            dv = {str(v) for v in _listify(dyn)}
-            if dv == {"affine"}:
-                want_applies = True
-            elif dv == {"non_affine"}:
-                want_applies = False
+                    f"{tier['horizons']}", constraints)
 
         for _ in range(6000):
             try:
-                p = self.sample_random(rng, difficulty, template, want_applies)
+                p = self.sample_random(rng, difficulty, template, None)
             except RuntimeError:
                 return None
-            if self.matches(p.features, constraints):
+            if self.matches(p.query_features, constraints):
                 return p
         return None
+
+    # ------------------------------------------------------------ seed strata
+    def seed_strata(self, n_seeds: int) -> List[Dict[str, str]]:
+        """Spread seeds over coefficient size and horizon so the demonstrations
+        vary in surface algebra rather than repeating one numeric recurrence."""
+        combos = [
+            {"coefficient_size": "small"},
+            {"coefficient_size": "medium"},
+            {"horizon_size": "small"},
+            {"horizon_size": "medium"},
+            {"denominator_constant_zero": "no"},
+            {"leading_coefficients_same_sign": "no"},
+        ]
+        return [combos[i % len(combos)] for i in range(n_seeds)]
+
+    # ---------------------------------------------------------------- preview
+    def preview_extras(self, problem: Problem) -> Dict[str, str]:
+        lp = problem.latent_parameters
+        usable = lp["usable_shifts"]
+        if usable:
+            c, r, s = usable[0]
+            transformed = f"y_(n+1) = {r}*y_n + {s}   with y_n = 1/(x_n - {c})"
+            fixed = c
+        else:
+            transformed = "no substitution y = 1/(x - c) yields an affine recurrence"
+            fixed = "none usable"
+        return {
+            "rational_fixed_points": ", ".join(lp["rational_fixed_points"]) or "none",
+            "fixed_point_used": fixed,
+            "transformed_recurrence": transformed,
+            "symbolic_affine_check": lp["symbolic_affine_check"],
+        }
 
     # ------------------------------------------------------------ recompute
     def recompute_answer(self, problem: Problem) -> str:
         lp = problem.latent_parameters
-        num, den = lp["num"], lp["den"]
-        x0 = Fraction(lp["x0"])
-        horizon = lp["horizon"]
-        terms = iterate_terms(num, den, x0, horizon)
+        num, den, horizon = lp["num"], lp["den"], lp["horizon"]
+        terms = iterate_terms(num, den, Fraction(lp["x0"]), horizon)
         if terms is None:
             raise ValueError(f"{problem.id}: orbit became undefined on recompute")
         t = problem.template
-        if t in ("compute_term", "implicit_form"):
+        if t in ("compute_term", "implicit_form", "shifted_index"):
             return frac_str(terms[horizon])
         if t == "find_index":
             return str(horizon)
-        if t == "transformed_value":
-            k = Fraction(lp["transformed_shift"])
-            return frac_str(1 / (terms[horizon] - k))
         raise ValueError(f"unknown template {t!r}")
 
     def recompute_strategy_applies(self, problem: Problem) -> bool:
         lp = problem.latent_parameters
-        return strategy_succeeds(lp["num"], lp["den"])
+        return strategy_succeeds_on(
+            lp["num"], lp["den"], Fraction(lp["x0"]), lp["horizon"]
+        )
 
 
 def _listify(value: Any) -> List[Any]:

@@ -116,45 +116,69 @@ def leakage_check() -> int:
     import prompts as P
     from families import all_families
 
-    banned = ["strategy_applies", "latent_parameters", "instance_key"]
+    banned = ["strategy_applies", "latent_parameters", "instance_key",
+              "oracle_features", "applicability_reason"]
     failures = 0
     for name, fam in all_families().items():
-        rng = random.Random(5)
+        rng = random.Random(zlib.crc32(f"leak|{name}".encode()))
         for template in fam.base_templates + fam.challenge_templates:
             for want in (True, False):
                 p = fam.sample_random(rng, "medium", template, want_applies=want)
-                texts = [
-                    P.solve_prompt(p),
-                    P.classify_prompt("S_hat", "H", p),
-                ]
-                for prompt in texts:
+                for prompt in (P.solve_prompt(p), P.classify_prompt("S_hat", "H", p)):
                     blob = prompt["system"] + prompt["user"]
-                    for token in banned + [fam.strategy_description]:
+                    tokens = (
+                        banned
+                        + [fam.strategy_description, p.applicability_reason]
+                        + list(fam.oracle_feature_schema)
+                    )
+                    for token in tokens:
                         if token and token in blob:
                             failures += 1
                             print(f"  LEAK in {name}/{template}: {token[:60]!r}")
-        print(f"  {name:26} solve + classify prompts clean")
+        schema = fam.query_schema()
+        for key in fam.oracle_feature_schema:
+            if key in schema:
+                failures += 1
+                print(f"  LEAK: oracle feature {key!r} is in {name}'s query schema")
+        for challenge in fam.challenge_templates:
+            if challenge in schema.get("task_form", []):
+                failures += 1
+                print(f"  LEAK: challenge template {challenge!r} is requestable "
+                      f"by Active in {name}")
+        print(f"  {name:26} prompts clean; query schema excludes all "
+              f"{len(fam.oracle_feature_schema)} oracle features")
     return 1 if failures else 0
 
 
 def determinacy_audit() -> int:
-    section("6. feature/label determinacy audit (informational)")
-    from audit_schema import audit
+    section("6. feature/label determinacy audit")
+    from audit_schema import collect, conjunction_table, single_feature_table
+    from families import all_families
 
-    report = audit(n_per_family=200, seed=0)
-    flagged = []
-    for family, rows in report.items():
-        det = [f"{r['feature']}={r['value']}" for r in rows if r["deterministic"]]
-        flagged.extend(f"{family}:{d}" for d in det)
-        print(f"  {family:26} {len(det)} label-determining feature value(s)")
-    if flagged:
-        print("\n  These schema values (near-)determine the hidden label:")
-        for f in flagged:
-            print(f"    - {f}")
-        print("  They are exposed by the spec's default schema. Set "
-              "`active_schema_profile: label_decoupled`")
-        print("  in the config to remove them.  # HUMAN_REVIEW_REQUIRED")
-    return 0
+    failures = 0
+    for name, fam in all_families().items():
+        rows = collect(fam, 200, 0, "medium")
+        query = single_feature_table(rows, lambda q, o: q)
+        synonyms = sorted({r["feature"] for r in query if r["label_synonym_feature"]})
+        one_sided = sorted({
+            f"{r['feature']}={r['value']}" for r in query if r["one_sided"]
+        })
+        conj = conjunction_table(rows)
+        if synonyms:
+            failures += 1
+            print(f"  {name:26} FAIL: query feature(s) {synonyms} are label synonyms")
+        else:
+            print(f"  {name:26} ok: no query feature is a label synonym")
+        if one_sided:
+            print(f"       one-sided (observable, learnable): {', '.join(one_sided)}")
+        for c in conj:
+            print(f"       label determined by the conjunction "
+                  f"{' AND '.join(c['features'])} ({c['coverage']:.0%} coverage)")
+    if failures:
+        print("\n  Move any label-synonym feature into the oracle-only namespace.")
+    print("\n  Conjunction findings are not failures, but they are scientifically")
+    print("  material and must be stated in the paper.  # HUMAN_REVIEW_REQUIRED")
+    return 1 if failures else 0
 
 
 def main() -> int:

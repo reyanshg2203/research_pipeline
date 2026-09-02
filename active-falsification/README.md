@@ -38,13 +38,29 @@ The three families are documented in full, with proofs and test coverage, in
 [`docs/FAMILY_SPEC.md`](docs/FAMILY_SPEC.md):
 
 1. **`order_minus_one`** — exponential congruences `a^n ≡ -1 (mod m)`; the
-   strategy is half-order reasoning over coprime prime-power components.
+   strategy is the narrow half-order shortcut (compute `d = ord_m(a)`; when `d`
+   is even, try `n = d/2`).
 2. **`lte_valuation`** — `v_p(a^n - b^n)`; the strategy is the
-   Lifting-the-Exponent shortcut, with applicability defined *operationally* as
-   "the shortcut returns the true valuation".
+   Lifting-the-Exponent shortcut, and applicability is the **theorem's domain**
+   (`p` odd, `p | a-b`, `p` divides neither base) — not numerical coincidence.
+   About three quarters of the negatives are cases where the shortcut returns
+   the right number anyway; those are logged as accidental matches.
 3. **`recurrence_substitution`** — rational recurrences linearised by
-   `y_n = 1/(x_n - c)`; applicability is exactly the existence of a rational
-   fixed point.
+   `y_n = 1/(x_n - c)`; applicability requires a rational fixed point, a
+   symbolically verified affine reduction, and a substitution that is defined
+   along the whole requested trajectory.
+
+Two things the code separates deliberately:
+
+- **three concepts, three names** — `exact_answer` (the right answer to the
+  problem), `strategy_applies` (is S mathematically applicable), and
+  `model_answer_correct` / `model_boundary_correct` (did a model get something
+  right on a run). There is no bare `success` or `correct` anywhere.
+- **two feature namespaces** — `query_features`, the observable experimental
+  controls Active may request, and `oracle_features`, researcher-side
+  diagnostics used for validation and audit. Several oracle features are exact
+  synonyms for the hidden label, which is why asking for one returns
+  `unknown feature name`.
 
 ---
 
@@ -73,16 +89,28 @@ hidden label. **Do not run a model until this passes.**
 Inspect generated problems by hand:
 
 ```bash
-python scripts/generate_preview.py --n 5
+python scripts/generate_preview.py --n 10                    # 10 positive + 10 negative
+python scripts/generate_preview.py --n 10 --challenge        # held-out templates
+python scripts/generate_preview.py --n 6 --seeds             # seed demonstrations
 python scripts/generate_preview.py --n 5 --difficulty hard --verbose
-python scripts/generate_preview.py --n 5 --challenge
 ```
 
-See how much of the label each queryable feature explains:
+Each problem prints its exact answer, `strategy_applies`, the reason the
+strategy holds or fails, the query features, and the oracle features in a
+clearly separate block — plus family detail such as the LTE shortcut prediction
+beside the exact valuation, or the fixed point and the transformed recurrence.
+
+Check that no query feature is a synonym for the hidden label, and see which
+conjunctions determine it:
 
 ```bash
 python scripts/audit_schema.py --n 500
 ```
+
+It exits non-zero if any query feature determines the label on both sides. It
+also reports one-sided implications (observable facts the model must learn, not
+leaks) and the smallest determining conjunctions, which are scientifically
+material and belong in the paper.
 
 ## Offline end-to-end pipeline test (no GPU)
 

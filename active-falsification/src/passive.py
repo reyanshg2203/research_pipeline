@@ -73,7 +73,7 @@ def run_passive(
                 )
 
         observations = observations_from(
-            problems, show_features, list(family.active_query_schema)
+            problems, show_features, list(family.query_schema())
         )
         hypothesis_before = hypothesis
         hypothesis, gen = revise_hypothesis(
