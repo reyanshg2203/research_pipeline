@@ -79,9 +79,13 @@ def build_problem_bank(
     oracle BEFORE any model sees it; a failure is logged, the problem is never
     sent to a model, and a replacement is drawn.  Repeated failures abort.
 
-    Balanced on ``strategy_applies`` so solving accuracy is not dominated by
-    whichever class happens to be easier.  The label itself is researcher-side
-    metadata and never reaches a prompt.
+    Stage 1 uses ONLY the public problem statement and the exact mathematical
+    answer.  It does not read, condition on, or record ``strategy_applies``:
+    difficulty here means "how often do models solve these problems", and
+    conditioning the bank on a hidden applicability label would make that
+    measurement a researcher-side intervention rather than a property of the
+    family's own distribution.  Problems are therefore drawn unconditionally
+    (``want_applies=None``).
     """
     bank: Dict[str, Dict[str, List[Problem]]] = {}
     validation_failures: List[Dict[str, str]] = []
@@ -90,7 +94,6 @@ def build_problem_bank(
         bank[name] = {}
         for difficulty in difficulties:
             rng = stream(master_seed, "calibration_bank", name, difficulty)
-            wants = [True, False] * ((per_tier + 1) // 2)
             items: List[Problem] = []
             seen: set = set()
             failures_here = 0
@@ -99,7 +102,7 @@ def build_problem_bank(
                 placed = False
                 for _ in range(500):
                     problem = family.sample_random(
-                        rng, difficulty, template, want_applies=wants[i]
+                        rng, difficulty, template, want_applies=None
                     )
                     if problem.content_key() in seen:
                         continue
@@ -159,6 +162,11 @@ def bank_public_records(bank: Dict[str, Dict[str, List[Problem]]]) -> List[Dict[
 def bank_researcher_records(
     bank: Dict[str, Dict[str, List[Problem]]]
 ) -> List[Dict[str, Any]]:
+    """Full family metadata, archived for auditing.
+
+    This is a passive record of what the generators produced. Nothing in the
+    Stage-1 pipeline reads it, and none of it reaches a prompt or a metric.
+    """
     rows = []
     for family, tiers in bank.items():
         for difficulty, problems in tiers.items():
@@ -187,6 +195,10 @@ def solve_once(
 
     A parse failure is recorded as ``unparsed`` and scored incorrect for the
     primary accuracy; parsed-only accuracy is reported separately.
+
+    The recorded row contains the public problem, the exact answer, and what the
+    model produced.  It deliberately does not carry ``strategy_applies``: Stage 1
+    measures solving difficulty, and the applicability label plays no part in it.
     """
     prompt = solve_prompt(problem)
     seed = derive_seed(master_seed, "solve", model.spec.alias, problem.id, tag)
@@ -225,7 +237,6 @@ def solve_once(
         "output_tokens": generation.output_tokens,
         "precision": model.config.get("precision"),
         "generation_seed": problem.generation_seed,
-        "strategy_applies": problem.strategy_applies,   # researcher-side only
         "tag": tag,
     }
 

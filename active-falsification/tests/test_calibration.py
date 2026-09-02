@@ -83,14 +83,47 @@ def test_every_banked_problem_is_independently_validated():
                 assert p.difficulty == difficulty
 
 
-def test_bank_covers_all_three_tiers_and_is_label_balanced():
+def test_bank_covers_all_three_tiers():
     families = all_families()
     bank = build_problem_bank(families, 10, 20260901)["bank"]
     for name in families:
         assert set(bank[name]) == {"easy", "medium", "hard"}
         for difficulty, problems in bank[name].items():
-            positives = sum(1 for p in problems if p.strategy_applies)
-            assert positives == 5, (name, difficulty, positives)
+            assert len(problems) == 10
+            assert all(p.difficulty == difficulty for p in problems)
+
+
+def test_stage_1_never_reads_or_records_the_applicability_label():
+    """Stage 1 uses only the public problem and the exact answer."""
+    source = open(os.path.join(ROOT, "src", "calibration.py"), encoding="utf-8").read()
+    code = "\n".join(
+        line for line in source.splitlines()
+        if not line.lstrip().startswith("#")
+    )
+    # the only mentions left are inside docstrings explaining the exclusion
+    assert "p.strategy_applies" not in code
+    assert "problem.strategy_applies" not in code
+    assert "want_applies=None" in code
+    assert "want_applies=wants" not in code
+
+    runner_source = open(
+        os.path.join(ROOT, "scripts", "run_calibration.py"), encoding="utf-8"
+    ).read()
+    assert "strategy_applies" not in runner_source
+
+    fam = get_family("lte_valuation")
+    bank = build_problem_bank({"lte_valuation": fam}, 2, 20260901)["bank"]
+    model = load_model("mock", {"precision": "none"})
+    rows = run_zero_shot_calibration(
+        model, {"lte_valuation": fam}, bank, 128, 20260901, progress=False
+    )
+    for row in rows:
+        assert "strategy_applies" not in row
+
+    from calibration import bank_public_records
+
+    for record in bank_public_records(bank):
+        assert "strategy_applies" not in record
 
 
 def test_bank_problems_are_unique_within_a_tier():
@@ -384,7 +417,9 @@ def test_mock_calibration_run_produces_only_stage_1_artifacts(tmp_path):
          "--skip-self-test", "--outputs", str(tmp_path), "--run-id", "t"],
         cwd=ROOT, capture_output=True, text=True,
     )
-    assert out.returncode in (0, 1), out.stderr        # 1 = a NO_VIABLE_TIER family
+    # A completed calibration exits 0 even when a family has no viable tier:
+    # that is a recorded result, not a software failure.
+    assert out.returncode == 0, out.stderr
     run_dir = tmp_path / "t"
     produced = sorted(os.listdir(run_dir))
     expected = {
@@ -417,16 +452,86 @@ def test_mock_calibration_run_produces_only_stage_1_artifacts(tmp_path):
         assert banned not in report, banned
 
 
+def test_no_viable_tier_still_exits_zero(tmp_path):
+    """A completed calibration is a success even when it selects nothing."""
+    out = subprocess.run(
+        [sys.executable, os.path.join(ROOT, "scripts", "run_calibration.py"),
+         "--config", os.path.join(ROOT, "configs", "calibration_mock.yaml"),
+         "--skip-self-test", "--outputs", str(tmp_path), "--run-id", "nv"],
+        cwd=ROOT, capture_output=True, text=True,
+    )
+    assert out.returncode == 0, out.stderr
+    selections = json.loads(
+        (tmp_path / "nv" / "selected_difficulties.json").read_text()
+    )
+    statuses = {
+        k: v.get("status") for k, v in selections.items() if not k.startswith("_")
+    }
+    # the mock model answers at random, so at least one family resolves to
+    # NO_VIABLE_TIER -- and that must be recorded, not signalled by an exit code
+    assert any(s in (NO_VIABLE_TIER, TIE_NEEDS_REVIEW) for s in statuses.values()), \
+        statuses
+    report = (tmp_path / "nv" / "calibration_report.md").read_text()
+    assert NO_VIABLE_TIER in report or TIE_NEEDS_REVIEW in report
+
+
 def test_calibration_config_rejects_stage_2_settings(tmp_path):
-    from run_calibration import load_config
+    from run_calibration import ConfigError, load_config
 
     path = tmp_path / "bad.yaml"
     path.write_text(
         "models: [mock]\nfamilies: [lte_valuation]\nactive_rounds: 3\n"
     )
-    with pytest.raises(ValueError) as exc:
+    with pytest.raises(ConfigError) as exc:
         load_config(str(path))
     assert "Stage-2" in str(exc.value)
+    assert "active_rounds" in str(exc.value)
+
+
+def test_calibration_config_rejects_any_unknown_key(tmp_path):
+    """Strict allowlist: an unrecognised key is an error, not a warning."""
+    from run_calibration import ALLOWED_CONFIG_KEYS, ConfigError, load_config
+
+    path = tmp_path / "typo.yaml"
+    path.write_text(
+        "models: [mock]\nfamilies: [lte_valuation]\ncalibraton_per_tier: 10\n"
+    )
+    with pytest.raises(ConfigError) as exc:
+        load_config(str(path))
+    assert "not recognised" in str(exc.value)
+    assert "calibraton_per_tier" in str(exc.value)
+    assert "override_difficulties" not in ALLOWED_CONFIG_KEYS
+
+
+def test_calibration_config_requires_models_and_families(tmp_path):
+    from run_calibration import ConfigError, load_config
+
+    path = tmp_path / "empty.yaml"
+    path.write_text("master_seed: 1\n")
+    with pytest.raises(ConfigError) as exc:
+        load_config(str(path))
+    assert "missing required key" in str(exc.value)
+
+
+def test_calibration_config_rejects_stage_2_token_budgets(tmp_path):
+    from run_calibration import ConfigError, load_config
+
+    path = tmp_path / "budgets.yaml"
+    path.write_text(
+        "models: [mock]\nfamilies: [lte_valuation]\n"
+        "max_new_tokens:\n  solve: 512\n  classify: 64\n"
+    )
+    with pytest.raises(ConfigError) as exc:
+        load_config(str(path))
+    assert "classify" in str(exc.value)
+
+
+def test_stage_2_configs_are_rejected_by_the_stage_1_loader():
+    from run_calibration import ConfigError, load_config
+
+    for name in ("pilot.yaml", "final.yaml", "mock.yaml"):
+        with pytest.raises(ConfigError):
+            load_config(os.path.join(ROOT, "configs", name))
 
 
 def test_shipped_calibration_configs_are_stage_1_only():

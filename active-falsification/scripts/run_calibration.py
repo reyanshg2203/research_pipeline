@@ -78,27 +78,84 @@ DEFAULTS: Dict[str, Any] = {
 }
 
 
+#: The ONLY keys a Stage-1 calibration config may contain.  An unknown key is an
+#: error, not a warning: it is how a setting from the Stage-2 pilot/final config
+#: would otherwise slip into calibration and silently do nothing.
+ALLOWED_CONFIG_KEYS = {
+    "models",
+    "precision",
+    "families",
+    "master_seed",
+    "temperature",
+    "top_p",
+    "top_k",
+    "calibration_per_tier",
+    "difficulties",
+    "max_new_tokens",
+}
+
+REQUIRED_CONFIG_KEYS = {"models", "families"}
+
+#: Only the zero-shot solver budget is meaningful in Stage 1.
+ALLOWED_MAX_NEW_TOKENS_KEYS = {"solve"}
+
+#: Recognised Stage-2 keys, listed so the error message can say what happened
+#: rather than just "unknown key".
+STAGE_2_CONFIG_KEYS = {
+    "seed_candidates", "seed_count", "h0_pilot_size", "active_rounds",
+    "active_batch_size", "iid_test_size", "challenge_test_size",
+    "adaptation_repeats", "passive_max_rounds", "balanced_tests",
+    "show_features_in_observations", "override_difficulties", "use_thinking",
+}
+
+
+class ConfigError(ValueError):
+    """A Stage-1 calibration config is malformed or contains foreign settings."""
+
+
 def load_config(path: str) -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as fh:
         raw = yaml.safe_load(fh) or {}
+    if not isinstance(raw, dict):
+        raise ConfigError(f"{path}: expected a mapping at the top level")
+
+    unknown = sorted(set(raw) - ALLOWED_CONFIG_KEYS)
+    if unknown:
+        stage2 = [k for k in unknown if k in STAGE_2_CONFIG_KEYS]
+        other = [k for k in unknown if k not in STAGE_2_CONFIG_KEYS]
+        parts = [f"{path}: unknown key(s) in a Stage-1 calibration config."]
+        if stage2:
+            parts.append(
+                f"These are Stage-2 (pilot/final) settings and have no effect on "
+                f"calibration: {stage2}."
+            )
+        if other:
+            parts.append(f"These are not recognised at all: {other}.")
+        parts.append(f"Allowed keys: {sorted(ALLOWED_CONFIG_KEYS)}.")
+        raise ConfigError(" ".join(parts))
+
+    missing = sorted(REQUIRED_CONFIG_KEYS - set(raw))
+    if missing:
+        raise ConfigError(f"{path}: missing required key(s) {missing}")
+
+    mnt_raw = raw.get("max_new_tokens") or {}
+    if not isinstance(mnt_raw, dict):
+        raise ConfigError(f"{path}: max_new_tokens must be a mapping")
+    bad_budgets = sorted(set(mnt_raw) - ALLOWED_MAX_NEW_TOKENS_KEYS)
+    if bad_budgets:
+        raise ConfigError(
+            f"{path}: max_new_tokens may only contain "
+            f"{sorted(ALLOWED_MAX_NEW_TOKENS_KEYS)} in Stage 1; got {bad_budgets}. "
+            f"Budgets for induction, querying, revision and classification belong "
+            f"to Stage 2."
+        )
+
     config = dict(DEFAULTS)
     config.update({k: v for k, v in raw.items() if k != "max_new_tokens"})
     mnt = dict(DEFAULTS["max_new_tokens"])
-    mnt.update(raw.get("max_new_tokens") or {})
+    mnt.update(mnt_raw)
     config["max_new_tokens"] = mnt
     config["_config_path"] = path
-
-    stage2 = [
-        k for k in raw
-        if k in ("seed_candidates", "seed_count", "h0_pilot_size", "active_rounds",
-                 "active_batch_size", "iid_test_size", "challenge_test_size",
-                 "adaptation_repeats", "passive_max_rounds")
-    ]
-    if stage2:
-        raise ValueError(
-            f"{path} contains Stage-2 settings {stage2}. A calibration config "
-            f"must contain only Stage-1 settings (calibration spec S.23)."
-        )
     return config
 
 
@@ -230,11 +287,7 @@ def main(argv=None) -> int:
         }, fh, indent=2, default=str)
     for name in families:
         counts = {d: len(bank[name][d]) for d in difficulties}
-        balance = {
-            d: sum(1 for p in bank[name][d] if p.strategy_applies)
-            for d in difficulties
-        }
-        print(f"  {name:26} {counts}  (positive applicability: {balance})")
+        print(f"  {name:26} {counts}")
     print(f"  bank frozen: {len(public)} problems, identical for every model")
 
     # ---- 2. manifest -----------------------------------------------------
@@ -376,10 +429,19 @@ def main(argv=None) -> int:
         print("\n[!] MOCK model run: these numbers are a pipeline test, NOT results.")
     if config["precision"] == "4bit":
         print("\n[!] 4-bit smoke run: do NOT use these accuracies to select a tier.")
+    unresolved = [n for n, sel in selections.items() if not sel.get("selected")]
+    if unresolved:
+        # A completed calibration that selects no tier is a valid scientific
+        # result about the generator, not a software failure. It is recorded in
+        # selected_difficulties.json and calibration_report.md; the exit code
+        # stays 0. Non-zero is reserved for execution, config, model and oracle
+        # failures.
+        print(f"\n[!] no tier was selected for: {', '.join(unresolved)}")
+        print("    This is a recorded calibration RESULT, not an error. See")
+        print("    selected_difficulties.json and calibration_report.md.")
     print("\nStage 2 (seeds / H0 / Active / Passive) has NOT been run and must not")
     print("be started until the authors approve the tiers above.")
-    unviable = [n for n, s in selections.items() if not s.get("selected")]
-    return 1 if unviable else 0
+    return 0
 
 
 if __name__ == "__main__":

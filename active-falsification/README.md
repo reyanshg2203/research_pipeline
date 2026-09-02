@@ -170,6 +170,20 @@ Diagnostics (difficulty inversion, ceiling, floor, parse-failure rate,
 ceiling-vs-floor disagreement between models) are reported as warnings and never
 change the selection.
 
+Stage 1 uses only the public problem statement and the exact mathematical
+answer. It never reads, conditions on, or records `strategy_applies` — the bank
+is drawn unconditionally from each tier's own distribution.
+
+`NO_VIABLE_TIER` is a **result**, not an error: a completed calibration exits 0
+and records the outcome in `selected_difficulties.json` and
+`calibration_report.md`. Non-zero exit codes mean the run did not complete —
+a bad config, a model that would not load, or a generator whose problems failed
+mathematical validation.
+
+The config loader enforces a strict allowlist. Any unknown key is an error, so
+a setting copied from `pilot.yaml` or `final.yaml` cannot silently enter
+calibration and do nothing.
+
 ### Calibration outputs
 
 ```
