@@ -38,6 +38,14 @@ class ModelSpec:
                             ``enable_thinking`` argument; we pass it explicitly
       "native"              the model reasons by default with no switch to set
       "instruct"            an ordinary instruct model; no reasoning mode
+
+    ``reasoning_prefix`` is appended to the generation prompt so the model is
+    forced to *begin* in its reasoning mode.  DeepSeek-R1-Distill's model card
+    recommends exactly this, because the distilled models otherwise sometimes
+    skip the reasoning span.  The prefix is part of the PROMPT, so it is counted
+    in ``prompt_tokens`` and not in ``output_tokens``; it is prepended back onto
+    the stored response so the saved trace shows what the model actually
+    continued from.
     """
 
     alias: str
@@ -45,6 +53,7 @@ class ModelSpec:
     size_note: str
     thinking_mode: str = "instruct"
     merge_system_into_user: bool = False
+    reasoning_prefix: Optional[str] = None
     gated: bool = False
     note: str = ""
 
@@ -63,10 +72,13 @@ MODEL_REGISTRY: Dict[str, ModelSpec] = {
         size_note="8B",
         thinking_mode="native",
         merge_system_into_user=True,
+        reasoning_prefix="<think>\n",
         note=(
-            "reasoning-distilled; reasons by default with no flag. The model card "
-            "advises against a separate system prompt, so the instruction is "
-            "merged into the user turn."
+            "reasoning-distilled. Following its model card: no separate system "
+            "turn (the instruction is merged into the user turn), and generation "
+            "is forced to start with '<think>\\n' so the model always enters its "
+            "reasoning mode. The zero-shot instruction and the FINAL_ANSWER "
+            "convention are unchanged."
         ),
     ),
     "smollm3_3b": ModelSpec(
@@ -141,7 +153,7 @@ class BaseModel:
         meta: Optional[Dict[str, Any]] = None,
     ) -> Generation:
         started = time.time()
-        response, out_tokens, in_tokens = self._generate(
+        response, out_tokens, in_tokens, hit_cap = self._generate(
             system, user, max_new_tokens, seed
         )
         gen = Generation(
@@ -152,6 +164,7 @@ class BaseModel:
             response=response,
             output_tokens=out_tokens,
             prompt_tokens=in_tokens,
+            hit_max_new_tokens=bool(hit_cap),
             meta={
                 "max_new_tokens": max_new_tokens,
                 "seed": seed,
@@ -165,7 +178,8 @@ class BaseModel:
 
     def _generate(
         self, system: str, user: str, max_new_tokens: int, seed: Optional[int]
-    ) -> tuple:  # (text, output_tokens, prompt_tokens)
+    ) -> tuple:
+        """Return (text, output_tokens, prompt_tokens, hit_max_new_tokens)."""
         raise NotImplementedError
 
     def unload(self) -> None:
@@ -191,12 +205,16 @@ class BaseModel:
 class HFModel(BaseModel):
     """transformers backend.
 
-    Output token accounting is exact: we count generated token ids, not
-    characters and not an estimate.
+    Three things are recorded rather than assumed:
 
-    Reasoning behaviour is resolved per model from ``spec.thinking_mode`` and
-    recorded in :meth:`describe`, so the manifest states what actually ran
-    rather than what a generic flag requested.
+    * the RESOLVED inference configuration -- the dtype the weights actually
+      loaded as, where the parameters actually landed, whether anything spilled
+      to CPU or disk -- not just the precision label that was requested;
+    * exact output-token counts, taken from generated token ids;
+    * whether generation stopped at the token cap instead of finishing.
+
+    Reasoning behaviour is resolved per model from the registry, so the manifest
+    states what actually ran rather than what a generic flag requested.
     """
 
     def __init__(self, spec: ModelSpec, config: Dict[str, Any]):
@@ -206,22 +224,37 @@ class HFModel(BaseModel):
 
         self._torch = torch
         precision = str(config.get("precision", "bf16_or_fp16"))
+        self.requested_precision = precision
         self.precision = precision
+
+        has_cuda = bool(torch.cuda.is_available())
+        supports_bf16 = bool(has_cuda and torch.cuda.is_bf16_supported())
+        self.bf16_supported = supports_bf16
 
         kwargs: Dict[str, Any] = {"trust_remote_code": True}
         if precision == "4bit":
             from transformers import BitsAndBytesConfig
 
+            # 4-bit NF4 with a BF16 compute dtype only where the GPU supports
+            # BF16; a T4 (compute capability 7.5) does not, and asking for it
+            # there is either rejected or silently slow.
+            compute_dtype = torch.bfloat16 if supports_bf16 else torch.float16
+            self.quantization = {
+                "load_in_4bit": True,
+                "bnb_4bit_quant_type": "nf4",
+                "bnb_4bit_compute_dtype": str(compute_dtype).replace("torch.", ""),
+                "bnb_4bit_use_double_quant": True,
+            }
             kwargs["quantization_config"] = BitsAndBytesConfig(
                 load_in_4bit=True,
                 bnb_4bit_quant_type="nf4",
-                bnb_4bit_compute_dtype=torch.bfloat16,
+                bnb_4bit_compute_dtype=compute_dtype,
                 bnb_4bit_use_double_quant=True,
             )
         else:
-            supports_bf16 = torch.cuda.is_available() and torch.cuda.is_bf16_supported()
+            self.quantization = None
             kwargs["torch_dtype"] = torch.bfloat16 if supports_bf16 else torch.float16
-        kwargs["device_map"] = "auto" if torch.cuda.is_available() else None
+        kwargs["device_map"] = "auto" if has_cuda else None
 
         token = os.environ.get("HF_TOKEN") or os.environ.get("HUGGING_FACE_HUB_TOKEN")
         if token:
@@ -235,8 +268,8 @@ class HFModel(BaseModel):
         except Exception as exc:  # noqa: BLE001
             if spec.gated:
                 raise GatedModelError(
-                    f"could not load gated model {spec.model_id!r} ({exc.__class__.__name__}: "
-                    f"{exc}).\n"
+                    f"could not load gated model {spec.model_id!r} "
+                    f"({exc.__class__.__name__}: {exc}).\n"
                     f"Accept the licence on its Hugging Face page and export HF_TOKEN, "
                     f"or re-run with an EXPLICIT substitution:\n"
                     f"    python scripts/run_calibration.py --config <cfg> "
@@ -248,8 +281,66 @@ class HFModel(BaseModel):
         self.model.eval()
         self.revision = getattr(self.model.config, "_commit_hash", None)
         self.thinking_mode = spec.thinking_mode
-        # resolved lazily on the first call, then recorded
+        self.reasoning_prefix = spec.reasoning_prefix
         self.chat_template_flag_accepted: Optional[bool] = None
+        self.resolved = self._resolve_placement()
+
+    # -- what actually loaded ---------------------------------------------
+    def _resolve_placement(self) -> Dict[str, Any]:
+        """Inspect the loaded model instead of trusting the requested config."""
+        torch = self._torch
+        dtypes: Dict[str, int] = {}
+        devices: Dict[str, int] = {}
+        for param in self.model.parameters():
+            dtypes[str(param.dtype)] = dtypes.get(str(param.dtype), 0) + 1
+            devices[str(param.device)] = devices.get(str(param.device), 0) + 1
+
+        device_map = getattr(self.model, "hf_device_map", None)
+        placements = set(str(v) for v in (device_map or {}).values())
+        offloaded_modules = sorted(
+            k for k, v in (device_map or {}).items()
+            if str(v) in ("cpu", "disk") or str(v).startswith("cpu")
+        )
+        cpu_offload = bool(offloaded_modules) or any(
+            d.startswith("cpu") for d in devices
+        )
+        disk_offload = any(str(v) == "disk" for v in (device_map or {}).values())
+
+        info: Dict[str, Any] = {
+            "requested_precision": self.requested_precision,
+            "parameter_dtypes": dtypes,
+            "dominant_parameter_dtype": (
+                max(dtypes, key=dtypes.get) if dtypes else None
+            ),
+            "quantization": self.quantization,
+            "bf16_supported_by_gpu": self.bf16_supported,
+            "compute_dtype": (
+                self.quantization["bnb_4bit_compute_dtype"] if self.quantization
+                else (max(dtypes, key=dtypes.get) if dtypes else None)
+            ),
+            "device_map": device_map,
+            "device_map_placements": sorted(placements) if placements else None,
+            "parameter_devices": devices,
+            "model_device": str(getattr(self.model, "device", "unknown")),
+            "cpu_offload": cpu_offload,
+            "disk_offload": disk_offload,
+            "offloaded_modules": offloaded_modules or None,
+        }
+        if torch.cuda.is_available():
+            props = torch.cuda.get_device_properties(0)
+            free, total = torch.cuda.mem_get_info()
+            info.update({
+                "gpu_name": props.name,
+                "gpu_count": torch.cuda.device_count(),
+                "gpu_total_vram_bytes": int(props.total_memory),
+                "gpu_total_vram_gib": round(props.total_memory / 2 ** 30, 2),
+                "gpu_free_vram_gib_after_load": round(free / 2 ** 30, 2),
+                "gpu_used_vram_gib_after_load": round((total - free) / 2 ** 30, 2),
+                "gpu_capability": f"{props.major}.{props.minor}",
+            })
+        else:
+            info.update({"gpu_name": None, "gpu_total_vram_gib": None})
+        return info
 
     # -- chat templating --------------------------------------------------
     def _messages(self, system: str, user: str) -> List[Dict[str, str]]:
@@ -263,20 +354,27 @@ class HFModel(BaseModel):
     def _apply_template(self, system: str, user: str) -> str:
         messages = self._messages(system, user)
         base: Dict[str, Any] = {"tokenize": False, "add_generation_prompt": True}
+        text = None
         if self.spec.thinking_mode == "chat_template_flag":
             try:
                 text = self.tokenizer.apply_chat_template(
                     messages, enable_thinking=True, **base
                 )
                 self.chat_template_flag_accepted = True
-                return text
             except TypeError:
                 # the template does not take the argument; do NOT force it
                 self.chat_template_flag_accepted = False
-        try:
-            return self.tokenizer.apply_chat_template(messages, **base)
-        except Exception:  # pragma: no cover - templateless models
-            return f"{system}\n\n{user}\n\n"
+        if text is None:
+            try:
+                text = self.tokenizer.apply_chat_template(messages, **base)
+            except Exception:  # pragma: no cover - templateless models
+                text = f"{system}\n\n{user}\n\n"
+        if self.reasoning_prefix and not text.rstrip().endswith(
+            self.reasoning_prefix.strip()
+        ):
+            # force the model to begin inside its reasoning span
+            text = text + self.reasoning_prefix
+        return text
 
     def _generate(
         self, system: str, user: str, max_new_tokens: int, seed: Optional[int]
@@ -302,20 +400,40 @@ class HFModel(BaseModel):
         with torch.no_grad():
             out = self.model.generate(**inputs, **gen_kwargs)
         new_ids = out[0][prompt_len:]
-        # EXACT output-token count (spec S.24.6)
+        # EXACT output-token count
         output_tokens = int(new_ids.shape[-1])
         response = self.tokenizer.decode(new_ids, skip_special_tokens=True)
-        return response, output_tokens, prompt_len
+
+        # truncation: the cap was reached and the run did not end on a stop token
+        eos_ids = {self.tokenizer.eos_token_id}
+        extra_eos = getattr(self.model.generation_config, "eos_token_id", None)
+        if isinstance(extra_eos, (list, tuple)):
+            eos_ids.update(int(t) for t in extra_eos)
+        elif extra_eos is not None:
+            eos_ids.add(int(extra_eos))
+        ended_on_stop = bool(
+            output_tokens and int(new_ids[-1]) in {t for t in eos_ids if t is not None}
+        )
+        hit_cap = output_tokens >= max_new_tokens and not ended_on_stop
+
+        if self.reasoning_prefix:
+            # the forced prefix is part of the prompt; put it back on the stored
+            # trace so the saved response shows what the model continued from
+            response = self.reasoning_prefix + response
+        return response, output_tokens, prompt_len, hit_cap
 
     def describe(self) -> Dict[str, Any]:
         info = super().describe()
         info.update({
+            "requested_precision": self.requested_precision,
             "revision": self.revision,
             "tokenizer": getattr(self.tokenizer, "name_or_path", None),
             "tokenizer_class": type(self.tokenizer).__name__,
             "thinking_mode": self.thinking_mode,
             "chat_template_enable_thinking_accepted": self.chat_template_flag_accepted,
             "merge_system_into_user": self.spec.merge_system_into_user,
+            "forced_reasoning_prefix": self.reasoning_prefix,
+            "resolved_inference": self.resolved,
             "generation": {
                 "do_sample": True,
                 "temperature": self.config.get("temperature"),
@@ -323,6 +441,12 @@ class HFModel(BaseModel):
                 "top_k": self.config.get("top_k"),
             },
         })
+        if self.requested_precision == "4bit":
+            info["WARNING_precision"] = (
+                "4-bit NF4 is a SMOKE / PILOT setting. These numbers must not be "
+                "used to select a difficulty tier and must not be pooled with "
+                "full-precision results without a visible warning."
+            )
         return info
 
     def unload(self) -> None:
@@ -384,8 +508,10 @@ class MockModel(BaseModel):
         else:
             text = "MOCK RESPONSE"
         # a plausible, deterministic token count (~4 chars per token)
-        tokens = min(max_new_tokens, max(1, len(text) // 4))
-        return text, tokens, max(1, len(system + user) // 4)
+        wanted = max(1, len(text) // 4)
+        tokens = min(max_new_tokens, wanted)
+        hit_cap = wanted >= max_new_tokens
+        return text, tokens, max(1, len(system + user) // 4), hit_cap
 
     @staticmethod
     def _mock_constraints(user: str, h: int) -> Dict[str, str]:
@@ -447,8 +573,15 @@ def environment_report() -> Dict[str, Any]:
         report["torch"] = torch.__version__
         report["cuda_available"] = bool(torch.cuda.is_available())
         if torch.cuda.is_available():
-            report["gpu_name"] = torch.cuda.get_device_name(0)
+            props = torch.cuda.get_device_properties(0)
+            free, total = torch.cuda.mem_get_info()
+            report["gpu_name"] = props.name
             report["gpu_count"] = torch.cuda.device_count()
+            report["gpu_total_vram_gib"] = round(props.total_memory / 2 ** 30, 2)
+            report["gpu_free_vram_gib"] = round(free / 2 ** 30, 2)
+            report["gpu_capability"] = f"{props.major}.{props.minor}"
+            report["bf16_supported"] = bool(torch.cuda.is_bf16_supported())
+            report["cuda_version"] = torch.version.cuda
     except Exception as exc:  # pragma: no cover
         report["torch"] = f"unavailable ({exc.__class__.__name__})"
     try:

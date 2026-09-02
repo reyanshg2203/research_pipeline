@@ -135,7 +135,13 @@ class Observation:
 
 @dataclass
 class Generation:
-    """A single raw model call, retained verbatim for auditing."""
+    """A single raw model call, retained verbatim for auditing.
+
+    ``hit_max_new_tokens`` records whether generation stopped because it ran
+    into the token cap rather than because the model finished.  A truncated
+    response usually has no ``FINAL_ANSWER`` line, so it would otherwise be
+    indistinguishable from a model that simply could not answer.
+    """
 
     stage: str
     model: str
@@ -144,6 +150,7 @@ class Generation:
     response: str
     output_tokens: int
     prompt_tokens: int = 0
+    hit_max_new_tokens: bool = False
     meta: Dict[str, Any] = field(default_factory=dict)
 
     def to_json(self) -> Dict[str, Any]:

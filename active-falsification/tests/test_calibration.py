@@ -372,6 +372,135 @@ def test_every_required_model_alias_exists_with_an_explicit_thinking_mode():
     assert MODEL_REGISTRY["llama32_3b"].thinking_mode == "instruct"
 
 
+def test_deepseek_forces_its_reasoning_prefix_without_changing_the_instruction():
+    """The model card's recommended start, with the same zero-shot contract."""
+    spec = MODEL_REGISTRY["deepseek_r1_llama_8b"]
+    assert spec.reasoning_prefix == "<think>\n"
+    assert spec.merge_system_into_user is True
+    assert spec.thinking_mode == "native"
+    # the instruction and output convention are untouched
+    assert "FINAL_ANSWER" in P.SOLVE_SYSTEM
+    assert P.SOLVE_USER == "{problem_text}"
+    # no other model forces a prefix
+    for alias, other in MODEL_REGISTRY.items():
+        if alias != "deepseek_r1_llama_8b":
+            assert other.reasoning_prefix is None, alias
+
+
+def test_reasoning_prefix_is_appended_to_the_prompt_not_the_output_budget():
+    """The forced prefix belongs to the prompt, so it is not counted as output."""
+    import models as models_module
+
+    class _Tok:
+        name_or_path = "stub"
+        eos_token_id = 2
+        pad_token_id = 2
+
+        def apply_chat_template(self, messages, tokenize=False,
+                                add_generation_prompt=True):
+            assert len(messages) == 1 and messages[0]["role"] == "user"
+            return messages[0]["content"] + "\n<assistant>\n"
+
+    stub = models_module.HFModel.__new__(models_module.HFModel)
+    stub.spec = MODEL_REGISTRY["deepseek_r1_llama_8b"]
+    stub.tokenizer = _Tok()
+    stub.reasoning_prefix = stub.spec.reasoning_prefix
+    stub.chat_template_flag_accepted = None
+    text = models_module.HFModel._apply_template(stub, "SYSTEM RULES", "PROBLEM TEXT")
+    assert text.endswith("<think>\n")
+    # system and user are merged into a single user turn, per the model card
+    assert "SYSTEM RULES" in text and "PROBLEM TEXT" in text
+    # applying it twice must not stack the prefix
+    again = models_module.HFModel._apply_template(stub, "SYSTEM RULES", "PROBLEM TEXT")
+    assert again.count("<think>") == 1
+
+
+def test_truncation_is_recorded_on_every_generation():
+    model = load_model("mock", {"precision": "none"})
+    generous = model.generate("solve", "f", P.SOLVE_SYSTEM, "problem", 4096)
+    assert generous.hit_max_new_tokens is False
+    tiny = model.generate("solve", "f", P.SOLVE_SYSTEM, "problem", 2)
+    assert tiny.hit_max_new_tokens is True
+    assert tiny.output_tokens == 2
+
+
+def test_calibration_rows_carry_the_truncation_field():
+    fam = get_family("lte_valuation")
+    bank = build_problem_bank({"lte_valuation": fam}, 2, 20260901)["bank"]
+    model = load_model("mock", {"precision": "none"})
+    rows = run_zero_shot_calibration(
+        model, {"lte_valuation": fam}, bank, 128, 20260901, progress=False
+    )
+    for row in rows:
+        assert "hit_max_new_tokens" in row
+        assert isinstance(row["hit_max_new_tokens"], bool)
+        assert row["max_new_tokens"] == 128
+
+
+def test_summaries_report_truncation_counts():
+    rows = [
+        {"model_alias": "m", "family": "f", "difficulty": "easy", "correct": True,
+         "unparsed": False, "output_tokens": 10, "hit_max_new_tokens": False},
+        {"model_alias": "m", "family": "f", "difficulty": "easy", "correct": False,
+         "unparsed": True, "output_tokens": 2048, "hit_max_new_tokens": True},
+    ]
+    cell = summarise_by_cell(rows)[0]
+    assert cell["truncated"] == 1
+    assert cell["truncation_rate"] == 0.5
+    pooled = pooled_by_difficulty(rows)[0]
+    assert pooled["truncated"] == 1
+    assert pooled["truncation_rate"] == 0.5
+
+
+def test_frequent_truncation_warns_without_changing_the_cap():
+    from calibration import MAX_TRUNCATION_RATE
+
+    pooled = _pooled("f", 0.90, 0.47, 0.10)
+    pooled[1]["truncated"] = 20
+    pooled[1]["truncation_rate"] = 0.5
+    warnings = diagnostics(pooled, [], "f")
+    assert any("hit the generation cap" in w for w in warnings)
+    assert any("NOT been changed automatically" in w for w in warnings)
+    # the warning must not move the selection
+    assert select_difficulty(pooled, "f")["selected"] == "medium"
+
+    quiet = _pooled("f", 0.90, 0.47, 0.10)
+    for row in quiet:
+        row["truncated"] = 0
+        row["truncation_rate"] = 0.0
+    assert not any("generation cap" in w for w in diagnostics(quiet, [], "f"))
+    assert MAX_TRUNCATION_RATE == 0.10
+
+
+def test_four_bit_compute_dtype_follows_gpu_bf16_support():
+    """Change 3: BF16 compute dtype only where the GPU supports BF16."""
+    source = open(os.path.join(ROOT, "src", "models.py"), encoding="utf-8").read()
+    assert "compute_dtype = torch.bfloat16 if supports_bf16 else torch.float16" in source
+    assert "bnb_4bit_compute_dtype=compute_dtype" in source
+    assert "bnb_4bit_quant_type=\"nf4\"" in source
+
+
+def test_resolved_inference_configuration_is_recorded():
+    """Change 2: the manifest must describe what actually loaded."""
+    source = open(os.path.join(ROOT, "src", "models.py"), encoding="utf-8").read()
+    for field in ("parameter_dtypes", "dominant_parameter_dtype", "device_map",
+                  "cpu_offload", "disk_offload", "gpu_name",
+                  "gpu_total_vram_gib", "bf16_supported_by_gpu",
+                  "requested_precision", "compute_dtype"):
+        assert f'"{field}"' in source, field
+    assert "resolved_inference" in source
+    assert "_resolve_placement" in source
+
+
+def test_four_bit_runs_are_marked_smoke_only():
+    source = open(os.path.join(ROOT, "src", "models.py"), encoding="utf-8").read()
+    assert "SMOKE / PILOT setting" in source
+    smoke = open(os.path.join(ROOT, "configs", "calibration_smoke.yaml"),
+                 encoding="utf-8").read()
+    assert "precision: 4bit" in smoke
+    assert "must NOT be used to select a difficulty tier" in smoke
+
+
 def test_substitution_must_be_explicit():
     assert resolve_substitutions(["llama32_3b"], {}) == ["llama32_3b"]
     assert resolve_substitutions(["llama32_3b"], {"llama32_3b": "phi35_mini"}) == [

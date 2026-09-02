@@ -33,7 +33,8 @@ class ScriptedModel(BaseModel):
     def _generate(self, system, user, max_new_tokens, seed):
         self.calls.append({"system": system, "user": user})
         text = self.responses.pop(0) if self.responses else '{"hypothesis": "fallback"}'
-        return text, self.tokens_per_call, 5
+        hit_cap = self.tokens_per_call >= max_new_tokens
+        return text, self.tokens_per_call, 5, hit_cap
 
 
 def constraints_response(constraints, reason="probe"):

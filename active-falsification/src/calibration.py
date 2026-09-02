@@ -52,6 +52,11 @@ INVERSION_MARGIN = 0.15
 CEILING = 0.85
 FLOOR = 0.10
 MAX_PARSE_FAILURE_RATE = 0.10
+#: Warn when responses frequently run into `max_new_tokens`. The cap is NEVER
+#: adjusted automatically: raising it changes the compute every model gets and
+#: would make tiers measured before and after incomparable. This is a signal for
+#: the authors, not a knob for the code.
+MAX_TRUNCATION_RATE = 0.10
 SPREAD_CEILING = 0.85
 SPREAD_FLOOR = 0.15
 
@@ -235,6 +240,8 @@ def solve_once(
         "raw_span": result.raw_span,
         "input_tokens": generation.prompt_tokens,
         "output_tokens": generation.output_tokens,
+        "max_new_tokens": max_new_tokens,
+        "hit_max_new_tokens": generation.hit_max_new_tokens,
         "precision": model.config.get("precision"),
         "generation_seed": problem.generation_seed,
         "tag": tag,
@@ -282,6 +289,7 @@ def _cell_stats(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     parsed = n - unparsed
     parsed_correct = sum(1 for r in rows if r["correct"] and not r["unparsed"])
     tokens = [r["output_tokens"] for r in rows]
+    truncated = sum(1 for r in rows if r.get("hit_max_new_tokens"))
     return {
         "n": n,
         "correct": correct,
@@ -289,6 +297,8 @@ def _cell_stats(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
         "unparsed": unparsed,
         "parse_failure_rate": unparsed / n if n else float("nan"),
         "accuracy_parsed_only": parsed_correct / parsed if parsed else float("nan"),
+        "truncated": truncated,
+        "truncation_rate": truncated / n if n else float("nan"),
         "mean_output_tokens": statistics.mean(tokens) if tokens else float("nan"),
         "median_output_tokens": statistics.median(tokens) if tokens else float("nan"),
     }
@@ -330,6 +340,8 @@ def pooled_by_difficulty(rows: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]
             "unparsed": stats["unparsed"],
             "parse_failure_rate": stats["parse_failure_rate"],
             "accuracy_parsed_only": stats["accuracy_parsed_only"],
+            "truncated": stats["truncated"],
+            "truncation_rate": stats["truncation_rate"],
             "mean_output_tokens": stats["mean_output_tokens"],
         })
     return sorted(out, key=lambda r: (r["family"],
@@ -459,6 +471,18 @@ def diagnostics(
                 f"{row['parse_failure_rate']:.0%} (> {MAX_PARSE_FAILURE_RATE:.0%}); "
                 f"accuracy here may be measuring output format, not mathematics"
             )
+    for row in pooled:
+        if row["family"] != family:
+            continue
+        rate = row.get("truncation_rate")
+        if rate is not None and rate == rate and rate > MAX_TRUNCATION_RATE:
+            warnings.append(
+                f"{rate:.0%} of responses on '{row['difficulty']}' hit the "
+                f"generation cap ({row.get('truncated')} of {row['n_total']}) and "
+                f"were cut off mid-answer; accuracy here is partly measuring the "
+                f"token budget. The cap has NOT been changed automatically -- "
+                f"raising it makes tiers measured before and after incomparable"
+            )
     for difficulty in DIFFICULTY_ORDER:
         cells = [r for r in per_cell
                  if r["family"] == family and r["difficulty"] == difficulty]
@@ -534,8 +558,8 @@ def calibration_report(
 
         lines += ["", "### Pooled over models", "",
                   "| tier | n | pooled accuracy | distance from 0.45 | in range | "
-                  "parse failures | mean output tokens |",
-                  "|---|---|---|---|---|---|---|"]
+                  "parse failures | truncated | mean output tokens |",
+                  "|---|---|---|---|---|---|---|---|"]
         for difficulty in DIFFICULTY_ORDER:
             row = next((r for r in pooled if r["family"] == family
                         and r["difficulty"] == difficulty), None)
@@ -546,6 +570,7 @@ def calibration_report(
                 f"{row['distance_from_target_0_45']:.3f} | "
                 f"{'yes' if row['within_preferred_range'] else 'no'} | "
                 f"{row['unparsed']} ({row['parse_failure_rate']:.0%}) | "
+                f"{row.get('truncated', 0)} ({row.get('truncation_rate', 0):.0%}) | "
                 f"{row['mean_output_tokens']:.0f} |"
             )
 

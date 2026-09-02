@@ -184,6 +184,22 @@ The config loader enforces a strict allowlist. Any unknown key is an error, so
 a setting copied from `pilot.yaml` or `final.yaml` cannot silently enter
 calibration and do nothing.
 
+Every generation records `hit_max_new_tokens`. If responses frequently run into
+the cap, the report warns — and the cap is **not** adjusted automatically, since
+changing it makes tiers measured before and after incomparable.
+
+The manifest records the **resolved** inference configuration, not just the
+precision label that was requested: the dtype the weights actually loaded as,
+the device map, GPU name and total VRAM, and whether anything spilled to CPU or
+disk. 4-bit runs use a BF16 compute dtype only where the GPU supports BF16, and
+are stamped smoke/pilot-only.
+
+Preview the exact bank calibration will send:
+
+```bash
+python scripts/generate_preview.py --calibration-bank --n 5 --seed 20260901
+```
+
 ### Calibration outputs
 
 ```

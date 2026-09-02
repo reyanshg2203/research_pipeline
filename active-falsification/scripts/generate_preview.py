@@ -46,6 +46,66 @@ def show(family, problem, index: int, verbose: bool) -> None:
             print(f"       -- worked solution --\n       {problem.human_solution}")
 
 
+def preview_calibration_bank(args) -> int:
+    """Preview the Stage-1 bank: the exact problems calibration would send.
+
+    Drawn with the same code path and the same master seed as
+    ``scripts/run_calibration.py``, so this is not a lookalike -- it is the bank.
+    """
+    from calibration import build_problem_bank
+
+    families = all_families()
+    built = build_problem_bank(families, args.n, args.seed, ("easy", "medium", "hard"))
+    print("=" * 78)
+    print("STAGE-1 CALIBRATION BANK PREVIEW")
+    print("=" * 78)
+    print(f"""
+master_seed = {args.seed}, {args.n} problems per family per tier.
+Built by calibration.build_problem_bank, the same function
+scripts/run_calibration.py uses, so these are exactly the problems every model
+would receive.
+
+Stage 1 sends the model ONLY the problem text. Everything under
+"researcher-only" below is withheld from the prompt; the exact answer is used
+solely for deterministic grading after the model has answered.
+
+Validation failures while building this bank: {built['validation_failures']}
+""")
+    failures = 0
+    for name, fam in families.items():
+        print("\n" + "=" * 78)
+        print(f"FAMILY {name}")
+        print("=" * 78)
+        print(f"canonical strategy S -- RESEARCHER-ONLY, never shown to a model:")
+        print(f"  {fam.strategy_description}")
+        for difficulty in ("easy", "medium", "hard"):
+            problems = built["bank"][name][difficulty]
+            print(f"\n{'-' * 78}\n{difficulty.upper()}  ({len(problems)} problems)"
+                  f"\n{'-' * 78}")
+            for i, p in enumerate(problems, 1):
+                try:
+                    fam.validate_problem(p)
+                except Exception as exc:  # noqa: BLE001
+                    failures += 1
+                    print(f"  [{i}] VALIDATION FAILED: {exc}")
+                    continue
+                print(f"\n  [{i}] {p.text}")
+                print(f"       --- researcher-only (NOT sent to the model) ---")
+                print(f"       exact_answer        : {p.exact_answer}")
+                print(f"       template            : {p.template}")
+                print(f"       problem_id          : {p.id}")
+                print(f"       strategy_applies    : {p.strategy_applies}")
+                print(f"       applicability_reason: {p.applicability_reason}")
+                for key, value in fam.preview_extras(p).items():
+                    print(f"       {key:<20}: {value}")
+    print("\n" + "=" * 78)
+    if failures:
+        print(f"{failures} problem(s) FAILED independent revalidation")
+        return 1
+    print("all previewed problems passed independent revalidation")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--n", type=int, default=10,
@@ -58,7 +118,14 @@ def main() -> int:
                     help="use the held-out challenge templates instead")
     ap.add_argument("--seeds", action="store_true",
                     help="preview the seed demonstrations instead of a random draw")
+    ap.add_argument("--calibration-bank", action="store_true",
+                    help="preview the actual Stage-1 calibration bank: --n problems "
+                         "from each of easy, medium and hard, drawn exactly as "
+                         "run_calibration.py draws them")
     args = ap.parse_args()
+
+    if args.calibration_bank:
+        return preview_calibration_bank(args)
 
     failures = 0
     for name, fam in all_families().items():
