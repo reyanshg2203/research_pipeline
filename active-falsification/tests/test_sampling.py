@@ -97,14 +97,26 @@ def test_empty_constraints_are_rejected():
 
 def test_contradictory_constraints_raise_with_an_explanation():
     fam = get_family("order_minus_one")
+    # 'easy' admits both one- and two-component moduli, so this pair is a
+    # genuine internal contradiction rather than an out-of-tier request
     with pytest.raises(UnsatisfiableConstraints) as exc:
         fam.sample_conditioned(
             random.Random(0),
             {"modulus_type": "prime", "number_of_factors": "2"},
-            "medium",
+            "easy",
             "least_n_congruence",
         )
     assert "contradicts" in str(exc.value)
+
+    # an out-of-tier request is reported as such, naming the tier
+    with pytest.raises(UnsatisfiableConstraints) as exc:
+        fam.sample_conditioned(
+            random.Random(0),
+            {"modulus_type": "prime"},
+            "medium",
+            "least_n_congruence",
+        )
+    assert "difficulty 'medium'" in str(exc.value)
 
 
 def test_out_of_tier_constraints_raise():

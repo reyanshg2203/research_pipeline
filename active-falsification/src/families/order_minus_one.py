@@ -31,40 +31,112 @@ import random
 from math import gcd
 from typing import Any, Dict, List, Optional, Tuple
 
-from sympy import factorint, isprime, n_order, primerange, reduced_totient
+from sympy import (
+    factorint,
+    isprime,
+    n_order,
+    primerange,
+    primitive_root,
+    reduced_totient,
+    totient,
+)
 
 from families.base import ProblemFamily, UnsatisfiableConstraints
+from sampling import derive_seed
 from schemas import Problem
 
 # --------------------------------------------------------------------------
-# prime pools
+# component pools
 # --------------------------------------------------------------------------
+#
+# DIFFICULTY IS STRUCTURAL, NOT NUMERICAL.
+#
+# For m a product of coprime ODD prime powers q_i and gcd(a, m) = 1, each local
+# unit group is cyclic, so -1 is its unique element of order 2 and
+#
+#     a^(d/2) = -1 (mod m)   <=>   all v_2(ord_{q_i}(a)) are equal and >= 1
+#
+# where d = ord_m(a).  So the outcome is decided entirely by whether the local
+# 2-adic valuations AGREE -- not by how large m is.  The tiers below vary that
+# agreement structure and the number of components; modulus size is a
+# consequence of the structure, not the difficulty knob.
+#
+# Drawing a base uniformly at random from a multi-component modulus makes the
+# valuations disagree almost always, which is why an unstructured "hard" tier
+# degenerates into nearly all NONE.  Instances are therefore CONSTRUCTED to a
+# chosen valuation profile and then checked by the independent oracle.
+#
+# HUMAN_REVIEW_REQUIRED
 
 _ALL_PRIMES: List[int] = list(primerange(2, 1200))
 _ODD_PRIMES: List[int] = [p for p in _ALL_PRIMES if p != 2]
 
-#: odd primes grouped by v_2(p-1); used to build multi-component moduli whose
-#: local orders can share a 2-adic valuation, which is what lets the half-order
-#: shortcut succeed on every component at once.
-_BY_2ADIC: Dict[int, List[int]] = {}
+
+def two_adic(n: int) -> int:
+    return ((n & -n).bit_length() - 1) if n else 0
+
+
+#: odd prime powers q = p^k, grouped by v_2(phi(q)) = v_2(p-1).  A component can
+#: host a local order with 2-adic valuation e for any 0 <= e <= v_2(phi(q)).
+_PRIME_POWERS_BY_V2: Dict[int, List[int]] = {}
+_COMPONENT_PRIME: Dict[int, int] = {}
 for _p in _ODD_PRIMES:
-    _v = ((_p - 1) & -(_p - 1)).bit_length() - 1
-    _BY_2ADIC.setdefault(_v, []).append(_p)
+    _v = two_adic(_p - 1)
+    for _k in (1, 2, 3):
+        _q = _p ** _k
+        if _q > 300000:
+            break
+        _PRIME_POWERS_BY_V2.setdefault(_v, []).append(_q)
+        _COMPONENT_PRIME[_q] = _p
+_ALL_COMPONENTS: List[int] = sorted(_COMPONENT_PRIME)
+
+#: components able to host local 2-adic valuation at least e
+_COMPONENTS_WITH_V2_AT_LEAST: Dict[int, List[int]] = {
+    e: sorted(q for v, qs in _PRIME_POWERS_BY_V2.items() if v >= e for q in qs)
+    for e in range(0, 6)
+}
 
 SIZE_BUCKETS: Dict[str, Tuple[int, int]] = {
-    "small": (3, 100),
-    "medium": (100, 3000),
-    "large": (3000, 100000),
+    "small": (3, 200),
+    "medium": (200, 20000),
+    "large": (20000, 500000),
 }
 
-#: difficulty tier -> (allowed component counts, allowed size buckets).
-#: Every tier admits composite moduli so that a seed set can contain successful
-#: composite demonstrations (revision memo S.1).
+#: difficulty tier -> (allowed component counts, allowed size buckets)
 TIERS: Dict[str, Tuple[List[str], List[str]]] = {
     "easy": (["1", "2"], ["small"]),
-    "medium": (["1", "2"], ["small", "medium"]),
+    "medium": (["2"], ["medium"]),
     "hard": (["2", "3"], ["medium", "large"]),
 }
+
+#: Per-tier construction plan.  ``components`` is drawn from with replacement,
+#: so easy is mostly single-component with the occasional two-component case.
+TIER_PLAN: Dict[str, Dict[str, Any]] = {
+    "easy": {
+        "components": [1, 1, 1, 1, 2],
+        "max_e": 2,
+        "allow_non_coprime_negatives": True,
+        "require_nontrivial_two_component": False,
+    },
+    "medium": {
+        "components": [2],
+        "max_e": 3,
+        "allow_non_coprime_negatives": False,
+        "require_nontrivial_two_component": False,
+    },
+    "hard": {
+        # three components preferred; two-component cases must be structurally
+        # nontrivial (a true prime power, or a common valuation of at least 2)
+        "components": [3, 3, 3, 2],
+        "max_e": 4,
+        "allow_non_coprime_negatives": False,
+        "require_nontrivial_two_component": True,
+    },
+}
+
+#: keep independent cycle enumeration and the count template affordable
+MAX_CARMICHAEL_FOR_ENUMERATION = 200000
+MAX_COUNT_TEMPLATE_LIMIT = 200000
 
 
 def size_bucket(m: int) -> str:
@@ -147,8 +219,126 @@ def applicability_reason(a: int, m: int) -> str:
     )
 
 
-def two_adic(n: int) -> int:
-    return ((n & -n).bit_length() - 1) if n else 0
+# --------------------------------------------------------------------------
+# structured construction: build an instance to a chosen valuation profile
+# --------------------------------------------------------------------------
+
+
+def element_with_2adic_valuation(
+    q: int, e: int, rng: random.Random
+) -> Optional[int]:
+    """A unit modulo the odd prime power ``q`` whose order has v_2 exactly ``e``.
+
+    ``(Z/q)*`` is cyclic of order N = phi(q).  Writing g for a primitive root,
+    ``g^t`` has order ``N / gcd(N, t)``, whose 2-adic valuation is
+    ``v_2(N) - min(v_2(N), v_2(t))``.  Choosing ``t = 2^(v_2(N) - e) * u`` with
+    ``u`` odd therefore pins the valuation to exactly ``e``, while ``u`` varies
+    the odd part so the orders are not all the same shape.
+    """
+    n_units = int(totient(q))
+    v2_units = two_adic(n_units)
+    if e > v2_units or n_units < 2:
+        return None
+    g = int(primitive_root(q))
+    for _ in range(12):
+        u = rng.randrange(1, max(3, n_units), 2)
+        a = pow(g, (2 ** (v2_units - e)) * u, q)
+        if a > 1:
+            return a
+    return None
+
+
+def crt_combine(residues: List[int], moduli: List[int]) -> Tuple[int, int]:
+    """Exact CRT over pairwise-coprime moduli.  Returns (residue, product)."""
+    x, modulus = 0, 1
+    for r, q in zip(residues, moduli):
+        # solve x = r (mod q) keeping x = current value (mod modulus)
+        step = modulus
+        target = r % q
+        while x % q != target:
+            x += step
+        modulus *= q
+    return x, modulus
+
+
+def build_instance(
+    rng: random.Random, components: List[int], valuations: List[int]
+) -> Optional[Tuple[int, int]]:
+    """Construct (a, m) with ord_{q_i}(a) having 2-adic valuation valuations[i].
+
+    By the equivalence at the top of this module the outcome is then decided:
+    equal, positive valuations succeed; anything else fails.  The caller still
+    passes the result through the independent oracle.
+    """
+    parts = [
+        element_with_2adic_valuation(q, e, rng)
+        for q, e in zip(components, valuations)
+    ]
+    if any(part is None for part in parts):
+        return None
+    a, m = crt_combine([int(x) for x in parts], components)
+    if a <= 1 or m < 3 or gcd(a, m) != 1:
+        return None
+    return a, m
+
+
+def _pick_components(
+    rng: random.Random,
+    n_components: int,
+    valuations: List[int],
+    size_lo: int,
+    size_hi: int,
+    require_prime_power: bool = False,
+) -> Optional[List[int]]:
+    """Distinct odd prime powers hosting the requested valuations, sized to fit.
+
+    Components are chosen against a running size budget rather than picked
+    freely and rejected afterwards.  Choosing freely makes three-component
+    moduli overshoot the window most of the time, which silently biases the hard
+    tier back towards two components -- the very degeneracy this redesign is
+    meant to remove.
+    """
+    for _ in range(400):
+        chosen: List[int] = []
+        used_primes: set = set()
+        product = 1
+        order = list(range(n_components))
+        # place the most constrained valuation first: it has the smallest pool
+        order.sort(key=lambda i: -valuations[i])
+        placed: Dict[int, int] = {}
+        ok = True
+        for position, index in enumerate(order):
+            e = valuations[index]
+            pool = _COMPONENTS_WITH_V2_AT_LEAST.get(e)
+            if not pool:
+                return None
+            remaining = n_components - position - 1
+            # leave room for the components still to come (each at least 3)
+            budget = size_hi // (product * (3 ** remaining) or 1)
+            candidates = [
+                q for q in pool
+                if q <= budget and _COMPONENT_PRIME[q] not in used_primes
+            ]
+            if not candidates:
+                ok = False
+                break
+            q = rng.choice(candidates)
+            used_primes.add(_COMPONENT_PRIME[q])
+            placed[index] = q
+            product *= q
+        if not ok or len(placed) != n_components:
+            continue
+        if not (size_lo <= product < size_hi):
+            continue
+        chosen = [placed[i] for i in range(n_components)]
+        if require_prime_power and not any(
+            q != _COMPONENT_PRIME[q] for q in chosen
+        ):
+            continue
+        if int(reduced_totient(product)) > MAX_CARMICHAEL_FOR_ENUMERATION:
+            continue
+        return chosen
+    return None
 
 
 def order_data(a: int, m: int) -> Dict[str, Any]:
@@ -319,7 +509,7 @@ class OrderMinusOneFamily(ProblemFamily):
         elif template == "count_up_to":
             period = info["global_order"] if coprime else int(reduced_totient(m))
             base = max(period or 4, 4)
-            L = rng.randint(2 * base, 5 * base)
+            L = min(rng.randint(2 * base, 5 * base), MAX_COUNT_TEMPLATE_LIMIT)
             latent["L"] = L
             text = (f"How many positive integers n with n ≤ {L} satisfy "
                     f"{a}^n ≡ -1 (mod {m})? Answer with a single integer.")
@@ -366,27 +556,146 @@ class OrderMinusOneFamily(ProblemFamily):
         ])
 
     # ------------------------------------------------------------------- API
+    def _valuation_profile(
+        self, rng: random.Random, difficulty: str, n_components: int,
+        want_finite: bool,
+    ) -> Optional[List[int]]:
+        """Local 2-adic valuations realising the requested outcome.
+
+        Equal and positive  -> the half-order shortcut succeeds, so the problem
+                               has a genuine finite least n.
+        Unequal, all >= 1   -> NEAR-BOUNDARY failure: the base is coprime, the
+                               global order is even, every local order is even,
+                               and the shortcut still fails purely because the
+                               valuations disagree.
+        Contains a zero     -> a local order is odd; an easier failure, used
+                               only where the tier calls for straightforward
+                               cases.
+        """
+        plan = TIER_PLAN[difficulty]
+        max_e = plan["max_e"]
+        if want_finite:
+            e = rng.randint(1, max_e)
+            return [e] * n_components
+        if n_components == 1:
+            # a single component cannot disagree with itself: the only coprime
+            # failure available is an odd local order
+            return [0]
+        if difficulty == "easy" and rng.random() < 0.35:
+            profile = [rng.randint(1, max_e) for _ in range(n_components)]
+            profile[rng.randrange(n_components)] = 0
+            return profile
+        # near-boundary: all valuations at least 1, but not all equal
+        for _ in range(40):
+            profile = [rng.randint(1, max_e) for _ in range(n_components)]
+            if len(set(profile)) > 1:
+                return profile
+        return None
+
+    def _construct(
+        self, rng: random.Random, difficulty: str, want_finite: Optional[bool]
+    ) -> Optional[Tuple[int, int]]:
+        """Draw one (a, m) for this tier, targeting a finite answer or NONE."""
+        plan = TIER_PLAN[difficulty]
+        comps_allowed, buckets_allowed = TIERS[difficulty]
+        if want_finite is None:
+            want_finite = rng.random() < 0.5
+
+        # a small share of straightforward non-coprime failures, easy tier only
+        if (not want_finite and plan["allow_non_coprime_negatives"]
+                and rng.random() < 0.25):
+            bucket = rng.choice(buckets_allowed)
+            lo, hi = SIZE_BUCKETS[bucket]
+            n_comp = int(rng.choice(comps_allowed))
+            m = self._sample_modulus(rng, n_comp, bucket, False)
+            if m is not None:
+                a = self._sample_base(rng, m, coprime=False)
+                if a is not None:
+                    return a, m
+            return None
+
+        n_components = rng.choice(plan["components"])
+        if str(n_components) not in comps_allowed:
+            n_components = int(rng.choice(comps_allowed))
+        profile = self._valuation_profile(rng, difficulty, n_components, want_finite)
+        if profile is None:
+            return None
+        bucket = rng.choice(buckets_allowed)
+        lo, hi = SIZE_BUCKETS[bucket]
+        require_prime_power = bool(
+            plan["require_nontrivial_two_component"]
+            and n_components == 2
+            and max(profile) < 2
+        )
+        components = _pick_components(
+            rng, n_components, profile, lo, hi, require_prime_power
+        )
+        if components is None:
+            return None
+        return build_instance(rng, components, profile)
+
     def sample_random(
         self, rng: random.Random, difficulty: str, template: str,
         want_applies: Optional[bool] = None,
     ) -> Problem:
-        comps_allowed, buckets_allowed = TIERS[difficulty]
-        for _ in range(600):
-            n_comp = int(rng.choice(comps_allowed))
-            bucket = rng.choice(buckets_allowed)
-            m = self._sample_modulus(rng, n_comp, bucket, prefer_aligned=bool(want_applies))
-            if m is None:
+        for _ in range(800):
+            drawn = self._construct(rng, difficulty, want_applies)
+            if drawn is None:
                 continue
-            coprime = True if want_applies else rng.random() > 0.18
-            a = self._sample_base(rng, m, coprime)
-            if a is None:
-                continue
+            a, m = drawn
             if want_applies is not None and strategy_succeeds(a, m) != want_applies:
                 continue
             return self._build(rng, a, m, difficulty, template, rng.randrange(2 ** 31))
         raise RuntimeError(
             f"{self.name}: sample_random exhausted (difficulty={difficulty}, "
             f"want_applies={want_applies})"
+        )
+
+    # ------------------------------------------------- Stage-1 calibration
+    def calibration_plan(self, per_tier: int, difficulty: str) -> List[Optional[bool]]:
+        """Half genuine finite answers, half NONE, in a deterministic order.
+
+        Stated in terms of the PUBLIC EXACT ANSWER, not the applicability label:
+        a slot asks for "an instance whose answer is a number" or "an instance
+        whose answer is NONE".  The model is never told which is which, and the
+        balance is not recorded on any row it can see.
+        """
+        n_finite = (per_tier + 1) // 2
+        plan: List[Optional[bool]] = [True] * n_finite + [False] * (per_tier - n_finite)
+        random.Random(derive_seed(0, "order_minus_one_plan", difficulty, per_tier)).shuffle(plan)
+        return plan
+
+    def sample_for_calibration(
+        self, rng: random.Random, difficulty: str, template: str,
+        slot_index: int, per_tier: int,
+    ) -> Problem:
+        plan = self.calibration_plan(per_tier, difficulty)
+        want_finite = plan[slot_index % len(plan)]
+        return self._sample_with_answer_kind(rng, difficulty, template, want_finite)
+
+    def _sample_with_answer_kind(
+        self, rng: random.Random, difficulty: str, template: str,
+        want_finite: Optional[bool],
+    ) -> Problem:
+        """Draw until the PUBLIC EXACT ANSWER is of the requested kind.
+
+        The acceptance test reads ``scan_least_minus_one``, the independent
+        cycle enumeration, so it is a statement about the answer rather than
+        about the applicability oracle.
+        """
+        for _ in range(1200):
+            drawn = self._construct(rng, difficulty, want_finite)
+            if drawn is None:
+                continue
+            a, m = drawn
+            if want_finite is not None:
+                has_answer = scan_least_minus_one(a, m) is not None
+                if has_answer != want_finite:
+                    continue
+            return self._build(rng, a, m, difficulty, template, rng.randrange(2 ** 31))
+        raise RuntimeError(
+            f"{self.name}: could not draw a calibration problem with "
+            f"finite_answer={want_finite} at difficulty={difficulty}"
         )
 
     def sample_conditioned(
@@ -481,13 +790,49 @@ class OrderMinusOneFamily(ProblemFamily):
     # ---------------------------------------------------------------- preview
     def preview_extras(self, problem: Problem) -> Dict[str, str]:
         lp = problem.latent_parameters
+        components = lp.get("components") or []
+        local = lp.get("local_orders") or {}
+        m = lp["m"]
+        factorisation = " * ".join(
+            (f"{q}" if q in components and q == _COMPONENT_PRIME.get(q, q)
+             else f"{q}")
+            for q in components
+        ) or str(m)
+        pretty = " * ".join(
+            f"{base}^{exp}" if exp > 1 else f"{base}"
+            for base, exp in sorted(factorint(m).items())
+        )
+        d = lp.get("global_order")
+        half_ok = "n/a (base not coprime to m)"
+        if d is not None:
+            half_ok = (
+                f"yes: {lp['a']}^{d // 2} = {m - 1} = -1 (mod {m})"
+                if problem.strategy_applies
+                else (
+                    f"no: order is odd, there is no half-order exponent"
+                    if d % 2 else
+                    f"no: {lp['a']}^{d // 2} = {pow(lp['a'], d // 2, m)} != -1 (mod {m})"
+                )
+            )
         return {
-            "multiplicative_order": str(lp.get("global_order")),
+            "factorisation_of_m": pretty,
+            "components": str(components) if components else "n/a (not coprime)",
+            "local_orders": (
+                ", ".join(f"ord_{q}({lp['a']}) = {local[str(q)]}"
+                          for q in components)
+                if local else "n/a (base not coprime to m)"
+            ),
+            "local_order_2adic_valuations": (
+                ", ".join(f"v_2(ord_{q}) = {two_adic(local[str(q)])}"
+                          for q in components)
+                if local else "n/a"
+            ),
+            "global_order": str(d) if d is not None else "undefined (not coprime)",
+            "half_order_succeeds": half_ok,
             "shortcut_candidate_exponent": str(lp.get("shortcut_candidate_exponent")),
             "least_n_independently_enumerated": str(
                 lp.get("least_n_independently_enumerated")
             ),
-            "local_orders": str(lp.get("local_orders")),
         }
 
     # ------------------------------------------------------------ recompute

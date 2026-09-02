@@ -225,6 +225,35 @@ class ProblemFamily(ABC):
         options = _as_value_list(want)
         return default if default in options else options[0]
 
+    # ------------------------------------------------- Stage-1 calibration
+    def calibration_plan(self, per_tier: int, difficulty: str) -> List[Optional[bool]]:
+        """Optional per-slot plan of desired PUBLIC ANSWER kinds for the bank.
+
+        ``True`` asks for an instance whose exact answer is a value, ``False``
+        for one whose exact answer is "no solution", ``None`` for no preference.
+        The default is no preference, which is an unconditional draw.
+
+        This is stated in terms of the exact answer, never the applicability
+        label: Stage 1 sees only the public problem and its exact answer.
+        """
+        return [None] * per_tier
+
+    def sample_for_calibration(
+        self,
+        rng: random.Random,
+        difficulty: str,
+        template: str,
+        slot_index: int,
+        per_tier: int,
+    ) -> Problem:
+        """Draw one problem for slot ``slot_index`` of the Stage-1 bank.
+
+        The default is exactly an unconditional ``sample_random``, so a family
+        that does not override this behaves identically to a family with no
+        calibration plan at all.
+        """
+        return self.sample_random(rng, difficulty, template, want_applies=None)
+
     # ------------------------------------------------------------ seed strata
     def seed_strata(self, n_seeds: int) -> List[Dict[str, str]]:
         """Constraint dicts stratifying the seed demonstrations.

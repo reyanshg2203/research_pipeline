@@ -85,12 +85,15 @@ def build_problem_bank(
     sent to a model, and a replacement is drawn.  Repeated failures abort.
 
     Stage 1 uses ONLY the public problem statement and the exact mathematical
-    answer.  It does not read, condition on, or record ``strategy_applies``:
-    difficulty here means "how often do models solve these problems", and
-    conditioning the bank on a hidden applicability label would make that
-    measurement a researcher-side intervention rather than a property of the
-    family's own distribution.  Problems are therefore drawn unconditionally
-    (``want_applies=None``).
+    answer.  It does not read, condition on, or record ``strategy_applies``.
+
+    Slots are filled through ``family.sample_for_calibration``, whose default is
+    an unconditional draw.  A family may override it to plan the bank in terms
+    of the PUBLIC ANSWER -- for example half the slots asking for a genuine
+    value and half for "no solution" -- which keeps a tier from degenerating
+    into one answer kind.  That plan is about the answer, never the
+    applicability label, and it is never shown to a model or recorded on any row
+    a model can see.
     """
     bank: Dict[str, Dict[str, List[Problem]]] = {}
     validation_failures: List[Dict[str, str]] = []
@@ -106,8 +109,8 @@ def build_problem_bank(
                 template = family.base_templates[i % len(family.base_templates)]
                 placed = False
                 for _ in range(500):
-                    problem = family.sample_random(
-                        rng, difficulty, template, want_applies=None
+                    problem = family.sample_for_calibration(
+                        rng, difficulty, template, i, per_tier
                     )
                     if problem.content_key() in seen:
                         continue

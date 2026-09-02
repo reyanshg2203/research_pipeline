@@ -103,8 +103,10 @@ def test_stage_1_never_reads_or_records_the_applicability_label():
     # the only mentions left are inside docstrings explaining the exclusion
     assert "p.strategy_applies" not in code
     assert "problem.strategy_applies" not in code
-    assert "want_applies=None" in code
-    assert "want_applies=wants" not in code
+    assert "want_applies" not in code          # no label conditioning at all
+    # slots are filled through the answer-kind hook, whose default is an
+    # unconditional draw
+    assert "family.sample_for_calibration(" in code
 
     runner_source = open(
         os.path.join(ROOT, "scripts", "run_calibration.py"), encoding="utf-8"
