@@ -1,0 +1,3 @@
+A surveyor is mapping two triangular plots of land. The first plot, triangle ABC, has sides measuring AB = 6 meters, BC = 8 meters, and AC = 10 meters. The surveyor discovers that a second plot, triangle DEF, is similar to the first by SSS similarity, with a scale factor of 1.5. She has already measured two sides of the second plot: DE = 9 meters and DF = 15 meters.
+
+To complete her map, she needs to find the length of the third side, EF. What should she record for the length of EF?

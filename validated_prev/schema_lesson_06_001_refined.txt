@@ -1,0 +1,5 @@
+A surveyor is comparing two triangular plots of land. The first plot, triangle ABC, has sides measuring AB = 6 meters, BC = 8 meters, and AC = 10 meters. The second plot, triangle DEF, has sides measuring DE = 9 meters, EF = 12 meters, and DF = 15 meters.
+
+The surveyor notices that all three pairs of corresponding sides are proportional — each side of triangle DEF is exactly 1.5 times the length of the corresponding side in triangle ABC. This means triangle ABC is similar to triangle DEF by Side-Side-Side (SSS) similarity, with a scale factor of 1.5.
+
+When the surveyor needs to record the exact length of side EF in the larger plot for the property deed, what measurement should she write down?

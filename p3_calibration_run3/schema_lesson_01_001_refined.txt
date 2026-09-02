@@ -1,0 +1,5 @@
+A design team is creating a scaled blueprint of a rectangular floor plan. The original floor plan ABCD has dimensions AB = 8 meters, BC = 6 meters, CD = 10 meters, and DA = 12 meters. To fit the blueprint on a smaller sheet of paper, they scale down the design using a dilation centered at point P with a scale factor of 0.5, creating the reduced blueprint MNPQ.
+
+On the reduced blueprint, two of the sides have already been measured: NP = 3 meters and PQ = 5 meters. Before ordering materials based on the blueprint, the team needs to verify their scaling is consistent.
+
+What should the length of side MN be on the reduced blueprint?

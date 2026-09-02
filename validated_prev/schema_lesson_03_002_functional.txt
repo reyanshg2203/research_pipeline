@@ -1,0 +1,1 @@
+Lesson context: lesson_03. Let quadrilateral ABCD be a 4-sided figure with AB = 5, BC = 7, CD = 6, DA = 8. Let quadrilateral EFGH be a 4-sided figure. ABCD is dilated to form EFGH with scale factor 0.5, centered at point O. Find the length of FG in EFGH.

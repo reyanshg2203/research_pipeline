@@ -1,0 +1,5 @@
+A construction crew is assembling a triangular steel frame ABC for a building support system. Two sides of the frame have already been measured: AB = 13 feet and BC = 5 feet. The frame is designed so that these two sides meet at a right angle at vertex B.
+
+Before they can complete the frame, the crew needs to know the length of the third side, AC. We know that the three interior angles of any triangle sum to 180°, and this relationship holds for our frame too.
+
+Using the properties of right triangles, what is the length of AC?

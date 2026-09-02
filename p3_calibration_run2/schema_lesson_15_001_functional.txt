@@ -1,0 +1,1 @@
+Lesson context: lesson_15. Let triangle ABC be a triangle with sides AB = 12, BC = 9. The interior angles of triangle ABC (∠A, ∠B, ∠C) sum to 180°. Find the length of AC in ABC.

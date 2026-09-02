@@ -1,0 +1,46 @@
+{
+  "problem_id": "lesson_08_002",
+  "lesson": "lesson_08",
+  "entities": {
+    "triangles": null,
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": [
+      {
+        "id": "O",
+        "lies_on": null,
+        "is_intersection_of": null
+      }
+    ],
+    "circles": [
+      {
+        "id": "c",
+        "radius": 3.0
+      },
+      {
+        "id": "d",
+        "radius": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "c",
+        "d"
+      ],
+      "attributes": {
+        "scale_factor": 7.0,
+        "pre_image": "c",
+        "image": "d",
+        "center": "O"
+      }
+    }
+  ],
+  "target": {
+    "entity": "d",
+    "attribute": "radius"
+  }
+}

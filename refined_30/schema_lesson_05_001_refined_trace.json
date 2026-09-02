@@ -1,0 +1,123 @@
+{
+  "lesson_id": "lesson_05",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A triangular garden has sides of length 14 meters, 16 meters, and 10 meters. The gardener marks specific points on two sides of the garden such that these points divide those sides in the same ratio. Specifically, the points divide the 14-meter side and the 16-meter side in the ratio 2:1 from one vertex. The gardener plans to connect these two points with a narrow walking path.\n\nIf the 10-meter side is opposite the vertex from which the divisions are measured, what is the length of the walking path segment connecting the two marked points? Explain why this segment is parallel to the 10-meter side.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_05. Let triangle ABC be a triangle with sides AB = 14, BC = 16, AC = 10. Let triangle MNP be a triangle with sides NP = 8, MP = 5. Let segment MN be a midsegment segment. Let segment NP be a midsegment segment. Let segment MP be a midsegment segment. Let point M be a point on AB. Let point N be a point on BC. Let point P be a point on AC. ABC is dilated to form MNP with scale factor 0.5, centered at point A. Segment MN is parallel to AC. Segment NP is parallel to AB. Segment MP is parallel to BC. Find the length of MN.",
+      "judgment": {
+        "overall_score": 0.7,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem is internally inconsistent: a dilation centered at A with scale factor 0.5 cannot produce a triangle with vertices on all three sides of ABC (it would map B to the midpoint of AB and C to the midpoint of AC, leaving no third vertex on BC). Additionally, the given side lengths NP = 8 and MP = 5 do not consistently correspond to half of any pairing of ABC's sides given the stated parallel relationships (half of AB=14 is 7, half of BC=16 is 8, half of AC=10 is 5), so the labeling of which midsegment is parallel to which side conflicts with the numbers.",
+          "lesson_alignment": "The lesson targets proving/using that midpoint-connecting segments are parallel to and half the third side. The problem targets that concept, but it hands the student the scale factor 0.5 directly, so 'find MN' becomes trivial arithmetic rather than an application of the midsegment theorem, and the extraneous MNP side lengths make it a pattern-match.",
+          "linguistic_clarity": "The prose is a flat list of 'Let...' declarations with no scenario, and the repeated phrasing 'midsegment segment' is awkward and redundant. The problem over-specifies (giving scale factor, parallelism, and two side lengths of MNP) which muddles what the student is actually supposed to use."
+        },
+        "feedback_for_haiku": "Your problem has several serious internal contradictions. If MNP is formed from ABC by a dilation of scale factor 0.5 centered at A, then only two vertices (those on segments from A) can be images of B and C \u2014 but you've placed M on AB, N on BC, and P on AC, which makes MNP the medial triangle, not a dilation centered at A. Additionally, the side lengths you give for MNP (NP = 8, MP = 5) don't match half of ABC's sides consistently: half of AB=14 is 7, half of BC=16 is 8, half of AC=10 is 5, so MN should be 7, not derivable from your stated NP=8 and MP=5 alone, and the parallel-side pairings you list (MN\u2225AC, NP\u2225AB, MP\u2225BC) need to be checked against which midpoints M, N, P actually are. Worst of all, you essentially give away the answer by stating \"scale factor 0.5\" \u2014 a student just computes 0.5 \u00d7 (something), removing the reasoning the lesson targets. Rewrite the problem so students must deduce the midsegment relationship themselves: state only that M, N, P are midpoints of the sides of triangle ABC with the three side lengths given, and ask for MN (making sure MN corresponds to the correct half-side). Then wrap it in a concrete real-world scenario \u2014 for example, a triangular sail, garden, or truss where midpoints are marked for a support beam \u2014 preserving all quantities and asking the final question from inside that scenario.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The dilation described is geometrically impossible: a dilation of triangle ABC centered at vertex A with scale factor 0.5 fixes A and sends B, C to midpoints of AB and AC \u2014 it cannot produce a triangle with one vertex on BC.",
+            "suggested_fix": "Remove the 'dilation centered at A' language and instead describe MNP as the medial triangle (M, N, P as midpoints of the three sides), or make the dilation centered at a vertex map to only two new points."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The side lengths NP = 8 and MP = 5 are given, but with AB=14, BC=16, AC=10 and MNP as the medial triangle, the correspondence of which midsegment is parallel to which side determines the length \u2014 the given assignments (MN\u2225AC, NP\u2225AB, MP\u2225BC) would require NP = 7 and MP = 8, not 8 and 5.",
+            "suggested_fix": "Recompute the midsegment lengths consistently: if MN\u2225AC then MN = 5, if NP\u2225AB then NP = 7, if MP\u2225BC then MP = 8; adjust the given values and asked value to match."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "critical",
+            "issue": "The problem hands the student the scale factor 0.5 explicitly, reducing the task to multiplication and bypassing the midsegment reasoning the lesson is designed to teach.",
+            "suggested_fix": "State only that M, N, P are midpoints of the sides of triangle ABC and give the appropriate side length of ABC, requiring the student to invoke the midsegment theorem to find MN."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is a flat list of 'Let...' declarations with redundant phrasing like 'midsegment segment' and no real-world context.",
+            "suggested_fix": "Wrap the setup in a concrete scenario (e.g., a triangular garden with midpoints staked for a walking path) and phrase the question from inside that scenario, preserving every quantity."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The phrase 'midsegment segment' is redundant and awkward.",
+            "suggested_fix": "Use 'midsegment' alone, or 'segment connecting the midpoints of two sides.'"
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A triangular garden has sides of length 14 meters, 16 meters, and 10 meters. The gardener marks the midpoint of each side and plans to install a narrow walking path that connects these three midpoints, forming a smaller triangle inside the garden.\n\nIf the side of the original garden that is 10 meters long connects two vertices, and the walking path connects the midpoints of the other two sides (the 14-meter and 16-meter sides), what is the length of the walking path segment connecting those two midpoints?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The midsegment connecting the midpoints of the 14m and 16m sides is parallel to and half the length of the third side (10m), giving 5 meters. The setup is consistent and unambiguous\u2014the triangle inequality holds (14+10>16), so the triangle exists.",
+          "lesson_alignment": "The problem directly targets the midsegment theorem, which is the core content of the lesson. However, it is a straightforward direct application of 'half the third side' rather than pushing to the productive edge (e.g., requiring students to justify via dilation, or handle a proportional-but-not-midpoint division as the lesson also emphasizes).",
+          "linguistic_clarity": "The problem is wrapped in a concrete garden scenario with the question posed inside it, and every quantity is preserved. Wording is clear and the reference to 'the side that connects two vertices' is a slightly redundant but harmless clarification."
+        },
+        "feedback_for_haiku": "Your garden problem is clean and correctly targets the midsegment theorem, but it's on the easy end\u2014students just need to halve 10 to get 5, without needing to invoke dilation reasoning or grapple with which side is 'the third side' in a non-obvious way. Consider raising the challenge to match the lesson's productive edge: for example, give the two sides that the midsegment connects (14 and 16) plus the midsegment length, and ask for the third side; or use a proportional (non-midpoint) division like BG/GA = BF/FC = 2/3 so students must apply the scale factor rather than just 1/2. Also, the phrase \"the side...that connects two vertices\" is redundant (every side connects two vertices)\u2014you can simply say \"the walking path connects the midpoints of the 14-meter and 16-meter sides\" and drop the parenthetical.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem is a direct one-step application of the midsegment theorem (answer is simply 10/2), which doesn't push students to justify via dilation or handle proportional divisions as the lesson emphasizes.",
+            "suggested_fix": "Either reverse the given/unknown (give the midsegment length and ask for the third side) or use a non-midpoint proportional division to force use of the scale factor."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The clause 'the side of the original garden that is 10 meters long connects two vertices' is redundant since every side of a triangle connects two vertices.",
+            "suggested_fix": "Remove that clause and simply state: 'the walking path connects the midpoints of the 14-meter and 16-meter sides.'"
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A triangular garden has sides of length 14 meters, 16 meters, and 10 meters. The gardener marks specific points on two sides of the garden such that these points divide those sides in the same ratio. Specifically, the points divide the 14-meter side and the 16-meter side in the ratio 2:1 from one vertex. The gardener plans to connect these two points with a narrow walking path.\n\nIf the 10-meter side is opposite the vertex from which the divisions are measured, what is the length of the walking path segment connecting the two marked points? Explain why this segment is parallel to the 10-meter side.",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The points divide the 14m and 16m sides in ratio 2:1 from the vertex opposite the 10m side, so the segments from that vertex are 2/3 of each side. By the converse (or dilation with scale factor 2/3 from that vertex), the connecting segment is parallel to the 10m side and has length (2/3)(10) = 20/3 \u2248 6.67 m. All relationships are consistent and correct.",
+          "lesson_alignment": "The problem directly targets both learning goals of the lesson: computing the length of a segment created by proportional division using dilation reasoning, and justifying parallelism via the theorem that a line dividing two sides proportionally is parallel to the third side. The 2:1 ratio pushes beyond the midpoint case in the lesson summary, applying the general theorem.",
+          "linguistic_clarity": "The problem is wrapped in a concrete garden/walking-path scenario with the question asked from inside that scenario, and every quantity (14, 16, 10, ratio 2:1) is preserved. The phrasing is precise, unambiguous, and appropriate for 10th grade."
+        },
+        "feedback_for_haiku": "Your problem is solid: the garden scenario is concrete, the ratio 2:1 from the shared vertex cleanly determines a dilation with scale factor 2/3, and the answer 20/3 m along with the parallelism justification maps directly onto the lesson's key theorem. One small polish: the phrase \"in the ratio 2:1 from one vertex\" could be a hair more explicit about which segment is the \"2\" part (e.g., \"so that the portion adjacent to that vertex is twice as long as the remaining portion\") to eliminate any chance a student reads the ratio in the opposite direction. Otherwise this is a well-constructed, appropriately challenging application.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The phrase 'divide those sides in the ratio 2:1 from one vertex' is slightly ambiguous about which piece (near the vertex vs. far from it) corresponds to the 2.",
+            "suggested_fix": "Rephrase as 'so that the portion from the vertex to each marked point is twice the length of the remaining portion' to nail down the orientation of the ratio."
+          }
+        ]
+      }
+    }
+  ]
+}

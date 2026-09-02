@@ -1,0 +1,1 @@
+Lesson context: lesson_10. Let triangle JKL be a triangle with sides JK = 8, KL = 10, JL = 12, where ∠L = 42°. Let triangle DEF be a triangle with sides DE = 12, EF = 15, DF = 18. Triangle JKL is similar to triangle DEF by SSS similarity with scale factor 1.5 (congruent angle pairs: J ≅ D, K ≅ E, L ≅ F). Find the measure of ∠F in DEF.

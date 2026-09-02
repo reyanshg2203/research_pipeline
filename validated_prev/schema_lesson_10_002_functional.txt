@@ -1,0 +1,1 @@
+Lesson context: lesson_10. Let triangle MNO be a triangle with sides MN = 10, NO = 14, where ∠N = 48°. Let triangle RST be a triangle with sides RS = 15, ST = 21, where ∠S = 48°. Triangle MNO is similar to triangle RST by SAS similarity with scale factor 1.5 (congruent angle pairs: N ≅ S). Find the measure of ∠T in RST.

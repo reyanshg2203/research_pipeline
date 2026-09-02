@@ -1,0 +1,7 @@
+A quilter is designing two similar quilt panels. The smaller panel is quadrilateral PQRS with sides PQ = 4 cm, QR = 6 cm, RS = 8 cm, and SP = 5 cm. The larger panel is quadrilateral WXYZ with sides WX = 6 cm, XY = 9 cm, and ZW = 7.5 cm. The quadrilaterals are similar, and all pairs of corresponding angles are congruent.
+
+(a) What is the scale factor of the dilation that takes quadrilateral PQRS onto quadrilateral WXYZ?
+
+(b) Find the length of side YZ in quadrilateral WXYZ.
+
+(c) Describe a sequence of rigid motions and a dilation that could take quadrilateral PQRS onto quadrilateral WXYZ. Be sure to specify the scale factor you use in your dilation.

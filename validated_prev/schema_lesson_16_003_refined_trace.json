@@ -1,0 +1,315 @@
+{
+  "problem_id": "lesson_16_003",
+  "lesson_id": "lesson_16",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_16",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 2,
+    "min_steps": 2,
+    "best_trace": [
+      "scale_factor_from_pair",
+      "scale_factor"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "2 in-scope steps lands in band [2..3]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_16_003",
+        "lesson": "lesson_16",
+        "entities": {
+          "triangles": [
+            {
+              "id": "JKL",
+              "sides": {
+                "JK": 8.0,
+                "KL": 6.0,
+                "JL": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNO",
+              "sides": {
+                "MN": 12.0,
+                "NO": null,
+                "MO": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "JKL"
+            ],
+            "attributes": {
+              "triangle_id": "JKL",
+              "angles": [
+                "J",
+                "K",
+                "L"
+              ],
+              "sum": 180.0
+            }
+          },
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "MNO"
+            ],
+            "attributes": {
+              "triangle_id": "MNO",
+              "angles": [
+                "M",
+                "N",
+                "O"
+              ],
+              "sum": 180.0
+            }
+          },
+          {
+            "type": "congruent_angles",
+            "entities": [
+              "L",
+              "O"
+            ],
+            "attributes": {
+              "ids": [
+                "L",
+                "O"
+              ]
+            }
+          },
+          {
+            "type": "similar_AA",
+            "entities": [
+              "JKL",
+              "MNO"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "pre_image": "JKL",
+              "image": "MNO",
+              "congruent_angle_pairs": [
+                [
+                  "L",
+                  "O"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "MNO",
+          "attribute": "sides.NO"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 3,
+        "errors": [
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship congruent_angles (index 3) is out of scope: wrong number of entities (got 2, expected 1 for congruent_angles). Expected kinds [list_of_any]; got entities [L,O]."
+          },
+          {
+            "gate": "vacuous_angle_sum_relationship",
+            "severity": "structural",
+            "checks": "",
+            "failed": "angle_sum_triangle (index 1) is declared for triangle JKL but only 0 angle(s) are independently known. The relationship adds no constraint unless at least 2 angles are declared, allowing the third to be derived."
+          },
+          {
+            "gate": "vacuous_angle_sum_relationship",
+            "severity": "structural",
+            "checks": "",
+            "failed": "angle_sum_triangle (index 2) is declared for triangle MNO but only 0 angle(s) are independently known. The relationship adds no constraint unless at least 2 angles are declared, allowing the third to be derived."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 3,
+      "haiku_correction": {
+        "problem_id": "lesson_16_003",
+        "lesson": "lesson_16",
+        "entities": {
+          "triangles": [
+            {
+              "id": "JKL",
+              "sides": {
+                "JK": 8.0,
+                "KL": 6.0,
+                "JL": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNO",
+              "sides": {
+                "MN": 12.0,
+                "NO": null,
+                "MO": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_AA",
+            "entities": [
+              "JKL",
+              "MNO"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "pre_image": "JKL",
+              "image": "MNO",
+              "congruent_angle_pairs": [
+                [
+                  "J",
+                  "M"
+                ],
+                [
+                  "K",
+                  "N"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "MNO",
+          "attribute": "sides.NO"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_16_003",
+        "lesson": "lesson_16",
+        "entities": {
+          "triangles": [
+            {
+              "id": "JKL",
+              "sides": {
+                "JK": 8.0,
+                "KL": 6.0,
+                "JL": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNO",
+              "sides": {
+                "MN": 12.0,
+                "NO": null,
+                "MO": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_AA",
+            "entities": [
+              "JKL",
+              "MNO"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "pre_image": "JKL",
+              "image": "MNO",
+              "congruent_angle_pairs": [
+                [
+                  "J",
+                  "M"
+                ],
+                [
+                  "K",
+                  "N"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "MNO",
+          "attribute": "sides.NO"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_16",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 2,
+        "min_steps": 2,
+        "best_trace": [
+          "scale_factor_from_pair",
+          "scale_factor"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "2 in-scope steps lands in band [2..3]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_16. Let triangle JKL be a right triangle with sides JK = 8, KL = 6. Let triangle MNO be a right triangle with sides MN = 12. Triangle JKL is similar to triangle MNO by AA similarity (congruent angle pairs: J \u2245 M, K \u2245 N). Find the length of NO in MNO.",
+  "student_facing_prose": "A surveyor is measuring two similar right triangles formed by sight lines and landmarks. In the first triangle JKL, the two legs measure JK = 8 and KL = 6, meeting at a right angle at K. The surveyor then identifies a second similar right triangle MNO, where the right angle is at N, and one leg measures MN = 12.\n\nThe surveyor knows that triangle JKL is similar to triangle MNO because angle J is congruent to angle M and angle K is congruent to angle N (by AA similarity). To complete her survey, she needs to find the length of side NO in triangle MNO.\n\nWhat is the length of NO?"
+}

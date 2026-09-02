@@ -1,0 +1,51 @@
+{
+  "problem_id": "lesson_01_003",
+  "lesson": "lesson_01",
+  "entities": {
+    "triangles": null,
+    "segments": null,
+    "polygons": [
+      {
+        "id": "RST",
+        "n_sides": 3,
+        "sides": {
+          "RS": null,
+          "ST": 9.0,
+          "TR": 15.0
+        },
+        "angles": null
+      },
+      {
+        "id": "UVW",
+        "n_sides": 3,
+        "sides": {
+          "UV": 4.0,
+          "VW": 3.0,
+          "WU": 5.0
+        },
+        "angles": null
+      }
+    ],
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "scaled_copy",
+      "entities": [
+        "RST",
+        "UVW"
+      ],
+      "attributes": {
+        "scale_factor": 3.0,
+        "pre_image": "UVW",
+        "image": "RST"
+      }
+    }
+  ],
+  "target": {
+    "entity": "RST",
+    "attribute": "sides.RS"
+  }
+}

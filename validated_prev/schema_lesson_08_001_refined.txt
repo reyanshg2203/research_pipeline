@@ -1,0 +1,7 @@
+A jeweler is designing two equilateral triangular pendants. The first pendant, triangle ABC, will be created by scaling up a second pendant, triangle DEF, using a scale factor of 1.5.
+
+The second pendant, triangle DEF, is equilateral with all sides measuring DE = 12, EF = 12, and DF = 12. Since it's equilateral, all three angles measure 60°: ∠D = 60°, ∠E = 60°, and ∠F = 60°.
+
+The first pendant, triangle ABC, is also equilateral with all angles measuring 60° each: ∠A = 60°, ∠B = 60°, and ∠C = 60°. Because triangle ABC is similar to triangle DEF by SSS similarity with scale factor 1.5, all corresponding sides of ABC are 1.5 times as long as the sides of DEF.
+
+How long should each side of the larger pendant ABC be?

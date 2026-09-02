@@ -1,0 +1,277 @@
+{
+  "problem_id": "lesson_14_001",
+  "lesson_id": "lesson_14",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 1,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_14",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 1,
+    "min_steps": null,
+    "best_trace": [],
+    "verdict": "alignment_fail",
+    "accepted": false,
+    "reason": "Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_14's own skill \u2014 the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_14_001",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 13.0,
+                "BC": 5.0,
+                "AC": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "ABC"
+            ],
+            "attributes": {
+              "triangle_id": "ABC",
+              "angles": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sum": 180.0
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABC",
+          "attribute": "sides.AC"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 1,
+        "errors": [
+          {
+            "gate": "vacuous_angle_sum_relationship",
+            "severity": "structural",
+            "checks": "",
+            "failed": "angle_sum_triangle (index 1) is declared for triangle ABC but only 0 angle(s) are independently known. The relationship adds no constraint unless at least 2 angles are declared, allowing the third to be derived."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 1,
+      "haiku_correction": {
+        "problem_id": "lesson_14_001",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 13.0,
+                "BC": 5.0,
+                "AC": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [],
+        "target": {
+          "entity": "ABC",
+          "attribute": "sides.AC"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_14_001",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 13.0,
+                "BC": 5.0,
+                "AC": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [],
+        "target": {
+          "entity": "ABC",
+          "attribute": "sides.AC"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_14",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": null,
+        "best_trace": [],
+        "verdict": "alignment_fail",
+        "accepted": false,
+        "reason": "Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_14's own skill \u2014 the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required."
+      },
+      "combined_error_count": 1,
+      "haiku_correction": {
+        "problem_id": "lesson_14_001",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 13.0,
+                "BC": 5.0,
+                "AC": null
+              },
+              "angles": {
+                "A": null,
+                "B": 90.0,
+                "C": null
+              },
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "ABC"
+            ],
+            "attributes": null
+          }
+        ],
+        "target": {
+          "entity": "ABC",
+          "attribute": "angles.A"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_14_001",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 13.0,
+                "BC": 5.0,
+                "AC": null
+              },
+              "angles": {
+                "A": null,
+                "B": 90.0,
+                "C": null
+              },
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "ABC"
+            ],
+            "attributes": null
+          }
+        ],
+        "target": {
+          "entity": "ABC",
+          "attribute": "angles.A"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship angle_sum_triangle (index 1) is missing required attribute 'triangle_id'. angle_sum_triangle requires attributes: [triangle_id]."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target ABC.angles.A is under-determined..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_14. Let triangle ABC be a right triangle with sides AB = 13, BC = 5. Find the length of AC in ABC.",
+  "prose_skipped": true,
+  "calibration_rejected": true
+}

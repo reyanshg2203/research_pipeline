@@ -1,0 +1,123 @@
+{
+  "lesson_id": "lesson_16",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": true,
+  "final_overall_score": 3.7,
+  "final_nl": "Two triangular ramp designs for a skateboard park are being compared. Both ramps are right triangles.\n\nThe first ramp, represented by triangle JKL, has a right angle at K. The horizontal leg JK measures 8 meters, and the hypotenuse JL measures 10 meters.\n\nThe second ramp, represented by triangle MNO, is similar to the first ramp. It has a right angle at N, and the horizontal leg MN measures 12 meters.\n\nThe triangles are similar with the correspondence J \u2194 M, K \u2194 N, and L \u2194 O.\n\nWhat is the length of the vertical leg NO of the second ramp?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_16. Let triangle JKL be a right triangle with sides JK = 8, KL = 6. Let triangle MNO be a right triangle with sides MN = 12. The interior angles of triangle JKL (\u2220J, \u2220K, \u2220L) sum to 180\u00b0. The interior angles of triangle MNO (\u2220M, \u2220N, \u2220O) sum to 180\u00b0. Angles L, O are congruent. Triangle JKL is similar to triangle MNO by AA similarity (congruent angle pairs: L \u2245 O). Find the length of NO in MNO.",
+      "judgment": {
+        "overall_score": 1.5,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem is under-specified and ambiguous: triangle JKL has JK=8 and KL=6 but doesn't specify which angle is the right angle, so JL could be 10 (if K is right) or \u221a28 (if L is right). Only one side of MNO (MN=12) is given, and the correspondence between vertices isn't clear\u2014stating L\u2245O doesn't fix which side of MNO corresponds to which side of JKL. Without knowing which angle is right in each triangle and the full correspondence, NO cannot be determined uniquely.",
+          "lesson_alignment": "The problem targets similar right triangles and finding an unknown side, which matches the lesson skill. However, because the setup is ambiguous, students cannot cleanly apply proportional reasoning or the Pythagorean Theorem as the lesson intends, weakening the alignment.",
+          "linguistic_clarity": "The problem is presented as a flat list of assertions with redundant filler (\"interior angles sum to 180\u00b0\" is trivial and adds noise). It has no real-world scenario, and the correspondence between triangles isn't clearly communicated, making the phrasing clunky and mildly ambiguous."
+        },
+        "feedback_for_haiku": "Your problem cannot be solved as written because critical information is missing and the correspondence between the triangles is unclear. First, you never state which angle in triangle JKL is the right angle\u2014if the right angle is at K, then JK=8 and KL=6 are legs and JL=10; if the right angle is at L, then KL is a leg and JK is the hypotenuse, giving a different JL. Second, you only give one side (MN=12) of triangle MNO, and stating \\\"L \u2245 O\\\" alone doesn't establish the full vertex correspondence needed to identify which side of MNO corresponds to KL or JL. To fix this, explicitly say something like \\\"\u2220K and \u2220N are right angles\\\" and state the similarity as \\\"\u25b3JKL ~ \u25b3MNO with J\u2194M, K\u2194N, L\u2194O,\\\" so students can set up KL/NO = JK/MN and solve. Also drop the filler sentences about angles summing to 180\u00b0 and \\\"AA similarity\\\"\u2014they're distracting. Finally, wrap the problem in a concrete scenario (e.g., two ramps, two sail panels, or two support brackets) preserving every quantity and labeling, and place the final question about NO inside that scenario.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem never specifies which angle of triangle JKL is the right angle, so the third side (and thus the ratio needed for NO) is ambiguous.",
+            "suggested_fix": "State explicitly that \u2220K is the right angle (making JK and KL the legs) and similarly identify the right angle in \u25b3MNO."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The vertex correspondence between the two similar triangles is under-specified; congruence of only \u2220L and \u2220O plus one side MN=12 does not determine which side of MNO is NO.",
+            "suggested_fix": "Write \"\u25b3JKL ~ \u25b3MNO with correspondence J\u2194M, K\u2194N, L\u2194O\" so students know KL corresponds to NO and JK corresponds to MN."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "Because the setup is ambiguous, students cannot cleanly practice the intended proportional reasoning or Pythagorean strategies from the lesson.",
+            "suggested_fix": "Tighten the givens so that students must use a scale factor (MN/JK = 12/8 = 3/2) or the Pythagorean Theorem to find NO = 9."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is a flat list of assertions with no real-world scenario, and includes redundant filler about interior angles summing to 180\u00b0.",
+            "suggested_fix": "Remove trivial statements and wrap the setup in a concrete scenario (e.g., two similar ramps or triangular sails) with the final question asked from inside that context."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "Naming \"AA similarity\" with only one congruent angle pair explicitly given is misleading, since the right-angle congruence is never stated.",
+            "suggested_fix": "Either explicitly list both congruent angle pairs (right angles and \u2220L \u2245 \u2220O) or simply state the triangles are similar with the given correspondence."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "Two triangular ramp designs for a skateboard park are being compared. Both ramps are right triangles.\n\nThe first ramp, represented by triangle JKL, has a right angle at K. The horizontal leg JK measures 8 meters, and the vertical leg KL measures 6 meters.\n\nThe second ramp, represented by triangle MNO, is similar to the first ramp. It has a right angle at N, and the horizontal leg MN measures 12 meters.\n\nThe triangles are similar with the correspondence J \u2194 M, K \u2194 N, and L \u2194 O. This means that angle L is congruent to angle O.\n\nWhat is the length of the vertical leg NO of the second ramp?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The similarity setup is consistent: JK=8, KL=6 with right angle at K corresponds to MN=12 with right angle at N. The scale factor is 12/8 = 3/2, giving NO = 6 \u00b7 3/2 = 9 meters. All correspondences (J\u2194M, K\u2194N, L\u2194O) preserve the right angle at the correct vertex, and the problem is fully determined.",
+          "lesson_alignment": "The problem targets similarity of right triangles and using proportional relationships to find an unknown side, which matches the lesson's learning goal. However, it only requires a straightforward scale-factor multiplication with no Pythagorean Theorem use or genuine choice among strategies, so it sits closer to the middle of the lesson's difficulty band rather than pushing to its edge.",
+          "linguistic_clarity": "The problem is wrapped in a concrete skateboard-ramp scenario, with every quantity (8 m, 6 m, 12 m) and label (JKL, MNO) preserved and the final question asked from inside that scenario. The correspondence is stated explicitly and prose is clean and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is mathematically clean and nicely framed in a skateboard-ramp scenario, but it's a bit too easy for this lesson: students just multiply 6 by the scale factor 12/8 to get 9 meters, and never need to invoke the Pythagorean Theorem or choose between competing strategies. Consider raising the difficulty so students must combine similarity with the Pythagorean Theorem \u2014 for instance, give the hypotenuse of one triangle and a non-corresponding leg of the other, so they must first find a missing side in one triangle before applying similarity. Also, the sentence \"This means that angle L is congruent to angle O\" is redundant given you already stated the triangles are similar with that correspondence \u2014 you can trim it to keep the prose tight.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The task only requires a single scale-factor multiplication and does not exercise the Pythagorean Theorem or the strategy-choice emphasized in the lesson synthesis.",
+            "suggested_fix": "Provide a hypotenuse in one triangle (e.g., give JL instead of KL, or give MO) so students must apply the Pythagorean Theorem in addition to a proportional relationship."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The sentence stating that angle L is congruent to angle O is redundant since the similarity correspondence already implies it.",
+            "suggested_fix": "Remove or shorten that clarifying sentence to keep the prose lean."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "Two triangular ramp designs for a skateboard park are being compared. Both ramps are right triangles.\n\nThe first ramp, represented by triangle JKL, has a right angle at K. The horizontal leg JK measures 8 meters, and the hypotenuse JL measures 10 meters.\n\nThe second ramp, represented by triangle MNO, is similar to the first ramp. It has a right angle at N, and the horizontal leg MN measures 12 meters.\n\nThe triangles are similar with the correspondence J \u2194 M, K \u2194 N, and L \u2194 O.\n\nWhat is the length of the vertical leg NO of the second ramp?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "JK=8, JL=10 gives KL=6 by Pythagoras. Scale factor MN/JK = 12/8 = 3/2, so NO = 6\u00b7(3/2) = 9. All relationships are consistent: right angles at K and N, correspondence J\u2194M, K\u2194N, L\u2194O aligns the legs and hypotenuses correctly.",
+          "lesson_alignment": "The problem cleanly targets the lesson skill of using similarity (and implicitly the Pythagorean Theorem) to find unknown lengths in similar right triangles. It requires genuine application\u2014students must find KL first (or use the scale factor)\u2014but it is fairly straightforward and doesn't push to the productive edge of the lesson's difficulty.",
+          "linguistic_clarity": "The problem is wrapped in a concrete skateboard-ramp scenario with 'horizontal leg' and 'vertical leg' language that motivates the quantities, and the final question ('length of the vertical leg NO') is asked from inside that scenario. Every quantity is preserved and the correspondence is stated explicitly."
+        },
+        "feedback_for_haiku": "Your problem is solid: the scenario is concrete, the correspondence is stated explicitly, and the numbers work out cleanly (KL=6, scale factor 3/2, NO=9). To push it toward the productive edge of the lesson, consider making the second triangle require both a similarity step AND a Pythagorean step\u2014for example, give a non-corresponding side of the second triangle (like the hypotenuse MO) instead of the corresponding leg MN, so students must reason more flexibly about which relationship to apply. Also, since both ramps share the same shape, you could ask a follow-up like the ramp angle or verify with a within-triangle ratio to more tightly integrate the lesson's emphasis on multiple strategies (between-triangle scale factor vs. within-triangle ratio vs. Pythagorean Theorem).",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem can be solved with a single scale-factor step after one Pythagorean application, which sits comfortably in the middle of the lesson's difficulty rather than at its productive edge.",
+            "suggested_fix": "Give a non-corresponding side of the second triangle (e.g., hypotenuse MO instead of leg MN) so students must combine similarity reasoning with the Pythagorean Theorem, or add a second sub-question asking students to verify the answer using a within-triangle ratio."
+          }
+        ]
+      }
+    }
+  ]
+}

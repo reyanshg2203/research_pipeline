@@ -1,0 +1,106 @@
+{
+  "problem_id": "lesson_10_001",
+  "lesson_id": "lesson_10",
+  "max_iterations": 3,
+  "iterations_used": 1,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_10",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 1,
+    "min_steps": 1,
+    "best_trace": [
+      "scale_factor"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "1 in-scope steps lands in band [1..2]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_10_001",
+        "lesson": "lesson_10",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "XYZ",
+              "sides": {
+                "XY": 6.0,
+                "YZ": 8.0,
+                "XZ": null
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "PQR",
+              "XYZ"
+            ],
+            "attributes": {
+              "scale_factor": 1.5,
+              "pre_image": "XYZ",
+              "image": "PQR",
+              "congruent_angle_pairs": []
+            }
+          }
+        ],
+        "target": {
+          "entity": "XYZ",
+          "attribute": "sides.XZ"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_10",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": 1,
+        "best_trace": [
+          "scale_factor"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "1 in-scope steps lands in band [1..2]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_10. Let triangle PQR be a triangle with sides PQ = 9, QR = 12, PR = 15. Let triangle XYZ be a triangle with sides XY = 6, YZ = 8. Triangle XYZ is similar to triangle PQR by SSS similarity with scale factor 1.5. Find the length of XZ in XYZ.",
+  "student_facing_prose": "A mapmaker is comparing two triangular regions on neighboring maps drawn at different scales. On the first map, triangle PQR has sides measuring PQ = 9 cm, QR = 12 cm, and PR = 15 cm. On the second map, triangle XYZ is similar to triangle PQR by the Side-Side-Side Similarity Theorem, with a scale factor of 1.5. The mapmaker has already measured two sides of triangle XYZ: XY = 6 cm and YZ = 8 cm.\n\nTo complete her analysis and verify the scale factor relationship, what is the length of the third side, XZ?"
+}

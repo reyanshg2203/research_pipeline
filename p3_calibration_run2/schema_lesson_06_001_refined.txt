@@ -1,0 +1,5 @@
+A model maker is building two similar triangular display frames. The smaller frame ABC has sides AB = 6 inches, BC = 8 inches, and AC = 10 inches. She plans to create a larger frame DEF by enlarging the design with a scale factor of 1.5.
+
+She knows that two of the sides in the enlarged frame will be DE = 9 inches and DF = 15 inches, and the triangles are similar by SSS similarity — meaning all three pairs of corresponding sides are in the same proportion.
+
+To complete the larger frame, what length should she cut for the third side EF?

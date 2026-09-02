@@ -31,7 +31,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(PIPELINES))
 
 from prose_nl import normalize_lesson_id, prose_from_schema  # noqa: E402
-from schema import ProblemSchema  # noqa: E402
+from schema import ProblemSchema, relation_attribute_contract  # noqa: E402
 from validate import ValidationEngineError, validate  # noqa: E402
 
 # Scope/difficulty gate, run AFTER validation passes but BEFORE the prose layer.
@@ -104,23 +104,105 @@ CRITICAL - Do not introduce NEW errors while repairing:
 Return the full corrected schema via the tool."""
 
 
+def _blocking_error_count(validation: dict[str, Any]) -> int:
+    """Count only errors that should block a pass. `style`-severity findings
+    (orphan entity, redundant relationship, naming) are advisory linguistic /
+    clarity notes, not correctness failures, so they do NOT block — they remain
+    in the trace for analysis but never fail a problem or drive repair."""
+    return sum(
+        1 for e in (validation.get("errors") or [])
+        if e.get("severity") != "style"
+    )
+
+
 def _validation_passed(validation: dict[str, Any]) -> bool:
-    return validation.get("status") == "pass" and validation.get("error_count", 0) == 0
+    return _blocking_error_count(validation) == 0
+
+
+# Generic, problem-INDEPENDENT repair guidance, one line per validator gate.
+# Each entry states the underlying rule and the corrective ACTION in terms that
+# apply to ANY problem that trips the gate — deliberately NO entity names, side
+# labels, or numeric values. The value-specific Prolog messages (e.g. "NP should
+# be 5, is 8") are kept in the trace for our own analysis but are NEVER sent to
+# Haiku: a repair signal calibrated to this particular set of problems would
+# compromise the research design. Keyed by the gate id (error(GateId, _, _)).
+GATE_REPAIR_GUIDANCE: dict[str, str] = {
+    # --- Layer 1: structural -------------------------------------------------
+    "entity_ref_missing": "Every entity named in a relationship or the target must be declared in the entities section. Declare the missing entity or remove the reference to it.",
+    "invalid_attribute_key": "Use only attribute keys that are defined for that entity or relationship type; remove or rename any unrecognized key.",
+    "naming_convention": "Follow the id naming conventions (e.g. triangle ids are the uppercase vertex letters); rename ids that do not conform.",
+    "dot_notation_in_relationship": "Relationship entity lists must use bare entity ids; dot notation is reserved for the target's attribute field.",
+    "missing_required_attribute": "A relationship is missing an attribute its type requires. Supply the required attribute, or if the relationship is not needed to reach the target, remove it entirely.",
+    "hypotenuse_not_longest": "In a right triangle the hypotenuse must be the longest side; adjust the side lengths so that holds.",
+    "wrong_entity_count": "Give each relationship exactly the number of entities its type requires.",
+    "orphan_entity": "Every declared entity should be used in a relationship or as the target; remove entities that serve no purpose or connect them into the figure.",
+    "figures_not_connected": "All entities must connect through relationships into a single figure; relate the disconnected entities or remove them.",
+    # --- Layer 2: type compatibility ----------------------------------------
+    "scope_violation": "Apply each relationship only between the entity types it is defined for.",
+    "shape_relationship_mismatch": "Match every relationship to shapes it actually fits; do not apply it to incompatible shapes.",
+    "attribute_kind_mismatch": "Give each attribute a value of its expected kind/type.",
+    # --- Layer 3: mathematical ----------------------------------------------
+    "non_positive_length": "Every length must be strictly greater than zero; replace any non-positive length with a valid positive value.",
+    "angle_out_of_range": "Every triangle angle must be strictly between 0 and 180 degrees; adjust any angle outside that range.",
+    "angle_sum_violation": "The interior angles of a triangle must sum to exactly 180 degrees; make the declared angles consistent.",
+    "triangle_inequality_violation": "Each side of a triangle must be less than the sum of the other two; adjust the side lengths to satisfy the triangle inequality.",
+    "pythagorean_violation": "In a right triangle the side lengths must satisfy a^2 + b^2 = c^2; make the declared sides consistent.",
+    "right_angle_pythagorean_violation": "A right-angle declaration and the declared side lengths must satisfy the Pythagorean theorem; reconcile them.",
+    "equilateral_inconsistent": "An equilateral triangle must have all sides equal and all angles 60 degrees; make its measurements consistent or drop the equilateral flag.",
+    "isosceles_inconsistent": "An isosceles triangle must have two equal sides and equal base angles; make its measurements consistent or drop the isosceles flag.",
+    "right_flag_inconsistent": "The right-angle flag must agree with the declared angles and sides; set the flag to match the geometry or adjust the measurements.",
+    "right_angle_side_contradiction": "A declared right angle conflicts with the declared side lengths; reconcile the right-angle placement with the sides.",
+    "law_of_cosines_violation": "The declared sides and angle must satisfy the Law of Cosines; make them consistent.",
+    "law_of_sines_violation": "The declared sides and their opposite angles must satisfy the Law of Sines; make them consistent.",
+    "scale_factor_mismatch": "The declared scale factor must equal the ratio of the corresponding sides; make the factor and the side ratios agree.",
+    "non_positive_scale_factor": "A scale factor must be positive; use a positive value.",
+    "scale_factor_inconsistent_across_pairs": "All corresponding side pairs under one dilation or similarity must share a single scale factor; make every pair scale by the same factor.",
+    "insufficient_similarity_evidence": "Back every similarity claim with the evidence its criterion needs (the required equal angles or proportional sides); supply the missing evidence or remove the claim.",
+    "aa_contradiction": "Two triangles asserted similar by AA must have two pairs of equal corresponding angles; make the angles consistent or remove the similarity claim.",
+    "sss_contradiction": "An SSS similarity claim requires all three corresponding side ratios to be equal; make them equal or remove the claim.",
+    "sas_contradiction": "An SAS claim requires two proportional sides with an equal included angle; make them consistent or remove the claim.",
+    "included_angle_vertex_mismatch": "For SAS the equal angle must be the one included between the two proportional sides; use the correct included angle.",
+    "invariant_violation": "A quantity that must stay invariant under the transformation was changed; keep invariant quantities equal on both figures.",
+    "polygon_interior_sum_wrong": "A polygon's interior angles must sum to (n-2)*180 degrees; make the declared angles consistent.",
+    "polygon_interior_angle_sum_violation": "A polygon's interior angles must sum to (n-2)*180 degrees; make the declared angles consistent.",
+    "vacuous_angle_sum_relationship": "An angle-sum relationship that contributes no usable information toward the target should be removed rather than kept as filler.",
+    "midsegment_inconsistent": "A midsegment must be exactly half the length of the side it runs parallel to; set every midsegment length together so each equals half its parallel side, consistently.",
+    "altitude_split_inconsistent": "When an altitude is drawn to the hypotenuse, the segments it creates must satisfy the geometric-mean relationships; make the segment and side lengths consistent.",
+    "collinear_dilation_inconsistent": "Distances in a collinear dilation must scale from the center by a single consistent factor; make the point positions consistent with one factor.",
+    "collinear_dilation_center_mismatch": "The center of a collinear dilation must lie on the line through the corresponding points; place the center consistently.",
+    "point_position_inconsistent": "A point declared on a segment or line must sit at a position consistent with the other declared lengths; make its placement consistent.",
+    # --- Layer 4: determinacy -----------------------------------------------
+    "target_key_not_on_entity": "The target attribute must exist on the target entity; point the target at a valid attribute of a declared entity.",
+    "target_dilation_underdetermined": "A dilation target needs a known scale factor or a known corresponding measurement to be solvable; supply enough givens to determine it.",
+    "target_vacuous": "The target already has a value, so nothing is being solved; leave the target's value unspecified so it is a genuine unknown.",
+    "target_undetermined": "The target is not derivable from the givens. Add the missing given(s) or restructure so it follows from the declared facts; if the intended method needs a property that is not stated, declare it, and if the target's nature suits a classification, ask for that instead.",
+    # --- Layer 5: redundancy -------------------------------------------------
+    "redundant_relationship": "A relationship adds nothing beyond what is already stated or needed for the target; remove redundant relationships.",
+}
 
 
 def _format_validation_errors(validation: dict[str, Any]) -> str:
-    errors = validation.get("errors") or []
+    """Render generic, problem-independent repair guidance, one line per DISTINCT
+    failing gate (deduplicated, first-seen order). The value-specific messages
+    from the validator are intentionally NOT included — Haiku is told the rule
+    and the corrective action, never the exact numbers for this problem."""
+    # style-severity findings are advisory (fixed downstream), so never ask
+    # Haiku to repair them.
+    errors = [e for e in (validation.get("errors") or []) if e.get("severity") != "style"]
     if not errors:
-        return "(no error details)"
+        return "(no blocking error details)"
+    seen: set[str] = set()
     lines: list[str] = []
-    for i, err in enumerate(errors, start=1):
-        lines.append(
-            f"{i}. gate: {err.get('gate', '?')}\n"
-            f"   severity: {err.get('severity', '?')}\n"
-            f"   checks: {err.get('checks', '')}\n"
-            f"   failed: {err.get('failed', '')}"
+    for err in errors:
+        gate = err.get("gate", "?")
+        if gate in seen:
+            continue
+        seen.add(gate)
+        guidance = GATE_REPAIR_GUIDANCE.get(
+            gate, f"Resolve the issue reported by the '{gate}' check."
         )
-    return "\n\n".join(lines)
+        lines.append(f"{len(lines) + 1}. {guidance}")
+    return "\n".join(lines)
 
 
 def _format_calibration_feedback(calibration: dict[str, Any] | None) -> str:
@@ -179,6 +261,35 @@ def _format_calibration_feedback(calibration: dict[str, Any] | None) -> str:
     return "\n".join(lines)
 
 
+def _format_relationship_contract(schema: ProblemSchema) -> str:
+    """List, for each relationship type USED in this schema, the exact
+    attributes it requires/allows — read from schema.py's single-source
+    RELATION_ATTRS (the same table the validator's contract is generated from).
+    This is fixed API spec, not problem-specific tuning: it tells Haiku the
+    attribute shape so it stops inventing keys the validator rejects."""
+    seen: list[str] = []
+    for rel in schema.relationships or []:
+        t = rel.type.value if hasattr(rel.type, "value") else str(rel.type)
+        if t not in seen:
+            seen.append(t)
+    lines: list[str] = []
+    for t in seen:
+        spec = relation_attribute_contract(t)
+        if spec is None:
+            continue  # unconstrained type — nothing to enforce
+        req = ", ".join(spec["required"]) or "(none)"
+        opt = ", ".join(a for a in spec["allowed"] if a not in spec["required"]) or "(none)"
+        lines.append(f"- {t}: required attributes = [{req}]; optional = [{opt}]")
+    if not lines:
+        return ""
+    return (
+        "=== RELATIONSHIP ATTRIBUTE CONTRACT (use EXACTLY these keys) ===\n\n"
+        "Each relationship's attributes must use only these keys, and must "
+        "include every required one. Do not invent other attribute names.\n\n"
+        + "\n".join(lines)
+    )
+
+
 def _build_repair_user_prompt(
     schema: ProblemSchema,
     validation: dict[str, Any],
@@ -195,7 +306,7 @@ def _build_repair_user_prompt(
     prolog_section = f"""=== PROLOG VALIDATOR OUTPUT ===
 
 status: {validation.get("status")}
-error_count: {validation.get("error_count", 0)}
+error_count: {_blocking_error_count(validation)}
 
 === FAILING GATES (fix every one) ===
 
@@ -205,11 +316,14 @@ error_count: {validation.get("error_count", 0)}
     if calibration_section:
         calibration_section = "\n\n" + calibration_section
 
+    contract_block = _format_relationship_contract(schema)
+    contract_section = f"\n\n{contract_block}" if contract_block else ""
+
     return f"""=== ITERATION {iteration} — SCHEMA TO REPAIR ===
 
 {schema_json}
 {exemplar_section}
-{prolog_section}{calibration_section}
+{prolog_section}{contract_section}{calibration_section}
 
 Submit the corrected schema using the tool."""
 
@@ -227,6 +341,7 @@ def refine_schema_with_haiku(
     message = client.messages.create(
         model=model,
         max_tokens=4000,
+        temperature=0,  # deterministic repair: P3 must be reproducible for the study
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_prompt}],
         tools=[
@@ -294,7 +409,7 @@ def refinement_loop(
             raise RuntimeError(f"Validation engine failed: {exc}") from exc
 
         prolog_passed = _validation_passed(validation)
-        prolog_errs = validation.get("error_count", 0)
+        prolog_errs = _blocking_error_count(validation)
         print(
             f"  status={validation.get('status', '?')} "
             f"prolog_errors={prolog_errs} [{'PASS' if prolog_passed else 'FAIL'}]"
@@ -410,6 +525,7 @@ def _save_results(
     skip_prose: bool = False,
     enable_calibration: bool = True,
     accept_off_band: bool = True,
+    force_prose: bool = False,
 ) -> tuple[Path, Path, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     stem = _output_stem(trace["problem_id"])
@@ -443,7 +559,6 @@ def _save_results(
         calibration_result is not None
         and not calibration_result.get("accepted", True)
         and not force_prose          # <-- force_prose overrides the gate
-    )
     )
     if calibration_blocks_prose:
         print(

@@ -1,0 +1,129 @@
+{
+  "lesson_id": "lesson_15",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": true,
+  "final_overall_score": 3.0,
+  "final_nl": "A builder is framing a triangular roof support with two wooden beams. The two beams meet at point Y, with their other endpoints at points X and Z. One beam from Y to X has a length of 6 feet, and the other beam from Y to Z has a length of 8 feet. A third beam will connect points X and Z to complete the triangular frame.\n\nComplete the inequality to describe the possible lengths for the third beam:\n\n___ < x < ___",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_15. Let triangle XYZ be a triangle with sides XY = 6, YZ = 8. The interior angles of triangle XYZ (\u2220X, \u2220Y, \u2220Z) sum to 180\u00b0. Find the length of XZ in XYZ.",
+      "judgment": {
+        "overall_score": 0.5,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 1
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem is unsolvable as written: knowing two sides XY=6 and YZ=8 and that the angles sum to 180\u00b0 (which is true of every triangle) does not determine the third side XZ. Any length in (2, 14) is possible. The problem asks for a specific numerical answer that doesn't exist.",
+          "lesson_alignment": "The lesson is about the converse of the Pythagorean Theorem and the triangle inequality \u2014 determining possible ranges for a third side or classifying triangles by side lengths. Asking to 'find' a single length XZ from two sides is not the target skill; a properly aligned problem would ask for the range of possible values of XZ or classify the triangle given a third side.",
+          "linguistic_clarity": "The phrasing 'The interior angles of triangle XYZ sum to 180\u00b0' is a vacuous filler that adds nothing, and 'Find the length of XZ in XYZ' is redundant and ambiguous since XZ is not determined. The problem is flat with no scenario and is decipherable only with effort."
+        },
+        "feedback_for_haiku": "Your problem as written cannot be solved: giving two sides (XY = 6 and YZ = 8) and noting that a triangle's angles sum to 180\u00b0 does not pin down the third side \u2014 XZ could be anything strictly between 2 and 14. You need to either (a) ask for the *range* of possible values for XZ using the triangle inequality (e.g., \"Complete the inequality ___ < XZ < ___\"), or (b) provide a third piece of information (like the measure of angle Y, or that the triangle is right/acute/obtuse) and ask students to classify or compute accordingly. Also drop the filler sentence about angles summing to 180\u00b0 \u2014 that's true of every triangle and adds nothing. Finally, wrap the problem in a concrete real-world scenario that preserves every quantity and label: for example, a builder framing a triangular support with two beams of lengths 6 ft and 8 ft, and ask (from inside that scenario) what lengths the third beam could take, with the final question posed in scenario terms.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The third side XZ is not determined by the given information, so 'Find the length of XZ' has no unique answer.",
+            "suggested_fix": "Ask for the range of possible values of XZ via the triangle inequality, or supply angle Y (or a classification) to make XZ solvable."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The task does not exercise the lesson's target skills (triangle inequality or classifying triangles by side lengths via the converse of the Pythagorean Theorem).",
+            "suggested_fix": "Rewrite as either a triangle-inequality range problem (find bounds on XZ) or a classification problem (given a third side, decide if XYZ is acute, right, or obtuse)."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The statement includes vacuous filler ('interior angles sum to 180\u00b0') and asks a question whose answer is not determined, creating ambiguity.",
+            "suggested_fix": "Remove the filler sentence and rephrase the question so that it matches determinable information; then wrap in a concrete real-world scenario preserving all quantities."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The problem is flatly framed with no real-world context giving the quantities a reason to exist.",
+            "suggested_fix": "Introduce a brief scenario (e.g., a triangular garden plot or truss beam) with the same labels and lengths and pose the final question from inside that scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A builder is framing a triangular roof support with two wooden beams of lengths 6 feet and 8 feet. These two beams meet at a point, and a third beam will connect their other endpoints to complete the triangular frame.\n\nComplete the inequality to describe the possible lengths for the third beam:\n\n___ < XZ < ___",
+      "judgment": {
+        "overall_score": 3.3,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 3,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The triangle inequality with sides 6 and 8 gives 2 < third side < 14, which is correct and solvable. Minor issue: the problem labels the third beam 'XZ' without introducing points X, Y, Z anywhere in the setup, which is a small underdetermination in labeling but does not affect the numerical answer.",
+          "lesson_alignment": "The problem directly targets the triangle inequality skill from the lesson (matches Problem 2 format with the ___ < x < ___ structure), applying it to a real-world framing context. It requires genuine application of the a-b < c < a+b relationship taught in the lesson.",
+          "linguistic_clarity": "The problem is wrapped in a concrete builder/roof-framing scenario with clear stakes, which is good. However, the variable 'XZ' appears in the answer blank without any of the points being labeled or introduced in the scenario, creating a minor disconnect between the story and the notation."
+        },
+        "feedback_for_haiku": "Your problem has a solid real-world framing (a builder with two beams) and cleanly targets the triangle inequality skill from the lesson. The main issue is that you ask for \"XZ\" in the answer blank but never introduce points X, Y, or Z in the setup \u2014 the scenario only mentions \"two wooden beams\" and \"a third beam.\" Fix this by labeling the endpoints in the scenario: for example, say the two beams meet at point Y, with their other endpoints at X and Z, so that the third beam XZ has a clear geometric meaning. Alternatively, replace \"XZ\" with a plain variable like \"x\" (matching the lesson's Problem 2 format) and phrase the question as \"the length x of the third beam.\" Either fix will make the notation consistent with the scenario you built.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The variable 'XZ' appears in the inequality but points X, Y, and Z are never introduced in the scenario.",
+            "suggested_fix": "Label the beam endpoints in the setup (e.g., 'the beams meet at point Y with other endpoints X and Z') or replace 'XZ' with a simple variable like 'x'."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "minor",
+            "issue": "The undefined labels X and Z create a small ambiguity about which segment the inequality refers to, though the intent is clear from context.",
+            "suggested_fix": "Explicitly define X, Y, Z as the vertices of the triangular frame in the scenario before asking about XZ."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A builder is framing a triangular roof support with two wooden beams. The two beams meet at point Y, with their other endpoints at points X and Z. One beam from Y to X has a length of 6 feet, and the other beam from Y to Z has a length of 8 feet. A third beam will connect points X and Z to complete the triangular frame.\n\nComplete the inequality to describe the possible lengths for the third beam:\n\n___ < x < ___",
+      "judgment": {
+        "overall_score": 3.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 3,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The triangle inequality applied to sides 6 and 8 correctly yields 2 < x < 14, which is mathematically valid. Minor issue: the variable in the prose is not explicitly named 'x' (the third beam is described as connecting X and Z), so the reader must infer that x represents the length of that beam rather than confusing it with point X.",
+          "lesson_alignment": "The problem directly targets the triangle inequality skill from the lesson (matching Problem 2's format exactly with two given sides and an inequality to complete). It's appropriately challenging but essentially a reskin of a lesson problem rather than pushing to the productive edge.",
+          "linguistic_clarity": "The problem does wrap the task in a concrete builder/roof-framing scenario, which is good, but the variable x is never explicitly defined in the scenario \u2014 the third beam is not labeled x in the prose, creating potential confusion with point X. The final question is asked from inside the scenario but the transition to the abstract 'x' feels disconnected."
+        },
+        "feedback_for_haiku": "Your problem has a nice concrete framing (builder, roof support, wooden beams), but there's a labeling collision that will confuse students: you use uppercase X as a vertex point AND lowercase x as the unknown length variable, without ever explicitly connecting them. Fix this by explicitly naming the third beam's length in the scenario \u2014 for example, \"Let x represent the length in feet of the third beam connecting X and Z\" \u2014 before presenting the inequality. Also consider asking the question fully from inside the scenario (e.g., \"What are the possible lengths, in feet, for the third beam?\") rather than jumping abruptly to a bare inequality template. Finally, to push closer to the productive edge, consider adding a second part that asks for what range of third-beam lengths would make the roof support an acute or obtuse triangle, integrating the converse of the Pythagorean Theorem from the same lesson.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The variable x in the inequality is never explicitly defined and collides visually with the vertex label X used in the scenario.",
+            "suggested_fix": "Add a sentence like 'Let x represent the length, in feet, of the third beam XZ' before the inequality."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem is a direct reskin of Problem 2 from the lesson with only surface scenario changes and doesn't push into the acute/obtuse classification also covered in the lesson.",
+            "suggested_fix": "Add a follow-up part asking for the range of x that would make triangle XYZ acute or obtuse, integrating the converse of the Pythagorean Theorem."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The final question is presented as a bare fill-in-the-blank inequality rather than being asked from inside the builder scenario.",
+            "suggested_fix": "Rephrase as 'What are the possible lengths, in feet, for the third beam? Complete the inequality: ___ < x < ___.'"
+          }
+        ]
+      }
+    }
+  ]
+}

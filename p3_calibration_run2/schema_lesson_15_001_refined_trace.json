@@ -1,0 +1,85 @@
+{
+  "problem_id": "lesson_15_001",
+  "lesson_id": "lesson_15",
+  "max_iterations": 3,
+  "iterations_used": 1,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 2,
+  "final_prolog_error_count": 2,
+  "calibration": null,
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_15_001",
+        "lesson": "lesson_15",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 12.0,
+                "BC": 9.0,
+                "AC": null
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "ABC"
+            ],
+            "attributes": {
+              "triangle_id": "ABC",
+              "angles": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sum": 180.0
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABC",
+          "attribute": "sides.AC"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "vacuous_angle_sum_relationship",
+            "severity": "structural",
+            "checks": "",
+            "failed": "angle_sum_triangle (index 1) is declared for triangle ABC but only 0 angle(s) are independently known. The relationship adds no constraint unless at least 2 angles are declared, allowing the third to be derived."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target ABC.sides.AC is under-determined..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_15. Let triangle ABC be a triangle with sides AB = 12, BC = 9. The interior angles of triangle ABC (\u2220A, \u2220B, \u2220C) sum to 180\u00b0. Find the length of AC in ABC.",
+  "student_facing_prose": "A triangle has two sides measuring AB = 12 and BC = 9. The three interior angles of triangle ABC must sum to 180\u00b0. What constraints does this place on the length of the third side, AC? In particular, find the range of possible lengths for AC."
+}

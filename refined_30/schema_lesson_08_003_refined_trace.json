@@ -1,0 +1,83 @@
+{
+  "lesson_id": "lesson_08",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A graphic designer is comparing two rectangular picture frames for a client project.\n\nFrame A measures 4 inches wide and 6 inches tall. Frame B measures 6 inches wide and 9 inches tall.\n\nThe designer believes that because both frames are rectangles, they must be similar to each other. However, before ordering Frame B, she wants to verify this claim by checking whether the rectangles are truly similar using the definition of similarity: a figure is similar to another if there exists a sequence of rigid motions (translations, rotations, and/or reflections) followed by exactly one dilation that takes the first figure onto the second.\n\nAre Frame A and Frame B similar? Justify your answer by explaining whether a sequence of rigid motions and a single dilation can map Frame A onto Frame B. If they are similar, state the required scale factor. If they are not similar, explain why no single dilation can work.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_08. Let quadrilateral ABCD be a 4-sided figure with AB = 4, BC = 6, CD = 4, DA = 6, where \u2220A = 90\u00b0, \u2220B = 90\u00b0, \u2220C = 90\u00b0, \u2220D = 90\u00b0. Let quadrilateral PQRS be a 4-sided figure with PQ = 6, QR = 9, RS = 6, SP = 9, where \u2220P = 90\u00b0, \u2220Q = 90\u00b0, \u2220R = 90\u00b0, \u2220S = 90\u00b0. Triangle ABCD is similar to triangle PQRS by SAS similarity with scale factor 1.5 (congruent angle pairs: A \u2245 P). Find the length of BC in ABCD.",
+      "judgment": {
+        "overall_score": 0.5,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 1
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem is riddled with errors: it calls quadrilaterals 'triangles,' invokes 'SAS similarity' for quadrilaterals, provides BC=6 in the premise and then asks for BC (answer given in question), and the given side ratios (4:6 vs 6:9) with a claimed scale factor of 1.5 would actually make the two rectangles similar\u2014contradicting the lesson's central point that not all rectangles are similar. Additionally, a 4\u00d76 rectangle with all right angles has AB=CD=4 and BC=DA=6, but stating it that way with the similarity assertion is internally incoherent.",
+          "lesson_alignment": "The lesson is about proving/critiquing similarity arguments (all circles similar, all equilateral triangles similar, not all rectangles similar). This problem instead asks for a trivial side length that is literally stated in the problem, missing the lesson's proof-and-critique focus entirely.",
+          "linguistic_clarity": "The problem calls quadrilaterals 'triangles,' misuses 'SAS similarity,' and asks for a quantity (BC) that is explicitly given in the setup, making the task ambiguous and self-contradictory."
+        },
+        "feedback_for_haiku": "Your problem has several fundamental breakdowns you need to repair. First, you call ABCD and PQRS 'triangles' when they are quadrilaterals, and you cite 'SAS similarity' which does not apply to four-sided figures \u2014 remove that language entirely. Second, you ask for the length of BC when BC = 6 is already stated in the problem, so the answer is handed to the student; pick a genuinely unknown quantity or, better, ask a proof/critique question. Third, and most importantly, this lesson is specifically about the fact that NOT all rectangles are similar and about writing/critiquing similarity proofs (all circles, all equilateral triangles). Rewrite the task so it targets that skill \u2014 for example, present two rectangles with different aspect ratios and ask the student to determine whether they are similar and justify using the definition of similarity (rigid motions + a single dilation), or have the student critique a flawed proof that all rectangles are similar. Wrap the task in a concrete scenario (e.g., a graphic designer comparing two picture frames or a tile-layout problem) with every measurement preserved and the final question asked from inside that scenario.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem asks for BC in ABCD, but BC = 6 is explicitly given in the setup, so the answer is stated in the question.",
+            "suggested_fix": "Ask for a genuinely unknown quantity, or replace the numeric question with a similarity-justification question aligned to the lesson."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "Quadrilaterals ABCD and PQRS are referred to as 'triangles' and are said to be similar 'by SAS similarity,' which is not a valid criterion for quadrilaterals.",
+            "suggested_fix": "Call them quadrilaterals (or rectangles) and justify similarity via the definition (a sequence of rigid motions and a single dilation), not SAS."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The two rectangles given (4\u00d76 and 6\u00d79) actually ARE similar with scale factor 1.5, which contradicts the lesson's central point that not all rectangles are similar and undermines any conceptual takeaway.",
+            "suggested_fix": "Choose rectangles with different aspect ratios (e.g., 4\u00d76 and 6\u00d78) and ask students to determine whether they are similar and justify."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "critical",
+            "issue": "The task asks for a numeric side length rather than proving/critiquing a similarity argument, which is the actual skill of Lesson 8.",
+            "suggested_fix": "Rewrite the prompt as a proof-writing or proof-critique task, e.g., 'Determine whether these two rectangles are similar and justify using a sequence of rigid motions and dilations.'"
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is a bare list of asserted facts with no scenario giving the figures a reason to exist.",
+            "suggested_fix": "Wrap the setup in a concrete real-world scenario (e.g., comparing two picture frames or floor tiles) preserving all quantities and asking the question from inside that scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A graphic designer is comparing two rectangular picture frames for a client project.\n\nFrame A measures 4 inches wide and 6 inches tall. Frame B measures 6 inches wide and 9 inches tall.\n\nThe designer believes that because both frames are rectangles, they must be similar to each other. However, before ordering Frame B, she wants to verify this claim by checking whether the rectangles are truly similar using the definition of similarity: a figure is similar to another if there exists a sequence of rigid motions (translations, rotations, and/or reflections) followed by exactly one dilation that takes the first figure onto the second.\n\nAre Frame A and Frame B similar? Justify your answer by explaining whether a sequence of rigid motions and a single dilation can map Frame A onto Frame B. If they are similar, state the required scale factor. If they are not similar, explain why no single dilation can work.",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "Frame A is 4\u00d76 (ratio 2:3) and Frame B is 6\u00d79 (ratio 2:3), so they are in fact similar with scale factor 3/2. The problem correctly invokes the definition of similarity via rigid motions and a single dilation, and the numbers work out cleanly with no contradictions.",
+          "lesson_alignment": "The problem directly targets the lesson's central question about whether all rectangles are similar and Tyler's faulty two-dilation reasoning. It pushes students beyond the lesson example by giving two rectangles that ARE similar\u2014so students must engage with the definition rather than pattern-match to 'rectangles aren't all similar,' which is the productive edge of difficulty.",
+          "linguistic_clarity": "The problem is wrapped in a concrete graphic-designer/picture-frame scenario, the final question is asked from inside that scenario, and every quantity is preserved. The definition is stated cleanly and the task is unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is strong: it takes the lesson's core tension (not all rectangles are similar, per Tyler's flawed proof) and cleverly inverts it by presenting two rectangles that ARE similar (4\u00d76 and 6\u00d79 both have ratio 2:3, scale factor 3/2). This forces students to actually apply the definition rather than reflexively answer \"no.\" The graphic-designer framing is concrete and preserves all quantities, and the question sits inside the scenario. One small enhancement to consider: you could ask students to also describe the specific rigid motion(s) needed (e.g., where to translate/rotate Frame A so it aligns with Frame B before dilating) to push the proof-writing skill even harder, but this isn't required.",
+        "specific_issues": []
+      }
+    }
+  ]
+}

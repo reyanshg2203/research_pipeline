@@ -1,0 +1,10 @@
+A triangular plot of land ABC has sides measuring AB = 14 meters, BC = 16 meters, and AC = 10 meters. A surveyor marks the midpoints of two sides and connects them with a segment MN, creating a smaller triangle MNP by also connecting the midpoints of the remaining sides.
+
+The three segments MN, NP, and MP each connect midpoints of the original triangle's sides. This means:
+- Segment MN is parallel to side BC
+- Segment NP is parallel to side AB  
+- Segment MP is parallel to side AC
+
+Because triangle MNP is formed entirely by connecting midpoints, it is a dilation of triangle ABC with a scale factor of 1/2, centered at one of the vertices. This dilation relationship guarantees that each side of the smaller triangle is parallel to and exactly half the length of the corresponding side in the original triangle.
+
+Given that the sides of triangle MNP measure MN = 8 meters, NP = 7 meters, and MP = 5 meters, what is the length of MN?

@@ -1,0 +1,5 @@
+A designer is comparing two equilateral triangular tiles for a decorative mosaic. The first tile, triangle ABC, has sides BC = 8 and AC = 8, with all angles measuring 60°. The second tile, triangle DEF, is larger, with sides DE = 12, EF = 12, and DF = 12, also with all angles measuring 60°.
+
+Because both triangles are equilateral, triangle ABC is similar to triangle DEF by the SSS Similarity Theorem, with a scale factor of 1.5 relating the tiles.
+
+Given this relationship, what is the length of side AB on the original tile ABC?

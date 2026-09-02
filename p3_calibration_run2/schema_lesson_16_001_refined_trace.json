@@ -1,0 +1,535 @@
+{
+  "problem_id": "lesson_16_001",
+  "lesson_id": "lesson_16",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 2,
+  "final_prolog_error_count": 2,
+  "calibration": null,
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_16_001",
+        "lesson": "lesson_16",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "XYZ",
+              "sides": {
+                "XY": 6.0,
+                "YZ": null,
+                "XZ": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "PQR"
+            ],
+            "attributes": {
+              "triangle_id": "PQR",
+              "angles": [
+                "P",
+                "Q",
+                "R"
+              ],
+              "sum": 180.0
+            }
+          },
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "XYZ"
+            ],
+            "attributes": {
+              "triangle_id": "XYZ",
+              "angles": [
+                "X",
+                "Y",
+                "Z"
+              ],
+              "sum": 180.0
+            }
+          },
+          {
+            "type": "congruent_angles",
+            "entities": [
+              "Q",
+              "Y"
+            ],
+            "attributes": {
+              "ids": [
+                "Q",
+                "Y"
+              ]
+            }
+          },
+          {
+            "type": "similar_AA",
+            "entities": [
+              "PQR",
+              "XYZ"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "pre_image": "PQR",
+              "image": "XYZ",
+              "congruent_angle_pairs": [
+                [
+                  "Q",
+                  "Y"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "XYZ",
+          "attribute": "sides.YZ"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 3,
+        "errors": [
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship congruent_angles (index 3) is out of scope: wrong number of entities (got 2, expected 1 for congruent_angles). Expected kinds [list_of_any]; got entities [Q,Y]."
+          },
+          {
+            "gate": "vacuous_angle_sum_relationship",
+            "severity": "structural",
+            "checks": "",
+            "failed": "angle_sum_triangle (index 1) is declared for triangle PQR but only 0 angle(s) are independently known. The relationship adds no constraint unless at least 2 angles are declared, allowing the third to be derived."
+          },
+          {
+            "gate": "vacuous_angle_sum_relationship",
+            "severity": "structural",
+            "checks": "",
+            "failed": "angle_sum_triangle (index 2) is declared for triangle XYZ but only 0 angle(s) are independently known. The relationship adds no constraint unless at least 2 angles are declared, allowing the third to be derived."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 3,
+      "haiku_correction": {
+        "problem_id": "lesson_16_001",
+        "lesson": "lesson_16",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": null
+              },
+              "angles": {
+                "Q": 90.0
+              },
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "XYZ",
+              "sides": {
+                "XY": 6.0,
+                "YZ": null,
+                "XZ": null
+              },
+              "angles": {
+                "Y": 90.0
+              },
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "PQR"
+            ],
+            "attributes": {
+              "triangle_id": "PQR"
+            }
+          },
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "XYZ"
+            ],
+            "attributes": {
+              "triangle_id": "XYZ"
+            }
+          },
+          {
+            "type": "similar_AA",
+            "entities": [
+              "PQR",
+              "XYZ"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "pre_image": "PQR",
+              "image": "XYZ",
+              "congruent_angle_pairs": [
+                [
+                  "Q",
+                  "Y"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "XYZ",
+          "attribute": "sides.YZ"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_16_001",
+        "lesson": "lesson_16",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": null
+              },
+              "angles": {
+                "Q": 90.0
+              },
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "XYZ",
+              "sides": {
+                "XY": 6.0,
+                "YZ": null,
+                "XZ": null
+              },
+              "angles": {
+                "Y": 90.0
+              },
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "PQR"
+            ],
+            "attributes": {
+              "triangle_id": "PQR"
+            }
+          },
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "XYZ"
+            ],
+            "attributes": {
+              "triangle_id": "XYZ"
+            }
+          },
+          {
+            "type": "similar_AA",
+            "entities": [
+              "PQR",
+              "XYZ"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "pre_image": "PQR",
+              "image": "XYZ",
+              "congruent_angle_pairs": [
+                [
+                  "Q",
+                  "Y"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "XYZ",
+          "attribute": "sides.YZ"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "vacuous_angle_sum_relationship",
+            "severity": "structural",
+            "checks": "",
+            "failed": "angle_sum_triangle (index 1) is declared for triangle PQR but only 1 angle(s) are independently known. The relationship adds no constraint unless at least 2 angles are declared, allowing the third to be derived."
+          },
+          {
+            "gate": "vacuous_angle_sum_relationship",
+            "severity": "structural",
+            "checks": "",
+            "failed": "angle_sum_triangle (index 2) is declared for triangle XYZ but only 1 angle(s) are independently known. The relationship adds no constraint unless at least 2 angles are declared, allowing the third to be derived."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": {
+        "problem_id": "lesson_16_001",
+        "lesson": "lesson_16",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": null
+              },
+              "angles": {
+                "Q": 90.0,
+                "P": null,
+                "R": null
+              },
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "XYZ",
+              "sides": {
+                "XY": 6.0,
+                "YZ": null,
+                "XZ": null
+              },
+              "angles": {
+                "Y": 90.0,
+                "X": null,
+                "Z": null
+              },
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "PQR"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "XYZ"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "similar_AA",
+            "entities": [
+              "PQR",
+              "XYZ"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "pre_image": "PQR",
+              "image": "XYZ",
+              "congruent_angle_pairs": [
+                [
+                  "Q",
+                  "Y"
+                ],
+                [
+                  "P",
+                  "X"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "XYZ",
+          "attribute": "sides.YZ"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_16_001",
+        "lesson": "lesson_16",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": null
+              },
+              "angles": {
+                "Q": 90.0,
+                "P": null,
+                "R": null
+              },
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "XYZ",
+              "sides": {
+                "XY": 6.0,
+                "YZ": null,
+                "XZ": null
+              },
+              "angles": {
+                "Y": 90.0,
+                "X": null,
+                "Z": null
+              },
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "PQR"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "XYZ"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "similar_AA",
+            "entities": [
+              "PQR",
+              "XYZ"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "pre_image": "PQR",
+              "image": "XYZ",
+              "congruent_angle_pairs": [
+                [
+                  "Q",
+                  "Y"
+                ],
+                [
+                  "P",
+                  "X"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "XYZ",
+          "attribute": "sides.YZ"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship angle_sum_triangle (index 1) is missing required attribute 'triangle_id'. angle_sum_triangle requires attributes: [triangle_id]."
+          },
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship angle_sum_triangle (index 2) is missing required attribute 'triangle_id'. angle_sum_triangle requires attributes: [triangle_id]."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_16. Let triangle PQR be a right triangle with sides PQ = 9, QR = 12, where \u2220Q = 90\u00b0. Let triangle XYZ be a right triangle with sides XY = 6, where \u2220Y = 90\u00b0. The interior angles of triangle PQR (its interior angles) sum to 180\u00b0. The interior angles of triangle XYZ (its interior angles) sum to 180\u00b0. Triangle PQR is similar to triangle XYZ by AA similarity (congruent angle pairs: Q \u2245 Y). Find the length of YZ in XYZ.",
+  "student_facing_prose": "A construction crew is building two similar reinforced concrete roof supports shaped like right triangles. The larger support, triangle PQR, has legs measuring PQ = 9 feet and QR = 12 feet, meeting at a right angle at Q. The smaller support, triangle XYZ, is scaled down from PQR and also has a right angle at Y. The crew knows that the side XY on the smaller support measures 6 feet.\n\nSince both supports have the same interior angles (they sum to 180\u00b0), and since the right angles at Q and Y match, the two triangles are similar by the AA Similarity Theorem.\n\nUsing the proportional relationships between corresponding sides of these similar triangles, what is the length of side YZ on the smaller support?"
+}

@@ -1,0 +1,153 @@
+{
+  "problem_id": "lesson_09_001",
+  "lesson_id": "lesson_09",
+  "max_iterations": 3,
+  "iterations_used": 1,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_09",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 1,
+    "min_steps": 1,
+    "best_trace": [
+      "corresponding_angle"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "1 in-scope steps lands in band [1..3]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_09_001",
+        "lesson": "lesson_09",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 10.0,
+                "BC": null,
+                "AC": null
+              },
+              "angles": {
+                "A": 52.0,
+                "B": 68.0,
+                "C": null
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 15.0,
+                "EF": null,
+                "DF": null
+              },
+              "angles": {
+                "D": 52.0,
+                "E": null,
+                "F": 60.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "ABC"
+            ],
+            "attributes": {
+              "triangle_id": "ABC",
+              "angles": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sum": 180.0
+            }
+          },
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "DEF"
+            ],
+            "attributes": {
+              "triangle_id": "DEF",
+              "angles": [
+                "D",
+                "E",
+                "F"
+              ],
+              "sum": 180.0
+            }
+          },
+          {
+            "type": "similar_AA",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "scale_factor": 1.5,
+              "pre_image": "ABC",
+              "image": "DEF",
+              "congruent_angle_pairs": [
+                [
+                  "A",
+                  "D"
+                ],
+                [
+                  "B",
+                  "E"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "angles.E"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_09",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": 1,
+        "best_trace": [
+          "corresponding_angle"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "1 in-scope steps lands in band [1..3]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_09. Let triangle ABC be a triangle with sides AB = 10, where \u2220A = 52\u00b0, \u2220B = 68\u00b0. Let triangle DEF be a triangle with sides DE = 15, where \u2220D = 52\u00b0, \u2220F = 60\u00b0. The interior angles of triangle ABC (\u2220A, \u2220B, \u2220C) sum to 180\u00b0. The interior angles of triangle DEF (\u2220D, \u2220E, \u2220F) sum to 180\u00b0. Triangle ABC is similar to triangle DEF by AA similarity with scale factor 1.5 (congruent angle pairs: A \u2245 D, B \u2245 E). Find the measure of \u2220E in DEF.",
+  "student_facing_prose": "A surveyor is mapping two triangular parcels of land. She measures triangle ABC with side AB = 10 meters, angle A = 52\u00b0, and angle B = 68\u00b0. Across town, she finds triangle DEF with side DE = 15 meters, angle D = 52\u00b0, and angle F = 60\u00b0.\n\nThe surveyor knows that the sum of all interior angles in any triangle equals 180\u00b0, so she can find the missing angles in both triangles.\n\nSince angle A = 52\u00b0 and angle D = 52\u00b0, these angles are congruent. Since angle B = 68\u00b0, the surveyor calculates angle C in triangle ABC as 180\u00b0 \u2212 52\u00b0 \u2212 68\u00b0 = 60\u00b0. She notices that angle F = 60\u00b0 as well, so angle C \u2245 angle F.\n\nWith two pairs of corresponding congruent angles (A \u2245 D and B \u2245 E), triangle ABC is similar to triangle DEF by the Angle-Angle Similarity Theorem, with a scale factor of 1.5 (the ratio of corresponding sides DE to AB).\n\nWhat is the measure of \u2220E in triangle DEF?"
+}

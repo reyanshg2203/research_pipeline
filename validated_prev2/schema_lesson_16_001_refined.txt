@@ -1,0 +1,5 @@
+A contractor is designing two similar roof trusses for a pair of buildings. The first truss, triangle PQR, is a right triangle with legs PQ = 9 feet and QR = 12 feet, meeting at the right angle Q. The second truss, triangle XYZ, is also a right triangle with a right angle at Y, and one of its legs measures XY = 6 feet.
+
+The contractor knows that the two trusses are similar by AA similarity — specifically, the angles at Q and Y are congruent (both right angles), and the angles at P and X are also congruent. Because the trusses have the same shape, the contractor can use the proportional relationships between corresponding sides to find the unknown dimensions.
+
+What is the length of side YZ in the smaller truss XYZ?

@@ -1,0 +1,5 @@
+Two triangular truss braces are used in a construction project. The larger brace, PQR, has sides PQ = 10 cm, QR = 14 cm, and PR = 18 cm. A smaller brace, XYZ, is designed to be a scaled copy of the larger brace, with sides XY = 15 cm and YZ = 21 cm.
+
+First, identify the scale factor by finding the ratio of corresponding sides for the two pairs of sides you know. Then use this scale factor to find the length of XZ.
+
+Finally, verify that all three pairs of corresponding sides have the same ratio, confirming that triangle XYZ is similar to triangle PQR by the Side-Side-Side Similarity Theorem.

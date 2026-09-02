@@ -1,0 +1,119 @@
+{
+  "problem_id": "lesson_08_001",
+  "lesson_id": "lesson_08",
+  "max_iterations": 3,
+  "iterations_used": 1,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_08",
+    "n_out_of_scope": 4,
+    "out_of_scope_concepts": [
+      "law_of_cosines",
+      "law_of_sines"
+    ],
+    "any_min_steps": 1,
+    "min_steps": 1,
+    "best_trace": [
+      "scale_factor"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "1 in-scope steps lands in band [1..1]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_08_001",
+        "lesson": "lesson_08",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 8.0,
+                "BC": 8.0,
+                "AC": 8.0
+              },
+              "angles": {
+                "A": 60.0,
+                "B": 60.0,
+                "C": 60.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": true
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 12.0,
+                "EF": 12.0,
+                "DF": 12.0
+              },
+              "angles": {
+                "D": 60.0,
+                "E": 60.0,
+                "F": 60.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": true
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "scale_factor": 1.5,
+              "pre_image": "ABC",
+              "image": "DEF"
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABC",
+          "attribute": "sides.AB"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_08",
+        "n_out_of_scope": 4,
+        "out_of_scope_concepts": [
+          "law_of_cosines",
+          "law_of_sines"
+        ],
+        "any_min_steps": 1,
+        "min_steps": 1,
+        "best_trace": [
+          "scale_factor"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "1 in-scope steps lands in band [1..1]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_08. Let triangle ABC be a equilateral triangle with sides AB = 8, BC = 8, AC = 8, where \u2220A = 60\u00b0, \u2220B = 60\u00b0, \u2220C = 60\u00b0. Let triangle DEF be a equilateral triangle with sides DE = 12, EF = 12, DF = 12, where \u2220D = 60\u00b0, \u2220E = 60\u00b0, \u2220F = 60\u00b0. Triangle ABC is similar to triangle DEF by SSS similarity with scale factor 1.5. Find the length of AB in ABC.",
+  "student_facing_prose": "An artist is designing two equilateral triangle tiles for a mosaic. The first tile, triangle ABC, has sides of length 8 inches on all three sides\u2014AB = 8, BC = 8, and AC = 8\u2014with each interior angle measuring 60\u00b0. The second tile, triangle DEF, is a larger equilateral triangle with sides of length 12 inches on all three sides\u2014DE = 12, EF = 12, and DF = 12\u2014also with each interior angle measuring 60\u00b0.\n\nBecause both triangles are equilateral, they are similar to each other by SSS similarity. When you compare the corresponding sides of the two triangles, the ratio of each pair of corresponding sides is the same: the scale factor is 1.5 (since 12 \u00f7 8 = 1.5).\n\nWhat is the length of side AB in triangle ABC?"
+}

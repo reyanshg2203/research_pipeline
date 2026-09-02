@@ -1,0 +1,19 @@
+Two triangular support brackets are being manufactured for a construction project. The brackets must support equal load angles to function properly.
+
+The first bracket is shaped like triangle JKL with ∠J = 28° and ∠L = 112°. One edge JK measures 5 cm.
+
+The second bracket is shaped like triangle MNO with ∠N = 40° and ∠O = 112°. One edge MN measures 8 cm.
+
+To ensure the brackets work as a matched pair, an engineer needs to verify they are geometrically similar and then determine the length of edge NO on the second bracket.
+
+a) Find the measure of ∠K in triangle JKL using the Triangle Angle Sum Theorem.
+
+b) Find the measure of ∠M in triangle MNO using the Triangle Angle Sum Theorem.
+
+c) Which angles in triangle JKL correspond to which angles in triangle MNO? Explain how you can use the Angle-Angle (AA) Triangle Similarity Theorem to show that triangles JKL and MNO are similar.
+
+d) Since the triangles are similar, identify which sides correspond to each other (JK corresponds to MN, and KL corresponds to NO) and find the scale factor from triangle JKL to triangle MNO using these sides.
+
+e) Using the Law of Sines, calculate the length of side KL in triangle JKL: KL = 5 · sin(28°)/sin(40°). Round your answer to two decimal places.
+
+f) A machinist needs to cut edge NO of the second bracket. Using the scale factor from part (d) and the length of KL from part (e), how long should edge NO be? Round your answer to two decimal places.

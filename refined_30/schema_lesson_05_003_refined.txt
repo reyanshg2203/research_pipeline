@@ -1,0 +1,7 @@
+A triangular garden has vertices D, E, and F. Paved pathways connect the midpoints G, H, and I of sides DE, EF, and DF respectively, forming a smaller triangular region in the center of the garden.
+
+The three pathways have lengths: GH = 5 meters, HI = 6 meters, and GI = 4 meters.
+
+a) Explain why the pathway GH is parallel to side DF of the original garden.
+
+b) What is the perimeter of the original triangle DEF?

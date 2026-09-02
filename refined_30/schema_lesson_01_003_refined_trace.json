@@ -1,0 +1,123 @@
+{
+  "lesson_id": "lesson_01",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": true,
+  "final_overall_score": 3.5,
+  "final_nl": "An architect is designing a triangular sail for a new sailboat. The full-size sail RST has sides RS = 12 feet and ST = 9 feet. To preview the design, the architect creates a scale model UVW with a scale factor of 1/3 from triangle RST to triangle UVW.\n\nThe architect positions the scale model in a design software using a center of dilation P. The distance from P to point R on the full-size sail is 18 feet. Point U on the scale model is the image of point R under the dilation with center P and scale factor 1/3.\n\nWhat is the distance from P to U?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_01. Let triangle RST be a 3-sided figure with RS = 12, ST = 9, TR = 15. Let triangle UVW be a 3-sided figure with UV = 4, VW = 3, WU = 5. UVW is a scaled copy of RST. Find the length of RS in RST.",
+      "judgment": {
+        "overall_score": 0.5,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 1
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem states RS = 12 directly in the setup and then asks students to 'Find the length of RS in RST.' The answer is given verbatim in the problem, making it mathematically trivial and internally pointless. Additionally, the two triangles are given with all sides specified (3-4-5 and 9-12-15), which is fine as a scaled copy, but the question itself is degenerate.",
+          "lesson_alignment": "The lesson targets scale factor and dilation \u2014 finding an unknown side using proportional reasoning or dilating a figure. This problem asks for a length that is already provided, so it exercises no skill from the lesson. It could have asked for the scale factor or an unknown side, but as written it fails to engage the lesson content.",
+          "linguistic_clarity": "The phrasing 'let triangle RST be a 3-sided figure' is redundant (all triangles are 3-sided). The problem is a bare list of facts with no scenario, and the final question is nonsensical because RS is already given as 12. The wording creates confusion about what is actually being asked."
+        },
+        "feedback_for_haiku": "Your problem asks students to find RS in triangle RST, but you already stated RS = 12 in the setup \u2014 the answer is handed to the reader, so there's nothing to solve. Rewrite the question so it targets the actual lesson skill: either ask for the scale factor from RST to UVW (which would be 1/3), or make one side length unknown (e.g., leave UV as a variable and ask students to find it using the scale factor). Also drop the redundant phrase \"3-sided figure\" \u2014 just say \"triangle.\" Finally, wrap the problem in a concrete real-world scenario that preserves every quantity and label: for example, an architect drafting a triangular sail RST with sides 12, 9, and 15 ft and building a scale model UVW with corresponding sides 4, 3, and 5 ft, then asking a question from inside that scenario (such as what scale factor she used, or the length of a missing model side). Put the final question inside the scenario.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem asks for RS, which is already explicitly given as 12 in the problem statement.",
+            "suggested_fix": "Change the question to ask for the scale factor between the triangles, or leave one side length unknown and ask students to compute it using the scale factor."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "Because the answer is stated in the problem, students do not apply scale factor or dilation reasoning at all.",
+            "suggested_fix": "Ask for the scale factor from RST to UVW (1/3), or replace one side length with a variable and require proportional reasoning to solve for it."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The phrase 'let triangle RST be a 3-sided figure' is redundantly worded.",
+            "suggested_fix": "Simply say 'Triangle RST has sides RS = 12, ST = 9, TR = 15.'"
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is a flat list of assertions with no scenario giving the quantities purpose.",
+            "suggested_fix": "Frame the problem in a concrete real-world context (e.g., a sailmaker, architect, or graphic designer creating a scaled model) with the final question asked from inside that scenario, preserving all labels and quantities."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "An architect is designing a triangular sail for a new sailboat. The full-size sail RST has sides RS = 12 feet, ST = 9 feet, and TR = 15 feet. To preview the design, the architect creates a scale model UVW with corresponding sides UV = 4 feet, VW = 3 feet, and WU = 5 feet. Triangle UVW is a scaled copy of triangle RST.\n\nWhat is the scale factor from triangle RST to triangle UVW?",
+      "judgment": {
+        "overall_score": 3.4,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "All three side ratios are consistent: 4/12 = 3/9 = 5/15 = 1/3, so UVW is indeed a valid scaled copy of RST. The triangle inequality holds and the scale factor from RST to UVW is unambiguously 1/3.",
+          "lesson_alignment": "The problem directly targets the lesson's core concept of scale factor between a figure and its scaled copy, but it's very easy \u2014 students only need to compute one ratio (12\u21924) with no dilation center, no missing side to find, and no productive struggle. It reads more like recall than the 'productive edge of difficulty.'",
+          "linguistic_clarity": "The sailboat/architect scenario is concrete, the question is asked from within it, and every quantity is preserved with clear labels. Prose is clean and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is mathematically sound and nicely framed in the sailboat scenario, but it's too easy for a 10th-grade dilation lesson \u2014 students just need to compute 4/12 = 1/3 and they're done, with all three pairs of corresponding sides given (which is more information than needed). Push the difficulty to match the lesson's edge: for instance, give only one pair of corresponding sides plus the scale factor and ask students to find a missing side on the scale model, OR introduce a center of dilation P and ask students to find the distance from P to an image point given the distance from P to the pre-image point. You could also combine both \u2014 give the scale factor and one side, and ask for both a missing side and a dilated distance from the center \u2014 so students actually apply the definition of dilation (ray from center, distance multiplied by k), not just recognize a common ratio.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The problem only requires computing a single ratio and does not engage the lesson's central idea of dilation with a center point and scale factor.",
+            "suggested_fix": "Introduce a center of dilation P with a given distance PR, and ask for PU (or a missing side) so students must apply the definition of dilation rather than just simplify a ratio."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "All three pairs of corresponding sides are provided, making the problem redundant and trivially pattern-matched.",
+            "suggested_fix": "Give only one pair of corresponding sides (or the scale factor) and require students to find the other side lengths on the scaled copy."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "An architect is designing a triangular sail for a new sailboat. The full-size sail RST has sides RS = 12 feet and ST = 9 feet. To preview the design, the architect creates a scale model UVW with a scale factor of 1/3 from triangle RST to triangle UVW.\n\nThe architect positions the scale model in a design software using a center of dilation P. The distance from P to point R on the full-size sail is 18 feet. Point U on the scale model is the image of point R under the dilation with center P and scale factor 1/3.\n\nWhat is the distance from P to U?",
+      "judgment": {
+        "overall_score": 3.5,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The dilation with center P and scale factor 1/3 sends R (at distance 18 from P) to U at distance 6 from P \u2014 this is mathematically correct and consistent. The extra data (RS = 12, ST = 9) is unused but not contradictory; it doesn't affect the answer.",
+          "lesson_alignment": "The problem directly targets the lesson's core definition: applying scale factor k to distance from center to find the image point's distance (PU = k \u00b7 PR). It's a clean application, though it stays at the level of direct recall/formula use rather than pushing to the productive edge of difficulty.",
+          "linguistic_clarity": "The sail scenario is concrete and the question is asked from within it, with clear labeling of center, scale factor, and points. However, the sides RS = 12 and ST = 9 are introduced with narrative weight but never used, which is slightly distracting and adds mild verbosity."
+        },
+        "feedback_for_haiku": "Your sail-design scenario is concrete and the dilation math is correct (PU = 1/3 \u00b7 18 = 6 ft), but the side lengths RS = 12 ft and ST = 9 ft are never used in the solution \u2014 they're red-herring data that make the setup feel padded. Either delete those measurements entirely so the problem focuses cleanly on the center-to-point distance, or make them functional by asking a second part (e.g., \"what is the length of side UV, the image of RS?\") so every quantity you introduce earns its place. To push the difficulty toward the productive edge of the lesson, consider asking students to also identify the distance PU in terms of the ray PR, or to justify why U lies on ray PR \u2014 connecting the numerical answer back to the definition of dilation itself.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The side lengths RS = 12 ft and ST = 9 ft are introduced but never used to answer the question.",
+            "suggested_fix": "Either remove these measurements or add a follow-up part asking for the corresponding side length UV = 4 ft on the scale model."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The task is a straightforward one-step multiplication (18 \u00b7 1/3), which sits at the recall end of the lesson rather than its productive edge.",
+            "suggested_fix": "Add a second part asking students to explain why U lies on ray PR, or to compute a side length on UVW using the scale factor, to require applying two properties of dilation."
+          }
+        ]
+      }
+    }
+  ]
+}

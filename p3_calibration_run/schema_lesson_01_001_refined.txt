@@ -1,0 +1,7 @@
+A video game designer is creating a scaled-down version of an original controller design. The original controller ABCD has four buttons arranged in a quadrilateral pattern with distances AB = 8 cm, BC = 6 cm, CD = 10 cm, and DA = 12 cm between them.
+
+To fit on a smaller handheld device, the designer shrinks the controller using a dilation with scale factor 0.5, centered at point P_center. This creates the new controller layout MNPQ.
+
+The designer has already measured two of the button distances on the new controller: NP = 3 cm and PQ = 5 cm. However, she needs to know the distance MN on the scaled-down controller to ensure the buttons are properly spaced for the handheld device.
+
+What should the length of MN be on the new controller?

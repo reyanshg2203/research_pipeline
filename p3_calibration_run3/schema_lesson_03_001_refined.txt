@@ -1,0 +1,5 @@
+A graphic designer is working on a logo that features a triangular element. She sketches the original triangle ABC with sides AB = 5 cm, BC = 7 cm, and AC = 8 cm. To create a smaller version of the logo for a website thumbnail, she reduces the triangle using a dilation centered at point P with a scale factor of 0.6.
+
+After the dilation, the new triangle DEF corresponds to the original triangle ABC, with each side of DEF measuring 0.6 times the length of the corresponding side in ABC.
+
+When the designer measures the side DE in the reduced logo, what length does she find?

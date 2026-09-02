@@ -1,0 +1,480 @@
+{
+  "problem_id": "lesson_10_003",
+  "lesson_id": "lesson_10",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 1,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_10",
+    "n_out_of_scope": 2,
+    "out_of_scope_concepts": [
+      "law_of_cosines"
+    ],
+    "any_min_steps": 1,
+    "min_steps": null,
+    "best_trace": [],
+    "verdict": "alignment_fail",
+    "accepted": false,
+    "reason": "Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_10's own skill \u2014 the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_10_003",
+        "lesson": "lesson_10",
+        "entities": {
+          "triangles": [
+            {
+              "id": "JKL",
+              "sides": {
+                "JK": 8.0,
+                "KL": 10.0,
+                "JL": 12.0
+              },
+              "angles": {
+                "J": null,
+                "K": null,
+                "L": 42.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 12.0,
+                "EF": 15.0,
+                "DF": 18.0
+              },
+              "angles": {
+                "D": null,
+                "E": null,
+                "F": null
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "JKL",
+              "DEF"
+            ],
+            "attributes": {
+              "scale_factor": 1.5,
+              "pre_image": "JKL",
+              "image": "DEF",
+              "congruent_angle_pairs": [
+                [
+                  "J",
+                  "D"
+                ],
+                [
+                  "K",
+                  "E"
+                ],
+                [
+                  "L",
+                  "F"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "angles.F"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_10",
+        "n_out_of_scope": 2,
+        "out_of_scope_concepts": [
+          "law_of_cosines"
+        ],
+        "any_min_steps": 1,
+        "min_steps": null,
+        "best_trace": [],
+        "verdict": "alignment_fail",
+        "accepted": false,
+        "reason": "Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_10's own skill \u2014 the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required."
+      },
+      "combined_error_count": 1,
+      "haiku_correction": {
+        "problem_id": "lesson_10_003",
+        "lesson": "lesson_10",
+        "entities": {
+          "triangles": [
+            {
+              "id": "JKL",
+              "sides": {
+                "JK": 8.0,
+                "KL": 10.0,
+                "JL": 12.0
+              },
+              "angles": {
+                "J": null,
+                "K": null,
+                "L": 42.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 12.0,
+                "EF": 15.0,
+                "DF": 18.0
+              },
+              "angles": {
+                "D": null,
+                "E": null,
+                "F": null
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "JKL",
+              "DEF"
+            ],
+            "attributes": {
+              "pre_image": "JKL",
+              "image": "DEF",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": [
+                [
+                  "J",
+                  "D"
+                ],
+                [
+                  "K",
+                  "E"
+                ],
+                [
+                  "L",
+                  "F"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "JKL",
+          "attribute": "angles.J"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_10_003",
+        "lesson": "lesson_10",
+        "entities": {
+          "triangles": [
+            {
+              "id": "JKL",
+              "sides": {
+                "JK": 8.0,
+                "KL": 10.0,
+                "JL": 12.0
+              },
+              "angles": {
+                "J": null,
+                "K": null,
+                "L": 42.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 12.0,
+                "EF": 15.0,
+                "DF": 18.0
+              },
+              "angles": {
+                "D": null,
+                "E": null,
+                "F": null
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "JKL",
+              "DEF"
+            ],
+            "attributes": {
+              "pre_image": "JKL",
+              "image": "DEF",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": [
+                [
+                  "J",
+                  "D"
+                ],
+                [
+                  "K",
+                  "E"
+                ],
+                [
+                  "L",
+                  "F"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "JKL",
+          "attribute": "angles.J"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_10",
+        "n_out_of_scope": 2,
+        "out_of_scope_concepts": [
+          "law_of_cosines"
+        ],
+        "any_min_steps": null,
+        "min_steps": null,
+        "best_trace": [],
+        "verdict": "out_of_scope",
+        "accepted": false,
+        "reason": "Out of scope: the only derivation(s) of the target use law_of_cosines that lesson lesson_10 does not teach. Restructure so an allowed method reaches the target."
+      },
+      "combined_error_count": 1,
+      "haiku_correction": {
+        "problem_id": "lesson_10_003",
+        "lesson": "lesson_10",
+        "entities": {
+          "triangles": [
+            {
+              "id": "JKL",
+              "sides": {
+                "JK": 8.0,
+                "KL": 10.0,
+                "JL": 12.0
+              },
+              "angles": {
+                "J": null,
+                "K": null,
+                "L": 42.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 12.0,
+                "EF": 15.0,
+                "DF": 18.0
+              },
+              "angles": {
+                "D": null,
+                "E": null,
+                "F": 42.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "JKL",
+              "DEF"
+            ],
+            "attributes": {
+              "pre_image": "JKL",
+              "image": "DEF",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": [
+                [
+                  "J",
+                  "D"
+                ],
+                [
+                  "K",
+                  "E"
+                ],
+                [
+                  "L",
+                  "F"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "angles.D"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_10_003",
+        "lesson": "lesson_10",
+        "entities": {
+          "triangles": [
+            {
+              "id": "JKL",
+              "sides": {
+                "JK": 8.0,
+                "KL": 10.0,
+                "JL": 12.0
+              },
+              "angles": {
+                "J": null,
+                "K": null,
+                "L": 42.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 12.0,
+                "EF": 15.0,
+                "DF": 18.0
+              },
+              "angles": {
+                "D": null,
+                "E": null,
+                "F": 42.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "JKL",
+              "DEF"
+            ],
+            "attributes": {
+              "pre_image": "JKL",
+              "image": "DEF",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": [
+                [
+                  "J",
+                  "D"
+                ],
+                [
+                  "K",
+                  "E"
+                ],
+                [
+                  "L",
+                  "F"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "angles.D"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_10",
+        "n_out_of_scope": 2,
+        "out_of_scope_concepts": [
+          "law_of_cosines"
+        ],
+        "any_min_steps": null,
+        "min_steps": null,
+        "best_trace": [],
+        "verdict": "out_of_scope",
+        "accepted": false,
+        "reason": "Out of scope: the only derivation(s) of the target use law_of_cosines that lesson lesson_10 does not teach. Restructure so an allowed method reaches the target."
+      },
+      "combined_error_count": 1,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_10. Let triangle JKL be a triangle with sides JK = 8, KL = 10, JL = 12, where \u2220L = 42\u00b0. Let triangle DEF be a triangle with sides DE = 12, EF = 15, DF = 18. Triangle JKL is similar to triangle DEF by SSS similarity with scale factor 1.5 (congruent angle pairs: J \u2245 D, K \u2245 E, L \u2245 F). Find the measure of \u2220F in DEF.",
+  "prose_skipped": true,
+  "calibration_rejected": true
+}

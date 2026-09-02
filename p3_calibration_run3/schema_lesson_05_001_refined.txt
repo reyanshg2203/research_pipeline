@@ -1,0 +1,7 @@
+You're a student working on triangle properties in a geometry course focused on dilations and midsegments. Here's your problem:
+
+---
+
+A surveyor is mapping a triangular plot of land, triangle ABC, with sides AB = 14 meters, BC = 16 meters, and AC = 10 meters. She wants to mark a smaller reference triangle by placing stakes at the midpoints of two of the sides: point M at the midpoint of AB and point N at the midpoint of BC. She then connects these two stakes with a string segment MN.
+
+Based on what you know about midsegments and dilations, what is the length of the string segment MN?

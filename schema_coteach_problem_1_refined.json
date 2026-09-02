@@ -1,0 +1,55 @@
+{
+  "problem_id": "coteach_problem_1",
+  "lesson": "lesson_02",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 4.0,
+          "BC": 6.0,
+          "AC": 5.0
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": null,
+          "EF": 9.0,
+          "DF": 7.5
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "scaled_copy_unspecified",
+      "entities": [
+        "ABC",
+        "DEF"
+      ],
+      "attributes": {
+        "pre_image": "ABC",
+        "image": "DEF",
+        "scale_factor": 1.5
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "sides.DE"
+  }
+}

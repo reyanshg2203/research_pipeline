@@ -1,0 +1,60 @@
+{
+  "problem_id": "lesson_01_001",
+  "lesson": "lesson_01",
+  "entities": {
+    "triangles": null,
+    "segments": null,
+    "polygons": [
+      {
+        "id": "ABCD",
+        "n_sides": 4,
+        "sides": {
+          "AB": 8.0,
+          "BC": 6.0,
+          "CD": 10.0,
+          "DA": 12.0
+        },
+        "angles": null
+      },
+      {
+        "id": "MNPQ",
+        "n_sides": 4,
+        "sides": {
+          "MN": null,
+          "NP": 3.0,
+          "PQ": 5.0,
+          "QM": null
+        },
+        "angles": null
+      }
+    ],
+    "lines": null,
+    "points": [
+      {
+        "id": "P",
+        "lies_on": null,
+        "is_intersection_of": null
+      }
+    ],
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "ABCD",
+        "MNPQ"
+      ],
+      "attributes": {
+        "scale_factor": 0.5,
+        "pre_image": "ABCD",
+        "image": "MNPQ",
+        "center": "P"
+      }
+    }
+  ],
+  "target": {
+    "entity": "MNPQ",
+    "attribute": "sides.MN"
+  }
+}

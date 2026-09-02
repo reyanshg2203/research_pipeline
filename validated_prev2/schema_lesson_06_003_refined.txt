@@ -1,0 +1,7 @@
+A surveyor is comparing two triangular plots of land. The original plot MNO has sides MN = 10 meters, NO = 14 meters, and MO = 12 meters. A developer wants to create a larger similar plot PQR for a new project.
+
+The surveyor confirms that triangle MNO is similar to triangle PQR by AA similarity, with a scale factor of 1.5. This means each side of PQR is 1.5 times the corresponding side in MNO.
+
+The surveyor has already measured two sides of the new plot: QR = 21 meters and PR = 18 meters. Before finalizing the land purchase, she needs to determine the third side of the plot.
+
+What is the length of PQ?

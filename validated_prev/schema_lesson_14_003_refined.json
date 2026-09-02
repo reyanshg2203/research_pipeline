@@ -1,0 +1,80 @@
+{
+  "problem_id": "lesson_14_003",
+  "lesson": "lesson_14",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 9.0,
+          "QR": 12.0,
+          "PR": 15.0
+        },
+        "angles": null,
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "PSR",
+        "sides": {
+          "PS": null,
+          "SR": null,
+          "PR": 15.0
+        },
+        "angles": null,
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": [
+      {
+        "id": "QS",
+        "length": null,
+        "parallel_to": null,
+        "perpendicular_to": "PR",
+        "ratio_to": null,
+        "is_midsegment": null,
+        "is_altitude": true
+      }
+    ],
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "altitude_to_hypotenuse",
+      "entities": [
+        "PQR",
+        "QS",
+        "PR"
+      ],
+      "attributes": {
+        "altitude_id": "QS",
+        "hypotenuse": "PR",
+        "segment1": "PS",
+        "segment2": "SR"
+      }
+    },
+    {
+      "type": "geometric_mean_altitude",
+      "entities": [
+        "QS",
+        "PS",
+        "SR"
+      ],
+      "attributes": {
+        "altitude_id": "QS",
+        "segment1": "PS",
+        "segment2": "SR"
+      }
+    }
+  ],
+  "target": {
+    "entity": "QS",
+    "attribute": "length"
+  }
+}

@@ -1,0 +1,1 @@
+Lesson context: lesson_06. Let triangle MNO be a triangle with sides MN = 10, NO = 14, MO = 12. Let triangle PQR be a triangle with sides QR = 21, PR = 18, where ∠P = 45°, ∠Q = 65°, ∠R = 70°. Triangle MNO is similar to triangle PQR by AA similarity with scale factor 1.5 (congruent angle pairs: M ≅ P, N ≅ Q, O ≅ R). Find the length of PQ in PQR.

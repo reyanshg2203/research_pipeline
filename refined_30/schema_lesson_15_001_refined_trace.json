@@ -1,0 +1,111 @@
+{
+  "lesson_id": "lesson_15",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": true,
+  "final_overall_score": 3.7,
+  "final_nl": "A construction crew is building a triangular metal brace for a roof truss. The brace will have three sides measuring 9 feet, 12 feet, and 16 feet.\n\nBefore installation, the engineer needs to classify the triangle by its angles to ensure it meets safety standards. Use the converse of the Pythagorean Theorem to determine whether this triangular brace is acute, right, or obtuse. Explain your reasoning.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_15. Let triangle ABC be a triangle with sides AB = 12, BC = 9. The interior angles of triangle ABC (\u2220A, \u2220B, \u2220C) sum to 180\u00b0. Find the length of AC in ABC.",
+      "judgment": {
+        "overall_score": 0.2,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 0,
+          "linguistic_clarity": 1
+        },
+        "rationales": {
+          "geometric_accuracy": "Given only AB = 12 and BC = 9 with no angle or third constraint, AC is not uniquely determined \u2014 it can be anything strictly between 3 and 21. The problem is unsolvable as written, and the sum-of-angles fact is a triviality true of every triangle.",
+          "lesson_alignment": "Lesson 15 is about the converse of the Pythagorean Theorem (classifying triangles from side lengths) and the triangle inequality. This problem does neither: it asks for a specific side length that cannot be computed and never invokes classification or inequality reasoning.",
+          "linguistic_clarity": "The prose is grammatical but the task is ambiguous/unsolvable because required information is missing, and the vacuous 'angles sum to 180\u00b0' sentence adds confusion rather than clarity. It is also a flat, list-like statement with no scenario."
+        },
+        "feedback_for_haiku": "Your problem is unsolvable as written: knowing only two sides of a triangle (AB = 12, BC = 9) does not determine the third side AC \u2014 infinitely many triangles satisfy those conditions. The statement that the interior angles sum to 180\u00b0 is true of every triangle and adds no useful information. To align with lesson 15, rewrite the problem to actually target the lesson's skills. For example, either (a) give all three side lengths and ask the student to classify the triangle as acute, right, or obtuse using the converse of the Pythagorean Theorem, or (b) give two sides and ask for the range of possible values of the third side using the triangle inequality (e.g., \"3 < AC < 21\"), or (c) specify that angle B is a right angle so the Pythagorean Theorem yields AC = 15. Also, wrap the task in a concrete real-world scenario (e.g., a truss, a garden plot, a sail) with the final question asked from inside that scenario, preserving every quantity and label exactly.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem asks for a unique length AC given only two sides of a general triangle, but AC is not determined \u2014 it can be any value in the open interval (3, 21).",
+            "suggested_fix": "Either add a third constraint (e.g., a right angle at B giving AC = 15) or change the question to ask for the range of possible values of AC."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "critical",
+            "issue": "The task does not exercise the lesson's target skills (classifying triangles by side lengths via the converse of the Pythagorean Theorem, or applying the triangle inequality).",
+            "suggested_fix": "Reframe as a classification problem with three given side lengths, or as a triangle-inequality problem asking for the range of the third side."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The statement that the interior angles sum to 180\u00b0 is vacuous filler that adds no information, and the problem is presented as a flat abstract list with no scenario.",
+            "suggested_fix": "Remove the vacuous sentence and wrap the setup in a concrete real-world scenario (e.g., a triangular garden or brace) with the question asked from inside it."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A construction crew is building a triangular metal brace for a roof truss. The brace will have three sides measuring 9 feet, 12 feet, and 15 feet.\n\nBefore installation, the engineer needs to classify the triangle by its angles to ensure it meets safety standards. Use the converse of the Pythagorean Theorem to determine whether this triangular brace is acute, right, or obtuse. Explain your reasoning.",
+      "judgment": {
+        "overall_score": 3.4,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The side lengths 9, 12, 15 form a valid triangle (9-12-15 is a 3-4-5 scaled by 3), and 9^2 + 12^2 = 81 + 144 = 225 = 15^2, so the triangle is exactly right. All quantities are mathematically consistent.",
+          "lesson_alignment": "The problem targets the correct skill (classifying a triangle via the converse of the Pythagorean Theorem), but uses the iconic 9-12-15 Pythagorean triple, which students recognize immediately. This makes it pattern-matching rather than genuine application, and it misses the more interesting acute/obtuse distinction highlighted in the lesson.",
+          "linguistic_clarity": "The problem is wrapped in a concrete construction scenario with a clear motivation (safety classification), and the final question is asked from inside that scenario. Every quantity is preserved and the prose is clean."
+        },
+        "feedback_for_haiku": "Your problem is clearly written and well-framed, but the numbers you chose (9, 12, 15) are just the 3-4-5 Pythagorean triple scaled by 3, which most 10th graders will recognize on sight without actually applying the converse of the Pythagorean Theorem. To push this to the productive edge of the lesson, swap in side lengths that force students to compute and compare \u2014 for example, sides like 9, 12, 14 (acute, since 81+144=225 > 196) or 9, 12, 16 (obtuse, since 81+144=225 < 256). Even better, consider asking students to distinguish between acute and obtuse cases, since the lesson specifically develops all three classifications (acute, right, obtuse), not just right. Keep the construction-crew scenario \u2014 it's working well.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The side lengths 9-12-15 are an instantly recognizable 3-4-5 Pythagorean triple, reducing the task to pattern recognition rather than genuine application of the converse.",
+            "suggested_fix": "Replace with less-familiar side lengths (e.g., 9, 12, 14 for acute or 9, 12, 16 for obtuse) that force students to compute a^2+b^2 and compare to c^2."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem only exercises the right-triangle case, missing the acute/obtuse distinction that is central to the lesson.",
+            "suggested_fix": "Choose numbers that produce an acute or obtuse triangle, or ask a follow-up about how changing one side length would shift the classification."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A construction crew is building a triangular metal brace for a roof truss. The brace will have three sides measuring 9 feet, 12 feet, and 16 feet.\n\nBefore installation, the engineer needs to classify the triangle by its angles to ensure it meets safety standards. Use the converse of the Pythagorean Theorem to determine whether this triangular brace is acute, right, or obtuse. Explain your reasoning.",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The side lengths 9, 12, 16 form a valid triangle (9+12=21>16) and yield a clear classification: 16^2 = 256 > 9^2+12^2 = 81+144 = 225, so the triangle is obtuse. The relationships are mathematically correct and consistent.",
+          "lesson_alignment": "The problem directly targets the lesson's core skill of classifying a triangle as acute, right, or obtuse using the converse of the Pythagorean Theorem. It's cleanly aligned and requires genuine application, though it's a fairly standard single-classification task without pushing to the productive edge (e.g., combining with triangle inequality or asking for a range).",
+          "linguistic_clarity": "The problem is wrapped in a concrete, plausible real-world scenario (roof truss brace) with a clear stakeholder (engineer) and reason for the classification (safety standards). The final question is asked from inside the scenario and all quantities are preserved cleanly."
+        },
+        "feedback_for_haiku": "Your problem is solid: the numbers 9, 12, 16 produce a clean obtuse classification (256 > 225) and the roof-truss framing gives the engineer a genuine reason to classify the triangle. To push this to the productive edge of the lesson, consider layering in a second lesson concept\u2014for example, first asking the engineer to verify that 9, 12, and 16 can even form a triangle (triangle inequality) before classifying it, or asking for the range of third-side lengths that would keep the brace acute versus obtuse. That would integrate both learning goals from the lesson rather than exercising just one.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem exercises only the acute/right/obtuse classification skill and does not integrate the lesson's other learning goal about possible third-side lengths.",
+            "suggested_fix": "Add a follow-up part asking for the range of third-side lengths that would keep the brace acute (or make it obtuse), tying in the triangle inequality and c^2 comparisons."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+A surveyor is measuring two triangular plots of land. The first plot, triangle PQR, has sides PQ = 12 meters and QR = 9 meters, with angles ∠P = 35° and ∠Q = 65°. The second plot, triangle XYZ, has a side YZ = 18 meters, with angles ∠Y = 80° and ∠Z = 35°.
+
+The surveyor knows that the interior angles of any triangle must sum to 180°. Using this fact along with the given angle measures, she needs to find the measure of ∠X in triangle XYZ so she can complete her survey records.
+
+What is the measure of ∠X?

@@ -1,0 +1,1 @@
+A graphic designer is enlarging a triangular logo. The original triangle PQR has sides PQ = 8 cm and QR = 6 cm. The designer creates an enlarged version P'Q'R' by dilating triangle PQR from center point C with a scale factor of 5/2. What is the perimeter of the enlarged logo?

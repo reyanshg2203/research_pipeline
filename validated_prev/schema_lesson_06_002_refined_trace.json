@@ -1,0 +1,481 @@
+{
+  "problem_id": "lesson_06_002",
+  "lesson_id": "lesson_06",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 7,
+  "final_prolog_error_count": 7,
+  "calibration": null,
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_06_002",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "PQRS",
+              "n_sides": 4,
+              "sides": {
+                "PQ": 4.0,
+                "QR": 6.0,
+                "RS": 8.0,
+                "SP": 5.0
+              },
+              "angles": null
+            },
+            {
+              "id": "WXYZ",
+              "n_sides": 4,
+              "sides": {
+                "WX": 6.0,
+                "XY": 9.0,
+                "YZ": 12.0,
+                "ZW": 7.5
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "PQRS",
+              "WXYZ"
+            ],
+            "attributes": {
+              "pre_image": "PQRS",
+              "image": "WXYZ",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": []
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQRS",
+          "attribute": "sides.RS"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 8,
+        "errors": [
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is out of scope: entity 'PQRS' is a polygon but similar_SSS expects a triangle in that position. Expected kinds [triangle,triangle]; got entities [PQRS,WXYZ]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) cannot apply to polygon 'PQRS'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) cannot apply to polygon 'WXYZ'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "attribute_kind_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) attribute 'pre_image' expects a triangle but got polygon 'PQRS'."
+          },
+          {
+            "gate": "attribute_kind_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) attribute 'image' expects a triangle but got polygon 'WXYZ'."
+          },
+          {
+            "gate": "insufficient_similarity_evidence",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Similarity between polygons PQRS and WXYZ (n=4) requires 4 corresponding sides and 3 corresponding angles. Only 0 sides and 0 angles are given. Similarity is under-determined."
+          },
+          {
+            "gate": "target_vacuous",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Target PQRS.sides.RS is already declared with value 8.0. The problem is vacuous - there is nothing to solve."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target PQRS.sides.RS is already given a value..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 8,
+      "haiku_correction": {
+        "problem_id": "lesson_06_002",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "PQRS",
+              "n_sides": 4,
+              "sides": {
+                "PQ": 4.0,
+                "QR": 6.0,
+                "RS": null,
+                "SP": 5.0
+              },
+              "angles": null
+            },
+            {
+              "id": "WXYZ",
+              "n_sides": 4,
+              "sides": {
+                "WX": 6.0,
+                "XY": 9.0,
+                "YZ": 12.0,
+                "ZW": 7.5
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "PQRS",
+              "WXYZ"
+            ],
+            "attributes": {
+              "scale_factor": 1.5
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQRS",
+          "attribute": "sides.RS"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_06_002",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "PQRS",
+              "n_sides": 4,
+              "sides": {
+                "PQ": 4.0,
+                "QR": 6.0,
+                "RS": null,
+                "SP": 5.0
+              },
+              "angles": null
+            },
+            {
+              "id": "WXYZ",
+              "n_sides": 4,
+              "sides": {
+                "WX": 6.0,
+                "XY": 9.0,
+                "YZ": 12.0,
+                "ZW": 7.5
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "PQRS",
+              "WXYZ"
+            ],
+            "attributes": {
+              "scale_factor": 1.5
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQRS",
+          "attribute": "sides.RS"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 7,
+        "errors": [
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is missing required attribute 'pre_image'. similar_SSS requires attributes: [pre_image,image]."
+          },
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is missing required attribute 'image'. similar_SSS requires attributes: [pre_image,image]."
+          },
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is out of scope: entity 'PQRS' is a polygon but similar_SSS expects a triangle in that position. Expected kinds [triangle,triangle]; got entities [PQRS,WXYZ]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) cannot apply to polygon 'PQRS'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) cannot apply to polygon 'WXYZ'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "insufficient_similarity_evidence",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Similarity between polygons PQRS and WXYZ (n=4) requires 4 corresponding sides and 3 corresponding angles. Only 0 sides and 0 angles are given. Similarity is under-determined."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target PQRS.sides.RS is under-determined..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 7,
+      "haiku_correction": {
+        "problem_id": "lesson_06_002",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "PQRS",
+              "n_sides": 4,
+              "sides": {
+                "PQ": 4.0,
+                "QR": 6.0,
+                "RS": null,
+                "SP": 5.0
+              },
+              "angles": null
+            },
+            {
+              "id": "WXYZ",
+              "n_sides": 4,
+              "sides": {
+                "WX": 6.0,
+                "XY": 9.0,
+                "YZ": 12.0,
+                "ZW": 7.5
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "PQRS",
+              "WXYZ"
+            ],
+            "attributes": {
+              "scale_factor": 1.5,
+              "proportional_sides": [
+                [
+                  "PQ",
+                  "WX"
+                ],
+                [
+                  "QR",
+                  "XY"
+                ],
+                [
+                  "RS",
+                  "YZ"
+                ],
+                [
+                  "SP",
+                  "ZW"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQRS",
+          "attribute": "sides.RS"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_06_002",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "PQRS",
+              "n_sides": 4,
+              "sides": {
+                "PQ": 4.0,
+                "QR": 6.0,
+                "RS": null,
+                "SP": 5.0
+              },
+              "angles": null
+            },
+            {
+              "id": "WXYZ",
+              "n_sides": 4,
+              "sides": {
+                "WX": 6.0,
+                "XY": 9.0,
+                "YZ": 12.0,
+                "ZW": 7.5
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "PQRS",
+              "WXYZ"
+            ],
+            "attributes": {
+              "scale_factor": 1.5,
+              "proportional_sides": [
+                [
+                  "PQ",
+                  "WX"
+                ],
+                [
+                  "QR",
+                  "XY"
+                ],
+                [
+                  "RS",
+                  "YZ"
+                ],
+                [
+                  "SP",
+                  "ZW"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQRS",
+          "attribute": "sides.RS"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 8,
+        "errors": [
+          {
+            "gate": "invalid_attribute_key",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) has unexpected attribute 'proportional_sides'. Allowed keys: [scale_factor,pre_image,image,congruent_angle_pairs]."
+          },
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is missing required attribute 'pre_image'. similar_SSS requires attributes: [pre_image,image]."
+          },
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is missing required attribute 'image'. similar_SSS requires attributes: [pre_image,image]."
+          },
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is out of scope: entity 'PQRS' is a polygon but similar_SSS expects a triangle in that position. Expected kinds [triangle,triangle]; got entities [PQRS,WXYZ]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) cannot apply to polygon 'PQRS'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) cannot apply to polygon 'WXYZ'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "insufficient_similarity_evidence",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Similarity between polygons PQRS and WXYZ (n=4) requires 4 corresponding sides and 3 corresponding angles. Only 0 sides and 0 angles are given. Similarity is under-determined."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target PQRS.sides.RS is under-determined..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 8,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_06. Let quadrilateral PQRS be a 4-sided figure with PQ = 4, QR = 6, SP = 5. Let quadrilateral WXYZ be a 4-sided figure with WX = 6, XY = 9, YZ = 12, ZW = 7.5. Triangle PQRS is similar to triangle WXYZ by SSS similarity with scale factor 1.5. Find the length of RS in PQRS.",
+  "student_facing_prose": "A designer is creating two similar decorative tile patterns. The first pattern, quadrilateral PQRS, has sides PQ = 4, QR = 6, and SP = 5. The second pattern, quadrilateral WXYZ, has sides WX = 6, XY = 9, YZ = 12, and ZW = 7.5.\n\nThe designer confirms that quadrilateral PQRS is similar to quadrilateral WXYZ using Side-Side-Side similarity, with a scale factor of 1.5 from PQRS to WXYZ.\n\nTo complete the first tile pattern, the designer needs to find the length of the remaining side RS in quadrilateral PQRS. What should this length be?"
+}

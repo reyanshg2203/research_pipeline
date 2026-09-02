@@ -1,0 +1,56 @@
+{
+  "problem_id": "lesson_10_001",
+  "lesson": "lesson_10",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 9.0,
+          "QR": 12.0,
+          "PR": 15.0
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "XYZ",
+        "sides": {
+          "XY": 6.0,
+          "YZ": 8.0,
+          "XZ": null
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "similar_SSS",
+      "entities": [
+        "PQR",
+        "XYZ"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "XYZ",
+        "image": "PQR",
+        "congruent_angle_pairs": []
+      }
+    }
+  ],
+  "target": {
+    "entity": "XYZ",
+    "attribute": "sides.XZ"
+  }
+}

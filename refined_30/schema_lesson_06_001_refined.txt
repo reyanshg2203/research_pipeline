@@ -1,0 +1,9 @@
+A carpentry workshop is designing two triangular roof trusses. The first truss, ABC, has sides AB = 6 feet, BC = 8 feet, and AC = 10 feet. The second truss, DEF, is designed to be similar to truss ABC. On the workshop blueprint, truss DEF is shown in a different orientation: it has been rotated and is positioned differently from truss ABC. The sides of truss DEF are DE = 9 feet, EF = 12 feet, and DF = 15 feet.
+
+Part (a): By examining the side lengths of both trusses, determine which vertices of DEF correspond to which vertices of ABC. Write a similarity statement relating triangle ABC to triangle DEF.
+
+Part (b): What is the scale factor of the dilation that takes truss ABC to truss DEF?
+
+Part (c): Describe a sequence of rigid motions and a dilation that would map truss ABC onto truss DEF. In your description, specify the center of the dilation and the scale factor. (Hint: You may use any rigid motions—such as a rotation, reflection, or translation—followed by a dilation, or in any order that works.)
+
+Part (d): The carpenter needs to cut a beam for side EF of the second truss. How many feet of lumber should be cut for beam EF?

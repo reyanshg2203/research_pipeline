@@ -1,0 +1,3 @@
+A construction crew is building a triangular roof truss DEF with a right angle at E. The two rafters meeting at that corner measure DE = 7 meters and EF = 24 meters. To reinforce the structure, they install a vertical support post GE that runs perpendicular from the peak E straight down to the base beam DF, meeting it at point G and creating two segments DG and GF along the base.
+
+Before ordering materials for the base beam DF, the crew needs to know its total length. How long should the base beam DF be?

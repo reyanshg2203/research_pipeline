@@ -1,0 +1,247 @@
+{
+  "problem_id": "lesson_03_001",
+  "lesson_id": "lesson_03",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_03",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 1,
+    "min_steps": 1,
+    "best_trace": [
+      "scale_factor"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "1 in-scope steps lands in band [1..1]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_03_001",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 5.0,
+                "BC": 7.0,
+                "AC": 8.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "A'B'C'",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "P",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABC",
+              "A'B'C'"
+            ],
+            "attributes": {
+              "scale_factor": 0.6,
+              "center": "P",
+              "pre_image": "ABC",
+              "image": "A'B'C'"
+            }
+          }
+        ],
+        "target": {
+          "entity": "A'B'C'",
+          "attribute": "sides.A'B'"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "naming_convention",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity A'B'C' of kind 'triangle' violates the naming convention. Expected bare letters (e.g. ABC for triangle, AB for segment, single capital for point)."
+          },
+          {
+            "gate": "target_key_not_on_entity",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Target A'B'C'.sides.A'B' references sides 'A'B'' which is not declared on entity A'B'C'. Valid sides of A'B'C' are: []."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": {
+        "problem_id": "lesson_03_001",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 5.0,
+                "BC": 7.0,
+                "AC": 8.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "P",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "scale_factor": 0.6,
+              "pre_image": "ABC",
+              "image": "DEF",
+              "center": "P"
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.DE"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_03_001",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 5.0,
+                "BC": 7.0,
+                "AC": 8.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "P",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "scale_factor": 0.6,
+              "pre_image": "ABC",
+              "image": "DEF",
+              "center": "P"
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.DE"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_03",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": 1,
+        "best_trace": [
+          "scale_factor"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "1 in-scope steps lands in band [1..1]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_03. Let triangle ABC be a triangle with sides AB = 5, BC = 7, AC = 8. Let triangle DEF be a triangle. ABC is dilated to form DEF with scale factor 0.6, centered at point P. Find the length of DE in DEF.",
+  "student_facing_prose": "A graphic designer is working on a logo that features triangle ABC with sides AB = 5 cm, BC = 7 cm, and AC = 8 cm. To create a smaller version of the logo for use on business cards, she scales down the design from a fixed point P using a scale factor of 0.6, producing the reduced triangle DEF.\n\nWhen she prepares the artwork for printing, she needs to know the length of side DE on the business card version. What should that length be?"
+}

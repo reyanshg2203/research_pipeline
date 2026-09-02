@@ -1,0 +1,11 @@
+A construction crew is building a roof truss for a storage building. The truss is shaped like a right triangle with the peak at vertex A, where two rafters meet at a right angle. The horizontal tie beam at the base is BC, which is 13 meters long. The two rafters measure AB = 5 meters and AC = 12 meters. A vertical support beam (altitude) AD is drawn from the right-angle peak A perpendicular down to the tie beam BC, meeting it at point D. This altitude divides the tie beam into two segments: BD = x meters and DC = y meters.
+
+In this configuration, the original large triangle ABC is similar to the two smaller triangles formed: triangle ABD and triangle ACD. Use this similarity relationship to answer the following:
+
+(a) Write the proportion that relates corresponding sides of triangle ABC and triangle ABD. Use this proportion to derive the equation AB² = BD · BC. Show your work.
+
+(b) Similarly, write the proportion that relates corresponding sides of triangle ABC and triangle ACD. Use this proportion to derive the equation AC² = CD · BC. Show your work.
+
+(c) Using your derived equations from parts (a) and (b), compute the value of x (the length of BD) and the value of y (the length of DC).
+
+(d) Finally, verify that the Pythagorean Theorem holds for this truss by showing that AB² + AC² = BC² using your computed values of x and y. What equation does this concrete calculation illustrate from the lesson's proof?

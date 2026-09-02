@@ -1,0 +1,1 @@
+Lesson context: lesson_10. Let triangle PQR be a triangle with sides PQ = 9, QR = 12, PR = 15. Let triangle XYZ be a triangle with sides XY = 6, YZ = 8. Triangle XYZ is similar to triangle PQR by SSS similarity with scale factor 1.5. Find the length of XZ in XYZ.

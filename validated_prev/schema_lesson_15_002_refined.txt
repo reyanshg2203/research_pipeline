@@ -1,0 +1,1 @@
+Triangle PQR has side lengths PQ = 7, QR = 24, and PR = 25. Determine whether this triangle is a right triangle, and explain your reasoning using the side lengths.

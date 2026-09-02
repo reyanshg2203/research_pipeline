@@ -1,0 +1,5 @@
+A designer is comparing two triangular components for a mechanical system. The first triangle MNO has sides MN = 10 and NO = 14, with an angle of 48° at vertex N. The second triangle RST has sides RS = 15 and ST = 21, with an angle of 48° at vertex S.
+
+The designer notices that the two triangles are similar by the Side-Angle-Side Similarity Theorem, with a scale factor of 1.5 (the angle at N is congruent to the angle at S).
+
+Since the triangles are similar with this correspondence, what is the measure of angle T in triangle RST?

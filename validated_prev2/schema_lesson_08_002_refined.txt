@@ -1,0 +1,1 @@
+A designer is creating a circular logo for a company. The original design, circle c, has a radius of 3 inches. To display the logo on a large billboard, she enlarges it from a fixed point O using a scale factor of 7, creating circle d. What is the radius of circle d on the billboard?

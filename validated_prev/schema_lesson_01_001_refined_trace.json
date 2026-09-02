@@ -1,0 +1,247 @@
+{
+  "problem_id": "lesson_01_001",
+  "lesson_id": "lesson_01",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_01",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 1,
+    "min_steps": 1,
+    "best_trace": [
+      "scale_factor"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "1 in-scope steps lands in band [1..2]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_01_001",
+        "lesson": "lesson_01",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "ABCD",
+              "n_sides": 4,
+              "sides": {
+                "AB": 8.0,
+                "BC": 6.0,
+                "CD": 10.0,
+                "DA": 12.0
+              },
+              "angles": null
+            },
+            {
+              "id": "MNPQ",
+              "n_sides": 4,
+              "sides": {
+                "MN": null,
+                "NP": 3.0,
+                "PQ": 5.0,
+                "QM": null
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": [
+            {
+              "id": "P_center",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABCD",
+              "MNPQ"
+            ],
+            "attributes": {
+              "center": "P_center",
+              "scale_factor": 0.5,
+              "pre_image": "ABCD",
+              "image": "MNPQ"
+            }
+          }
+        ],
+        "target": {
+          "entity": "MNPQ",
+          "attribute": "sides.MN"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 1,
+        "errors": [
+          {
+            "gate": "naming_convention",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity P_center of kind 'point' violates the naming convention. Expected bare letters (e.g. ABC for triangle, AB for segment, single capital for point)."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 1,
+      "haiku_correction": {
+        "problem_id": "lesson_01_001",
+        "lesson": "lesson_01",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "ABCD",
+              "n_sides": 4,
+              "sides": {
+                "AB": 8.0,
+                "BC": 6.0,
+                "CD": 10.0,
+                "DA": 12.0
+              },
+              "angles": null
+            },
+            {
+              "id": "MNPQ",
+              "n_sides": 4,
+              "sides": {
+                "MN": null,
+                "NP": 3.0,
+                "PQ": 5.0,
+                "QM": null
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": [
+            {
+              "id": "O",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABCD",
+              "MNPQ"
+            ],
+            "attributes": {
+              "center": "O",
+              "scale_factor": 0.5,
+              "pre_image": "ABCD",
+              "image": "MNPQ"
+            }
+          }
+        ],
+        "target": {
+          "entity": "MNPQ",
+          "attribute": "sides.MN"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_01_001",
+        "lesson": "lesson_01",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "ABCD",
+              "n_sides": 4,
+              "sides": {
+                "AB": 8.0,
+                "BC": 6.0,
+                "CD": 10.0,
+                "DA": 12.0
+              },
+              "angles": null
+            },
+            {
+              "id": "MNPQ",
+              "n_sides": 4,
+              "sides": {
+                "MN": null,
+                "NP": 3.0,
+                "PQ": 5.0,
+                "QM": null
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": [
+            {
+              "id": "O",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABCD",
+              "MNPQ"
+            ],
+            "attributes": {
+              "center": "O",
+              "scale_factor": 0.5,
+              "pre_image": "ABCD",
+              "image": "MNPQ"
+            }
+          }
+        ],
+        "target": {
+          "entity": "MNPQ",
+          "attribute": "sides.MN"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_01",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": 1,
+        "best_trace": [
+          "scale_factor"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "1 in-scope steps lands in band [1..2]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_01. Let quadrilateral ABCD be a 4-sided figure with AB = 8, BC = 6, CD = 10, DA = 12. Let quadrilateral MNPQ be a 4-sided figure with NP = 3, PQ = 5. ABCD is dilated to form MNPQ with scale factor 0.5, centered at point O. Find the length of MN in MNPQ.",
+  "student_facing_prose": "A graphic designer is preparing a scaled blueprint of a rectangular floor plan. The original design ABCD has sides measuring AB = 8 feet, BC = 6 feet, CD = 10 feet, and DA = 12 feet. To create a smaller version for a client presentation, she shrinks the design using a dilation centered at point O with a scale factor of 0.5, producing the scaled blueprint MNPQ.\n\nFrom her measurements of the scaled blueprint, she has already determined that NP = 3 feet and PQ = 5 feet. Before she finishes labeling all the sides of the scaled blueprint, she needs to know: **What should the length of side MN be?**"
+}

@@ -1,0 +1,5 @@
+A graphic designer is working on a scaled-down blueprint of a quadrilateral floor plan ABCD for a small apartment. The original design has sides measuring AB = 5 meters, BC = 7 meters, CD = 6 meters, and DA = 8 meters. To fit the plan on a standard sheet of paper, she reduces the design using a dilation centered at point O with a scale factor of 0.5.
+
+This creates the smaller blueprint EFGH, where each side of the new figure is half the length of the corresponding side in the original plan.
+
+When the designer measures the blueprint to order materials for the actual apartment, she needs to know the length of side FG on the scaled drawing. What is the length of FG?

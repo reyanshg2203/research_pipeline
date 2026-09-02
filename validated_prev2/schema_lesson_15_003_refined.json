@@ -1,0 +1,30 @@
+{
+  "problem_id": "lesson_15_003",
+  "lesson": "lesson_15",
+  "entities": {
+    "triangles": [
+      {
+        "id": "XYZ",
+        "sides": {
+          "XY": 6.0,
+          "YZ": 8.0,
+          "XZ": null
+        },
+        "angles": null,
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [],
+  "target": {
+    "entity": "XYZ",
+    "attribute": "sides.XZ"
+  }
+}

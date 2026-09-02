@@ -1,0 +1,61 @@
+{
+  "problem_id": "lesson_16_002",
+  "lesson": "lesson_16",
+  "entities": {
+    "triangles": [
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": 5.0,
+          "EF": 12.0,
+          "DF": null
+        },
+        "angles": null,
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "GHI",
+        "sides": {
+          "GH": null,
+          "HI": 18.0,
+          "GI": null
+        },
+        "angles": null,
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "similar_AA",
+      "entities": [
+        "DEF",
+        "GHI"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "DEF",
+        "image": "GHI",
+        "congruent_angle_pairs": [
+          [
+            "E",
+            "H"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "GHI",
+    "attribute": "sides.GH"
+  }
+}

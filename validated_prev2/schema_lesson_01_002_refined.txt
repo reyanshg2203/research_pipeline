@@ -1,0 +1,3 @@
+A designer is creating a scaled drawing of a logo. She starts with an original segment EF and dilates it from a fixed center point O using a scale factor of 2.5, producing the enlarged segment GH. The dilated segment GH measures 15 units.
+
+What was the length of the original segment EF?

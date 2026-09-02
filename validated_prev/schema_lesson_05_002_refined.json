@@ -1,0 +1,99 @@
+{
+  "problem_id": "lesson_05_002",
+  "lesson": "lesson_05",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 30.0,
+          "QR": null,
+          "PR": null
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": [
+      {
+        "id": "XY",
+        "length": null,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": null,
+        "is_altitude": null
+      },
+      {
+        "id": "PX",
+        "length": 12.0,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": null,
+        "is_altitude": null
+      },
+      {
+        "id": "PY",
+        "length": 9.0,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": null,
+        "is_altitude": null
+      }
+    ],
+    "polygons": null,
+    "lines": null,
+    "points": [
+      {
+        "id": "X",
+        "lies_on": [
+          "PQ"
+        ],
+        "is_intersection_of": null
+      },
+      {
+        "id": "Y",
+        "lies_on": [
+          "PR"
+        ],
+        "is_intersection_of": null
+      }
+    ],
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "proportional_segments",
+      "entities": [
+        "PX",
+        "XQ",
+        "PY",
+        "YR"
+      ],
+      "attributes": {
+        "ratio": 0.6
+      }
+    },
+    {
+      "type": "triangle_proportionality",
+      "entities": [
+        "XY",
+        "QR",
+        "PQR"
+      ],
+      "attributes": {
+        "parallel_side": "QR",
+        "segment1": "PX",
+        "segment2": "PY"
+      }
+    }
+  ],
+  "target": {
+    "entity": "XY",
+    "attribute": "length"
+  }
+}

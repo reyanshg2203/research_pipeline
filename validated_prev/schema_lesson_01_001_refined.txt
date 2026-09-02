@@ -1,0 +1,3 @@
+A graphic designer is preparing a scaled blueprint of a rectangular floor plan. The original design ABCD has sides measuring AB = 8 feet, BC = 6 feet, CD = 10 feet, and DA = 12 feet. To create a smaller version for a client presentation, she shrinks the design using a dilation centered at point O with a scale factor of 0.5, producing the scaled blueprint MNPQ.
+
+From her measurements of the scaled blueprint, she has already determined that NP = 3 feet and PQ = 5 feet. Before she finishes labeling all the sides of the scaled blueprint, she needs to know: **What should the length of side MN be?**

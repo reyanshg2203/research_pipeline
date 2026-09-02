@@ -1,0 +1,1 @@
+Lesson context: lesson_09. Let triangle JKL be a triangle with sides JK = 5, where ∠J = 28°, ∠L = 112°. The interior angles of triangle JKL (∠J, ∠K, ∠L) sum to 180°. Find the measure of ∠K in JKL.

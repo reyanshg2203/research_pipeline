@@ -1,0 +1,1 @@
+Lesson context: lesson_05. Let triangle DEF be a triangle with sides EF = 20. Let triangle GHI be a triangle with sides GH = 10. DEF is dilated to form GHI with scale factor 0.5. Find the length of DE in DEF.

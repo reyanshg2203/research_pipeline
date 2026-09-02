@@ -1,0 +1,117 @@
+{
+  "lesson_id": "lesson_06",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "Two landscape architects are designing triangular garden plots. The first garden plot is triangle MNO with sides MN = 10 feet, NO = 14 feet, and MO = 12 feet. A nearby school wants a larger version of this garden using the same shape but with NO = 21 feet. The larger garden is triangle PQR, where the sides correspond as follows: side MN corresponds to side PQ, side NO corresponds to side QR, and side MO corresponds to side PR.\n\n(a) Write a similarity statement for the two triangles.\n\n(b) What is the scale factor of the dilation that takes triangle MNO onto triangle PQR?\n\n(c) Find the length of side PQ in the larger garden plot.\n\n(d) Describe a sequence of rigid motions and a dilation that would map triangle MNO onto triangle PQR. Explain why your sequence works.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_06. Let triangle MNO be a triangle with sides MN = 10, NO = 14, MO = 12, where \u2220M = 45\u00b0, \u2220N = 65\u00b0, \u2220O = 70\u00b0. Let triangle PQR be a triangle with sides QR = 21, PR = 18, where \u2220P = 45\u00b0, \u2220Q = 65\u00b0, \u2220R = 70\u00b0. Triangle MNO is similar to triangle PQR by AA similarity with scale factor 1.5 (congruent angle pairs: M \u2245 P, N \u2245 Q, O \u2245 R). Find the length of PQ in PQR.",
+      "judgment": {
+        "overall_score": 1.5,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The given side lengths of triangle MNO (10, 14, 12) do not match the stated angles (45\u00b0, 65\u00b0, 70\u00b0) \u2014 by Law of Sines, sides opposite these angles should be proportional to sin45\u00b0:sin65\u00b0:sin70\u00b0, which is not the ratio 14:12:10. Also, scale factor 1.5 from MNO to PQR should give PQ = 15, QR = 21, PR = 18, but stated QR = 21 and PR = 18 are consistent while side opposite \u2220P should equal 1.5\u00d7NO = 21 = QR \u2713 \u2014 however, the angle-to-side correspondences within MNO are internally inconsistent (\u2220M=45\u00b0 opposite NO=14 vs. \u2220O=70\u00b0 opposite MN=10, which violates 'larger angle opposite larger side'). The problem is mathematically invalid.",
+          "lesson_alignment": "The lesson targets defining similarity via rigid motions and dilations and writing similarity statements/sequences; this problem instead asks for a missing side using a scale factor, which is a related but adjacent skill. It doesn't ask students to describe a sequence of transformations or write a similarity statement.",
+          "linguistic_clarity": "The problem is grammatically clear but overloaded with redundant information (all angles, all sides, similarity statement, scale factor all pre-stated) making the actual task trivial pattern-matching. It's also flat 'Let triangle...' framing with no scenario."
+        },
+        "feedback_for_haiku": "Your problem has a serious internal inconsistency: the side lengths you gave for triangle MNO (MN=10, NO=14, MO=12) are incompatible with the angles you assigned (\u2220M=45\u00b0, \u2220N=65\u00b0, \u2220O=70\u00b0). By the Law of Sines, the side opposite the largest angle (\u2220O=70\u00b0) must be the longest, but you made MN (opposite \u2220O) the shortest side. Recompute consistent sides \u2014 e.g., pick angles and use sin ratios, or pick sides and don't specify angles. Second, you've over-specified the problem: you state the scale factor is 1.5 AND give all the corresponding sides, so finding PQ = 1.5 \u00d7 10 = 15 is pure recall rather than genuine application. Remove either the scale factor or one of the side pairs so the student has to derive it. Third, the task doesn't match the lesson focus \u2014 instead of just finding a missing side, ask students to describe a sequence of rigid motions and a dilation that maps MNO onto PQR, and/or to write the similarity statement. Finally, wrap the problem in a concrete real-world scenario (e.g., two triangular sails, garden plots, or scale models) preserving every quantity and label, and pose the final question from inside that scenario.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The side lengths of triangle MNO contradict the given angle measures \u2014 the largest angle (\u2220O=70\u00b0) should be opposite the longest side, but MN (opposite \u2220O) is the shortest at 10.",
+            "suggested_fix": "Either recompute sides consistent with the angles using the Law of Sines, or omit the angle measures and only give sides (and derive angle congruence from AA is unnecessary anyway)."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The problem states scale factor 1.5 and gives corresponding sides in PQR, over-determining the problem and trivializing the question 'find PQ'.",
+            "suggested_fix": "Remove the explicit scale factor and let students compute it from a corresponding side pair (e.g., NO=14, QR=21), or remove one of the known PQR sides."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The task asks for a missing side length, but the lesson focuses on defining similarity via rigid motions and dilations, writing similarity statements, and describing transformation sequences.",
+            "suggested_fix": "Reframe the task to ask students to describe a sequence of rigid motions and a dilation that maps MNO onto PQR, identify the scale factor, and/or write the similarity statement."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem uses flat 'Let triangle...' framing with no real-world scenario giving the quantities a reason to exist.",
+            "suggested_fix": "Wrap the setup in a concrete scenario (e.g., two similar triangular garden plots or scale drawings) preserving all labels and quantities, and ask the final question from within that scenario."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The phrase 'AA similarity' is stated but the problem also gives proportional side lengths, mixing similarity criteria unnecessarily.",
+            "suggested_fix": "Pick one similarity justification (AA or SSS/SAS proportional sides) rather than asserting both."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "Two landscape architects are designing triangular garden plots. The first garden plot is triangle MNO with sides MN = 10 feet, NO = 14 feet, and MO = 12 feet. A nearby school wants a larger version of this garden using the same shape but with NO = 21 feet. The larger garden is triangle PQR, where the sides correspond as follows: side MN corresponds to side PQ, side NO corresponds to side QR, and side MO corresponds to side PR.\n\n(a) Write a similarity statement for the two triangles.\n\n(b) What is the scale factor of the dilation that takes triangle MNO onto triangle PQR?\n\n(c) Find the length of side PQ in the larger garden plot.",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The correspondence is well-defined (MN\u2194PQ, NO\u2194QR, MO\u2194PR), the scale factor 21/14 = 3/2 is consistent, and PQ = 10 \u00d7 3/2 = 15 ft works out cleanly. No internal contradictions and the triangle inequality holds for both triangles.",
+          "lesson_alignment": "The problem targets the exact lesson skills: writing a similarity statement, identifying the scale factor of a dilation, and using proportional corresponding sides. However, it does not push into the productive edge \u2014 it doesn't ask about a sequence of rigid motions and dilations, which is the more challenging lesson focus.",
+          "linguistic_clarity": "The problem is wrapped in a concrete, motivated landscape-architect scenario with the final question posed from inside that context (\"the length of side PQ in the larger garden plot\"). Correspondence is explicitly stated to avoid any ambiguity, and every quantity is preserved and purposeful."
+        },
+        "feedback_for_haiku": "Your problem is solid \u2014 the scenario is concrete, the correspondence is spelled out clearly, and the numbers work cleanly (scale factor 3/2, PQ = 15 ft). To push it to the productive edge of the lesson, consider adding a part that asks students to describe a sequence of rigid motions and dilations that would map triangle MNO onto triangle PQR, since that is the central skill emphasized in this lesson (not just identifying the scale factor and computing a proportional side). You could also vary the difficulty by making the scale factor less obvious (e.g., a non-integer ratio that still yields clean side lengths) or by placing the triangles in specific positions so a rotation or reflection is genuinely needed.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem asks for a similarity statement, scale factor, and one side length, but never asks students to describe a sequence of rigid motions and dilations, which is the lesson's central skill.",
+            "suggested_fix": "Add a part (d) asking students to describe a sequence of rigid motions and a dilation that maps triangle MNO onto triangle PQR."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "Two landscape architects are designing triangular garden plots. The first garden plot is triangle MNO with sides MN = 10 feet, NO = 14 feet, and MO = 12 feet. A nearby school wants a larger version of this garden using the same shape but with NO = 21 feet. The larger garden is triangle PQR, where the sides correspond as follows: side MN corresponds to side PQ, side NO corresponds to side QR, and side MO corresponds to side PR.\n\n(a) Write a similarity statement for the two triangles.\n\n(b) What is the scale factor of the dilation that takes triangle MNO onto triangle PQR?\n\n(c) Find the length of side PQ in the larger garden plot.\n\n(d) Describe a sequence of rigid motions and a dilation that would map triangle MNO onto triangle PQR. Explain why your sequence works.",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The correspondence is consistent: scale factor 21/14 = 3/2, giving PQ = 15, QR = 21, PR = 18. All ratios match and the triangle inequality holds for both triangles. No contradictions.",
+          "lesson_alignment": "This problem directly targets the lesson's core skills: writing a similarity statement, identifying the scale factor of a dilation, finding a corresponding side length via proportion, and describing a sequence of rigid motions and a dilation. Part (d) pushes to the productive edge by requiring justification.",
+          "linguistic_clarity": "The problem is wrapped in a concrete landscape-architect scenario with the enlarged garden motivating the dilation, and each sub-question is asked from within that scenario. Terms are clearly defined and the correspondence is explicit."
+        },
+        "feedback_for_haiku": "Your problem is strong: it embeds the lesson's key skills (similarity statement, scale factor, proportional side length, and a sequence of rigid motions + dilation) in a concrete real-world scenario with a clean correspondence and consistent numbers (scale factor 3/2 giving PQ = 15). One small polish: in part (d), you could nudge students to specify a center for their dilation and to name at least one rigid motion (e.g., translation to align a vertex) so the justification connects tightly to the lesson's emphasis on why the sequence works \u2014 congruent corresponding angles after dilation, then rigid motion to align. Otherwise, keep this structure as a model.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Part (d) asks for a sequence but does not require students to specify the center of dilation or justify via corresponding angles/sides, which is the lesson's emphasis.",
+            "suggested_fix": "Add a prompt like 'State the center of your dilation and explain how you know the resulting triangles will be congruent before the rigid motion.'"
+          }
+        ]
+      }
+    }
+  ]
+}

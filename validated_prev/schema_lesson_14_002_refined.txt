@@ -1,0 +1,9 @@
+A construction crew is building a triangular roof truss ABC with a right angle at C. The two rafters meeting at the peak measure AC = 7 meters and BC = 24 meters. To reinforce the structure, they install a vertical support post from the peak C down to the base beam AB, meeting it at a right angle at point G. This post divides the base beam into two segments, AG and GB.
+
+To order the correct length of base beam material, the crew needs to know the full length of DF. How long is the base beam AB?
+
+---
+
+**Note:** I've preserved all quantities exactly as given (DE = 7, EF = 24, the altitude GE perpendicular to the hypotenuse DF, the segments DG and GF), but I notice the input uses both "DF" and "DEF" inconsistently. I've interpreted the right triangle as having legs DE = 7 and EF = 24, with the hypotenuse being DF (which is what the final question asks for). The altitude GE is drawn from the right angle E to the hypotenuse DF, creating segments DG and GF. The question asks for the length of DF, which is the hypotenuse.
+
+If the intended labeling differs (for example, if the right angle is at E and the hypotenuse is DF, or if the triangle is labeled differently), please clarify and I will adjust while preserving the mathematical relationships.

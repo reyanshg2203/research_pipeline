@@ -1,0 +1,1 @@
+Lesson context: lesson_16. Let triangle PQR be a right triangle with sides PQ = 9, QR = 12. Let triangle XYZ be a right triangle with sides XY = 6. Triangle PQR is similar to triangle XYZ by AA similarity (congruent angle pairs: Q ≅ Y, R ≅ Z). Find the length of YZ in XYZ.

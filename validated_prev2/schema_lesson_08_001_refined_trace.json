@@ -1,0 +1,266 @@
+{
+  "problem_id": "lesson_08_001",
+  "lesson_id": "lesson_08",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_08",
+    "n_out_of_scope": 1,
+    "out_of_scope_concepts": [
+      "law_of_cosines"
+    ],
+    "any_min_steps": 1,
+    "min_steps": 1,
+    "best_trace": [
+      "scale_factor"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "1 in-scope steps lands in band [1..1]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_08_001",
+        "lesson": "lesson_08",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 8.0,
+                "BC": 8.0,
+                "AC": 8.0
+              },
+              "angles": {
+                "A": 60.0,
+                "B": 60.0,
+                "C": 60.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": true
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 12.0,
+                "EF": 12.0,
+                "DF": 12.0
+              },
+              "angles": {
+                "D": 60.0,
+                "E": 60.0,
+                "F": 60.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": true
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "scale_factor": 1.5,
+              "pre_image": "ABC",
+              "image": "DEF"
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABC",
+          "attribute": "sides.AB"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "target_vacuous",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Target ABC.sides.AB is already declared with value 8.0. The problem is vacuous - there is nothing to solve."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target ABC.sides.AB is already given a value..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": {
+        "problem_id": "lesson_08_001",
+        "lesson": "lesson_08",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": null,
+                "BC": 8.0,
+                "AC": 8.0
+              },
+              "angles": {
+                "A": 60.0,
+                "B": 60.0,
+                "C": 60.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": true
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 12.0,
+                "EF": 12.0,
+                "DF": 12.0
+              },
+              "angles": {
+                "D": 60.0,
+                "E": 60.0,
+                "F": 60.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": true
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "pre_image": "ABC",
+              "image": "DEF",
+              "scale_factor": 1.5
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABC",
+          "attribute": "sides.AB"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_08_001",
+        "lesson": "lesson_08",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": null,
+                "BC": 8.0,
+                "AC": 8.0
+              },
+              "angles": {
+                "A": 60.0,
+                "B": 60.0,
+                "C": 60.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": true
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 12.0,
+                "EF": 12.0,
+                "DF": 12.0
+              },
+              "angles": {
+                "D": 60.0,
+                "E": 60.0,
+                "F": 60.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": true
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "pre_image": "ABC",
+              "image": "DEF",
+              "scale_factor": 1.5
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABC",
+          "attribute": "sides.AB"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_08",
+        "n_out_of_scope": 1,
+        "out_of_scope_concepts": [
+          "law_of_cosines"
+        ],
+        "any_min_steps": 1,
+        "min_steps": 1,
+        "best_trace": [
+          "scale_factor"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "1 in-scope steps lands in band [1..1]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_08. Let triangle ABC be a equilateral triangle with sides BC = 8, AC = 8, where \u2220A = 60\u00b0, \u2220B = 60\u00b0, \u2220C = 60\u00b0. Let triangle DEF be a equilateral triangle with sides DE = 12, EF = 12, DF = 12, where \u2220D = 60\u00b0, \u2220E = 60\u00b0, \u2220F = 60\u00b0. Triangle ABC is similar to triangle DEF by SSS similarity with scale factor 1.5. Find the length of AB in ABC.",
+  "student_facing_prose": "A designer is comparing two equilateral triangle templates for a craft project. The first template, triangle ABC, has all sides measuring 8 units, with each angle measuring 60\u00b0. The second template, triangle DEF, has all sides measuring 12 units, with each angle also measuring 60\u00b0.\n\nThe designer notices that triangle DEF is a scaled version of triangle ABC\u2014specifically, triangle ABC is similar to triangle DEF by SSS similarity, with a scale factor of 1.5 (meaning each side of DEF is 1.5 times the corresponding side of ABC).\n\nGiven this relationship, what is the length of side AB in triangle ABC?"
+}

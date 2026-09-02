@@ -1,0 +1,3 @@
+A construction crew is building a triangular metal brace for a roof truss. The brace will have three sides measuring 9 feet, 12 feet, and 16 feet.
+
+Before installation, the engineer needs to classify the triangle by its angles to ensure it meets safety standards. Use the converse of the Pythagorean Theorem to determine whether this triangular brace is acute, right, or obtuse. Explain your reasoning.

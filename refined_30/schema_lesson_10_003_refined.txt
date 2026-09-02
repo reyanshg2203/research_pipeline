@@ -1,0 +1,9 @@
+Two triangular garden plots are being designed for a community landscape project. The first plot, JKL, has side lengths JK = 8 feet, KL = 10 feet, and JL = 12 feet. The second plot, DEF, has side lengths DE = 12 feet, EF = 15 feet, and DF = 18 feet.
+
+A landscape designer needs to know whether the two plots have the same shape so she can adapt her sprinkler layout from one plot to the other. 
+
+(a) Prove that triangles JKL and DEF are similar using the Side-Side-Side Triangle Similarity Theorem. In your proof, explain how a dilation followed by a sequence of rigid motions (or a congruence theorem) shows the triangles must be similar.
+
+(b) Determine which angle in triangle DEF corresponds to angle L in triangle JKL. Explain your reasoning by identifying how the vertices correspond based on the side ratios.
+
+(c) Use the Law of Cosines to find the measure of angle L in triangle JKL. Then state the measure of the corresponding angle in triangle DEF.

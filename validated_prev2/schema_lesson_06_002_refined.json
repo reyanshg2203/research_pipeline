@@ -1,0 +1,53 @@
+{
+  "problem_id": "lesson_06_002",
+  "lesson": "lesson_06",
+  "entities": {
+    "triangles": null,
+    "segments": null,
+    "polygons": [
+      {
+        "id": "PQRS",
+        "n_sides": 4,
+        "sides": {
+          "PQ": 4.0,
+          "QR": 6.0,
+          "RS": null,
+          "SP": 5.0
+        },
+        "angles": null
+      },
+      {
+        "id": "WXYZ",
+        "n_sides": 4,
+        "sides": {
+          "WX": 6.0,
+          "XY": 9.0,
+          "YZ": 12.0,
+          "ZW": 7.5
+        },
+        "angles": null
+      }
+    ],
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "similar_SSS",
+      "entities": [
+        "PQRS",
+        "WXYZ"
+      ],
+      "attributes": {
+        "pre_image": "PQRS",
+        "image": "WXYZ",
+        "scale_factor": 1.5
+      }
+    }
+  ],
+  "target": {
+    "entity": "PQRS",
+    "attribute": "sides.RS"
+  }
+}

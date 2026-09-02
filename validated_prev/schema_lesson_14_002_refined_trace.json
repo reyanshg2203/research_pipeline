@@ -1,0 +1,430 @@
+{
+  "problem_id": "lesson_14_002",
+  "lesson_id": "lesson_14",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 1,
+  "final_prolog_error_count": 1,
+  "calibration": null,
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_14_002",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 7.0,
+                "EF": 24.0,
+                "DF": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "GE",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": "DF",
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": true
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "altitude_to_hypotenuse",
+            "entities": [
+              "DEF",
+              "GE",
+              "DF"
+            ],
+            "attributes": {
+              "altitude_id": "GE",
+              "hypotenuse": "DF",
+              "segment1": "DG",
+              "segment2": "GF"
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.DF"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 1,
+        "errors": [
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship altitude_to_hypotenuse (index 1) is out of scope: wrong number of entities (got 3, expected 4 for altitude_to_hypotenuse). Expected kinds [triangle,segment,segment,segment]; got entities [DEF,GE,DF]."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 1,
+      "haiku_correction": {
+        "problem_id": "lesson_14_002",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 7.0,
+                "EF": 24.0,
+                "DF": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "GE",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": "DF",
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": true
+            },
+            {
+              "id": "DG",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": null
+            },
+            {
+              "id": "GF",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": null
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "altitude_to_hypotenuse",
+            "entities": [
+              "GE",
+              "DF"
+            ],
+            "attributes": {
+              "segment1": "DG",
+              "segment2": "GF"
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.DF"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_14_002",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 7.0,
+                "EF": 24.0,
+                "DF": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "GE",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": "DF",
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": true
+            },
+            {
+              "id": "DG",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": null
+            },
+            {
+              "id": "GF",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": null
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "altitude_to_hypotenuse",
+            "entities": [
+              "GE",
+              "DF"
+            ],
+            "attributes": {
+              "segment1": "DG",
+              "segment2": "GF"
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.DF"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 3,
+        "errors": [
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship altitude_to_hypotenuse (index 1) is missing required attribute 'altitude_id'. altitude_to_hypotenuse requires attributes: [altitude_id,hypotenuse,segment1,segment2]."
+          },
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship altitude_to_hypotenuse (index 1) is missing required attribute 'hypotenuse'. altitude_to_hypotenuse requires attributes: [altitude_id,hypotenuse,segment1,segment2]."
+          },
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship altitude_to_hypotenuse (index 1) is out of scope: wrong number of entities (got 2, expected 4 for altitude_to_hypotenuse). Expected kinds [triangle,segment,segment,segment]; got entities [GE,DF]."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 3,
+      "haiku_correction": {
+        "problem_id": "lesson_14_002",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 7.0,
+                "EF": 24.0,
+                "DF": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "GE",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": "DF",
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": true
+            },
+            {
+              "id": "DG",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": null
+            },
+            {
+              "id": "GF",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": null
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "altitude_to_hypotenuse",
+            "entities": [
+              "DEF",
+              "GE"
+            ],
+            "attributes": {
+              "altitude": "GE",
+              "hypotenuse": "DF",
+              "segment1": "DG",
+              "segment2": "GF"
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.DF"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_14_002",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 7.0,
+                "EF": 24.0,
+                "DF": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "GE",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": "DF",
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": true
+            },
+            {
+              "id": "DG",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": null
+            },
+            {
+              "id": "GF",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": null
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "altitude_to_hypotenuse",
+            "entities": [
+              "DEF",
+              "GE"
+            ],
+            "attributes": {
+              "altitude": "GE",
+              "hypotenuse": "DF",
+              "segment1": "DG",
+              "segment2": "GF"
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.DF"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 3,
+        "errors": [
+          {
+            "gate": "invalid_attribute_key",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship altitude_to_hypotenuse (index 1) has unexpected attribute 'altitude'. Allowed keys: [altitude_id,hypotenuse,segment1,segment2]."
+          },
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship altitude_to_hypotenuse (index 1) is missing required attribute 'altitude_id'. altitude_to_hypotenuse requires attributes: [altitude_id,hypotenuse,segment1,segment2]."
+          },
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship altitude_to_hypotenuse (index 1) is out of scope: wrong number of entities (got 2, expected 4 for altitude_to_hypotenuse). Expected kinds [triangle,segment,segment,segment]; got entities [DEF,GE]."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 3,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_14. Let triangle DEF be a right triangle with sides DE = 7, EF = 24. Let segment GE be a altitude segment perpendicular to DF. Altitude GE is drawn to hypotenuse DF, dividing it into segments DG and GF. Find the length of DF in DEF.",
+  "student_facing_prose": "A construction crew is building a triangular roof truss ABC with a right angle at C. The two rafters meeting at the peak measure AC = 7 meters and BC = 24 meters. To reinforce the structure, they install a vertical support post from the peak C down to the base beam AB, meeting it at a right angle at point G. This post divides the base beam into two segments, AG and GB.\n\nTo order the correct length of base beam material, the crew needs to know the full length of DF. How long is the base beam AB?\n\n---\n\n**Note:** I've preserved all quantities exactly as given (DE = 7, EF = 24, the altitude GE perpendicular to the hypotenuse DF, the segments DG and GF), but I notice the input uses both \"DF\" and \"DEF\" inconsistently. I've interpreted the right triangle as having legs DE = 7 and EF = 24, with the hypotenuse being DF (which is what the final question asks for). The altitude GE is drawn from the right angle E to the hypotenuse DF, creating segments DG and GF. The question asks for the length of DF, which is the hypotenuse.\n\nIf the intended labeling differs (for example, if the right angle is at E and the hypotenuse is DF, or if the triangle is labeled differently), please clarify and I will adjust while preserving the mathematical relationships."
+}

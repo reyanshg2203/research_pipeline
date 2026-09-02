@@ -1,0 +1,388 @@
+{
+  "problem_id": "lesson_03_003",
+  "lesson_id": "lesson_03",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_03",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 1,
+    "min_steps": 1,
+    "best_trace": [
+      "scale_factor"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "1 in-scope steps lands in band [1..1]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_03_003",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "P'Q'R'",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "C",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "PQR",
+              "P'Q'R'"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "center": "C",
+              "pre_image": "PQR",
+              "image": "P'Q'R'"
+            }
+          }
+        ],
+        "target": {
+          "entity": "P'Q'R'",
+          "attribute": "sides.P'Q'"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 3,
+        "errors": [
+          {
+            "gate": "naming_convention",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity P'Q'R' of kind 'triangle' violates the naming convention. Expected bare letters (e.g. ABC for triangle, AB for segment, single capital for point)."
+          },
+          {
+            "gate": "target_key_not_on_entity",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Target P'Q'R'.sides.P'Q' references sides 'P'Q'' which is not declared on entity P'Q'R'. Valid sides of P'Q'R' are: []."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target P'Q'R'.sides.P'Q' is under-determined..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 3,
+      "haiku_correction": {
+        "problem_id": "lesson_03_003",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 4.0,
+                "QR": 5.0,
+                "RP": 6.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "P'Q'R'",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "C",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "PQR",
+              "P'Q'R'"
+            ],
+            "attributes": {
+              "scale_factor": 2.0,
+              "center": "C",
+              "pre_image": "PQR",
+              "image": "P'Q'R'"
+            }
+          }
+        ],
+        "target": {
+          "entity": "P'Q'R'",
+          "attribute": "sides.P'Q'"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_03_003",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 4.0,
+                "QR": 5.0,
+                "RP": 6.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "P'Q'R'",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "C",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "PQR",
+              "P'Q'R'"
+            ],
+            "attributes": {
+              "scale_factor": 2.0,
+              "center": "C",
+              "pre_image": "PQR",
+              "image": "P'Q'R'"
+            }
+          }
+        ],
+        "target": {
+          "entity": "P'Q'R'",
+          "attribute": "sides.P'Q'"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "naming_convention",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity P'Q'R' of kind 'triangle' violates the naming convention. Expected bare letters (e.g. ABC for triangle, AB for segment, single capital for point)."
+          },
+          {
+            "gate": "target_key_not_on_entity",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Target P'Q'R'.sides.P'Q' references sides 'P'Q'' which is not declared on entity P'Q'R'. Valid sides of P'Q'R' are: []."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": {
+        "problem_id": "lesson_03_003",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 4.0,
+                "QR": 5.0,
+                "RP": 6.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "STU",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "C",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "PQR",
+              "STU"
+            ],
+            "attributes": {
+              "scale_factor": 2.0,
+              "center": "C",
+              "pre_image": "PQR",
+              "image": "STU"
+            }
+          }
+        ],
+        "target": {
+          "entity": "STU",
+          "attribute": "sides.ST"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_03_003",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 4.0,
+                "QR": 5.0,
+                "RP": 6.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "STU",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "C",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "PQR",
+              "STU"
+            ],
+            "attributes": {
+              "scale_factor": 2.0,
+              "center": "C",
+              "pre_image": "PQR",
+              "image": "STU"
+            }
+          }
+        ],
+        "target": {
+          "entity": "STU",
+          "attribute": "sides.ST"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_03",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": 1,
+        "best_trace": [
+          "scale_factor"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "1 in-scope steps lands in band [1..1]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_03. Let triangle PQR be a triangle with sides PQ = 4, QR = 5, RP = 6. Let triangle STU be a triangle. PQR is dilated to form STU with scale factor 2, centered at point C. Find the length of ST in STU.",
+  "student_facing_prose": "A graphic designer is working on a logo that features triangle PQR with sides PQ = 4 cm, QR = 5 cm, and RP = 6 cm. To create a larger version for a billboard, she enlarges the design using a dilation centered at point C with a scale factor of 2, producing triangle STU.\n\nWhen the designer orders materials for the billboard version, she needs to know the length of side ST, which corresponds to side PQ in the original logo. What should that length be?"
+}

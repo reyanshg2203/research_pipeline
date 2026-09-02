@@ -1,0 +1,1 @@
+Lesson context: lesson_15. Let triangle PQR be a triangle with sides PQ = 7, QR = 24, PR = 25. Determine whether triangle PQR is a right triangle.

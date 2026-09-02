@@ -1,0 +1,96 @@
+{
+  "lesson_id": "lesson_14",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A carpenter is building a roof truss support with a diagonal beam from one corner to another. The beam forms the hypotenuse of a right triangle with legs measuring 9 feet and 12 feet. The hypotenuse is 15 feet long.\n\nThe carpenter needs to install a vertical brace from the right-angle corner perpendicular to the diagonal beam, dividing the beam into two segments.\n\nLet's call the right triangle PQR, where:\n- The two legs are PQ = 9 feet and QR = 12 feet\n- The hypotenuse is PR = 15 feet\n- A perpendicular brace from the right angle at Q meets the hypotenuse PR at point S\n- This creates segments PS and SR on the hypotenuse\n\nUsing the similar-triangle relationships from the lesson\u2014specifically, that a\u00b2 = xc and b\u00b2 = yc, where a and b are the legs, c is the hypotenuse, and x and y are the segments of the hypotenuse\u2014find the length of the brace QS.\n\n(Hint: Start by finding PS and SR using the similar-triangle proportions, then determine QS.)",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_14. Let triangle PQR be a right triangle with sides PQ = 9, QR = 12, PR = 15. Let triangle PSR be a right triangle with sides PR = 15. Let segment QS be a altitude segment perpendicular to PR. Altitude QS is drawn to hypotenuse PR, dividing it into segments PS and SR. Altitude QS is the geometric mean of segments PS and SR. Find the length of QS.",
+      "judgment": {
+        "overall_score": 2.0,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 2,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The triangle PQR with sides 9, 12, 15 is a valid right triangle (right angle at Q). The altitude to the hypotenuse has length (9\u00b712)/15 = 7.2, which matches the geometric-mean relationship since PS = 81/15 = 5.4, SR = 144/15 = 9.6, and \u221a(5.4\u00b79.6) = 7.2. However, the problem contains a redundant/confusing 'triangle PSR' declaration with only one side given, and the claim that QS is 'the geometric mean of PS and SR' is presented as a given fact rather than something derived \u2014 yet the student needs PS and SR to use it, which aren't provided. So the problem as stated is under-determined unless the student independently computes PS and SR.",
+          "lesson_alignment": "The lesson focuses on proving the Pythagorean Theorem using similar triangles formed by the altitude to the hypotenuse. This problem uses the altitude-to-hypotenuse diagram, which is aligned, but it asks for a numerical length using the geometric mean relationship rather than proving or applying the a\u00b2 = xc / b\u00b2 = yc results in the way the lesson emphasizes. It targets a related skill but doesn't push toward the proof-oriented learning goal.",
+          "linguistic_clarity": "The prose is repetitive and clunky: 'Let triangle PSR be a right triangle with sides PR = 15' provides no useful information; 'a altitude' is ungrammatical; and multiple sentences restate that QS is an altitude. The problem is decipherable but list-like with awkward, redundant phrasing and no scenario."
+        },
+        "feedback_for_haiku": "Your problem has several issues. First, the sentence 'Let triangle PSR be a right triangle with sides PR = 15' is meaningless \u2014 one side doesn't define a triangle, and PSR isn't a distinguishable sub-triangle worth naming this way. Delete it. Second, you state 'Altitude QS is the geometric mean of segments PS and SR' as if it's a given, but the student needs to know PS and SR to use this \u2014 and you never provide them. Either give PS and SR directly, or (better) let the student derive them from the similar-triangle relationships a\u00b2 = xc and b\u00b2 = yc that the lesson emphasizes. Third, fix grammar: 'a altitude' \u2192 'an altitude,' and stop repeating that QS is an altitude in three consecutive sentences. Finally, wrap the problem in a concrete real-world scenario \u2014 for example, a roof truss or ramp support where a brace is dropped perpendicularly from a right-angle joint to a diagonal beam of length 15 with legs 9 and 12 \u2014 and ask the final question ('how long is the brace?') from inside that scenario, preserving all quantities and labels. Also, to better align with the lesson, frame the solution path around the similarity relations a\u00b2 = xc and b\u00b2 = yc rather than jumping to the geometric-mean shortcut.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The sentence 'Let triangle PSR be a right triangle with sides PR = 15' declares a triangle with only one side length, which is under-specified and adds no information.",
+            "suggested_fix": "Delete this sentence entirely; PSR is not needed as a separately named triangle."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The problem states QS is the geometric mean of PS and SR but does not provide PS or SR, leaving the student to figure out those values without guidance, though this is claimed as a 'given' fact.",
+            "suggested_fix": "Either provide PS and SR explicitly, or remove the geometric-mean assertion and let the student derive QS using similar-triangle proportions from the lesson."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The lesson centers on proving the Pythagorean Theorem via similar triangles, but this problem is a numerical length-finding exercise that skips the proof structure and uses a shortcut (geometric mean) as a given fact.",
+            "suggested_fix": "Reframe the problem to ask students to apply a\u00b2 = xc and b\u00b2 = yc (from the lesson) to find QS, or add a proof/justification component."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "Grammar error: 'a altitude segment' should be 'an altitude segment'.",
+            "suggested_fix": "Change 'a altitude' to 'an altitude'."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is flat, list-like, and repetitive \u2014 it states that QS is an altitude to PR in three different sentences and provides no real-world scenario.",
+            "suggested_fix": "Wrap the quantities in a concrete scenario (e.g., a carpenter bracing a diagonal beam PR = 15 ft with legs PQ = 9 ft and QR = 12 ft, dropping a perpendicular brace QS from the right-angle corner) and ask the final question from inside that scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A carpenter is building a roof truss support with a diagonal beam from one corner to another. The beam forms the hypotenuse of a right triangle with legs measuring 9 feet and 12 feet. The hypotenuse is 15 feet long.\n\nThe carpenter needs to install a vertical brace from the right-angle corner perpendicular to the diagonal beam, dividing the beam into two segments.\n\nLet's call the right triangle PQR, where:\n- The two legs are PQ = 9 feet and QR = 12 feet\n- The hypotenuse is PR = 15 feet\n- A perpendicular brace from the right angle at Q meets the hypotenuse PR at point S\n- This creates segments PS and SR on the hypotenuse\n\nUsing the similar-triangle relationships from the lesson\u2014specifically, that a\u00b2 = xc and b\u00b2 = yc, where a and b are the legs, c is the hypotenuse, and x and y are the segments of the hypotenuse\u2014find the length of the brace QS.\n\n(Hint: Start by finding PS and SR using the similar-triangle proportions, then determine QS.)",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The 9-12-15 right triangle is a valid Pythagorean triple. Using a\u00b2=xc: PS = 81/15 = 5.4, SR = 144/15 = 9.6, and QS = \u221a(PS\u00b7SR) = \u221a51.84 = 7.2 ft, which also matches (9\u00b712)/15 = 7.2. All relationships are consistent and correct.",
+          "lesson_alignment": "The problem directly applies the lesson's key relationships a\u00b2=xc and b\u00b2=yc (the similar-triangle results derived from the altitude to the hypotenuse), and pushes further by requiring the student to then find QS itself \u2014 this is a productive application at the edge of difficulty.",
+          "linguistic_clarity": "The problem is wrapped in a concrete carpentry/truss scenario with the diagonal beam and vertical brace giving physical meaning to the hypotenuse and altitude. All quantities are preserved, labels are clearly defined, and the final question ('find the length of the brace QS') is asked from inside the scenario."
+        },
+        "feedback_for_haiku": "Your problem is solid: the 9-12-15 right triangle is mathematically clean, the scenario of a roof-truss diagonal with a perpendicular brace gives real physical meaning to the altitude-to-hypotenuse construction, and the task genuinely applies the lesson's a\u00b2=xc and b\u00b2=yc similarity results. One small polish: a real carpentry brace on a truss usually runs vertically to a plate rather than perpendicular to the diagonal, so consider tightening the scenario language (e.g., call QS a 'reinforcing strut set perpendicular to the diagonal beam') to make the geometry feel even more natural. Also consider explicitly telling students in the hint that once PS and SR are known, QS can be found via the geometric mean relationship QS\u00b2 = PS\u00b7SR (which follows from the same similar triangles), so the connection to the lesson's similarity argument is fully closed.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "A physical 'vertical brace' in a truss would not typically be perpendicular to the diagonal beam; the scenario mixes 'vertical' with 'perpendicular to the diagonal,' which are generally not the same direction.",
+            "suggested_fix": "Replace 'vertical brace' with 'reinforcing strut' or 'perpendicular support' so the geometric constraint (perpendicular to PR) is the only directional claim."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The hint tells students to find PS and SR first but does not point them to the similar-triangle relationship QS\u00b2 = PS\u00b7SR that finishes the problem in the same lesson framework.",
+            "suggested_fix": "Extend the hint to note that the same similar-triangle setup gives QS\u00b2 = PS\u00b7SR (or h\u00b2 = xy), so students close the problem using lesson-consistent reasoning rather than, say, area or Pythagorean shortcuts."
+          }
+        ]
+      }
+    }
+  ]
+}

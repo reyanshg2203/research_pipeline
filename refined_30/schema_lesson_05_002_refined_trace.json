@@ -1,0 +1,90 @@
+{
+  "lesson_id": "lesson_05",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A designer is creating a triangular sail for a sailboat. The outer triangle PQR represents the full sail design, where PQ = 20 feet and PR = 15 feet, with QR = 25 feet.\n\nTo add a decorative reinforcement strip, the designer marks point X on side PQ and point Y on side PR such that the points divide the sides proportionally: PX = 12 feet and PY = 9 feet.\n\nUse the triangle proportionality theorem to determine whether segment XY is parallel to QR. If it is parallel, find the length of XY in feet.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_05. Let triangle PQR be a triangle with sides PQ = 30. Let segment XY be a segment. Let segment PX be a segment with length 12. Let segment PY be a segment with length 9. Let point X be a point on PQ. Let point Y be a point on PR. Segments PX and XQ and PY and YR are proportional with ratio 0.6. By the triangle proportionality theorem, a line parallel to QR divides the other two sides proportionally into segments PX and PY. Find the length of XY.",
+      "judgment": {
+        "overall_score": 1.3,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 1
+        },
+        "rationales": {
+          "geometric_accuracy": "The stated ratio is inconsistent: PX = 12 with ratio PX/XQ = 0.6 would give XQ = 20, so PQ = 32, contradicting PQ = 30. Also, PX/PQ = 12/30 = 0.4, not 0.6. Additionally, no length is given for QR, so XY cannot be found as posed \u2014 the problem is unsolvable as written.",
+          "lesson_alignment": "The problem targets the right skill (proportional segments and parallel line in a triangle), but it essentially states the triangle proportionality theorem in the problem body and asks for XY without providing QR, so it neither cleanly exercises the lesson goal nor pushes productive reasoning.",
+          "linguistic_clarity": "The prose is repetitive and clunky (\"Let segment XY be a segment\", \"Let segment PX be a segment with length 12\"), the ratio is undefined (0.6 of what to what?), and the reference to the triangle proportionality theorem within the givens is confusing. No scenario is provided and key information (QR length) is missing."
+        },
+        "feedback_for_haiku": "Your problem has several serious issues. First, the numbers contradict each other: you say PX = 12 and PQ = 30, which makes PX/PQ = 0.4 and PX/XQ = 12/18 = 2/3, but you also claim the ratio is 0.6 \u2014 none of these match. Second, you never give the length of QR, yet you ask for XY; without QR, XY cannot be computed. Fix this by choosing consistent numbers (e.g., PX = 12, XQ = 8 so PQ = 20, and PY = 9, YR = 6, with QR given as some length like 25, so XY = 15 using the scale factor 12/20 = 3/5). Also, stop restating the triangle proportionality theorem inside the givens \u2014 that's the reasoning the student is supposed to supply. Finally, rewrap the entire problem in a concrete real-world scenario (for example, a designer laying out a triangular sail or a surveyor marking a triangular plot) with every quantity preserved and the final question \u2014 how long is XY \u2014 asked from inside that scenario. Clean up the repetitive \\\"Let segment X be a segment\\\" phrasing into natural sentences.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The numerical values are internally contradictory: PX = 12, PQ = 30 gives PX/XQ = 12/18 = 2/3 and PX/PQ = 0.4, neither of which equals the stated ratio 0.6.",
+            "suggested_fix": "Pick a consistent set of lengths, e.g., PQ = 20 with PX = 12 and XQ = 8, and PR with PY = 9, YR = 6, so PX/XQ = PY/YR = 3/2."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "No length is given for QR, so XY cannot be determined as the problem asks.",
+            "suggested_fix": "State a length for QR (e.g., QR = 25) and have the student use the scale factor PX/PQ to compute XY."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The prose is repetitive and awkward (\"Let segment XY be a segment\", \"Let segment PX be a segment with length 12\") and the ratio 0.6 is stated without clarifying which pair of segments it refers to.",
+            "suggested_fix": "Rewrite in natural English inside a real-world scenario, specifying the ratio unambiguously (e.g., \"PX:XQ = 3:2\")."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The problem states the triangle proportionality theorem within the givens, removing the reasoning the lesson is designed to elicit.",
+            "suggested_fix": "Remove the theorem statement from the problem body; let the student invoke it to justify that XY is parallel to QR and to set up the proportion."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is presented as a flat list of \"Let\" statements with no scenario giving the quantities a reason to exist.",
+            "suggested_fix": "Wrap the setup in a concrete scenario (e.g., a triangular garden bed or triangular sail) with the final question \u2014 \"how long is XY?\" \u2014 asked from inside that context."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A designer is creating a triangular sail for a sailboat. The outer triangle PQR represents the full sail design, where PQ = 20 feet and PR = 15 feet, with QR = 25 feet.\n\nTo add a decorative reinforcement strip, the designer marks point X on side PQ and point Y on side PR such that the points divide the sides proportionally: PX = 12 feet and PY = 9 feet.\n\nUse the triangle proportionality theorem to determine whether segment XY is parallel to QR. If it is parallel, find the length of XY in feet.",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The proportions check out: PX/PQ = 12/20 = 3/5 and PY/PR = 9/15 = 3/5, so XY divides the sides proportionally and is parallel to QR by the converse theorem. With scale factor 3/5, XY = (3/5)(25) = 15 feet, and the triangle inequality holds (20+15>25).",
+          "lesson_alignment": "The problem directly targets the lesson's core theorem \u2014 that a segment dividing two sides proportionally is parallel to the third side \u2014 and additionally requires the student to apply the dilation scale factor to find XY's length, matching the productive edge of the lesson.",
+          "linguistic_clarity": "The sailmaking scenario is concrete and motivates the geometry, quantities are preserved cleanly, and the question ('determine whether XY is parallel to QR... find the length of XY') is asked from within the scenario without ambiguity."
+        },
+        "feedback_for_haiku": "Your problem is well-constructed: the sail scenario gives the geometry a real reason to exist, the proportions PX/PQ = PY/PR = 3/5 are consistent, and the task requires students to both apply the converse of the triangle proportionality theorem (to justify parallelism) and use the dilation scale factor to compute XY = 15 ft. One small polish: the phrase \"the points divide the sides proportionally\" slightly telegraphs the answer to the first sub-question \u2014 consider rewording to \"marks point X on PQ with PX = 12 ft and point Y on PR with PY = 9 ft\" and letting the student verify the proportionality themselves.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The phrase 'the points divide the sides proportionally' gives away part of what the student is asked to determine.",
+            "suggested_fix": "Remove that clause and simply state the measurements PX = 12 ft and PY = 9 ft, letting the student check the proportionality as part of the task."
+          }
+        ]
+      }
+    }
+  ]
+}

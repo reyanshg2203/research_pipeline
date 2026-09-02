@@ -1,0 +1,141 @@
+{
+  "lesson_id": "lesson_14",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A construction crew is building a roof truss for a storage building. The truss is shaped like a right triangle with the peak at vertex A, where two rafters meet at a right angle. The horizontal tie beam at the base is BC, which is 13 meters long. The two rafters measure AB = 5 meters and AC = 12 meters. A vertical support beam (altitude) AD is drawn from the right-angle peak A perpendicular down to the tie beam BC, meeting it at point D. This altitude divides the tie beam into two segments: BD = x meters and DC = y meters.\n\nIn this configuration, the original large triangle ABC is similar to the two smaller triangles formed: triangle ABD and triangle ACD. Use this similarity relationship to answer the following:\n\n(a) Write the proportion that relates corresponding sides of triangle ABC and triangle ABD. Use this proportion to derive the equation AB\u00b2 = BD \u00b7 BC. Show your work.\n\n(b) Similarly, write the proportion that relates corresponding sides of triangle ABC and triangle ACD. Use this proportion to derive the equation AC\u00b2 = CD \u00b7 BC. Show your work.\n\n(c) Using your derived equations from parts (a) and (b), compute the value of x (the length of BD) and the value of y (the length of DC).\n\n(d) Finally, verify that the Pythagorean Theorem holds for this truss by showing that AB\u00b2 + AC\u00b2 = BC\u00b2 using your computed values of x and y. What equation does this concrete calculation illustrate from the lesson's proof?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_14. Let triangle ABC be a right triangle with sides AB = 13, BC = 5. The interior angles of triangle ABC (\u2220A, \u2220B, \u2220C) sum to 180\u00b0. Find the length of AC in ABC.",
+      "judgment": {
+        "overall_score": 1.7,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 2,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem states triangle ABC is a right triangle but does not specify which angle is the right angle. If the right angle is at C, then AC = 12 (since AB=13 is hypotenuse and BC=5 is a leg). But if the right angle is at B, then AC would be the hypotenuse = sqrt(13^2+5^2) = sqrt(194). This ambiguity is a major issue that makes the answer non-unique.",
+          "lesson_alignment": "Lesson 14 focuses on proving the Pythagorean Theorem using similar triangles from an altitude to the hypotenuse. This problem is merely a direct application of the Pythagorean Theorem to find a missing side, which is pattern-matching recall rather than engaging with the proof/similarity concepts of the lesson.",
+          "linguistic_clarity": "The problem is grammatically decipherable but has notable issues: the sentence 'The interior angles of triangle ABC sum to 180\u00b0' is filler that adds nothing (this is true for every triangle) and doesn't identify the right angle. The phrasing 'AC in ABC' is clunky, and the framing is flat with no scenario."
+        },
+        "feedback_for_haiku": "Your problem has a critical ambiguity: you say triangle ABC is a right triangle but never specify which vertex holds the right angle. With AB = 13 and BC = 5, the answer for AC depends entirely on where the right angle sits \u2014 it could be 12 (if the right angle is at C, making AB the hypotenuse) or sqrt(194) (if the right angle is at B). Explicitly state, for example, \"with the right angle at C.\" Also, the sentence about interior angles summing to 180\u00b0 is filler \u2014 it's true of every triangle and doesn't help specify the figure; delete it. More importantly, this problem only asks for a direct Pythagorean-Theorem plug-in, which misses the lesson's focus on proving the theorem via similar triangles formed by the altitude to the hypotenuse. Rewrite the problem so students engage with that altitude/similarity structure \u2014 e.g., give the two hypotenuse segments x and y (or a leg and one segment) and have students use a^2 = xc or b^2 = yc to find a missing length, then justify with similarity. Finally, wrap the problem in a concrete real-world scenario (a ramp, a ladder, a roof truss with a support beam dropped to the base) so that every quantity has a reason to exist and the question is asked from inside that scenario, preserving all labels and measurements.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem does not specify which angle is the right angle, leading to two possible answers (AC = 12 or AC = sqrt(194)).",
+            "suggested_fix": "Explicitly state which vertex holds the right angle, e.g., 'with the right angle at C' so AB is clearly the hypotenuse."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The problem is a bare Pythagorean-Theorem application and does not engage with the lesson's focus on proving the theorem via similar triangles from the altitude to the hypotenuse.",
+            "suggested_fix": "Include the altitude to the hypotenuse with segment lengths x and y, and ask students to use similarity relationships like a^2 = xc or b^2 = yc to solve and justify."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The statement that interior angles sum to 180\u00b0 is filler that is universally true and adds no useful information.",
+            "suggested_fix": "Delete the sentence about angle sums and instead use that space to specify the right-angle vertex."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is presented in a flat, list-like abstract form with no scenario giving the quantities a reason to exist.",
+            "suggested_fix": "Wrap the setup in a concrete real-world scenario (e.g., a ladder against a wall or a roof truss) preserving every measurement, and ask the final question from inside that scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A construction crew is building a roof truss for a storage building. The roof forms a right triangle with the peak directly above one end of the base. The two sloped sides of the roof are 13 meters (the hypotenuse) and the horizontal base is 5 meters and 12 meters in length, divided by a vertical support beam dropped from the peak to the base.\n\nMore specifically, the right triangle has legs AB = 5 meters and AC = 12 meters, with the right angle at vertex A. The hypotenuse is BC = 13 meters. A vertical support beam (altitude) AD is drawn from the right angle vertex A down to the hypotenuse BC, meeting it at point D at a right angle. This altitude divides the hypotenuse into two segments: BD = x meters and DC = y meters.\n\nThe construction engineer observes that the two smaller triangles formed (ABD and ACD) are similar to the original large triangle ABC and to each other. Using this similarity, the engineer knows that:\n- AB\u00b2 = BD \u00b7 BC, or equivalently, 5\u00b2 = x \u00b7 13\n- AC\u00b2 = CD \u00b7 BC, or equivalently, 12\u00b2 = y \u00b7 13\n\nFrom the first equation, find the length of segment BD (the value of x). Then verify that the altitude relationship BD + DC = BC holds true by computing DC (the value of y) from the second equation and checking that x + y = 13. Show your work using the similarity relationships.",
+      "judgment": {
+        "overall_score": 2.5,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 3,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The core relationships are correct: 5-12-13 is a valid right triangle, and the geometric mean relations AB\u00b2=BD\u00b7BC and AC\u00b2=CD\u00b7BC hold, giving BD=25/13 and DC=144/13, which sum to 169/13=13. However, the opening scenario description is contradictory/confusing: it says 'the peak directly above one end of the base' (which would make the altitude coincide with a leg, not an interior altitude), and then says the horizontal base is '5 meters and 12 meters in length, divided by a vertical support beam' \u2014 conflating the legs with segments of the hypotenuse. The actual 5 and 12 are the legs, not pieces of the base of length 13.",
+          "lesson_alignment": "The lesson focuses on proving the Pythagorean Theorem via similar triangles created by the altitude to the hypotenuse. This problem uses the altitude-on-hypotenuse similarity relationships (a\u00b2=xc, b\u00b2=yc) which is the setup for the proof, but it doesn't ask students to prove anything \u2014 it asks them to plug into given equations and verify. This targets a related computational skill rather than the proof/reasoning skill the lesson develops.",
+          "linguistic_clarity": "The scenario setup is self-contradictory: 'peak directly above one end of the base' contradicts the interior altitude AD, and the sentence describing 'the horizontal base is 5 meters and 12 meters in length, divided by a vertical support beam' incorrectly implies the base is split into 5 and 12 by the altitude, when actually 5 and 12 are the legs. The problem is also verbose and gives away the key equations, leaving little for the student to derive."
+        },
+        "feedback_for_haiku": "Your problem has a serious internal contradiction in the opening scenario. You wrote that \"the peak is directly above one end of the base\" \u2014 but then you describe an altitude AD dropped from A to an interior point D on BC. If the peak were above an end of the base, the altitude would coincide with a leg, not create two segments BD and DC. Also, \"the horizontal base is 5 meters and 12 meters in length, divided by a vertical support beam\" mislabels the geometry: 5 and 12 are the legs AB and AC, not pieces of the 13-meter base. Rewrite the scenario so the roof truss has a horizontal tie beam BC of 13 m as the hypotenuse, with rafters AB=5 m and AC=12 m meeting at a right angle at the peak A, and a vertical support AD from the peak down to the tie beam. Second, the problem currently hands students the similarity equations a\u00b2=xc and b\u00b2=yc pre-derived, reducing the task to plugging in numbers. To align with the lesson's proof focus, ask students to identify the similar triangles, state the proportions themselves, derive AB\u00b2=BD\u00b7BC from similarity, and then use the results to demonstrate that a\u00b2+b\u00b2=c\u00b2 for this specific truss \u2014 connecting computation back to the Pythagorean proof. Finally, verifying BD+DC=BC is trivial (it's just segment addition), so replace that step with something more substantive like verifying a\u00b2+b\u00b2=c\u00b2 from the computed x and y.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The scenario states the peak is 'directly above one end of the base,' which would place the altitude on a leg, contradicting the later description of an interior altitude AD meeting BC at an interior point D.",
+            "suggested_fix": "Remove the phrase about the peak being above one end; instead describe the peak A as the right-angle vertex where two rafters meet above the tie beam BC, with a vertical support dropped to an interior point D on BC."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The sentence 'the horizontal base is 5 meters and 12 meters in length, divided by a vertical support beam' incorrectly describes 5 and 12 as segments of the base, when they are actually the two legs AB and AC.",
+            "suggested_fix": "Rewrite as: 'The two rafters measure AB=5 m and AC=12 m and meet at a right angle at the peak A; the horizontal tie beam BC is 13 m.'"
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The problem hands students the geometric-mean equations a\u00b2=xc and b\u00b2=yc pre-derived, so students only substitute numbers rather than use similarity to prove/derive the relationships that underpin the lesson's Pythagorean proof.",
+            "suggested_fix": "Ask students to identify the three similar triangles, write the proportions from corresponding sides, and derive AB\u00b2=BD\u00b7BC themselves; then have them use x and y to verify a\u00b2+b\u00b2=c\u00b2 as a concrete instance of the proof."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The verification task 'check that x+y=13' is trivial segment addition and doesn't reinforce the Pythagorean proof structure.",
+            "suggested_fix": "Replace with verifying that xc+yc=(x+y)c=c\u00b2 using the computed values, tying directly to the lesson's proof chain."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The scenario paragraph and the 'more specifically' paragraph give inconsistent geometric descriptions of the truss, forcing the reader to reconcile contradictory information.",
+            "suggested_fix": "Write a single coherent scenario paragraph that consistently labels A as the right-angle peak, B and C as the ends of the tie beam, and D as the foot of the vertical support on BC."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A construction crew is building a roof truss for a storage building. The truss is shaped like a right triangle with the peak at vertex A, where two rafters meet at a right angle. The horizontal tie beam at the base is BC, which is 13 meters long. The two rafters measure AB = 5 meters and AC = 12 meters. A vertical support beam (altitude) AD is drawn from the right-angle peak A perpendicular down to the tie beam BC, meeting it at point D. This altitude divides the tie beam into two segments: BD = x meters and DC = y meters.\n\nIn this configuration, the original large triangle ABC is similar to the two smaller triangles formed: triangle ABD and triangle ACD. Use this similarity relationship to answer the following:\n\n(a) Write the proportion that relates corresponding sides of triangle ABC and triangle ABD. Use this proportion to derive the equation AB\u00b2 = BD \u00b7 BC. Show your work.\n\n(b) Similarly, write the proportion that relates corresponding sides of triangle ABC and triangle ACD. Use this proportion to derive the equation AC\u00b2 = CD \u00b7 BC. Show your work.\n\n(c) Using your derived equations from parts (a) and (b), compute the value of x (the length of BD) and the value of y (the length of DC).\n\n(d) Finally, verify that the Pythagorean Theorem holds for this truss by showing that AB\u00b2 + AC\u00b2 = BC\u00b2 using your computed values of x and y. What equation does this concrete calculation illustrate from the lesson's proof?",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The 5-12-13 right triangle is valid (25+144=169). The altitude-to-hypotenuse relationships AB\u00b2=BD\u00b7BC and AC\u00b2=CD\u00b7BC are correct, giving x=25/13 and y=144/13, which sum to 13=BC. All relationships are internally consistent and mathematically accurate.",
+          "lesson_alignment": "The problem directly exercises the lesson's core proof structure: using similar triangles formed by the altitude to the hypotenuse to derive a\u00b2=xc and b\u00b2=yc, then adding to reach a\u00b2+b\u00b2=c\u00b2. Part (d) explicitly connects the numerical work back to the lesson's proof, pushing students to see the concrete calculation as an instance of the general proof.",
+          "linguistic_clarity": "The problem is wrapped in a concrete roof truss scenario with a construction crew, and every quantity (AB=5, AC=12, BC=13, altitude AD, segments x and y) is preserved and given a purpose within that scenario. The prose is clean, the labeling is unambiguous, and the multi-part question flows naturally from the setup."
+        },
+        "feedback_for_haiku": "Your problem is strong: the roof truss scenario gives students a concrete reason to care about the altitude-to-hypotenuse construction, the numbers work out cleanly (5-12-13), and the four parts scaffold exactly the lesson's proof (a\u00b2=xc, b\u00b2=yc, then a\u00b2+b\u00b2=c(x+y)=c\u00b2). One small polish: in the scenario you describe A as the \"peak\" with the tie beam BC at the base, but if the right angle is at A and the hypotenuse is BC, then A is not directly \"above\" BC unless the truss is oriented so A is at the apex \u2014 that geometry does work, but you might briefly note that AD is the altitude from A to BC (which you do) so students visualize it as a plumb support. Also, in part (a) consider explicitly naming which pair of corresponding sides yields the proportion (e.g., \"AB corresponds to BC, and BD corresponds to AB\") so students don't fumble the correspondence. These are polish notes, not corrections.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The truss orientation calls A the 'peak' and BC the 'base tie beam,' but with AB=5 and AC=12, A is not centered over BC, so 'vertical support beam' is slightly misleading \u2014 AD is perpendicular to BC but not vertical in the physical sense.",
+            "suggested_fix": "Replace 'vertical support beam' with 'perpendicular support beam' or note that AD is perpendicular to the tie beam BC."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Part (a) asks students to write a proportion but does not prompt them to identify which angles justify the AA similarity, which is a key lesson idea.",
+            "suggested_fix": "Add a brief prompt in part (a) like 'State which pair of angles justifies triangle ABC ~ triangle ABD' before writing the proportion."
+          }
+        ]
+      }
+    }
+  ]
+}

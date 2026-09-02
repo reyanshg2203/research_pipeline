@@ -1,0 +1,5 @@
+A carpenter is building shelves and needs to check whether the corner is truly square (forms a 90° angle). She measures three pieces that will form a triangle: two support braces measure 7 inches and 24 inches, and a diagonal brace measures 25 inches.
+
+(a) Is the corner a true right angle? Use the converse of the Pythagorean Theorem to determine whether the triangle formed by these three measurements is a right triangle.
+
+(b) Suppose the carpenter remeasures the diagonal and finds it is actually 26 inches instead of 25 inches. Without recalculating everything, would this new triangle with sides 7, 24, and 26 inches be acute, right, or obtuse? Explain your reasoning by comparing c² to a² + b².

@@ -1,0 +1,84 @@
+{
+  "lesson_id": "lesson_08",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A landscape designer is creating two equilateral triangular garden tiles. The first tile, triangle ABC, has side length 8 feet. The second tile, triangle DEF, has side length 12 feet.\n\n**Part A:** Prove that triangle ABC is similar to triangle DEF. In your proof, identify all pairs of corresponding angles that are congruent, and explain why the side lengths of the two triangles are proportional (finding the scale factor).\n\n**Part B:** Describe the sequence of transformations (rigid motions and dilations) that would map triangle ABC onto triangle DEF. How many dilations do you need, and why?\n\n**Part C:** Contrast your approach with Tyler's failed proof that all rectangles are similar (from the lesson). Explain why one dilation is sufficient to prove that all equilateral triangles are similar, but two dilations would be needed for rectangles. What does this tell us about why not all rectangles are similar to each other?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_08. Let triangle ABC be a equilateral triangle with sides AB = 8, BC = 8, AC = 8, where \u2220A = 60\u00b0, \u2220B = 60\u00b0, \u2220C = 60\u00b0. Let triangle DEF be a equilateral triangle with sides DE = 12, EF = 12, DF = 12, where \u2220D = 60\u00b0, \u2220E = 60\u00b0, \u2220F = 60\u00b0. Triangle ABC is similar to triangle DEF by SSS similarity with scale factor 1.5. Find the length of AB in ABC.",
+      "judgment": {
+        "overall_score": 0.5,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 1
+        },
+        "rationales": {
+          "geometric_accuracy": "The geometric facts stated are internally consistent (both triangles equilateral, scale factor 12/8 = 1.5), but the question 'Find the length of AB' is answered directly in the problem statement ('AB = 8'), which the rubric explicitly flags as a 0-level issue where the answer is given in the question.",
+          "lesson_alignment": "Lesson 08 is about proving figures are similar (all circles, all equilateral triangles) and critiquing similarity proofs \u2014 it is not about computing side lengths given similarity. This problem exercises a tangentially related skill (identifying scale factor / SSS similarity) at the recall level and does not require the proof reasoning central to the lesson.",
+          "linguistic_clarity": "The prose is grammatically flawed ('a equilateral' should be 'an equilateral'), list-like, and provides no scenario. It reads as a bare recitation of facts followed by a trivial question, with no motivating context."
+        },
+        "feedback_for_haiku": "Your problem gives away the answer in the setup \u2014 you state \"AB = 8\" and then ask for the length of AB. That makes the task trivial and disconnected from the lesson's actual skill, which is proving (or reasoning about) why all equilateral triangles are similar. Instead, ask students to construct or explain the proof: for example, ask them to justify why triangle ABC is similar to triangle DEF, or to identify the single scale factor and explain why one dilation suffices for equilateral triangles (contrasting with the rectangle case from the lesson). Also, wrap the task in a concrete real-world scenario \u2014 e.g., two equilateral triangular tiles or garden plots with side lengths 8 and 12 \u2014 preserve every quantity, and place the final question (\"show these two tiles are similar, and justify with a single dilation\") inside that scenario. Finally, fix the grammar error \"a equilateral\" \u2192 \"an equilateral.\"",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem asks for the length of AB, but AB = 8 is already stated in the problem setup, so the answer is given in the question.",
+            "suggested_fix": "Replace the question with a genuine task, such as asking students to prove the two equilateral triangles are similar using a single dilation and rigid motions."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "critical",
+            "issue": "The task does not target the lesson's core skill of proving that figures (specifically all equilateral triangles) are similar; it merely names SSS similarity as a given fact.",
+            "suggested_fix": "Ask students to write a proof that these two equilateral triangles are similar, explicitly using one dilation with scale factor 1.5 and appropriate rigid motions, or to explain why one dilation suffices for equilateral triangles but not for rectangles."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is flat and list-like with no real-world scenario motivating the quantities.",
+            "suggested_fix": "Wrap the setup in a concrete context (e.g., two equilateral triangular garden tiles with sides 8 ft and 12 ft) and pose the final question from inside that scenario."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "Grammatical error: 'a equilateral triangle' should be 'an equilateral triangle' (appears twice).",
+            "suggested_fix": "Change 'a equilateral' to 'an equilateral' in both instances."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A landscape designer is creating two equilateral triangular garden tiles. The first tile, triangle ABC, has side length 8 feet. The second tile, triangle DEF, has side length 12 feet.\n\n**Part A:** Prove that triangle ABC is similar to triangle DEF. In your proof, identify all pairs of corresponding angles that are congruent, and explain why the side lengths of the two triangles are proportional (finding the scale factor).\n\n**Part B:** Describe the sequence of transformations (rigid motions and dilations) that would map triangle ABC onto triangle DEF. How many dilations do you need, and why?\n\n**Part C:** Contrast your approach with Tyler's failed proof that all rectangles are similar (from the lesson). Explain why one dilation is sufficient to prove that all equilateral triangles are similar, but two dilations would be needed for rectangles. What does this tell us about why not all rectangles are similar to each other?",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The mathematics is fully correct: two equilateral triangles with sides 8 and 12 have all corresponding angles equal to 60\u00b0, sides in ratio 12/8 = 3/2, and a single dilation by that scale factor (after appropriate rigid motions) maps one to the other. The contrast with rectangles requiring two independent scale factors is accurate.",
+          "lesson_alignment": "The problem directly targets the lesson's core learning goals: proving all equilateral triangles are similar, describing a transformation sequence with a single dilation, and critiquing Tyler's faulty rectangle proof. Part C especially pushes to the productive edge by asking students to synthesize why one dilation suffices for equilateral triangles but not rectangles \u2014 exactly the lesson synthesis question.",
+          "linguistic_clarity": "The problem is wrapped in a concrete landscape-designer scenario with specific quantities (8 ft, 12 ft tiles), and each part has a clear, well-defined task. Terminology is precise and appropriate for 10th-grade geometry, and the reference to Tyler's proof preserves the lesson connection."
+        },
+        "feedback_for_haiku": "Your problem is well-constructed and hits the lesson's key ideas cleanly \u2014 the equilateral triangle similarity proof, the single-dilation transformation sequence, and the contrast with Tyler's rectangle argument all align tightly with the lesson's synthesis. The landscape-designer framing gives the quantities a reason to exist without feeling forced. One small polish: in Part B the question \"How many dilations do you need, and why?\" slightly telegraphs the punchline of Part C; consider rephrasing to \"Justify each transformation you use\" so students discover the single-dilation insight themselves before contrasting with rectangles.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Part B's phrasing 'How many dilations do you need, and why?' partially gives away the key insight that Part C asks students to articulate.",
+            "suggested_fix": "Rephrase Part B to ask students to justify each transformation in their sequence, letting them independently notice that only one dilation is required before Part C makes the contrast explicit."
+          }
+        ]
+      }
+    }
+  ]
+}

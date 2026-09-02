@@ -1,0 +1,55 @@
+{
+  "problem_id": "lesson_06_001",
+  "lesson": "lesson_06",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 6.0,
+          "BC": 8.0,
+          "AC": 10.0
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": 9.0,
+          "EF": null,
+          "DF": 15.0
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "similar_SSS",
+      "entities": [
+        "ABC",
+        "DEF"
+      ],
+      "attributes": {
+        "pre_image": "ABC",
+        "image": "DEF",
+        "scale_factor": 1.5
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "sides.EF"
+  }
+}

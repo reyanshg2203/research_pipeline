@@ -1,0 +1,108 @@
+{
+  "problem_id": "lesson_05_001",
+  "lesson": "lesson_05",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 14.0,
+          "BC": 16.0,
+          "AC": 10.0
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "MNP",
+        "sides": {
+          "MN": null,
+          "NP": 7.0,
+          "MP": 5.0
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": [
+      {
+        "id": "MN",
+        "length": null,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": true,
+        "is_altitude": null
+      },
+      {
+        "id": "NP",
+        "length": 7.0,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": true,
+        "is_altitude": null
+      },
+      {
+        "id": "MP",
+        "length": 5.0,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": true,
+        "is_altitude": null
+      }
+    ],
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "ABC",
+        "MNP"
+      ],
+      "attributes": {
+        "center": "A",
+        "scale_factor": 0.5,
+        "pre_image": "ABC",
+        "image": "MNP"
+      }
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "MN",
+        "BC"
+      ],
+      "attributes": null
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "NP",
+        "AC"
+      ],
+      "attributes": null
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "MP",
+        "AB"
+      ],
+      "attributes": null
+    }
+  ],
+  "target": {
+    "entity": "MN",
+    "attribute": "length"
+  }
+}

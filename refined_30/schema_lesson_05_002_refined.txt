@@ -1,0 +1,5 @@
+A designer is creating a triangular sail for a sailboat. The outer triangle PQR represents the full sail design, where PQ = 20 feet and PR = 15 feet, with QR = 25 feet.
+
+To add a decorative reinforcement strip, the designer marks point X on side PQ and point Y on side PR such that the points divide the sides proportionally: PX = 12 feet and PY = 9 feet.
+
+Use the triangle proportionality theorem to determine whether segment XY is parallel to QR. If it is parallel, find the length of XY in feet.

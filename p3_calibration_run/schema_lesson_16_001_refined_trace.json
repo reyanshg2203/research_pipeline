@@ -1,0 +1,156 @@
+{
+  "problem_id": "lesson_16_001",
+  "lesson_id": "lesson_16",
+  "max_iterations": 3,
+  "iterations_used": 1,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_16",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 2,
+    "min_steps": 2,
+    "best_trace": [
+      "scale_factor_from_pair",
+      "scale_factor"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "2 in-scope steps lands in band [2..3]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_16_001",
+        "lesson": "lesson_16",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "XYZ",
+              "sides": {
+                "XY": 6.0,
+                "YZ": null,
+                "XZ": null
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "PQR"
+            ],
+            "attributes": {
+              "triangle_id": "PQR",
+              "angles": [
+                "P",
+                "Q",
+                "R"
+              ],
+              "sum": 180.0
+            }
+          },
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "XYZ"
+            ],
+            "attributes": {
+              "triangle_id": "XYZ",
+              "angles": [
+                "X",
+                "Y",
+                "Z"
+              ],
+              "sum": 180.0
+            }
+          },
+          {
+            "type": "congruent_angles",
+            "entities": [
+              "Q",
+              "Y"
+            ],
+            "attributes": {
+              "ids": [
+                "Q",
+                "Y"
+              ]
+            }
+          },
+          {
+            "type": "similar_AA",
+            "entities": [
+              "PQR",
+              "XYZ"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "pre_image": "PQR",
+              "image": "XYZ",
+              "congruent_angle_pairs": [
+                [
+                  "Q",
+                  "Y"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "XYZ",
+          "attribute": "sides.YZ"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_16",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 2,
+        "min_steps": 2,
+        "best_trace": [
+          "scale_factor_from_pair",
+          "scale_factor"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "2 in-scope steps lands in band [2..3]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_16. Let triangle PQR be a right triangle with sides PQ = 9, QR = 12. Let triangle XYZ be a right triangle with sides XY = 6. The interior angles of triangle PQR (\u2220P, \u2220Q, \u2220R) sum to 180\u00b0. The interior angles of triangle XYZ (\u2220X, \u2220Y, \u2220Z) sum to 180\u00b0. Angles Q, Y are congruent. Triangle PQR is similar to triangle XYZ by AA similarity (congruent angle pairs: Q \u2245 Y). Find the length of YZ in XYZ.",
+  "student_facing_prose": "A surveyor is comparing two similar right triangles formed by measuring angles and distances from a hillside. The first triangle PQR has a right angle at Q, with sides PQ = 9 meters and QR = 12 meters. A smaller similar triangle XYZ also has a right angle, and one of its legs measures XY = 6 meters.\n\nThe surveyor notices that angle Q in the larger triangle is congruent to angle Y in the smaller triangle \u2014 this means the triangles are similar by AA similarity. Since both triangles are right triangles, their interior angles sum to 180\u00b0, and the matching angles confirm the same shape.\n\nUsing the proportional relationships between the corresponding sides of similar triangles, what is the length of YZ in the smaller triangle XYZ?"
+}

@@ -1,0 +1,117 @@
+{
+  "lesson_id": "lesson_09",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": true,
+  "final_overall_score": 3.5,
+  "final_nl": "Two triangular support brackets are being designed for a warehouse shelving system. The brackets use the same angle measurements but are scaled to different sizes.\n\nThe smaller bracket, ABC, has side AB = 10 cm, side BC = 8 cm, angle A = 52\u00b0, and angle B = 68\u00b0.\n\nThe larger bracket, DEF, is a scaled version with side DE = 15 cm, angle D = 52\u00b0, and angle F = 60\u00b0.\n\nFirst, use the Triangle Angle Sum Theorem to find angle C in triangle ABC and angle E in triangle DEF.\n\nThen, determine whether the two triangles are similar using the Angle-Angle Triangle Similarity Theorem. If they are similar, find the length of side EF (round to the nearest tenth of a centimeter if necessary).\n\nIf the triangles are not similar, explain why they cannot be similar.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_09. Let triangle ABC be a triangle with sides AB = 10, where \u2220A = 52\u00b0, \u2220B = 68\u00b0. Let triangle DEF be a triangle with sides DE = 15, where \u2220D = 52\u00b0, \u2220F = 60\u00b0. The interior angles of triangle ABC (\u2220A, \u2220B, \u2220C) sum to 180\u00b0. The interior angles of triangle DEF (\u2220D, \u2220E, \u2220F) sum to 180\u00b0. Triangle ABC is similar to triangle DEF by AA similarity with scale factor 1.5 (congruent angle pairs: A \u2245 D, B \u2245 E). Find the measure of \u2220E in DEF.",
+      "judgment": {
+        "overall_score": 1.2,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem states the triangles are similar by AA with A\u2245D and B\u2245E, but the given angles contradict this: \u2220B = 68\u00b0 while \u2220E = 180\u00b0 - 52\u00b0 - 60\u00b0 = 68\u00b0 works, but \u2220F = 60\u00b0 is given, so \u2220C = 60\u00b0 must hold, meaning \u2220C = 180 - 52 - 68 = 60\u00b0 \u2713. However, the stated 'scale factor 1.5' with AB=10 and DE=15 assumes AB corresponds to DE, which is consistent. The real issue: the problem asserts the similarity and scale factor as given facts, then only asks for \u2220E \u2014 which is trivially 180-52-60 = 68\u00b0, and the answer is essentially already stated by 'B \u2245 E' with \u2220B=68\u00b0. The answer is embedded in the givens.",
+          "lesson_alignment": "The lesson is about proving/applying AA similarity, typically by using Triangle Angle Sum to establish two congruent angle pairs. This problem gives the similarity conclusion away as a premise and asks only for an angle sum computation. It doesn't require students to apply AA similarity reasoning.",
+          "linguistic_clarity": "The phrasing 'a triangle with sides AB = 10' is awkward (only one side given, not 'sides'). It's grammatically decipherable but clunky and list-like, with redundant statements about angle sums. No scenario is provided."
+        },
+        "feedback_for_haiku": "Your problem essentially gives away the answer: you state that \u2220B \u2245 \u2220E and that \u2220B = 68\u00b0, so asking for \u2220E is trivial \u2014 the student just reads it off. You also hand students the conclusion (\"Triangle ABC is similar to triangle DEF by AA similarity with scale factor 1.5\") instead of asking them to establish it. Rewrite so that similarity must be discovered: give two angles in each triangle where at least one pair requires the Triangle Angle Sum Theorem to match up (e.g., give \u2220A and \u2220B in one triangle, and \u2220D and \u2220F in the other, then ask students to find a missing side length using the derived scale factor). Also fix \"a triangle with sides AB = 10\" \u2014 that's ungrammatical since only one side is given. Finally, wrap the problem in a concrete real-world scenario (e.g., two triangular sails, garden plots, or support brackets) preserving every quantity and label, and place the final question inside that scenario. Drop the redundant \"interior angles sum to 180\u00b0\" sentences \u2014 that's a theorem students apply, not a given.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The answer to 'Find \u2220E' is directly stated in the premises: the problem asserts B \u2245 E and gives \u2220B = 68\u00b0, so \u2220E = 68\u00b0 with no reasoning required.",
+            "suggested_fix": "Ask for a side length (e.g., EF or DF) instead, or remove the explicit 'B \u2245 E' claim and require students to derive corresponding angles via the Triangle Angle Sum Theorem."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "critical",
+            "issue": "The problem hands students the similarity conclusion and the scale factor as givens, so no AA-similarity reasoning is exercised.",
+            "suggested_fix": "Provide two angles per triangle (not all corresponding), and require the student to use the Triangle Angle Sum Theorem plus AA to establish similarity before computing an unknown side or angle."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The phrase 'a triangle with sides AB = 10' is ungrammatical since only one side is specified, and the statements about interior angles summing to 180\u00b0 are redundant filler.",
+            "suggested_fix": "Rewrite as 'In triangle ABC, AB = 10, \u2220A = 52\u00b0, and \u2220B = 68\u00b0' and delete the angle-sum sentences."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The problem is presented as a bare list of asserted facts with no real-world context.",
+            "suggested_fix": "Wrap the setup in a concrete scenario (e.g., two triangular banners or ramps being scaled up), keeping every quantity and label, and ask the final question from inside that scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "Two triangular support brackets are being designed for a warehouse shelving system. The brackets use the same angle measurements but are scaled to different sizes.\n\nThe smaller bracket, ABC, has a side AB = 10 cm, angle A = 52\u00b0, and angle B = 68\u00b0.\n\nThe larger bracket, DEF, is a scaled version with side DE = 15 cm, angle D = 52\u00b0, and angle F = 60\u00b0.\n\nFirst, use the Triangle Angle Sum Theorem to find angle C in triangle ABC and angle E in triangle DEF.\n\nThen, determine whether the two triangles are similar using the Angle-Angle Triangle Similarity Theorem. If they are similar, find the length of side EF (round to the nearest tenth of a centimeter if necessary).\n\nIf the triangles are not similar, explain why they cannot be similar.",
+      "judgment": {
+        "overall_score": 3.5,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 3,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The angles work out correctly: in ABC, C = 180 - 52 - 68 = 60\u00b0; in DEF, E = 180 - 52 - 60 = 68\u00b0. Both triangles share angles {52\u00b0, 60\u00b0, 68\u00b0}, so they are indeed similar by AA. Side AB (between angles A=52\u00b0 and B=68\u00b0) corresponds to side DF (between angles D=52\u00b0 and F=60\u00b0... wait). Actually AB is between A and B, and its corresponding side in DEF is between the angles congruent to A (52\u00b0) and B (68\u00b0), which are D (52\u00b0) and E (68\u00b0), so AB corresponds to DE. Scale factor = 15/10 = 1.5, so EF (opposite D=52\u00b0 in DEF) corresponds to BC (opposite A=52\u00b0). EF = 1.5\u00b7BC, but BC isn't given, so EF cannot be numerically determined without using Law of Sines \u2014 which is beyond this lesson. This is a genuine underdetermination issue: the student can prove similarity but cannot find EF with just similarity ratios since no corresponding side pair is given with both lengths.",
+          "lesson_alignment": "The problem tightly aligns with lesson_09: it requires the Triangle Angle Sum Theorem to find missing angles, then application of the AA Similarity Theorem when the given angle pairs aren't directly corresponding \u2014 exactly the productive-edge scenario the lesson synthesis emphasizes.",
+          "linguistic_clarity": "The warehouse shelving bracket scenario is concrete, motivates the scaling, and the final question about EF length lives inside that scenario. Prose is clean and the quantities are preserved throughout."
+        },
+        "feedback_for_haiku": "Your problem has a subtle but real math issue: after students correctly find angle C = 60\u00b0 and angle E = 68\u00b0 and conclude the triangles are similar by AA, you ask them to compute EF \u2014 but this is not determinable from the given information using only similarity. The side AB corresponds to DE (both between the 52\u00b0 and 68\u00b0 angles), giving a scale factor of 1.5. However, EF is opposite the 52\u00b0 angle in DEF, so its corresponding side is BC in ABC, and BC's length is never given. Students would need the Law of Sines to find EF numerically, which is out of scope for this lesson. To fix this, either (a) give BC a length in triangle ABC and ask for EF (which will then be 1.5\u00b7BC), or (b) ask for the length of DF instead \u2014 but note DF is between angles 52\u00b0 and 60\u00b0, corresponding to the side between 52\u00b0 and 60\u00b0 in ABC, which is AC and also not given. The cleanest repair: provide BC = 7 cm (or similar) in the smaller bracket and ask for the corresponding side in the larger bracket, or restructure so the given side and requested side are truly corresponding pairs where one length is known in each triangle.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The length of EF cannot be determined from the given information using only AA similarity, because EF's corresponding side BC in triangle ABC is never given a length.",
+            "suggested_fix": "Add a length for BC in triangle ABC (e.g., BC = 8 cm), so students can apply the scale factor 15/10 = 1.5 to compute EF = 12 cm."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "Two triangular support brackets are being designed for a warehouse shelving system. The brackets use the same angle measurements but are scaled to different sizes.\n\nThe smaller bracket, ABC, has side AB = 10 cm, side BC = 8 cm, angle A = 52\u00b0, and angle B = 68\u00b0.\n\nThe larger bracket, DEF, is a scaled version with side DE = 15 cm, angle D = 52\u00b0, and angle F = 60\u00b0.\n\nFirst, use the Triangle Angle Sum Theorem to find angle C in triangle ABC and angle E in triangle DEF.\n\nThen, determine whether the two triangles are similar using the Angle-Angle Triangle Similarity Theorem. If they are similar, find the length of side EF (round to the nearest tenth of a centimeter if necessary).\n\nIf the triangles are not similar, explain why they cannot be similar.",
+      "judgment": {
+        "overall_score": 3.5,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 3,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The math is internally consistent: triangle ABC has angles 52\u00b0, 68\u00b0, 60\u00b0; triangle DEF has angles 52\u00b0, ?, 60\u00b0 giving E = 68\u00b0. The triangles are similar by AA, and the scale factor DE/AB = 15/10 = 1.5, so EF = 8 \u00d7 1.5 = 12.0 cm. One subtle issue: the correspondence must be verified \u2014 since angle A (52\u00b0) \u2194 angle D (52\u00b0) and angle B (68\u00b0) \u2194 angle E (68\u00b0), side AB corresponds to side DE and side BC corresponds to side EF, which works out cleanly. No contradictions, but the problem gives BC = 8 which is only usable once the correspondence is deduced \u2014 a minor demand on the student that is appropriate.",
+          "lesson_alignment": "The problem directly targets the lesson's core skill: using the Triangle Angle Sum Theorem to find missing angles, then applying the AA Similarity Theorem to establish similarity, then using the scale factor to find a missing side. This matches the final activity in the lesson almost exactly and hits the productive edge of difficulty by requiring students to check angle correspondences before setting up the proportion.",
+          "linguistic_clarity": "The problem is wrapped in a concrete real-world scenario (warehouse shelving brackets), every quantity is preserved and clearly labeled, and the final question is asked from inside the scenario context. The instructions are sequenced clearly and unambiguously."
+        },
+        "feedback_for_haiku": "Your problem is well-constructed and cleanly aligned to the lesson. One small refinement to consider: after students find angle C = 60\u00b0 and angle E = 68\u00b0, they need to notice that the correspondence is A\u2194D, B\u2194E, C\u2194F (not the order the letters suggest at first glance), which then makes AB\u2194DE and BC\u2194EF. This is a nice challenge, but you could sharpen it by asking students to explicitly state which pairs of angles are corresponding before computing EF \u2014 this makes the reasoning visible and matches how the lesson emphasizes checking correspondence. Also, since BC = 8 and DE = 15 both come out to a clean answer (EF = 12.0), the \"round to the nearest tenth\" instruction is unnecessary and slightly misleading \u2014 either pick side lengths that actually require rounding, or drop the rounding clause.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The instruction to round to the nearest tenth is unnecessary because EF = 12.0 exactly with the given numbers.",
+            "suggested_fix": "Either remove the rounding instruction or choose side lengths (e.g., AB = 11, DE = 15) that produce a non-terminating decimal answer."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem does not explicitly prompt students to identify which angles correspond before computing the ratio, even though the letter order (A\u2194D, B\u2194E, C\u2194F) happens to align with the angle values here.",
+            "suggested_fix": "Add a sub-question like 'State which pairs of angles are corresponding, and explain how you know AB corresponds to DE' before asking for EF."
+          }
+        ]
+      }
+    }
+  ]
+}

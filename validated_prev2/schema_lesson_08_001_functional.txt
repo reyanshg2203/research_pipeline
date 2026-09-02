@@ -1,0 +1,1 @@
+Lesson context: lesson_08. Let triangle ABC be a equilateral triangle with sides BC = 8, AC = 8, where ∠A = 60°, ∠B = 60°, ∠C = 60°. Let triangle DEF be a equilateral triangle with sides DE = 12, EF = 12, DF = 12, where ∠D = 60°, ∠E = 60°, ∠F = 60°. Triangle ABC is similar to triangle DEF by SSS similarity with scale factor 1.5. Find the length of AB in ABC.

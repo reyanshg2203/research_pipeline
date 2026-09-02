@@ -1,0 +1,71 @@
+{
+  "lesson_id": "lesson_01",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A graphic designer is creating a projected image of a company logo. The designer places a projector at point O and projects a small segment EF from the original logo onto a wall. The projector enlarges all distances from O by a scale factor of 2.5. The projected image segment GH on the wall measures 15 cm long.\n\nTo verify the setup, the designer measures the distance from the projector at O to point G (the image of E) and finds it to be 7.5 cm.\n\n(a) Find the length of the original segment EF.\n\n(b) Based on the definition of dilation, what is the distance from O to point E (the original location before enlargement)? Explain your reasoning in terms of how a dilation scales distances from the center.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_01. Let segment EF be a segment. Let segment GH be a segment with length 15. EF is dilated to form GH with scale factor 2.5, centered at point O. Find the length of EF.",
+      "judgment": {
+        "overall_score": 3.2,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The math is consistent: if EF is dilated by scale factor 2.5 to produce GH with length 15, then EF = 15/2.5 = 6. No contradictions or ambiguities in the geometric relationships.",
+          "lesson_alignment": "The problem targets the correct skill (scale factor / dilation relationship between original and image lengths), but it is a very generic reverse-application with only one arithmetic step. It does not push students to reason about the center of dilation, rays, or any richer property from the lesson \u2014 the mention of center O is essentially decorative.",
+          "linguistic_clarity": "The wording is grammatically clear but contains a redundant opening ('Let segment EF be a segment') and is presented as a flat, list-like sequence of assertions with no real-world scenario to motivate the quantities."
+        },
+        "feedback_for_haiku": "Your problem is mathematically sound (EF = 6), but it reads as a bare, generic exercise that only asks the student to divide 15 by 2.5. First, fix the awkward opener 'Let segment EF be a segment' \u2014 that's redundant. More importantly, wrap the problem in a concrete real-world scenario that preserves every quantity and label: for example, a graphic designer projecting a logo segment EF from a projector at point O onto a wall, where the projected image GH measures 15 cm and the projector enlarges by a factor of 2.5 \u2014 then ask, from inside that scenario, how long the original segment EF is. Also consider raising the challenge slightly: give the student the distance from O to one endpoint, or ask them to also identify a second corresponding length, so the task exercises more than one arithmetic step and engages the definition of dilation (rays from center, distances scaled by k) rather than just the scale-factor ratio.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The opening 'Let segment EF be a segment' is redundant and awkward.",
+            "suggested_fix": "Replace with a direct statement like 'Segment EF is dilated from center O by a scale factor of 2.5 to produce segment GH.'"
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is presented as a flat sequence of asserted facts with no scenario giving the quantities a reason to exist.",
+            "suggested_fix": "Embed the setup in a concrete real-world context (e.g., a projector at point O enlarging a logo segment onto a wall) preserving the length 15, the scale factor 2.5, and the center O, and ask the final question from inside that scenario."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The task is a single-step reverse computation that doesn't meaningfully engage the lesson's emphasis on rays from the center, measuring along them, or dilating multi-point figures.",
+            "suggested_fix": "Add a component that uses the center O \u2014 e.g., give OG or OE and ask for the other, or ask the student to describe where E lies relative to O and G along the ray."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A graphic designer is creating a projected image of a company logo. The designer places a projector at point O and projects a small segment EF from the original logo onto a wall. The projector enlarges all distances from O by a scale factor of 2.5. The projected image segment GH on the wall measures 15 cm long.\n\nTo verify the setup, the designer measures the distance from the projector at O to point G (the image of E) and finds it to be 7.5 cm.\n\n(a) Find the length of the original segment EF.\n\n(b) Based on the definition of dilation, what is the distance from O to point E (the original location before enlargement)? Explain your reasoning in terms of how a dilation scales distances from the center.",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The math is fully consistent: with scale factor 2.5, EF = 15/2.5 = 6 cm and OE = 7.5/2.5 = 3 cm. Both applications of the dilation definition (segment lengths and distances from center scale by k) are correct with no internal contradictions.",
+          "lesson_alignment": "The problem directly targets the lesson's core definition: a dilation with center P and scale factor k sends A to a point k times farther from P along ray PA. Part (b) explicitly requires students to reason from that definition (distance from center scales by k), which is precisely the productive edge of the lesson.",
+          "linguistic_clarity": "The projector-and-wall scenario gives every quantity a concrete reason to exist, the question is asked from inside that scenario, and labels O, E, F, G, H are all clearly identified with their roles (center, original, image). Wording is clean and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is well-constructed: the projector scenario motivates the dilation cleanly, the labels for center, original, and image points are introduced explicitly, and both parts require genuine application of the definition rather than a single computation. Part (b) is a nice touch because it forces students to articulate that distances from the center \u2014 not just segment lengths \u2014 scale by the factor k, which is exactly the definition the lesson wants them to internalize. No changes needed; this is a strong example of framing an abstract dilation exercise in a real-world context while preserving every quantity.",
+        "specific_issues": []
+      }
+    }
+  ]
+}

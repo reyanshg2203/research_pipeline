@@ -1,0 +1,5 @@
+A construction crew is building two similar reinforced concrete roof supports shaped like right triangles. The larger support, triangle PQR, has legs measuring PQ = 9 feet and QR = 12 feet, meeting at a right angle at Q. The smaller support, triangle XYZ, is scaled down from PQR and also has a right angle at Y. The crew knows that the side XY on the smaller support measures 6 feet.
+
+Since both supports have the same interior angles (they sum to 180°), and since the right angles at Q and Y match, the two triangles are similar by the AA Similarity Theorem.
+
+Using the proportional relationships between corresponding sides of these similar triangles, what is the length of side YZ on the smaller support?

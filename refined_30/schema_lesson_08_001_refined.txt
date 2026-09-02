@@ -1,0 +1,7 @@
+A landscape designer is creating two equilateral triangular garden tiles. The first tile, triangle ABC, has side length 8 feet. The second tile, triangle DEF, has side length 12 feet.
+
+**Part A:** Prove that triangle ABC is similar to triangle DEF. In your proof, identify all pairs of corresponding angles that are congruent, and explain why the side lengths of the two triangles are proportional (finding the scale factor).
+
+**Part B:** Describe the sequence of transformations (rigid motions and dilations) that would map triangle ABC onto triangle DEF. How many dilations do you need, and why?
+
+**Part C:** Contrast your approach with Tyler's failed proof that all rectangles are similar (from the lesson). Explain why one dilation is sufficient to prove that all equilateral triangles are similar, but two dilations would be needed for rectangles. What does this tell us about why not all rectangles are similar to each other?

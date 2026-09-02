@@ -1,0 +1,1 @@
+A carpenter is building a right triangular brace for a roof support, with two sides meeting at a right angle measuring AB = 12 inches and BC = 9 inches. She needs to know the length of the hypotenuse AC to order the correct diagonal support beam. What length should she order for AC?

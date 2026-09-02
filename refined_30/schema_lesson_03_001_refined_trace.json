@@ -1,0 +1,104 @@
+{
+  "lesson_id": "lesson_03",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A graphic designer is creating a scaled-down version of a triangular logo. The original logo is triangle ABC with sides AB = 5 cm, BC = 7 cm, and AC = 8 cm. The designer will dilate this triangle with a scale factor of 0.6, using point P as the center of dilation, to create the new logo triangle A'B'C'. Point P is located 10 cm from vertex A.\n\n(a) What is the perimeter of the new scaled-down logo?\n\n(b) How far is point P from vertex A' after the dilation?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_03. Let triangle ABC be a triangle with sides AB = 5, BC = 7, AC = 8. Let triangle A'B'C' be a triangle. ABC is dilated to form A'B'C' with scale factor 0.6, centered at point P. Find the length of A'B' in A'B'C'.",
+      "judgment": {
+        "overall_score": 3.5,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The math is fully consistent: dilating AB = 5 by scale factor 0.6 yields A'B' = 3. The center P and other side lengths (BC, AC) are not needed but do not contradict anything.",
+          "lesson_alignment": "The problem directly targets the lesson's key assertion \u2014 that dilation multiplies lengths by the scale factor k. It's a clean application, though it's fairly basic (one-step multiplication) and doesn't push toward the productive edge of difficulty.",
+          "linguistic_clarity": "The prose is grammatically clean and unambiguous, but it's a flat list of asserted facts with no scenario giving the quantities meaning. Extraneous data (BC, AC, point P) is included without motivation."
+        },
+        "feedback_for_haiku": "Your problem is mathematically correct and targets the right skill, but it reads as a bare list of facts (\"Let triangle ABC... Find A'B'\"). Wrap it in a concrete real-world scenario \u2014 for example, a graphic designer scaling down a triangular logo, a quilter shrinking a fabric triangle, or an architect reducing a triangular floor tile \u2014 and put the final question inside that scenario (\"How long will side A'B' of the reduced logo be?\"). Preserve every quantity exactly: AB = 5, BC = 7, AC = 8, scale factor 0.6, center P. Also consider either using the extra side lengths BC and AC (e.g., ask for perimeter of the image, or ask about multiple sides) or trimming them, since including them without purpose adds noise. To push closer to the productive edge, you could give students the image length and have them find the original, or provide a distance from P and ask them to combine the center-of-dilation relationship with the side-length assertion.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is framed as a flat sequence of asserted facts with no real-world context giving the quantities a reason to exist.",
+            "suggested_fix": "Rewrite as a concrete scenario (e.g., a designer scaling a triangular logo) that preserves AB = 5, BC = 7, AC = 8, scale factor 0.6, and center P, and pose the final question from inside that scenario."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The task is a single-step multiplication that only lightly exercises the lesson's assertion and doesn't push toward the productive edge of difficulty.",
+            "suggested_fix": "Ask for the perimeter of A'B'C' (using all three side lengths), or invert the problem by giving an image length and asking for the pre-image, to require deeper application."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "minor",
+            "issue": "The lengths BC = 7 and AC = 8 and the center P are given but never used, which is slightly under-determined in purpose.",
+            "suggested_fix": "Either use those quantities in the question (e.g., find the perimeter of the image) or omit them so every given value has a role."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A graphic designer is creating a scaled-down version of a triangular logo. The original logo is triangle ABC with sides AB = 5 cm, BC = 7 cm, and AC = 8 cm. The designer will dilate this triangle with a scale factor of 0.6, using point P as the center of dilation, to create the new logo triangle A'B'C'.\n\nWhat will be the perimeter of the new scaled-down logo?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The math is fully consistent: perimeter of ABC = 20 cm, scaled by 0.6 gives 12 cm. The center P doesn't affect the perimeter, and the scale factor applies uniformly to all side lengths per the lesson's assertion.",
+          "lesson_alignment": "This cleanly targets the lesson's core learning goal\u2014dilating by scale factor k multiplies all lengths by k\u2014applied to perimeter, mirroring Problem 2 in the lesson closely. It is appropriately challenging but is essentially a reskin of the lesson's practice problem without pushing to a productive edge.",
+          "linguistic_clarity": "The problem wraps the dilation in a concrete graphic-design scenario, preserves all quantities and labels, and asks the final question from within the scenario (perimeter of the new logo). Prose is clean and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is mathematically clean and nicely framed in a designer scenario, but it sits very close to the lesson's existing perimeter-under-dilation practice problem. To push it to a more productive edge of difficulty, consider adding a wrinkle that requires genuine application rather than a single multiplication\u2014e.g., give the perimeter of the image and ask for the original, ask for a specific side length of A'B'C' after dilation, or provide the distance PA and ask for PA' alongside a perimeter question. Also, since P is mentioned but never used in the computation, either remove the reference to P or make its role matter (for example, by giving PA and asking about PA').",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem closely mirrors the lesson's Problem 2 (perimeter under dilation) with only surface changes to numbers and context.",
+            "suggested_fix": "Add a twist\u2014such as requiring students to find an individual side length of A'B'C', work backward from the image perimeter, or incorporate the PA'/PA relationship\u2014to push beyond direct pattern-matching."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "Point P is introduced as the center of dilation but plays no role in the computation, which may distract students.",
+            "suggested_fix": "Either omit the mention of P or give it a purpose (e.g., specify PA and ask something about PA' in addition to perimeter)."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A graphic designer is creating a scaled-down version of a triangular logo. The original logo is triangle ABC with sides AB = 5 cm, BC = 7 cm, and AC = 8 cm. The designer will dilate this triangle with a scale factor of 0.6, using point P as the center of dilation, to create the new logo triangle A'B'C'. Point P is located 10 cm from vertex A.\n\n(a) What is the perimeter of the new scaled-down logo?\n\n(b) How far is point P from vertex A' after the dilation?",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "Part (a) is correct: perimeter 20 \u00d7 0.6 = 12 cm. Part (b) is also correct by the definition of dilation: PA' = 0.6 \u00d7 PA = 6 cm. All quantities are consistent and the dilation setup (scale factor 0.6, center P, PA = 10) is unambiguous.",
+          "lesson_alignment": "The problem directly targets the lesson's two learning goals: (1) dilating by scale factor k multiplies all lengths by k (perimeter question), and (2) the definitional property PA'/PA = k (distance-to-center question). It nicely combines both ideas from the lesson in a single problem.",
+          "linguistic_clarity": "The problem is wrapped in a concrete graphic-designer scenario with the question asked inside it, quantities preserved, and terms deliberate. Prose is clean and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is solid \u2014 it combines the two central lesson ideas (scale factor multiplies all lengths; PA'/PA = k) inside a believable graphic-design scenario with clean, unambiguous prose. No changes needed. Optional polish: you could briefly hint that A' lies on ray PA (to reinforce the directional part of the definition), but this is not required for correctness.",
+        "specific_issues": []
+      }
+    }
+  ]
+}

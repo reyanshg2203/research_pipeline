@@ -1,0 +1,90 @@
+{
+  "problem_id": "lesson_09_003",
+  "lesson": "lesson_09",
+  "entities": {
+    "triangles": [
+      {
+        "id": "JKL",
+        "sides": {
+          "JK": 5.0,
+          "KL": null,
+          "JL": null
+        },
+        "angles": {
+          "J": 28.0,
+          "K": null,
+          "L": 112.0
+        },
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "MNO",
+        "sides": {
+          "MN": 8.0,
+          "NO": null,
+          "MO": null
+        },
+        "angles": {
+          "M": null,
+          "N": 40.0,
+          "O": 112.0
+        },
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "JKL"
+      ],
+      "attributes": {
+        "triangle_id": "JKL"
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "MNO"
+      ],
+      "attributes": {
+        "triangle_id": "MNO"
+      }
+    },
+    {
+      "type": "similar_AA",
+      "entities": [
+        "JKL",
+        "MNO"
+      ],
+      "attributes": {
+        "pre_image": "MNO",
+        "image": "JKL",
+        "congruent_angle_pairs": [
+          [
+            "L",
+            "O"
+          ],
+          [
+            "J",
+            "M"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "JKL",
+    "attribute": "angles.K"
+  }
+}

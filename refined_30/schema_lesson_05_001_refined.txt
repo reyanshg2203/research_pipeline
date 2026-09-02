@@ -1,0 +1,3 @@
+A triangular garden has sides of length 14 meters, 16 meters, and 10 meters. The gardener marks specific points on two sides of the garden such that these points divide those sides in the same ratio. Specifically, the points divide the 14-meter side and the 16-meter side in the ratio 2:1 from one vertex. The gardener plans to connect these two points with a narrow walking path.
+
+If the 10-meter side is opposite the vertex from which the divisions are measured, what is the length of the walking path segment connecting the two marked points? Explain why this segment is parallel to the 10-meter side.

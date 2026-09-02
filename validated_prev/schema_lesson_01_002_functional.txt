@@ -1,0 +1,1 @@
+Lesson context: lesson_01. Let segment EF be a segment. Let segment GH be a segment with length 15. EF is dilated to form GH with scale factor 2.5, centered at point O. Find the length of EF.

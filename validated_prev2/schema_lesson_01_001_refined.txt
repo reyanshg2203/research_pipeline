@@ -1,0 +1,3 @@
+A graphic designer is preparing two versions of a logo: the original design ABCD and a smaller version MNPQ for use on business cards. The original logo is a quadrilateral with sides AB = 8, BC = 6, CD = 10, and DA = 12. She creates the smaller version by dilating the original from a fixed point P (the center of dilation) using a scale factor of 0.5.
+
+In the dilated version MNPQ, she has already measured two of the sides: NP = 3 and PQ = 5. Before she finalizes the business card design, she needs to determine the length of side MN in the smaller logo. What should that measurement be?

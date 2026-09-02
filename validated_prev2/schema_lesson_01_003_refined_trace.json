@@ -1,0 +1,226 @@
+{
+  "problem_id": "lesson_01_003",
+  "lesson_id": "lesson_01",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_01",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 1,
+    "min_steps": 1,
+    "best_trace": [
+      "scale_factor"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "1 in-scope steps lands in band [1..2]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_01_003",
+        "lesson": "lesson_01",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "RST",
+              "n_sides": 3,
+              "sides": {
+                "RS": 12.0,
+                "ST": 9.0,
+                "TR": 15.0
+              },
+              "angles": null
+            },
+            {
+              "id": "UVW",
+              "n_sides": 3,
+              "sides": {
+                "UV": 4.0,
+                "VW": 3.0,
+                "WU": 5.0
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "scaled_copy",
+            "entities": [
+              "RST",
+              "UVW"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "pre_image": "RST",
+              "image": "UVW"
+            }
+          }
+        ],
+        "target": {
+          "entity": "RST",
+          "attribute": "sides.RS"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "target_vacuous",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Target RST.sides.RS is already declared with value 12.0. The problem is vacuous - there is nothing to solve."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target RST.sides.RS is already given a value..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": {
+        "problem_id": "lesson_01_003",
+        "lesson": "lesson_01",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "RST",
+              "n_sides": 3,
+              "sides": {
+                "RS": null,
+                "ST": 9.0,
+                "TR": 15.0
+              },
+              "angles": null
+            },
+            {
+              "id": "UVW",
+              "n_sides": 3,
+              "sides": {
+                "UV": 4.0,
+                "VW": 3.0,
+                "WU": 5.0
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "scaled_copy",
+            "entities": [
+              "RST",
+              "UVW"
+            ],
+            "attributes": {
+              "scale_factor": 3.0,
+              "pre_image": "UVW",
+              "image": "RST"
+            }
+          }
+        ],
+        "target": {
+          "entity": "RST",
+          "attribute": "sides.RS"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_01_003",
+        "lesson": "lesson_01",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "RST",
+              "n_sides": 3,
+              "sides": {
+                "RS": null,
+                "ST": 9.0,
+                "TR": 15.0
+              },
+              "angles": null
+            },
+            {
+              "id": "UVW",
+              "n_sides": 3,
+              "sides": {
+                "UV": 4.0,
+                "VW": 3.0,
+                "WU": 5.0
+              },
+              "angles": null
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "scaled_copy",
+            "entities": [
+              "RST",
+              "UVW"
+            ],
+            "attributes": {
+              "scale_factor": 3.0,
+              "pre_image": "UVW",
+              "image": "RST"
+            }
+          }
+        ],
+        "target": {
+          "entity": "RST",
+          "attribute": "sides.RS"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_01",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": 1,
+        "best_trace": [
+          "scale_factor"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "1 in-scope steps lands in band [1..2]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_01. Let triangle RST be a 3-sided figure with ST = 9, TR = 15. Let triangle UVW be a 3-sided figure with UV = 4, VW = 3, WU = 5. RST is a scaled copy of UVW with scale factor 3. Find the length of RS in RST.",
+  "student_facing_prose": "A toy manufacturer is creating two different video game controllers. The original controller UVW has sides UV = 4 inches, VW = 3 inches, and WU = 5 inches. The company decides to make a larger version, controller RST, which is a scaled copy of UVW with a scale factor of 3.\n\nThe designer knows that ST = 9 inches and TR = 15 inches on the larger controller. To complete the design specifications, she needs to find the length of the third side, RS.\n\nWhat is the length of RS?"
+}

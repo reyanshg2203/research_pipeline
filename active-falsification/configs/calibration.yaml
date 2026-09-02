@@ -26,6 +26,11 @@ families:
   - lte_valuation
   - recurrence_substitution
 
+difficulties:
+  - easy
+  - medium
+  - hard
+
 master_seed: 20260901
 
 temperature: 0.6
@@ -35,4 +40,4 @@ top_k: 20
 calibration_per_tier: 10
 
 max_new_tokens:
-  solve: 2048
+  solve: 32768

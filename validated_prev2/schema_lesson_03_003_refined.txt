@@ -1,0 +1,3 @@
+A designer is creating a scaled blueprint of a triangular component. The original triangle PQR has a side PQ measuring 4 units. She decides to enlarge the design using a dilation centered at point C with a scale factor of 2, producing the image triangle P'Q'R'.
+
+What will be the length of the corresponding side P'Q' in the enlarged triangle?

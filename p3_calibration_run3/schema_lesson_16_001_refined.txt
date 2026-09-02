@@ -1,0 +1,3 @@
+A surveyor is working with two similar right triangles to measure distances across a piece of land. In the first triangle PQR, the two legs measure PQ = 9 feet and QR = 12 feet, with the right angle at Q. The surveyor has identified a second similar right triangle XYZ (with angles matching: Q ≅ Y and R ≅ Z) where one leg measures XY = 6 feet and the right angle is at Y.
+
+Using the proportional relationships between these similar triangles, what is the length of side YZ in triangle XYZ?

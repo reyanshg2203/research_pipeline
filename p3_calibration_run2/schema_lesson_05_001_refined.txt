@@ -1,0 +1,10 @@
+A contractor is designing a support structure for a roof truss. She sketches triangle ABC with sides AB = 14 inches, BC = 16 inches, and AC = 10 inches. To reinforce the frame, she plans to add internal bracing by connecting two points M and N on the sides of the triangle, where M lies on side AB and N lies on side AC, each positioned at the midpoint of their respective sides.
+
+Because of how the bracing is positioned, the smaller triangle MNP formed by these midpoints and a third point P will be a dilation of the original triangle ABC, centered at vertex A with a scale factor of 0.5.
+
+This means:
+- Segment MN will be parallel to side BC
+- Segment NP will be parallel to side AC, with length NP = 7 inches
+- Segment MP will be parallel to side AB, with length MP = 5 inches
+
+To complete her design plans, the contractor needs to know the length of the internal brace segment MN. What should she calculate?

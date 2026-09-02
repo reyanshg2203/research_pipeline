@@ -1,0 +1,117 @@
+{
+  "lesson_id": "lesson_06",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A carpentry workshop is designing two triangular roof trusses. The first truss, ABC, has sides AB = 6 feet, BC = 8 feet, and AC = 10 feet. The second truss, DEF, is designed to be similar to truss ABC. On the workshop blueprint, truss DEF is shown in a different orientation: it has been rotated and is positioned differently from truss ABC. The sides of truss DEF are DE = 9 feet, EF = 12 feet, and DF = 15 feet.\n\nPart (a): By examining the side lengths of both trusses, determine which vertices of DEF correspond to which vertices of ABC. Write a similarity statement relating triangle ABC to triangle DEF.\n\nPart (b): What is the scale factor of the dilation that takes truss ABC to truss DEF?\n\nPart (c): Describe a sequence of rigid motions and a dilation that would map truss ABC onto truss DEF. In your description, specify the center of the dilation and the scale factor. (Hint: You may use any rigid motions\u2014such as a rotation, reflection, or translation\u2014followed by a dilation, or in any order that works.)\n\nPart (d): The carpenter needs to cut a beam for side EF of the second truss. How many feet of lumber should be cut for beam EF?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_06. Let triangle ABC be a triangle with sides AB = 6, BC = 8, AC = 10. Let triangle DEF be a triangle with sides DE = 9, EF = 12, DF = 15. Triangle ABC is similar to triangle DEF by SSS similarity with scale factor 1.5. Find the length of EF in DEF.",
+      "judgment": {
+        "overall_score": 0.9,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The side lengths given (6-8-10 and 9-12-15) are correctly in a 1.5 ratio and are consistent, but the problem asks for EF while explicitly stating EF = 12 in the givens \u2014 the answer is provided in the question, which is the rubric's example of a 0-level failure.",
+          "lesson_alignment": "The problem references 'SSS similarity,' a criterion not covered in lesson 6, which focuses on defining similarity via rigid motions and dilations. It also fails to exercise the actual lesson skills of writing a transformation sequence, generating a similarity statement, or identifying the scale factor as the target.",
+          "linguistic_clarity": "The prose is grammatically clean and unambiguous but is a bare 'Let triangle... Find...' list with no scenario giving the quantities meaning, matching the LC=3 flat-framing descriptor."
+        },
+        "feedback_for_haiku": "Your problem gives away the answer directly: you state EF = 12 in the setup and then ask for the length of EF. Rewrite the problem so the target quantity is not already stated. For lesson 6, a better task would give one triangle's sides and enough info to establish similarity (e.g., a scale factor or one corresponding side of the second triangle), then ask students to write a similarity statement, find the scale factor, or determine an unknown side using proportional reasoning. Also note that SSS similarity is a later topic; this lesson is about identifying similarity via a sequence of rigid motions and dilations, so frame the task around finding/describing that sequence or applying the definition of similarity. Finally, wrap the problem in a concrete real-world scenario (for example, two triangular sails, garden plots, or truss pieces) preserving every quantity and put the final question inside that scenario.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem asks for the length of EF, but EF = 12 is already stated explicitly in the problem setup, so the answer is given in the question.",
+            "suggested_fix": "Remove EF from the given data and instead give only some sides of DEF (or the scale factor) so that the student must compute EF using proportionality."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The problem invokes 'SSS similarity,' which is not introduced in lesson 6; this lesson focuses on the definition of similarity via rigid motions and dilations, not similarity criteria.",
+            "suggested_fix": "Reframe the task to ask for a sequence of rigid motions and a dilation taking ABC to DEF, a similarity statement, or the scale factor \u2014 consistent with lesson 6 goals."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is flatly framed as a bare list of asserted facts with no real-world context and no motivation for the quantities.",
+            "suggested_fix": "Wrap the two triangles in a concrete scenario (e.g., two similar triangular sails or tiles), preserving all side lengths and labels, and pose the final question inside that scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A carpentry workshop is designing two triangular roof trusses. The first truss, ABC, has sides AB = 6 feet, BC = 8 feet, and AC = 10 feet. The second truss, DEF, is designed to be similar to truss ABC with a scale factor of 1.5. This means all corresponding sides of truss DEF are 1.5 times as long as the sides of truss ABC.\n\nPart (a): Write a similarity statement relating triangle ABC to triangle DEF.\n\nPart (b): Find the length of side EF on truss DEF, where EF corresponds to BC on truss ABC.",
+      "judgment": {
+        "overall_score": 3.2,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The 6-8-10 right triangle is valid, and scaling BC = 8 by 1.5 gives EF = 12, which is consistent. The similarity statement ABC ~ DEF is well-defined given the correspondence B\u2194E for BC\u2194EF. All relationships are internally consistent.",
+          "lesson_alignment": "The lesson focuses on identifying similar figures via sequences of rigid motions AND dilations, writing similarity statements, and reasoning about scale factors. Part (a) touches similarity notation but is trivial when correspondence is spoon-fed, and Part (b) is a simple multiplication (8 \u00d7 1.5). The problem misses the core lesson skill of describing a sequence of rigid motions and dilations.",
+          "linguistic_clarity": "The workshop/truss framing is present but thin \u2014 the final questions ('Write a similarity statement', 'Find the length of side EF') are asked in textbook voice rather than from inside the scenario (e.g., how long to cut the beam). Quantities are preserved and prose is clear, but the scenario doesn't fully motivate the questions."
+        },
+        "feedback_for_haiku": "Your problem targets similarity notation and scale-factor arithmetic, but it sidesteps the heart of this lesson: describing a *sequence of rigid motions and dilations* that maps one figure onto the other. Add a part that asks the student to describe such a sequence (e.g., \"Describe a sequence of rigid motions and a dilation that would map truss ABC onto truss DEF, specifying the center and scale factor of the dilation\"), and consider giving the second truss in a different orientation (rotated or reflected on the blueprint) so that a rigid motion is genuinely required rather than trivial. Also, tighten the real-world framing: instead of asking the student to \"write a similarity statement\" and \"find the length of side EF\" in textbook voice, ask questions from inside the scenario \u2014 e.g., \"How many feet of lumber should the carpenter cut for beam EF?\" \u2014 while preserving every quantity and label. Finally, part (b) currently telegraphs the correspondence; making the student determine which side of DEF corresponds to BC (perhaps from a labeled diagram) would raise the challenge appropriately.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The problem does not ask the student to produce a sequence of rigid motions and dilations, which is the central skill of lesson_06.",
+            "suggested_fix": "Add a part asking the student to describe a specific sequence of rigid motions and a dilation (with center and scale factor) that maps truss ABC onto truss DEF."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Part (b) is a one-step multiplication that only lightly exercises proportional reasoning about corresponding sides.",
+            "suggested_fix": "Have students first identify the correspondence themselves from a diagram, then compute multiple side lengths or the scale factor from a given pair."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The final questions are phrased in textbook voice ('Write a similarity statement', 'Find the length of side EF') rather than from inside the truss-building scenario.",
+            "suggested_fix": "Rephrase Part (b) as something like 'How many feet of lumber should the carpenter cut for beam EF of the second truss?' to keep the question inside the scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A carpentry workshop is designing two triangular roof trusses. The first truss, ABC, has sides AB = 6 feet, BC = 8 feet, and AC = 10 feet. The second truss, DEF, is designed to be similar to truss ABC. On the workshop blueprint, truss DEF is shown in a different orientation: it has been rotated and is positioned differently from truss ABC. The sides of truss DEF are DE = 9 feet, EF = 12 feet, and DF = 15 feet.\n\nPart (a): By examining the side lengths of both trusses, determine which vertices of DEF correspond to which vertices of ABC. Write a similarity statement relating triangle ABC to triangle DEF.\n\nPart (b): What is the scale factor of the dilation that takes truss ABC to truss DEF?\n\nPart (c): Describe a sequence of rigid motions and a dilation that would map truss ABC onto truss DEF. In your description, specify the center of the dilation and the scale factor. (Hint: You may use any rigid motions\u2014such as a rotation, reflection, or translation\u2014followed by a dilation, or in any order that works.)\n\nPart (d): The carpenter needs to cut a beam for side EF of the second truss. How many feet of lumber should be cut for beam EF?",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "Triangle ABC (6-8-10) and DEF (9-12-15) are both right triangles with all sides in ratio 2:3, so the correspondence A\u2194D, B\u2194E, C\u2194F holds cleanly (AB/DE = 6/9 = 2/3, BC/EF = 8/12 = 2/3, AC/DF = 10/15 = 2/3). Scale factor from ABC to DEF is 3/2 = 1.5, and EF = 12 ft as stated. All parts are consistent and solvable.",
+          "lesson_alignment": "The problem directly targets the lesson's central skills: writing a similarity statement based on corresponding sides, identifying scale factor, and describing a sequence of rigid motions plus a dilation that maps one similar figure onto another. Part (c) especially pushes to the productive edge by requiring students to specify both the center of dilation and the transformations, echoing the lesson synthesis discussion.",
+          "linguistic_clarity": "The problem is wrapped in a concrete carpentry/roof truss scenario, and the final question in part (d) is asked from inside that scenario (cutting a beam). Every quantity is preserved, labels are clear, and the hint in part (c) is helpful without giving away the answer."
+        },
+        "feedback_for_haiku": "Your problem is well-constructed: the 6-8-10 and 9-12-15 right triangles give a clean 2:3 correspondence, the carpentry scenario is concrete and motivates each part, and the four parts scaffold nicely from similarity statement through scale factor, transformation sequence, and a real-world measurement. Part (c) is particularly strong because it asks students to specify both the center of dilation and the rigid motions, which pushes them to synthesize the lesson's core idea. One small polish: part (d) is almost trivial since EF = 12 ft was already stated in the setup\u2014consider instead asking students to verify EF using the scale factor and one of the ABC sides, or to compute a beam length that isn't given directly, so part (d) requires genuine application rather than just restating a given value.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Part (d) asks for the length of EF, which was already stated as 12 feet in the problem setup, making it a restatement rather than a computation.",
+            "suggested_fix": "Reframe part (d) to ask students to compute a length not directly given\u2014e.g., verify EF using the scale factor and AB, or ask for a beam corresponding to a side whose DEF length is withheld from the setup."
+          }
+        ]
+      }
+    }
+  ]
+}

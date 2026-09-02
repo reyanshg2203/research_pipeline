@@ -1,0 +1,1 @@
+Lesson context: lesson_08. Let circle c be a circle with radius 3. Let circle d be a circle. c is dilated to form d with scale factor 7, centered at point O. Find the radius of circle d.

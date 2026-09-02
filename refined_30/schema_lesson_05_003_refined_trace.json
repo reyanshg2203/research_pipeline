@@ -1,0 +1,135 @@
+{
+  "lesson_id": "lesson_05",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": true,
+  "final_overall_score": 3.5,
+  "final_nl": "A triangular garden has vertices D, E, and F. Paved pathways connect the midpoints G, H, and I of sides DE, EF, and DF respectively, forming a smaller triangular region in the center of the garden.\n\nThe three pathways have lengths: GH = 5 meters, HI = 6 meters, and GI = 4 meters.\n\na) Explain why the pathway GH is parallel to side DF of the original garden.\n\nb) What is the perimeter of the original triangle DEF?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_05. Let triangle DEF be a triangle with sides EF = 20. Let triangle GHI be a triangle with sides GH = 7, HI = 10, GI = 8. Let segment GH be a midsegment segment. Let segment HI be a midsegment segment. Let segment GI be a midsegment segment. Let point G be a point on DE. Let point H be a point on EF. Let point I be a point on DF. DEF is dilated to form GHI with scale factor 0.5, centered at point E. Segment GH is parallel to DF. Segment HI is parallel to DE. Segment GI is parallel to EF. Find the length of DE in DEF.",
+      "judgment": {
+        "overall_score": 1.3,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 1
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem contains critical inconsistencies. If GHI is formed by midpoints (midsegments) of DEF with scale factor 0.5 centered at E, then G must be the midpoint of ED and I the midpoint of... but the naming is inconsistent: with center E and G on DE, H on EF, the correspondence gives GH parallel to DF (correct in problem). However, EF=20 means HI (the midsegment parallel to DE) should equal DE/2, not that HI=10 implies DE=20. Actually if HI is parallel to DE with scale factor 1/2 from center E \u2014 wait, HI contains E's image relationships confusingly. More critically, if scale factor is 0.5 centered at E, then E maps to itself, but H is supposed to be on EF (image of F is H, so EH = 0.5\u00b7EF = 10, meaning EF should equal 20 \u2713). Then GH (image of DF) should have GH = 0.5\u00b7DF, so DF = 14. And GI (image parallel to EF) with GI=8 means EF=16, contradicting EF=20. Multiple contradictions exist.",
+          "lesson_alignment": "The problem targets the midsegment/dilation-from-vertex concept from the lesson, which is on-topic. However, it is massively over-specified (giving scale factor, center, all parallel relationships, and all three side lengths of GHI) which reduces it to trivial recall rather than genuine application of the midsegment theorem.",
+          "linguistic_clarity": "The phrasing is extremely awkward and repetitive ('Let segment GH be a midsegment segment' repeated three times), uses 'Let' constructions robotically, and the setup contradicts itself (EF=20 given, but the problem asks for DE which should be derivable \u2014 yet three different length values for GHI give three different answers for the corresponding DEF sides). No scenario framing at all."
+        },
+        "feedback_for_haiku": "Your problem has serious internal contradictions that make it unsolvable as written. You state EF = 20 and then give GHI's three sides as 7, 10, 8 while asserting GHI is the midsegment triangle of DEF with scale factor 0.5 \u2014 but that would force DEF's sides to be exactly 14, 20, 16, and you never establish which GHI side corresponds to DE. Also, you assert HI is parallel to DE and simultaneously that H lies on EF with center of dilation E, which is geometrically inconsistent (a midsegment parallel to DE cannot have an endpoint at the vertex E). Rewrite so that GHI is the midpoint triangle with G, H, I clearly assigned to specific sides of DEF, give only the information needed (e.g., one midsegment length), and ask for the parallel side. Remove the repetitive 'Let ... be a midsegment segment' phrasing \u2014 say once that G, H, I are midpoints of the respective sides. Finally, wrap the problem in a concrete real-world scenario (e.g., a triangular park with paths connecting midpoints of the sides) and ask the final question from inside that scenario, preserving every quantity and label. Do not give the scale factor or all parallel relationships explicitly \u2014 those are what the student should deduce.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The three given side lengths of GHI (7, 10, 8) combined with scale factor 0.5 and EF = 20 are mutually inconsistent \u2014 they imply different values for the sides of DEF depending on which correspondence is used.",
+            "suggested_fix": "Give only one midsegment length (e.g., the midsegment parallel to DE) and ask for DE; remove the redundant/contradictory data."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem places H on EF and simultaneously claims HI is parallel to DE, but the midpoint triangle's side parallel to DE connects the midpoints of EF and DF \u2014 the endpoint on EF cannot equal E, yet the dilation is centered at E requiring E to be fixed.",
+            "suggested_fix": "Reassign labels so that the midpoint of EF (call it H) and midpoint of DF (call it I) form the segment HI parallel to DE, and make the dilation-center/vertex correspondence match the labeling."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The problem gives the scale factor (0.5), the center of dilation, and all three parallel relationships explicitly, so nothing is left for the student to derive.",
+            "suggested_fix": "State only that G, H, I are midpoints of the sides of DEF and let the student apply the midsegment theorem to find DE."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The phrase 'Let segment GH be a midsegment segment' is ungrammatical and is repeated three times, and the whole problem is a flat list of 'Let' statements.",
+            "suggested_fix": "Replace with a single sentence: 'G, H, and I are the midpoints of sides DE, EF, and DF of triangle DEF, respectively.'"
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem has no real-world framing and reads as a bare list of asserted facts.",
+            "suggested_fix": "Wrap it in a concrete scenario (e.g., a triangular garden with paths joining the midpoints of its sides) and pose the final question from inside that scenario."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "By handing the student the scale factor, center, and all parallel relationships, the problem reduces to arithmetic rather than requiring application of the midsegment/dilation reasoning that is the focus of the lesson.",
+            "suggested_fix": "Remove the explicit scale factor and parallel-line statements; require the student to recognize the midpoint triangle as a dilation and apply the midsegment theorem."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A triangular garden has vertices D, E, and F. Three paved pathways connect the midpoints of the garden's three sides. Let G be the midpoint of side DE, H be the midpoint of side EF, and I be the midpoint of side DF. These three midpoints form a smaller triangular region in the center of the garden. One of the paths connecting midpoints, specifically the path from G to H, has a length of 5 meters. What is the length of side DF of the original garden?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "G is midpoint of DE and H is midpoint of EF, so GH is the midsegment parallel to DF with length DF/2. Given GH = 5, DF = 10 follows correctly and unambiguously.",
+          "lesson_alignment": "This targets the midsegment theorem (midsegment is half the third side) which is the core content of the lesson. However, the application is straightforward direct recall \u2014 doubling a midsegment \u2014 without pushing to the productive edge (e.g., requiring the parallel property or proportional reasoning beyond 1/2).",
+          "linguistic_clarity": "The problem is wrapped in a concrete garden/pathway scenario with pathways connecting midpoints, and the final question about the length of side DF is asked inside that scenario. Every quantity is preserved and labels are clear."
+        },
+        "feedback_for_haiku": "Your problem is mathematically clean and nicely framed as a garden with paved pathways. The main opportunity to strengthen it is difficulty: the task reduces to \"double the midsegment,\" which is direct recall. Consider pushing to the productive edge by, for example, giving the midsegment triangle's perimeter and asking for the original triangle's perimeter, or providing two midsegment lengths and asking students to identify which original side each corresponds to (using the parallel relationship). You could also require students to briefly justify why GH relates to DF specifically \u2014 reinforcing that GH is parallel to DF because G and H are midpoints of the two sides meeting at E. Also, a minor polish: the phrase \"Three paved pathways connect the midpoints\" is slightly redundant with the subsequent sentence defining G, H, I \u2014 you can tighten this.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem is a single-step application of the midsegment length property, with no need to identify which side the midsegment is parallel to or to use proportional reasoning beyond factor 1/2.",
+            "suggested_fix": "Add a second step (e.g., ask for the perimeter of DEF given all three midsegment lengths, or require justification of which side GH is parallel to) to push toward the productive edge."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The sentence 'Three paved pathways connect the midpoints of the garden's three sides' is slightly redundant with the subsequent explicit definitions of G, H, and I.",
+            "suggested_fix": "Combine into one sentence, e.g., 'Paved pathways connect the midpoints G, H, and I of sides DE, EF, and DF respectively.'"
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A triangular garden has vertices D, E, and F. Paved pathways connect the midpoints G, H, and I of sides DE, EF, and DF respectively, forming a smaller triangular region in the center of the garden.\n\nThe three pathways have lengths: GH = 5 meters, HI = 6 meters, and GI = 4 meters.\n\na) Explain why the pathway GH is parallel to side DF of the original garden.\n\nb) What is the perimeter of the original triangle DEF?",
+      "judgment": {
+        "overall_score": 3.5,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 3,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The midsegment relationships are correct: GH connects midpoints of DE and EF, so GH is parallel to DF and DF = 2\u00b7GH = 10. Similarly HI (midpoints of EF, DF) is parallel to DE so DE = 2\u00b7HI = 12, and GI (midpoints of DE, DF) is parallel to EF so EF = 2\u00b7GI = 8. Perimeter = 30 meters. One minor issue: with sides 5, 6, 4 the inner triangle satisfies the triangle inequality, and the outer triangle 10, 12, 8 is valid \u2014 everything checks out. A very small nit is that the problem says pathways 'connect the midpoints G, H, I of sides DE, EF, DF' which implicitly forms triangle GHI, but this is standard and clear.",
+          "lesson_alignment": "This problem directly targets the lesson's central theorem: the segment connecting midpoints of two sides is parallel to and half the third side. Part (a) asks for the parallelism justification (dilation reasoning), and part (b) applies the half-length property to compute the perimeter \u2014 exactly the productive edge of the lesson.",
+          "linguistic_clarity": "The problem is wrapped in a concrete garden/pathway scenario, with the question posed from inside it. All quantities are preserved and labels are unambiguous. The two-part structure (explain, then compute) is clean and appropriate."
+        },
+        "feedback_for_haiku": "Your problem is well-constructed: the midsegment relationships are consistent, the garden scenario gives the quantities a natural reason to exist, and the two-part structure (justify parallelism, then compute perimeter) hits the lesson's core theorem squarely. One small refinement: when you say \"pathways connect the midpoints G, H, and I of sides DE, EF, and DF respectively,\" you could tighten this by explicitly stating that the three pathways form triangle GHI (i.e., name the pathways GH, HI, GI as sides of the inner triangle) so the reader doesn't have to infer the configuration from the later given lengths. Also, in part (a), consider adding a nudge like \"using what you know about dilations\" to steer students toward the lesson's dilation-based justification rather than a generic midsegment-theorem citation.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The inner triangle GHI is implied only by the later listing of side lengths GH, HI, GI, rather than stated upfront.",
+            "suggested_fix": "Add a sentence like 'The pathways GH, HI, and GI form an inner triangular region' so the configuration is explicit before lengths are given."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Part (a) does not explicitly prompt students to use the dilation argument central to the lesson, so a student might just cite the midsegment theorem by name.",
+            "suggested_fix": "Rephrase part (a) as 'Using the definition of dilation, explain why pathway GH is parallel to side DF' to force the lesson's target reasoning."
+          }
+        ]
+      }
+    }
+  ]
+}

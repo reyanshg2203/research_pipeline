@@ -1,0 +1,5 @@
+A graphic designer is creating a scaled-down version of a triangular logo. The original logo is triangle ABC with sides AB = 5 cm, BC = 7 cm, and AC = 8 cm. The designer will dilate this triangle with a scale factor of 0.6, using point P as the center of dilation, to create the new logo triangle A'B'C'. Point P is located 10 cm from vertex A.
+
+(a) What is the perimeter of the new scaled-down logo?
+
+(b) How far is point P from vertex A' after the dilation?

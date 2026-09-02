@@ -1,0 +1,129 @@
+{
+  "lesson_id": "lesson_09",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A welder in a steel fabrication shop is constructing two roof support brackets of different sizes. Both brackets must have the same shape to fit the architectural design, but they will be scaled to different proportions based on the building's requirements.\n\nThe first bracket (PQR) has angles \u2220P = 35\u00b0 and \u2220Q = 65\u00b0, with the side PQ = 12 cm connecting these two angles.\n\nThe second bracket (XYZ) has angles \u2220X = 80\u00b0 and \u2220Y = 65\u00b0, with the side YZ = 18 cm connecting the 65\u00b0 angle to the third vertex.\n\n(a) Use the Triangle Angle Sum Theorem to find the measure of \u2220R in bracket PQR.\n\n(b) Use the Triangle Angle Sum Theorem to find the measure of \u2220Z in bracket XYZ.\n\n(c) Explain why the two brackets are similar using the Angle-Angle Triangle Similarity Theorem by identifying two pairs of congruent corresponding angles.\n\n(d) Based on the Angle-Angle Triangle Similarity Theorem, the vertex correspondence is P\u2194Z, Q\u2194Y, and R\u2194X. This means side PQ in triangle PQR corresponds to side ZY in triangle XYZ. Use these corresponding sides to find the scale factor from triangle PQR to triangle XYZ.\n\n(e) In bracket PQR, the side QR = 9 cm. From the vertex correspondence, side QR corresponds to side YX in triangle XYZ. Using the scale factor, find the length of the corresponding side YX. How long should the welder cut the steel for the corresponding side in the larger bracket?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_09. Let triangle PQR be a triangle with sides PQ = 12, QR = 9, where \u2220P = 35\u00b0, \u2220Q = 65\u00b0. Let triangle XYZ be a triangle with sides YZ = 18, where \u2220Y = 80\u00b0, \u2220Z = 35\u00b0. The interior angles of triangle PQR (\u2220P, \u2220Q, \u2220R) sum to 180\u00b0. The interior angles of triangle XYZ (\u2220X, \u2220Y, \u2220Z) sum to 180\u00b0. Find the measure of \u2220X in XYZ.",
+      "judgment": {
+        "overall_score": 1.2,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The question 'Find \u2220X' is answered purely from \u2220Y = 80\u00b0 and \u2220Z = 35\u00b0 via the Triangle Angle Sum Theorem (\u2220X = 65\u00b0), making all information about triangle PQR and the side lengths PQ = 12, QR = 9, YZ = 18 completely irrelevant. While the two triangles happen to be similar (both have angles 35\u00b0, 65\u00b0, 80\u00b0), the problem never requires the student to notice or use this, and the side lengths don't cohere with a single scale factor tied to corresponding sides.",
+          "lesson_alignment": "The lesson centers on proving/applying AA Triangle Similarity and using the Triangle Angle Sum Theorem to find missing angles that establish similarity \u2014 often followed by using a scale factor to find missing sides. This problem only invokes Triangle Angle Sum in one triangle and never asks the student to conclude or use similarity, so it exercises a related but strictly weaker skill.",
+          "linguistic_clarity": "The prose is grammatically clean but purely a flat list of asserted facts with no scenario, and includes redundant filler sentences restating that interior angles sum to 180\u00b0. There is no real-world context wrapping the question."
+        },
+        "feedback_for_haiku": "Your problem asks students to find \u2220X, but the setup is inconsistent: you say \u2220Y = 80\u00b0 and \u2220Z = 35\u00b0, which forces \u2220X = 65\u00b0 by the Triangle Angle Sum Theorem alone \u2014 the similarity to triangle PQR is never actually needed. Worse, the two triangles as given are NOT similar: triangle PQR has angles 35\u00b0, 65\u00b0, 80\u00b0, while triangle XYZ has angles 65\u00b0, 80\u00b0, 35\u00b0 \u2014 those match, so they ARE similar, but the extra side lengths PQ = 12, QR = 9, YZ = 18 are irrelevant to finding an angle, and PQ = 12 vs QR = 9 don't match a scale factor of 2 with YZ = 18 in any meaningful way for the lesson's purpose. Redesign the problem so students must (a) apply the Triangle Angle Sum Theorem to find a missing angle in one triangle, (b) recognize two pairs of congruent corresponding angles to invoke AA Similarity, and (c) use the resulting scale factor to find an unknown side length. Also wrap the setup in a concrete real-world scenario (e.g., two triangular sails, garden plots, or support brackets) with all quantities preserved and the question asked from inside that scenario. Remove filler sentences like \"The interior angles ... sum to 180\u00b0\" \u2014 state that only if it's a step the student must invoke, not as a given.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The question 'Find \u2220X' is trivially answered by 180\u00b0 \u2212 80\u00b0 \u2212 35\u00b0 = 65\u00b0 from the given angles of triangle XYZ alone, without any reference to triangle PQR or similarity \u2014 the problem doesn't test the AA Similarity Theorem at all.",
+            "suggested_fix": "Ask for a side length in XYZ (e.g., XY or XZ) that requires first establishing similarity via AA, then applying the scale factor from corresponding sides."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The side lengths PQ = 12, QR = 9, and YZ = 18 are extraneous \u2014 they play no role in finding \u2220X and are not consistent with any single scale factor tied to corresponding sides between the given angles.",
+            "suggested_fix": "Either remove the side lengths or restructure the givens so exactly one pair of corresponding sides (between the known congruent angles) determines a scale factor used to find an unknown side."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The lesson targets AA Similarity combined with the Triangle Angle Sum Theorem and using scale factor to find missing sides; this problem only exercises the Triangle Angle Sum Theorem in isolation and never requires the student to conclude similarity.",
+            "suggested_fix": "Rewrite so that students must (1) use Triangle Angle Sum to find a missing angle, (2) match two pairs of corresponding angles to justify AA Similarity, and (3) use a scale factor to compute a missing side."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is presented as a flat list of asserted facts with no scenario and contains redundant filler ('The interior angles ... sum to 180\u00b0') stated as givens rather than tools the student invokes.",
+            "suggested_fix": "Wrap the setup in a concrete real-world context (e.g., two triangular sails or brackets) with the question asked from inside that scenario, and drop the redundant angle-sum sentences."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "Two triangular support brackets are used in a construction project. Bracket PQR has angles \u2220P = 35\u00b0 and \u2220Q = 65\u00b0, with side PQ = 12 cm. Bracket XYZ has angles \u2220Y = 80\u00b0 and \u2220Z = 35\u00b0, with side YZ = 18 cm.\n\n(a) Use the Triangle Angle Sum Theorem to find the measure of \u2220R in bracket PQR.\n\n(b) Use the Triangle Angle Sum Theorem to find the measure of \u2220X in bracket XYZ.\n\n(c) Explain why the two brackets are similar using the Angle-Angle Triangle Similarity Theorem by identifying two pairs of congruent corresponding angles.\n\n(d) The side PQ in bracket PQR corresponds to side YZ in bracket XYZ. Use this correspondence and the similarity of the two triangles to find the scale factor from triangle PQR to triangle XYZ.\n\n(e) In bracket PQR, the side QR = 9 cm. Using the scale factor, find the length of the corresponding side in bracket XYZ. Which side of triangle XYZ does QR correspond to?",
+      "judgment": {
+        "overall_score": 2.5,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 2,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "Angles work: \u2220R = 80\u00b0, \u2220X = 65\u00b0, and the AA similarity holds with \u2220P=\u2220Z=35\u00b0 and \u2220Q=\u2220Y=65\u00b0, giving correspondence P\u2194Z, Q\u2194Y, R\u2194X. However, part (d) states PQ corresponds to YZ \u2014 but PQ is between \u2220P(35\u00b0) and \u2220Q(65\u00b0), while YZ is between \u2220Y(65\u00b0) and \u2220Z(35\u00b0). The correct corresponding side to PQ is ZY (which as a segment equals YZ = 18), so numerically the scale factor 18/12 = 1.5 is fine, but the ordered correspondence in (e) creates confusion: QR (between \u2220Q=65\u00b0 and \u2220R=80\u00b0) corresponds to YX (between \u2220Y=65\u00b0 and \u2220X=80\u00b0), not to a side labeled with the Z-Y ordering suggested by (d). This is a real inconsistency in the labeled correspondence.",
+          "lesson_alignment": "The problem directly exercises the Angle-Angle Similarity Theorem combined with the Triangle Angle Sum Theorem \u2014 exactly the skills highlighted in the lesson synthesis (using two given angles per triangle, not necessarily corresponding, to establish similarity, then finding side lengths via scale factor). The scaffolding matches the lesson's second activity closely.",
+          "linguistic_clarity": "The 'construction project support brackets' framing is present but very thin \u2014 it mostly reads as a scaffolded list of tasks (a)\u2013(e) with labels \u2220P, PQ, etc. The prose is clear and grammatical but the scenario adds little concreteness, and the correspondence language in (d)/(e) is slightly muddled."
+        },
+        "feedback_for_haiku": "Your problem targets the right lesson skills, but there's a correspondence error you need to fix. With \u2220P=\u2220Z=35\u00b0 and \u2220Q=\u2220Y=65\u00b0, the correct vertex correspondence is P\u2194Z, Q\u2194Y, R\u2194X. That means side PQ corresponds to side ZY (between the 35\u00b0 and 65\u00b0 angles), and side QR corresponds to side YX (between the 65\u00b0 and 80\u00b0 angles). In part (d) you should say \"PQ corresponds to ZY\" (not YZ) to preserve the vertex order, and in part (e) the answer must be XY (or YX), not a side described starting from Z. Also, choose angle values so students genuinely have to apply the Triangle Angle Sum step \u2014 currently the two 35\u00b0 angles are already visibly matched, so parts (a) and (b) feel like busywork rather than a needed step. Finally, deepen the scenario: instead of just \"support brackets,\" describe an actual construction context (e.g., a welder fabricating two steel roof brackets of different sizes) and phrase the final question from inside that scenario (\"How long should the welder cut the corresponding steel piece?\"), preserving every given quantity.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "Part (d) claims PQ corresponds to YZ, but the vertex correspondence from AA similarity is P\u2194Z, Q\u2194Y, R\u2194X, so PQ corresponds to ZY (in that order), not YZ.",
+            "suggested_fix": "Rewrite (d) as: 'Side PQ in triangle PQR corresponds to side ZY in triangle XYZ,' and be consistent with vertex order throughout."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "In part (e), QR corresponds to YX (from Q\u2194Y and R\u2194X), which should be stated with vertex order matching the correspondence, not left ambiguous.",
+            "suggested_fix": "State explicitly that QR corresponds to YX and compute YX = 9 \u00b7 1.5 = 13.5 cm."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Because \u2220P = \u2220Z = 35\u00b0 is directly visible, students don't strictly need the Triangle Angle Sum Theorem to establish similarity \u2014 parts (a) and (b) become disconnected from part (c).",
+            "suggested_fix": "Adjust the given angles so that no pair of given angles is immediately equal (e.g., give \u2220P=35\u00b0, \u2220Q=65\u00b0 and \u2220X=80\u00b0, \u2220Y=65\u00b0), forcing use of the angle sum to find a matching pair."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The 'support brackets' scenario is thin and the problem reads as a labeled list of sub-tasks rather than a situated question.",
+            "suggested_fix": "Wrap the problem in a concrete construction scenario (e.g., a welder fabricating two scaled steel brackets) and phrase the final question from within that context while preserving all given quantities."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A welder in a steel fabrication shop is constructing two roof support brackets of different sizes. Both brackets must have the same shape to fit the architectural design, but they will be scaled to different proportions based on the building's requirements.\n\nThe first bracket (PQR) has angles \u2220P = 35\u00b0 and \u2220Q = 65\u00b0, with the side PQ = 12 cm connecting these two angles.\n\nThe second bracket (XYZ) has angles \u2220X = 80\u00b0 and \u2220Y = 65\u00b0, with the side YZ = 18 cm connecting the 65\u00b0 angle to the third vertex.\n\n(a) Use the Triangle Angle Sum Theorem to find the measure of \u2220R in bracket PQR.\n\n(b) Use the Triangle Angle Sum Theorem to find the measure of \u2220Z in bracket XYZ.\n\n(c) Explain why the two brackets are similar using the Angle-Angle Triangle Similarity Theorem by identifying two pairs of congruent corresponding angles.\n\n(d) Based on the Angle-Angle Triangle Similarity Theorem, the vertex correspondence is P\u2194Z, Q\u2194Y, and R\u2194X. This means side PQ in triangle PQR corresponds to side ZY in triangle XYZ. Use these corresponding sides to find the scale factor from triangle PQR to triangle XYZ.\n\n(e) In bracket PQR, the side QR = 9 cm. From the vertex correspondence, side QR corresponds to side YX in triangle XYZ. Using the scale factor, find the length of the corresponding side YX. How long should the welder cut the steel for the corresponding side in the larger bracket?",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The angle arithmetic is correct: \u2220R = 180-35-65 = 80\u00b0, \u2220Z = 180-80-65 = 35\u00b0. The vertex correspondence P\u2194Z (both 35\u00b0), Q\u2194Y (both 65\u00b0), R\u2194X (both 80\u00b0) is correct. PQ (between P and Q) corresponds to ZY (between Z and Y), giving scale factor 18/12 = 1.5. QR corresponds to YX, so YX = 9 \u00d7 1.5 = 13.5 cm. All relationships are internally consistent.",
+          "lesson_alignment": "The problem directly targets the lesson's core skills: applying the Triangle Angle Sum Theorem to find missing angles, then using the AA Similarity Theorem to establish similarity, and finally using the scale factor to compute a missing side length \u2014 mirroring the lesson's culminating activity. The twist that only one pair of corresponding angles is initially visible (requiring the angle sum step) matches the lesson synthesis's second condition exactly.",
+          "linguistic_clarity": "The problem is wrapped in a concrete welding/fabrication scenario, and the final question ('How long should the welder cut the steel...') is asked from inside that scenario. Every quantity and label is preserved, and the multi-part structure is clearly signposted with unambiguous language."
+        },
+        "feedback_for_haiku": "Your problem is well-constructed: the angle arithmetic checks out, the vertex correspondence is stated correctly, and the scale factor 18/12 = 1.5 gives YX = 13.5 cm cleanly. The welder scenario provides real-world motivation without feeling forced, and the scaffolded parts (a)\u2013(e) guide students through exactly the reasoning chain the lesson emphasizes \u2014 using the Triangle Angle Sum Theorem to expose a second pair of congruent angles, then applying AA Similarity, then computing with the scale factor. One small polish worth considering: part (d) essentially hands students the correspondence, which slightly reduces the challenge of parts (c)\u2013(d); you could let students derive the correspondence themselves from their answers in (a) and (b) to push closer to the productive edge of difficulty. Overall, this is a strong problem \u2014 no substantive fixes required.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Part (d) explicitly tells students the vertex correspondence rather than asking them to derive it from the angles they computed in (a) and (b).",
+            "suggested_fix": "Rephrase (d) to ask students to determine which vertices correspond based on the angle measures, then compute the scale factor."
+          }
+        ]
+      }
+    }
+  ]
+}

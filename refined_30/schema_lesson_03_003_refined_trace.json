@@ -1,0 +1,123 @@
+{
+  "lesson_id": "lesson_03",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": false,
+  "final_overall_score": 0.8,
+  "final_nl": "A graphic designer is enlarging a triangular logo. The original triangle PQR has sides PQ = 8 cm and QR = 6 cm. The designer creates an enlarged version P'Q'R' by dilating triangle PQR from center point C with a scale factor of 5/2. What is the perimeter of the enlarged logo?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_03. Let triangle PQR be a triangle. Let triangle P'Q'R' be a triangle. PQR is dilated to form P'Q'R' with scale factor unknown, centered at point C. Find the length of P'Q' in P'Q'R'.",
+      "judgment": {
+        "overall_score": 0.3,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 0
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem is unsolvable as written: the scale factor is stated as 'unknown', no side length of PQ is given, and no figure with measurements is provided. There is no way to determine P'Q' from the information given.",
+          "lesson_alignment": "The problem targets the correct lesson skill (applying scale factor to find dilated segment length), but because it provides no numerical values it cannot actually exercise that skill. It gestures at the concept without operationalizing it.",
+          "linguistic_clarity": "The wording is redundant ('Let triangle PQR be a triangle. Let triangle P'Q'R' be a triangle.') and includes the phrase 'scale factor unknown' which reads as an admission of missing data rather than a well-posed question. It is flat, list-like, and missing critical quantities."
+        },
+        "feedback_for_haiku": "Your problem is unsolvable as written: you say the scale factor is \"unknown,\" you never give the length of PQ, and you provide no figure with measurements \u2014 yet you ask for the length of P'Q'. To fix this, supply concrete numbers: state a specific scale factor (e.g., k = 5/2) and a specific length for PQ (e.g., PQ = 8 cm), then ask for P'Q'. Also remove the redundant \"Let triangle PQR be a triangle. Let triangle P'Q'R' be a triangle.\" phrasing. Finally, wrap the task in a concrete real-world scenario \u2014 for example, a graphic designer enlarging a triangular logo PQR from anchor point C by scale factor 5/2 to produce P'Q'R', where side PQ measures 8 cm, and asking how long side P'Q' will be on the enlarged logo. Preserve every quantity inside that scenario and put the final question there.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem provides no length for PQ and states the scale factor is 'unknown,' making it impossible to compute P'Q'.",
+            "suggested_fix": "Provide a specific numerical value for PQ and a specific scale factor k so P'Q' = k\u00b7PQ can be computed."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "critical",
+            "issue": "Critical quantities are missing and the phrase 'scale factor unknown' reads as an incomplete stub rather than a posed question.",
+            "suggested_fix": "Replace 'scale factor unknown' with an explicit scale factor value, and include the length of PQ."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The opening sentences are redundant and tautological ('Let triangle PQR be a triangle').",
+            "suggested_fix": "Combine setup into one sentence such as 'Triangle PQR is dilated from center C by scale factor k to produce triangle P'Q'R'.'"
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is flat and list-like with no scenario giving the quantities a reason to exist.",
+            "suggested_fix": "Wrap the dilation in a concrete real-world context (e.g., enlarging a triangular logo or garden bed) and ask the final question from inside that scenario."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "Although aimed at the correct lesson skill (applying scale factor to segment length), the absence of numbers means the student cannot actually multiply a length by k.",
+            "suggested_fix": "Include a concrete PQ length and scale factor so the student performs the k\u00b7PQ computation the lesson targets."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A graphic designer is enlarging a triangular logo. The original triangle PQR has a side PQ that measures 8 cm. The designer creates an enlarged version P'Q'R' by dilating triangle PQR from center point C with a scale factor of 5/2. What is the length of side P'Q' on the enlarged logo?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The dilation is well-defined: PQ = 8 cm, scale factor 5/2, so P'Q' = 20 cm. All information is consistent and the answer is uniquely determined.",
+          "lesson_alignment": "The problem directly targets the lesson's core assertion that dilation multiplies lengths by the scale factor k. It's a clean application but sits at a routine difficulty level \u2014 a single multiplication with no additional twist (e.g., asking for perimeter, comparing two sides, or requiring students to reason about the direction of change).",
+          "linguistic_clarity": "The problem is wrapped in a concrete graphic-design scenario, with the final question asked from inside that scenario (\"length of side P'Q' on the enlarged logo\"). Every quantity is preserved and the prose is clean and purposeful."
+        },
+        "feedback_for_haiku": "Your problem is mathematically clean and nicely framed in a graphic-design scenario. To push it toward the productive edge of difficulty, consider adding a small second step or a comparative element \u2014 for example, giving two side lengths and asking about the perimeter of the enlarged logo, or providing PC and asking students to reason about both P'C and P'Q'. As written, it's a single multiplication (8 \u00d7 5/2), which is on the easy side for 10th graders applying this lesson. Also consider whether the enlarged logo really needs a non-integer scale factor of 5/2 \u2014 that's fine, but pairing it with a length that produces a cleaner distinction between the definition (distances to center) and the assertion (side lengths) would deepen alignment with the lesson.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The task is a single direct multiplication with no additional reasoning step, making it more recall than productive application.",
+            "suggested_fix": "Add a second component such as computing the perimeter given multiple sides, or asking students to also find PC given P'C, to require applying the assertion in more than one way."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A graphic designer is enlarging a triangular logo. The original triangle PQR has sides PQ = 8 cm and QR = 6 cm. The designer creates an enlarged version P'Q'R' by dilating triangle PQR from center point C with a scale factor of 5/2. What is the perimeter of the enlarged logo?",
+      "judgment": {
+        "overall_score": 0.8,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 1
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem asks for the perimeter of the enlarged triangle but only provides two of the three side lengths (PQ = 8 and QR = 6); PR is never given. The perimeter cannot be determined, making the problem unsolvable as written.",
+          "lesson_alignment": "The problem targets the correct lesson skill (applying a scale factor to lengths under dilation), which is well-aligned with the assertion that lengths multiply by k. However, the missing third side means it fails to actually exercise this skill successfully, and it's a fairly generic reskinning of Problem 2 from the lesson.",
+          "linguistic_clarity": "The scenario framing is fine, but the problem is missing information required to solve it (side PR), making it ambiguous/undecipherable as a perimeter question. A student cannot answer without assuming a value."
+        },
+        "feedback_for_haiku": "Your problem is unsolvable as written: you ask for the perimeter of triangle P'Q'R' but only give two of the three sides of the original triangle (PQ = 8 and QR = 6). Without PR, the perimeter is indeterminate. Fix this by either (a) adding the third side length (e.g., PR = 7 cm) so students can compute the original perimeter (21 cm) and multiply by 5/2 to get 52.5 cm, or (b) rephrasing the question to ask about a specific dilated side length like P'Q' rather than the perimeter. If you keep the perimeter version, make sure the scale factor produces a clean answer and that all three sides are explicitly stated. The graphic-designer scenario itself is good \u2014 keep that framing and just supply the missing quantity.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem asks for the perimeter of the dilated triangle but only provides two of the three side lengths of the original triangle, making the perimeter impossible to determine.",
+            "suggested_fix": "Add the third side length (e.g., PR = 7 cm) so the original perimeter is well-defined, then the answer is (8+6+7)(5/2) = 52.5 cm."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem closely mirrors Problem 2 from the lesson (perimeter \u00d7 scale factor) with only a surface-level reskin.",
+            "suggested_fix": "Consider varying the task, e.g., ask for a specific side length P'Q' or give the dilated perimeter and ask for the scale factor, to push slightly beyond direct pattern-matching."
+          }
+        ]
+      }
+    }
+  ]
+}

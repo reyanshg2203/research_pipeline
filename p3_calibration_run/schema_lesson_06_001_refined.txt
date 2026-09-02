@@ -1,0 +1,5 @@
+A mapmaker is preparing two versions of a regional trail map. The original map shows triangle ABC with sides AB = 6 miles, BC = 8 miles, and AC = 10 miles. For a tourist brochure, she creates an enlarged version, triangle DEF, with corresponding sides DE = 9 miles, EF = 12 miles, and DF = 15 miles.
+
+She notices that the three sides of triangle DEF are each exactly 1.5 times as long as the corresponding sides of triangle ABC. This means triangle ABC is similar to triangle DEF with a scale factor of 1.5 — she can take the original triangle and enlarge it by this constant factor to create the new one.
+
+When the mapmaker checks the tourist brochure, she wants to confirm the length marked for side EF. What length should appear on the enlarged map?

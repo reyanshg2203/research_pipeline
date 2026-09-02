@@ -1,0 +1,9 @@
+A surveyor is mapping two triangular parcels of land. She measures triangle ABC with side AB = 10 meters, angle A = 52°, and angle B = 68°. Across town, she finds triangle DEF with side DE = 15 meters, angle D = 52°, and angle F = 60°.
+
+The surveyor knows that the sum of all interior angles in any triangle equals 180°, so she can find the missing angles in both triangles.
+
+Since angle A = 52° and angle D = 52°, these angles are congruent. Since angle B = 68°, the surveyor calculates angle C in triangle ABC as 180° − 52° − 68° = 60°. She notices that angle F = 60° as well, so angle C ≅ angle F.
+
+With two pairs of corresponding congruent angles (A ≅ D and B ≅ E), triangle ABC is similar to triangle DEF by the Angle-Angle Similarity Theorem, with a scale factor of 1.5 (the ratio of corresponding sides DE to AB).
+
+What is the measure of ∠E in triangle DEF?

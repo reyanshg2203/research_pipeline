@@ -1,0 +1,9 @@
+Two landscape architects are designing triangular garden plots. The first garden plot is triangle MNO with sides MN = 10 feet, NO = 14 feet, and MO = 12 feet. A nearby school wants a larger version of this garden using the same shape but with NO = 21 feet. The larger garden is triangle PQR, where the sides correspond as follows: side MN corresponds to side PQ, side NO corresponds to side QR, and side MO corresponds to side PR.
+
+(a) Write a similarity statement for the two triangles.
+
+(b) What is the scale factor of the dilation that takes triangle MNO onto triangle PQR?
+
+(c) Find the length of side PQ in the larger garden plot.
+
+(d) Describe a sequence of rigid motions and a dilation that would map triangle MNO onto triangle PQR. Explain why your sequence works.

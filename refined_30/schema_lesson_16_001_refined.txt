@@ -1,0 +1,7 @@
+Two gardeners are designing similar right-triangular garden plots. In the larger plot PQR, the right angle is at Q, PQ = 9 meters, and QR = 12 meters. In the smaller plot XYZ, the right angle is at Y, and one leg XY = 6 meters corresponds to leg PQ in the larger plot. The angle at P in triangle PQR is congruent to the angle at X in triangle XYZ.
+
+(a) Explain why triangle PQR is similar to triangle XYZ.
+
+(b) What is the length of side YZ in the smaller garden plot?
+
+(c) What is the length of the hypotenuse PR in the larger garden plot?

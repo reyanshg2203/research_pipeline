@@ -240,6 +240,7 @@ def prose_with_haiku(
     message = client.messages.create(
         model=model,
         max_tokens=1500,
+        temperature=0,  # deterministic prose: keep the student-facing NL reproducible
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": _build_user_prompt(function_translated_nl, lesson_text)}],
     )

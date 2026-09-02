@@ -1,0 +1,103 @@
+{
+  "problem_id": "lesson_09_001",
+  "lesson": "lesson_09",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 10.0,
+          "BC": null,
+          "AC": null
+        },
+        "angles": {
+          "A": 52.0,
+          "B": 68.0,
+          "C": null
+        },
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": 15.0,
+          "EF": null,
+          "DF": null
+        },
+        "angles": {
+          "D": 52.0,
+          "E": null,
+          "F": 60.0
+        },
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "ABC"
+      ],
+      "attributes": {
+        "triangle_id": "ABC",
+        "angles": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sum": 180.0
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "DEF"
+      ],
+      "attributes": {
+        "triangle_id": "DEF",
+        "angles": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sum": 180.0
+      }
+    },
+    {
+      "type": "similar_AA",
+      "entities": [
+        "ABC",
+        "DEF"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "ABC",
+        "image": "DEF",
+        "congruent_angle_pairs": [
+          [
+            "A",
+            "D"
+          ],
+          [
+            "B",
+            "E"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "angles.E"
+  }
+}

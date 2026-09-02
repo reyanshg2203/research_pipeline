@@ -1,0 +1,1 @@
+Lesson context: lesson_16. Let triangle DEF be a right triangle with sides DE = 5, EF = 12. Let triangle GHI be a right triangle with sides HI = 18. Triangle DEF is similar to triangle GHI by AA similarity with scale factor 1.5 (congruent angle pairs: E ≅ H). Find the length of GH in GHI.

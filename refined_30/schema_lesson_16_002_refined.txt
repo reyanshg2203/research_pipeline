@@ -1,0 +1,7 @@
+A metalworking company is creating two similar triangular support brackets for a structural reinforcement project. Both brackets are right triangles.
+
+The first bracket, DEF, has a right angle at E, with DE = 5 inches and DF = 13 inches (the hypotenuse). The second bracket, GHI, is similar to DEF with a right angle at H, and side GI = 19.5 inches (the hypotenuse, corresponding to DF).
+
+First, find the length of side EF in bracket DEF using the Pythagorean Theorem. Then, use the similarity relationship between the two triangles to find the length of side HI in bracket GHI, which corresponds to side EF.
+
+What should the length of HI be?

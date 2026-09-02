@@ -1,0 +1,1 @@
+Lesson context: lesson_14. Let triangle PQR be a right triangle with sides PQ = 9, QR = 12, PR = 15. Let triangle PSR be a right triangle with sides PR = 15. Let segment QS be a altitude segment perpendicular to PR. Altitude QS is drawn to hypotenuse PR, dividing it into segments PS and SR. Altitude QS is the geometric mean of segments PS and SR. Find the length of QS.

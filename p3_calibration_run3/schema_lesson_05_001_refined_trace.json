@@ -1,0 +1,667 @@
+{
+  "problem_id": "lesson_05_001",
+  "lesson_id": "lesson_05",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 2,
+  "final_prolog_error_count": 2,
+  "calibration": null,
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_05_001",
+        "lesson": "lesson_05",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 14.0,
+                "BC": 16.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNP",
+              "sides": {
+                "MN": null,
+                "NP": 8.0,
+                "MP": 5.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "MN",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            },
+            {
+              "id": "NP",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            },
+            {
+              "id": "MP",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "M",
+              "lies_on": [
+                "AB"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "N",
+              "lies_on": [
+                "BC"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "P",
+              "lies_on": [
+                "AC"
+              ],
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABC",
+              "MNP"
+            ],
+            "attributes": {
+              "center": "A",
+              "scale_factor": 0.5,
+              "pre_image": "ABC",
+              "image": "MNP"
+            }
+          },
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "MN",
+              "AC"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "NP",
+              "AB"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "MP",
+              "BC"
+            ],
+            "attributes": null
+          }
+        ],
+        "target": {
+          "entity": "MN",
+          "attribute": "length"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 5,
+        "errors": [
+          {
+            "gate": "orphan_entity",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity 'M' (point) is declared but never used in any relationship or as the target. Consider removing it."
+          },
+          {
+            "gate": "orphan_entity",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity 'N' (point) is declared but never used in any relationship or as the target. Consider removing it."
+          },
+          {
+            "gate": "orphan_entity",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity 'P' (point) is declared but never used in any relationship or as the target. Consider removing it."
+          },
+          {
+            "gate": "midsegment_inconsistent",
+            "severity": "contradiction",
+            "checks": "",
+            "failed": "Segment NP is declared a midsegment parallel to AB; its length should be half of 14.0 (=7.0), but is declared 8.0."
+          },
+          {
+            "gate": "midsegment_inconsistent",
+            "severity": "contradiction",
+            "checks": "",
+            "failed": "Segment MP is declared a midsegment parallel to BC; its length should be half of 16.0 (=8.0), but is declared 5.0."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 5,
+      "haiku_correction": {
+        "problem_id": "lesson_05_001",
+        "lesson": "lesson_05",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 14.0,
+                "BC": 16.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNP",
+              "sides": {
+                "MN": 7.0,
+                "NP": 8.0,
+                "MP": 5.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "MN",
+              "length": null,
+              "parallel_to": "BC",
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            },
+            {
+              "id": "NP",
+              "length": null,
+              "parallel_to": "AB",
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            },
+            {
+              "id": "MP",
+              "length": null,
+              "parallel_to": "AC",
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "M",
+              "lies_on": [
+                "AB"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "N",
+              "lies_on": [
+                "BC"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "P",
+              "lies_on": [
+                "AC"
+              ],
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "MN",
+              "BC"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "NP",
+              "AB"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "MP",
+              "AC"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_ratio",
+            "entities": [
+              "MN",
+              "BC"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_ratio",
+            "entities": [
+              "NP",
+              "AB"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_ratio",
+            "entities": [
+              "MP",
+              "AC"
+            ],
+            "attributes": null
+          }
+        ],
+        "target": {
+          "entity": "MN",
+          "attribute": "length"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_05_001",
+        "lesson": "lesson_05",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 14.0,
+                "BC": 16.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNP",
+              "sides": {
+                "MN": 7.0,
+                "NP": 8.0,
+                "MP": 5.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "MN",
+              "length": null,
+              "parallel_to": "BC",
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            },
+            {
+              "id": "NP",
+              "length": null,
+              "parallel_to": "AB",
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            },
+            {
+              "id": "MP",
+              "length": null,
+              "parallel_to": "AC",
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "M",
+              "lies_on": [
+                "AB"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "N",
+              "lies_on": [
+                "BC"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "P",
+              "lies_on": [
+                "AC"
+              ],
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "MN",
+              "BC"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "NP",
+              "AB"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "MP",
+              "AC"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_ratio",
+            "entities": [
+              "MN",
+              "BC"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_ratio",
+            "entities": [
+              "NP",
+              "AB"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_ratio",
+            "entities": [
+              "MP",
+              "AC"
+            ],
+            "attributes": null
+          }
+        ],
+        "target": {
+          "entity": "MN",
+          "attribute": "length"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 6,
+        "errors": [
+          {
+            "gate": "orphan_entity",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity 'M' (point) is declared but never used in any relationship or as the target. Consider removing it."
+          },
+          {
+            "gate": "orphan_entity",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity 'N' (point) is declared but never used in any relationship or as the target. Consider removing it."
+          },
+          {
+            "gate": "orphan_entity",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity 'P' (point) is declared but never used in any relationship or as the target. Consider removing it."
+          },
+          {
+            "gate": "figures_not_connected",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Entities ABC and MNP are both declared as comparable_kind(ABC) but no relationship connects them. A multi-figure problem must declare at least one relationship (dilation, similarity, scaled_copy, congruence, etc.) that links them."
+          },
+          {
+            "gate": "midsegment_inconsistent",
+            "severity": "contradiction",
+            "checks": "",
+            "failed": "Segment MN is declared a midsegment parallel to BC; its length should be half of 16.0 (=8.0), but is declared 7.0."
+          },
+          {
+            "gate": "midsegment_inconsistent",
+            "severity": "contradiction",
+            "checks": "",
+            "failed": "Segment NP is declared a midsegment parallel to AB; its length should be half of 14.0 (=7.0), but is declared 8.0."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 6,
+      "haiku_correction": {
+        "problem_id": "lesson_05_001",
+        "lesson": "lesson_05",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 14.0,
+                "BC": 16.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "MN",
+              "length": null,
+              "parallel_to": "BC",
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "M",
+              "lies_on": [
+                "AB"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "N",
+              "lies_on": [
+                "BC"
+              ],
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "midsegment_ratio",
+            "entities": [
+              "MN",
+              "BC"
+            ],
+            "attributes": null
+          }
+        ],
+        "target": {
+          "entity": "MN",
+          "attribute": "length"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_05_001",
+        "lesson": "lesson_05",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 14.0,
+                "BC": 16.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "MN",
+              "length": null,
+              "parallel_to": "BC",
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "M",
+              "lies_on": [
+                "AB"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "N",
+              "lies_on": [
+                "BC"
+              ],
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "midsegment_ratio",
+            "entities": [
+              "MN",
+              "BC"
+            ],
+            "attributes": null
+          }
+        ],
+        "target": {
+          "entity": "MN",
+          "attribute": "length"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "orphan_entity",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity 'M' (point) is declared but never used in any relationship or as the target. Consider removing it."
+          },
+          {
+            "gate": "orphan_entity",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity 'N' (point) is declared but never used in any relationship or as the target. Consider removing it."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_05. Let triangle ABC be a triangle with sides AB = 14, BC = 16, AC = 10. Let segment MN be a midsegment segment. Let point M be a point on AB. Let point N be a point on BC. Segment MN is a midsegment parallel to BC and half its length. Find the length of MN.",
+  "student_facing_prose": "You're a student working on triangle properties in a geometry course focused on dilations and midsegments. Here's your problem:\n\n---\n\nA surveyor is mapping a triangular plot of land, triangle ABC, with sides AB = 14 meters, BC = 16 meters, and AC = 10 meters. She wants to mark a smaller reference triangle by placing stakes at the midpoints of two of the sides: point M at the midpoint of AB and point N at the midpoint of BC. She then connects these two stakes with a string segment MN.\n\nBased on what you know about midsegments and dilations, what is the length of the string segment MN?"
+}

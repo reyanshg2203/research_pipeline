@@ -1,0 +1,111 @@
+{
+  "lesson_id": "lesson_01",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": true,
+  "final_overall_score": 3.7,
+  "final_nl": "A graphic designer is creating a reduced version of a quadrilateral logo. The original logo is quadrilateral ABCD with side lengths AB = 8 cm, BC = 6 cm, CD = 10 cm, and DA = 12 cm. The designer uses a dilation with scale factor 0.5 and center O to shrink the logo to create quadrilateral MNPQ, where A \u2192 M, B \u2192 N, C \u2192 P, and D \u2192 Q.\n\nWhat is the perimeter of the reduced logo MNPQ?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_01. Let quadrilateral ABCD be a 4-sided figure with AB = 8, BC = 6, CD = 10, DA = 12. Let quadrilateral MNPQ be a 4-sided figure with NP = 3, PQ = 5. ABCD is dilated to form MNPQ with scale factor 0.5, centered at point P_center. Find the length of MN in MNPQ.",
+      "judgment": {
+        "overall_score": 0.5,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 1
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem is internally inconsistent: if ABCD is dilated by scale factor 0.5 to form MNPQ, then MN should equal 0.5 * AB = 4, NP should equal 0.5 * BC = 3 (consistent), but PQ should equal 0.5 * CD = 5 (consistent) \u2014 however DA = 12 would map to QM = 6, which is not asked. More critically, the given values NP = 3 and PQ = 5 are redundant/extraneous information, and the problem uses 'P' both as a vertex of MNPQ and as 'P_center' the center of dilation, which is contradictory labeling. The answer is essentially given by the scale factor relationship without needing NP or PQ at all.",
+          "lesson_alignment": "The lesson focuses on the definition of dilation with a center and scale factor, and on scaled copies preserving ratios. While this problem touches on scale factor application, it presents extraneous/inconsistent data and doesn't meaningfully exercise the lesson's core skill of dilating a figure via rays from a center \u2014 the center P_center is mentioned but plays no role.",
+          "linguistic_clarity": "The naming collision between vertex P of MNPQ and the center 'P_center' is confusing and ambiguous. The phrasing is flat and list-like with no scenario, and the extra data (NP = 3, PQ = 5) makes the reader wonder if those constraints matter, muddying interpretation."
+        },
+        "feedback_for_haiku": "Your problem has a serious labeling collision: you use 'P' as a vertex of quadrilateral MNPQ and also 'P_center' as the center of dilation \u2014 pick distinct letters (e.g., center O) so readers aren't confused. You also give NP = 3 and PQ = 5 as if they were data, but these values are fully determined by the scale factor 0.5 applied to BC and CD, so they're either redundant or (if intended as independent constraints) risk contradicting the dilation \u2014 remove them and just state the scale factor and original figure. The final question 'Find MN' then becomes a clean single application of MN = 0.5 \u00b7 AB = 4. Finally, wrap the problem in a concrete real-world scenario: for example, a graphic designer shrinking a quadrilateral logo ABCD with side lengths AB = 8 cm, BC = 6, CD = 10, DA = 12 by a scale factor of 0.5 from an anchor point O to produce a smaller logo MNPQ \u2014 then ask, inside the scenario, how long side MN of the reduced logo will be. Preserve every quantity and label exactly when you reframe.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The label 'P' is used both as a vertex of quadrilateral MNPQ and as the center of dilation 'P_center', creating an internal naming contradiction.",
+            "suggested_fix": "Rename the center of dilation to a distinct letter such as O so it doesn't collide with vertex P of MNPQ."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The given side lengths NP = 3 and PQ = 5 are redundant with the dilation-plus-original-figure specification and add no information (or risk contradiction), since a dilation of scale factor 0.5 already fixes every side of MNPQ.",
+            "suggested_fix": "Remove the stated NP and PQ values and let all sides of MNPQ be determined solely by the dilation."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The center of dilation plays no computational role in the problem, so the task reduces to multiplying one length by 0.5 rather than exercising the lesson's core skill of dilating with a specified center.",
+            "suggested_fix": "Either ask students to locate the image of a specific point along the ray from the center, or give coordinates so the center genuinely matters."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is presented as a flat list of asserted facts with no real-world scenario giving the quantities purpose.",
+            "suggested_fix": "Wrap it in a concrete scenario (e.g., a designer shrinking a quadrilateral logo from an anchor point) with the question asked from inside that scenario, preserving every quantity and label."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A graphic designer is creating a reduced version of a quadrilateral logo. The original logo is quadrilateral ABCD with side lengths AB = 8 cm, BC = 6 cm, CD = 10 cm, and DA = 12 cm. The designer uses a dilation with scale factor 0.5 and center O to shrink the logo to create quadrilateral MNPQ, where A \u2192 M, B \u2192 N, C \u2192 P, and D \u2192 Q.\n\nWhat is the length of side MN in the reduced logo?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "MN = 0.5 \u00d7 AB = 0.5 \u00d7 8 = 4 cm, which follows directly from the dilation definition. All other side lengths and labels are consistent, and the problem is unambiguously solvable.",
+          "lesson_alignment": "The problem directly targets the lesson's core skill: applying a scale factor to find the corresponding length in a dilated figure. It's a straightforward application but appropriate for this introductory lesson on dilation.",
+          "linguistic_clarity": "The problem is wrapped in a concrete, motivated scenario (graphic designer reducing a logo), with the final question asked from inside that scenario. Every quantity is preserved and every term is deliberate."
+        },
+        "feedback_for_haiku": "Your problem is clean, correctly stated, and nicely wrapped in a graphic-design scenario. The main opportunity to strengthen it is difficulty: with four given side lengths but only one asked about, three of the quantities (BC, CD, DA) are inert decoration. Consider either (a) asking about the total perimeter of MNPQ so all four sides are used, (b) giving three sides plus a perimeter constraint and asking students to work backward to the scale factor, or (c) mixing a known image side with an unknown pre-image side so students must apply the scale factor in both directions. Any of these would push the problem closer to the productive edge of difficulty rather than a single one-step multiplication.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Three of the four given side lengths (BC, CD, DA) are never used, making the problem a single-step multiplication that under-uses the available setup.",
+            "suggested_fix": "Ask for the perimeter of MNPQ, or provide a mix of pre-image and image lengths so students apply the scale factor more than once."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A graphic designer is creating a reduced version of a quadrilateral logo. The original logo is quadrilateral ABCD with side lengths AB = 8 cm, BC = 6 cm, CD = 10 cm, and DA = 12 cm. The designer uses a dilation with scale factor 0.5 and center O to shrink the logo to create quadrilateral MNPQ, where A \u2192 M, B \u2192 N, C \u2192 P, and D \u2192 Q.\n\nWhat is the perimeter of the reduced logo MNPQ?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The dilation with scale factor 0.5 multiplies each side length by 0.5, giving MN=4, NP=3, PQ=5, QM=6, for a perimeter of 18 cm. All relationships are consistent and mathematically correct; the center O is unspecified in location but that doesn't affect side lengths under dilation.",
+          "lesson_alignment": "The problem directly applies the lesson's core skill: dilation with a given center and scale factor, and using that scale factor to compute lengths in the image. It's cleanly aligned but fairly straightforward (multiply four sides by 0.5 and sum), sitting at basic application rather than the productive edge.",
+          "linguistic_clarity": "The problem is wrapped in a concrete graphic-designer scenario, preserves every quantity, and asks the final question ('perimeter of the reduced logo') from inside that scenario. Vertex correspondence is stated explicitly and the prose is clean."
+        },
+        "feedback_for_haiku": "Your problem is solid and cleanly framed, but it sits at the easy end of application \u2014 a student just multiplies four given lengths by 0.5 and adds. Consider pushing to the productive edge by, for example, giving the perimeter of MNPQ and one side of ABCD and asking for the scale factor or a missing side, or by giving three sides and one image-side and asking students to reason about the scale factor before computing the perimeter. You could also incorporate the center O more meaningfully (e.g., give a distance from O to A and ask for OM) to reward students who engaged with the definition of dilation as \"k times farther from the center along ray PA,\" rather than treating dilation as just \"multiply every length.\"",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The task reduces to multiplying each of four given side lengths by 0.5 and summing, which is direct recall/pattern-matching rather than genuine application of dilation reasoning.",
+            "suggested_fix": "Withhold one side length or the scale factor and require students to derive it, or add a sub-question involving distance from center O to a vertex to leverage the ray-based definition of dilation."
+          }
+        ]
+      }
+    }
+  ]
+}

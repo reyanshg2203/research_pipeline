@@ -1,0 +1,63 @@
+{
+  "problem_id": "lesson_06_003",
+  "lesson": "lesson_06",
+  "entities": {
+    "triangles": [
+      {
+        "id": "MNO",
+        "sides": {
+          "MN": 10.0,
+          "NO": 14.0,
+          "MO": 12.0
+        },
+        "angles": {
+          "M": null,
+          "N": null,
+          "O": null
+        },
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": null,
+          "QR": 21.0,
+          "PR": 18.0
+        },
+        "angles": {
+          "P": null,
+          "Q": null,
+          "R": null
+        },
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "similar_AA",
+      "entities": [
+        "MNO",
+        "PQR"
+      ],
+      "attributes": {
+        "pre_image": "MNO",
+        "image": "PQR",
+        "scale_factor": 1.5
+      }
+    }
+  ],
+  "target": {
+    "entity": "PQR",
+    "attribute": "sides.PQ"
+  }
+}

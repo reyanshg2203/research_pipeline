@@ -1,0 +1,7 @@
+A graphic designer is comparing two rectangular picture frames for a client project.
+
+Frame A measures 4 inches wide and 6 inches tall. Frame B measures 6 inches wide and 9 inches tall.
+
+The designer believes that because both frames are rectangles, they must be similar to each other. However, before ordering Frame B, she wants to verify this claim by checking whether the rectangles are truly similar using the definition of similarity: a figure is similar to another if there exists a sequence of rigid motions (translations, rotations, and/or reflections) followed by exactly one dilation that takes the first figure onto the second.
+
+Are Frame A and Frame B similar? Justify your answer by explaining whether a sequence of rigid motions and a single dilation can map Frame A onto Frame B. If they are similar, state the required scale factor. If they are not similar, explain why no single dilation can work.

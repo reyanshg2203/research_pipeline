@@ -1,0 +1,104 @@
+{
+  "lesson_id": "lesson_10",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A sailmaker is designing triangular sail panels. The first panel has sides of length 10 inches and 14 inches, with an included angle of 48\u00b0. The second panel has sides of length 15 inches and 21 inches, with an included angle of 48\u00b0. A third panel has sides of length 15 inches and 21 inches, with an included angle of 65\u00b0.\n\n(a) Are the first and second panels similar in shape? Explain your reasoning using the Side-Angle-Side Triangle Similarity Theorem.\n\n(b) Are the first and third panels similar in shape? Explain your reasoning.\n\n(c) For the first and second panels, identify the scale factor and use it to find the length of the third side of the second panel if the third side of the first panel is 18 inches.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_10. Let triangle MNO be a triangle with sides MN = 10, NO = 14, where \u2220N = 48\u00b0. Let triangle RST be a triangle with sides RS = 15, ST = 21, where \u2220S = 48\u00b0. Triangle MNO is similar to triangle RST by SAS similarity with scale factor 1.5 (congruent angle pairs: N \u2245 S). Find the measure of \u2220T in RST.",
+      "judgment": {
+        "overall_score": 1.7,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 2,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The similarity setup is internally consistent (MN/RS = NO/ST = 10/15 = 14/21 = 2/3 with congruent included angles), though the stated scale factor of 1.5 goes from MNO to RST (RST is the larger). However, the question asks for the measure of \u2220T, which is unsolvable from the given data \u2014 knowing two sides and the included angle of a triangle does not determine the other angles without the Law of Cosines/Sines (outside 10th-grade geometry standards), and no third side or other angle is provided. Similarity to MNO doesn't help because \u2220O in MNO is equally undetermined.",
+          "lesson_alignment": "The lesson is about proving the SAS and SSS Similarity Theorems and recognizing when triangles are similar. This problem instead asserts the similarity and then asks for an angle measure that cannot be found from similarity reasoning \u2014 it neither exercises proving similarity nor uses the theorem meaningfully (since \u2220T corresponds to \u2220O, which is itself unknown). The task doesn't practice the lesson skill.",
+          "linguistic_clarity": "The prose is flat and list-like (\"Let triangle MNO be a triangle...\"), with no scenario. It also awkwardly states the similarity conclusion and scale factor as givens before asking the question, which makes the problem feel redundant and unclear about what the student is expected to derive."
+        },
+        "feedback_for_haiku": "Your problem has a critical issue: you ask for the measure of \u2220T, but that angle cannot be determined from the information given. Knowing two sides and the included angle (SAS) fixes a triangle's shape, but finding the other angles requires the Law of Cosines/Sines, which is beyond this lesson. Since \u2220T in RST corresponds to \u2220O in MNO under the similarity, and \u2220O is itself never given, there's no path to a numeric answer using SAS Similarity reasoning. Also, you've already told the student the triangles are similar and given the scale factor \u2014 so the interesting lesson work (recognizing SAS Similarity from proportional sides and a congruent included angle) is done for them. Rewrite so the student must either (a) decide whether the triangles are similar and justify via SAS Similarity, or (b) find a corresponding side length using the scale factor, or (c) find an angle that IS given in one triangle and transfers to the other via similarity (e.g., give \u2220M = 62\u00b0 and ask for \u2220R). Finally, wrap the problem in a concrete real-world scenario \u2014 for example, two triangular sail panels or two ramp supports with the given side lengths and included angle \u2014 and pose the final question from inside that scenario, preserving every number and label.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The measure of \u2220T cannot be determined from the given information; SAS data fixes the triangle but computing the remaining angles requires trigonometry (Law of Cosines), which is outside this lesson's scope, and \u2220O is never provided to transfer via similarity.",
+            "suggested_fix": "Either provide \u2220M (or \u2220O) in triangle MNO so \u2220T can be found by corresponding-angle transfer under similarity, or change the question to ask for a side length like RT given MO, or ask the student to prove the triangles are similar."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The problem states the similarity conclusion and scale factor as givens, so students never practice recognizing or proving SAS Similarity \u2014 the core skill of the lesson.",
+            "suggested_fix": "Remove the sentence declaring the triangles similar and the scale factor; instead ask the student to determine whether the triangles are similar and to justify their reasoning using the SAS Similarity Theorem."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is written as a flat sequence of asserted facts with no scenario giving the quantities a reason to exist.",
+            "suggested_fix": "Embed the two triangles in a concrete real-world context (e.g., two triangular sail panels a sailmaker is cutting) with the same side lengths and included angle, and ask the final question from inside that scenario."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The phrase \"congruent angle pairs: N \u2245 S\" is redundant since \u2220N = \u2220S = 48\u00b0 was already stated.",
+            "suggested_fix": "Delete the parenthetical restatement of the congruent angle pair."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A sailmaker is designing two triangular sail panels. The first panel has sides of length 10 inches and 14 inches, with an included angle of 48\u00b0. The second panel has sides of length 15 inches and 21 inches, with an included angle of 48\u00b0. \n\nAre these two sail panels similar in shape? Explain your reasoning using the Side-Angle-Side Triangle Similarity Theorem.",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The ratios 15/10 = 21/14 = 1.5 are consistent, and both triangles share the included 48\u00b0 angle, so SAS Similarity applies cleanly. No contradictions or ambiguities exist in the given measurements.",
+          "lesson_alignment": "The problem directly targets the SAS Triangle Similarity Theorem, which is the central lesson focus, and asks students to justify their reasoning. However, it stays at the application/recognition level rather than pushing toward proof construction or the productive edge suggested by the lesson (e.g., proving the theorem or handling a case where similarity is ambiguous).",
+          "linguistic_clarity": "The problem is wrapped in a concrete sailmaking scenario, quantities are preserved cleanly, and the question is asked from within that scenario. The wording is precise and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is solid: the sailmaker scenario is concrete, the numbers work cleanly (scale factor 1.5 with a shared 48\u00b0 included angle), and the SAS Similarity prompt is well-targeted. To push it to the productive edge of the lesson, consider raising the cognitive demand \u2014 for instance, ask students to identify which corresponding sides must be paired and justify why the ratio holds, or include a distractor pair (e.g., a third panel with the same ratio but a different included angle) so students must actively verify all three SAS conditions rather than just confirm them. You could also ask what the theorem tells us about the other angles or the third side, mirroring the structure of the lesson's Problem 1.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem is a direct verification of SAS Similarity with no distractor or extension, so it sits closer to pattern-matching than the productive-edge challenge the lesson invites.",
+            "suggested_fix": "Add a follow-up such as identifying the scale factor, finding the third side, or comparing to a non-similar third panel to force deeper application."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A sailmaker is designing triangular sail panels. The first panel has sides of length 10 inches and 14 inches, with an included angle of 48\u00b0. The second panel has sides of length 15 inches and 21 inches, with an included angle of 48\u00b0. A third panel has sides of length 15 inches and 21 inches, with an included angle of 65\u00b0.\n\n(a) Are the first and second panels similar in shape? Explain your reasoning using the Side-Angle-Side Triangle Similarity Theorem.\n\n(b) Are the first and third panels similar in shape? Explain your reasoning.\n\n(c) For the first and second panels, identify the scale factor and use it to find the length of the third side of the second panel if the third side of the first panel is 18 inches.",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "Ratios 15/10 = 21/14 = 1.5 confirm SAS similarity for panels 1 and 2 with the 48\u00b0 included angle, so (a) works. Panel 3 has the same side lengths as panel 2 but a different included angle (65\u00b0 vs 48\u00b0), so panels 1 and 3 are not similar \u2014 (b) is valid. For (c), the third side scales by 1.5 to give 27 inches, which is consistent. All relationships check out.",
+          "lesson_alignment": "The problem directly targets the SAS Triangle Similarity Theorem from the lesson, requires students to recognize why matching side ratios plus a congruent included angle is needed (contrasting with the third panel where the angle differs), and applies the scale factor. This mirrors the lesson's emphasis that the included angle must be congruent AND the two sides proportional.",
+          "linguistic_clarity": "The sail-panel scenario is concrete and consistent, quantities are preserved, and each subpart's question is clear. The phrasing is clean and grade-appropriate; minor issue is that part (c) asks to 'find the length of the third side of the second panel' given the first panel's third side, which is embedded but readable."
+        },
+        "feedback_for_haiku": "Your sail-panel problem is well-constructed: the SAS similarity check in part (a) works cleanly (15/10 = 21/14 = 1.5 with congruent 48\u00b0 included angles), the contrast in part (b) elegantly shows why a matching included angle is essential (same sides, different angle \u2192 not similar), and part (c) applies the scale factor to give 27 inches. The scenario is concrete and every quantity is preserved inside it. One small polish: in part (c) you could phrase the question slightly more crisply, e.g., \"If the third side of the first panel measures 18 inches, what is the length of the corresponding side of the second panel?\" \u2014 but this is optional.",
+        "specific_issues": []
+      }
+    }
+  ]
+}

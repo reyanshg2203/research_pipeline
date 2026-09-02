@@ -1,0 +1,1 @@
+Lesson context: lesson_06. Let triangle ABC be a triangle with sides AB = 6, BC = 8, AC = 10. Let triangle DEF be a triangle with sides DE = 9, DF = 15. Triangle ABC is similar to triangle DEF by SSS similarity with scale factor 1.5. Find the length of EF in DEF.

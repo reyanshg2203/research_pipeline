@@ -1,0 +1,5 @@
+A surveyor is measuring two similar right triangles formed by sight lines and landmarks. In the first triangle JKL, the two legs measure JK = 8 and KL = 6, meeting at a right angle at K. The surveyor then identifies a second similar right triangle MNO, where the right angle is at N, and one leg measures MN = 12.
+
+The surveyor knows that triangle JKL is similar to triangle MNO because angle J is congruent to angle M and angle K is congruent to angle N (by AA similarity). To complete her survey, she needs to find the length of side NO in triangle MNO.
+
+What is the length of NO?

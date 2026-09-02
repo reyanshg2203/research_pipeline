@@ -1,0 +1,15 @@
+A welder in a steel fabrication shop is constructing two roof support brackets of different sizes. Both brackets must have the same shape to fit the architectural design, but they will be scaled to different proportions based on the building's requirements.
+
+The first bracket (PQR) has angles ∠P = 35° and ∠Q = 65°, with the side PQ = 12 cm connecting these two angles.
+
+The second bracket (XYZ) has angles ∠X = 80° and ∠Y = 65°, with the side YZ = 18 cm connecting the 65° angle to the third vertex.
+
+(a) Use the Triangle Angle Sum Theorem to find the measure of ∠R in bracket PQR.
+
+(b) Use the Triangle Angle Sum Theorem to find the measure of ∠Z in bracket XYZ.
+
+(c) Explain why the two brackets are similar using the Angle-Angle Triangle Similarity Theorem by identifying two pairs of congruent corresponding angles.
+
+(d) Based on the Angle-Angle Triangle Similarity Theorem, the vertex correspondence is P↔Z, Q↔Y, and R↔X. This means side PQ in triangle PQR corresponds to side ZY in triangle XYZ. Use these corresponding sides to find the scale factor from triangle PQR to triangle XYZ.
+
+(e) In bracket PQR, the side QR = 9 cm. From the vertex correspondence, side QR corresponds to side YX in triangle XYZ. Using the scale factor, find the length of the corresponding side YX. How long should the welder cut the steel for the corresponding side in the larger bracket?

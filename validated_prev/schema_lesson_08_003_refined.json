@@ -1,0 +1,79 @@
+{
+  "problem_id": "lesson_08_003",
+  "lesson": "lesson_08",
+  "entities": {
+    "triangles": null,
+    "segments": null,
+    "polygons": [
+      {
+        "id": "ABCD",
+        "n_sides": 4,
+        "sides": {
+          "AB": 4.0,
+          "BC": null,
+          "CD": 4.0,
+          "DA": 6.0
+        },
+        "angles": {
+          "A": 90.0,
+          "B": 90.0,
+          "C": 90.0,
+          "D": 90.0
+        }
+      },
+      {
+        "id": "PQRS",
+        "n_sides": 4,
+        "sides": {
+          "PQ": 6.0,
+          "QR": 9.0,
+          "RS": 6.0,
+          "SP": 9.0
+        },
+        "angles": {
+          "P": 90.0,
+          "Q": 90.0,
+          "R": 90.0,
+          "S": 90.0
+        }
+      }
+    ],
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "similar_SAS",
+      "entities": [
+        "ABCD",
+        "PQRS"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "congruent_angle_pairs": [
+          [
+            "A",
+            "P"
+          ],
+          [
+            "B",
+            "Q"
+          ],
+          [
+            "C",
+            "R"
+          ],
+          [
+            "D",
+            "S"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "ABCD",
+    "attribute": "sides.BC"
+  }
+}

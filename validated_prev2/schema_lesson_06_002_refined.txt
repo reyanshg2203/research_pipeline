@@ -1,0 +1,5 @@
+A designer is creating two similar decorative tile patterns. The first pattern, quadrilateral PQRS, has sides PQ = 4, QR = 6, and SP = 5. The second pattern, quadrilateral WXYZ, has sides WX = 6, XY = 9, YZ = 12, and ZW = 7.5.
+
+The designer confirms that quadrilateral PQRS is similar to quadrilateral WXYZ using Side-Side-Side similarity, with a scale factor of 1.5 from PQRS to WXYZ.
+
+To complete the first tile pattern, the designer needs to find the length of the remaining side RS in quadrilateral PQRS. What should this length be?

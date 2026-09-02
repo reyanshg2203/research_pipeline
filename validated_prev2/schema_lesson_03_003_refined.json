@@ -1,0 +1,56 @@
+{
+  "problem_id": "lesson_03_003",
+  "lesson": "lesson_03",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 4.0
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "P'Q'R'",
+        "sides": null,
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": [
+      {
+        "id": "C",
+        "lies_on": null,
+        "is_intersection_of": null
+      }
+    ],
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "PQR",
+        "P'Q'R'"
+      ],
+      "attributes": {
+        "scale_factor": 2.0,
+        "pre_image": "PQR",
+        "image": "P'Q'R'",
+        "center": "C"
+      }
+    }
+  ],
+  "target": {
+    "entity": "P'Q'R'",
+    "attribute": "sides.P'Q'"
+  }
+}

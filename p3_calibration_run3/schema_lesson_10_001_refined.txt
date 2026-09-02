@@ -1,0 +1,5 @@
+A surveyor is comparing two triangular plots of land. The first plot, triangle PQR, has sides measuring PQ = 9 feet, QR = 12 feet, and PR = 15 feet. The surveyor then examines a smaller triangular parcel, triangle XYZ, with two known sides: XY = 6 feet and YZ = 8 feet.
+
+After checking the angle measurements and proportions, the surveyor confirms that triangle XYZ is similar to triangle PQR by the Side-Side-Side Triangle Similarity Theorem, with a scale factor of 1.5 (meaning each side of PQR is 1.5 times the corresponding side of XYZ).
+
+To complete the survey records, what is the length of the third side, XZ, in the smaller triangle XYZ?

@@ -1,0 +1,55 @@
+{
+  "problem_id": "lesson_14_002",
+  "lesson": "lesson_14",
+  "entities": {
+    "triangles": [
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": 7.0,
+          "EF": 24.0,
+          "DF": null
+        },
+        "angles": null,
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": [
+      {
+        "id": "GE",
+        "length": null,
+        "parallel_to": null,
+        "perpendicular_to": "DF",
+        "ratio_to": null,
+        "is_midsegment": null,
+        "is_altitude": true
+      }
+    ],
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "altitude_to_hypotenuse",
+      "entities": [
+        "DEF",
+        "GE",
+        "DF"
+      ],
+      "attributes": {
+        "altitude_id": "GE",
+        "hypotenuse": "DF",
+        "segment1": "DG",
+        "segment2": "GF"
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "sides.DF"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "lesson_id": "lesson_16",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": true,
+  "final_overall_score": 3.7,
+  "final_nl": "Two gardeners are designing similar right-triangular garden plots. In the larger plot PQR, the right angle is at Q, PQ = 9 meters, and QR = 12 meters. In the smaller plot XYZ, the right angle is at Y, and one leg XY = 6 meters corresponds to leg PQ in the larger plot. The angle at P in triangle PQR is congruent to the angle at X in triangle XYZ.\n\n(a) Explain why triangle PQR is similar to triangle XYZ.\n\n(b) What is the length of side YZ in the smaller garden plot?\n\n(c) What is the length of the hypotenuse PR in the larger garden plot?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_16. Let triangle PQR be a right triangle with sides PQ = 9, QR = 12. Let triangle XYZ be a right triangle with sides XY = 6. The interior angles of triangle PQR (\u2220P, \u2220Q, \u2220R) sum to 180\u00b0. The interior angles of triangle XYZ (\u2220X, \u2220Y, \u2220Z) sum to 180\u00b0. Angles Q, Y are congruent. Triangle PQR is similar to triangle XYZ by AA similarity (congruent angle pairs: Q \u2245 Y). Find the length of YZ in XYZ.",
+      "judgment": {
+        "overall_score": 1.5,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem is under-specified and ambiguous. It states PQ=9, QR=12 for right triangle PQR but doesn't specify which angle is the right angle. Additionally, only angle Q\u2245Y is stated as congruent, which is insufficient for AA similarity of triangles (only one pair of congruent angles is given between the two triangles unless we assume both right angles correspond\u2014but which vertex holds the right angle in each triangle is never stated). Without knowing which side XY=6 corresponds to (PQ? QR? PR?), YZ cannot be uniquely determined.",
+          "lesson_alignment": "The problem targets similar right triangles and proportional reasoning, which matches the lesson skill, but it is a generic, bare-bones exercise that doesn't push to the productive edge of difficulty or integrate the Pythagorean Theorem meaningfully as the lesson emphasizes.",
+          "linguistic_clarity": "The prose is clunky and redundant (stating that interior angles sum to 180\u00b0 is filler; restating AA similarity after listing the congruent pair is repetitive). The problem is a flat list of asserted facts with no scenario, and critical information (which angle is the right angle in each triangle, which sides correspond) is missing or ambiguous."
+        },
+        "feedback_for_haiku": "Your problem cannot be solved as written. You never say which angle is the right angle in triangle PQR or in triangle XYZ, and you only assert one pair of congruent angles (Q\u2245Y)\u2014one pair alone is not AA similarity. You also never say which side of XYZ corresponds to XY=6, so YZ is not determined. Fix the geometry: explicitly state that \u2220Q and \u2220Y are the right angles (so \u2220Q\u2245\u2220Y gives one pair, and another named angle pair gives AA), give PQ=9 and QR=12 as the two legs meeting at right angle Q, and specify that XY=6 corresponds to PQ (so students can find scale factor 6/9=2/3 and compute YZ=8). Remove the filler sentences about interior angles summing to 180\u00b0\u2014they add nothing. Finally, wrap the problem in a concrete real-world scenario (e.g., two similar right-triangular sail panels, ramps, or garden plots), preserving every quantity and label, and ask the final question from inside that scenario (\"how long should side YZ of the smaller panel be cut?\").",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem does not specify which angle is the right angle in either triangle, and only one pair of congruent angles (Q\u2245Y) is given, which is insufficient for AA similarity.",
+            "suggested_fix": "State explicitly that \u2220Q and \u2220Y are the right angles in their respective triangles, giving two pairs of congruent angles for AA similarity."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The correspondence between XY=6 and a side of PQR is not established, so YZ cannot be uniquely determined.",
+            "suggested_fix": "Specify that XY corresponds to PQ (both legs adjacent to the right angle), so scale factor is 6/9=2/3 and YZ corresponds to QR=12, giving YZ=8."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem contains redundant filler (interior angles summing to 180\u00b0, restating AA similarity) and reads as a flat list of assertions with no motivating context.",
+            "suggested_fix": "Remove filler sentences and embed the two similar right triangles in a concrete scenario (e.g., two similar right-triangular sails or ramps) with the question asked from inside that scenario."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem does not leverage the Pythagorean Theorem or invite multiple solution strategies as the lesson emphasizes.",
+            "suggested_fix": "Give side lengths that invite students to use both the Pythagorean Theorem and similarity ratios (e.g., include the hypotenuse or ask for more than one unknown side)."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "Two gardeners are designing similar right-triangular garden plots. In the larger plot PQR, the right angle is at Q, and the two legs have lengths PQ = 9 meters and QR = 12 meters. In the smaller plot XYZ, the right angle is at Y, and one leg XY = 6 meters corresponds to leg PQ in the larger plot.\n\nThe angle at P in triangle PQR is congruent to the angle at X in triangle XYZ, and the right angles at Q and Y are congruent. By AA similarity, triangle PQR is similar to triangle XYZ.\n\nWhat is the length of side YZ in the smaller garden plot?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The setup is mathematically sound: PQR is a right triangle with legs 9 and 12 (hypotenuse 15), and XYZ is similar with XY=6 corresponding to PQ=9, giving a scale factor of 2/3, so YZ = 12\u00b7(2/3) = 8 meters. All correspondences and the AA similarity justification are consistent.",
+          "lesson_alignment": "The problem targets similar right triangles and uses proportional reasoning to find an unknown side, which aligns with the lesson goal. However, it only requires a single scale-factor multiplication and does not push students to combine similarity with the Pythagorean Theorem, so it sits at the easier end of the lesson rather than the productive edge.",
+          "linguistic_clarity": "The problem is wrapped in a concrete gardener/garden-plot scenario, preserves all quantities, and asks the final question from inside the scenario ('length of side YZ in the smaller garden plot'). Prose is clean and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is mathematically clean and nicely framed in a real-world gardening scenario, but it's on the easy side for this lesson \u2014 it only asks students to apply a single scale factor (6/9 = 2/3) to find one corresponding side. The lesson specifically emphasizes combining similarity with the Pythagorean Theorem and choosing among multiple strategies. To push to the productive edge, consider giving students the hypotenuse of one triangle and a leg of the other (so they must use the Pythagorean Theorem in one triangle and similarity to bridge to the other), or ask for two unknowns (e.g., the hypotenuse of the smaller plot AND a side that requires both tools). Also, the \"By AA similarity...\" sentence essentially hands students the key reasoning; consider letting them justify the similarity themselves rather than stating it explicitly.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem only requires a single proportional scaling step and does not exercise the Pythagorean Theorem or force a choice between strategies, which the lesson emphasizes.",
+            "suggested_fix": "Provide the hypotenuse of one triangle and a leg of the other so students must combine the Pythagorean Theorem with similarity, or ask for multiple unknown sides."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem states 'By AA similarity, triangle PQR is similar to triangle XYZ,' which gives away the reasoning students should be producing.",
+            "suggested_fix": "Remove the AA-similarity sentence and let students justify the similarity themselves from the congruent angles."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "Two gardeners are designing similar right-triangular garden plots. In the larger plot PQR, the right angle is at Q, PQ = 9 meters, and QR = 12 meters. In the smaller plot XYZ, the right angle is at Y, and one leg XY = 6 meters corresponds to leg PQ in the larger plot. The angle at P in triangle PQR is congruent to the angle at X in triangle XYZ.\n\n(a) Explain why triangle PQR is similar to triangle XYZ.\n\n(b) What is the length of side YZ in the smaller garden plot?\n\n(c) What is the length of the hypotenuse PR in the larger garden plot?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The numbers are fully consistent: PQR is a 9-12-15 right triangle, the scale factor from PQR to XYZ is 6/9 = 2/3, so YZ = 8 and PR = 15. The correspondence and right-angle placements are stated unambiguously. The only quibble is minor redundancy in the similarity conditions given.",
+          "lesson_alignment": "The problem hits the lesson's core skill \u2014 using similarity and the Pythagorean Theorem to find unknown lengths in similar right triangles \u2014 and part (a) asks for the similarity justification. However, each sub-part uses just one technique in isolation rather than requiring students to combine proportional reasoning with the Pythagorean Theorem within a single unknown, so it lands short of the productive edge the lesson synthesis targets.",
+          "linguistic_clarity": "The problem is wrapped in a concrete gardener/garden-plot scenario, all quantities and labels are preserved, and the final questions are asked from within that scenario ('length of side YZ in the smaller garden plot'). Terminology is precise and the reading level fits 10th grade."
+        },
+        "feedback_for_haiku": "Your problem is mathematically sound (9-12-15 triangle scaled by 2/3 gives YZ = 8, PR = 15), and part (a) nicely targets the similarity justification. However, the setup contains a small redundancy that borders on over-specification: stating that \"XY = 6 corresponds to PQ\" AND that angle P \u2245 angle X is more than needed \u2014 the correspondence of legs already determines the similarity given both are right triangles. Consider trimming to one condition, or make part (a) more substantive by asking students to name which similarity criterion (AA, SAS, etc.) they are invoking and why. The scenario framing is good \u2014 gardeners designing plots \u2014 with the question asked from inside that scenario, so linguistic clarity is strong. To push difficulty toward the productive edge of the lesson, consider requiring students to use BOTH the Pythagorean Theorem and a proportional relationship (e.g., withhold one leg and give the hypotenuse of one triangle instead), which is exactly the dual-strategy synthesis the lesson highlights.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "minor",
+            "issue": "The problem over-specifies the similarity: given both triangles are right triangles with the right angle located at the vertex between the two named legs, stating both that XY corresponds to PQ and that angle P \u2245 angle X is redundant.",
+            "suggested_fix": "Drop the explicit angle congruence statement and let students deduce similarity from the right-angle-plus-corresponding-leg information, or drop the correspondence statement and keep the angle congruence."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Part (a) can be answered with a rote 'AA similarity' response, and parts (b)-(c) each use only one technique (proportion, then Pythagorean Theorem) rather than combining them as the lesson synthesis emphasizes.",
+            "suggested_fix": "Restructure so that finding one unknown requires the Pythagorean Theorem and finding another requires similarity ratios, mirroring the JKL/MNO example in the lesson synthesis."
+          }
+        ]
+      }
+    }
+  ]
+}

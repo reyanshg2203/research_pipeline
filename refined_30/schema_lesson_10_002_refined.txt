@@ -1,0 +1,7 @@
+A sailmaker is designing triangular sail panels. The first panel has sides of length 10 inches and 14 inches, with an included angle of 48°. The second panel has sides of length 15 inches and 21 inches, with an included angle of 48°. A third panel has sides of length 15 inches and 21 inches, with an included angle of 65°.
+
+(a) Are the first and second panels similar in shape? Explain your reasoning using the Side-Angle-Side Triangle Similarity Theorem.
+
+(b) Are the first and third panels similar in shape? Explain your reasoning.
+
+(c) For the first and second panels, identify the scale factor and use it to find the length of the third side of the second panel if the third side of the first panel is 18 inches.

@@ -1,0 +1,56 @@
+{
+  "problem_id": "lesson_05_003",
+  "lesson": "lesson_05",
+  "entities": {
+    "triangles": [
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": null,
+          "EF": 20.0,
+          "DF": null
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "GHI",
+        "sides": {
+          "GH": 7.0,
+          "HI": 10.0,
+          "GI": 10.0
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "DEF",
+        "GHI"
+      ],
+      "attributes": {
+        "center": "E",
+        "scale_factor": 0.5,
+        "pre_image": "DEF",
+        "image": "GHI"
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "sides.DE"
+  }
+}

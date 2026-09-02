@@ -1,0 +1,3 @@
+A surveyor is comparing two triangular survey plots. The first plot, triangle MNO, has sides MN = 10 meters, NO = 14 meters, and MO = 12 meters. The surveyor discovers that a second plot, triangle PQR, is similar to the first by AA similarity, with corresponding angles: ∠M ≅ ∠P, ∠N ≅ ∠Q, and ∠O ≅ ∠R. The surveyor measures two sides of triangle PQR: QR = 21 meters and PR = 18 meters, and confirms the angles are ∠P = 45°, ∠Q = 65°, and ∠R = 70°.
+
+Since the triangles are similar with a scale factor of 1.5 from MNO to PQR, the surveyor needs to determine the length of the third side PQ to complete the survey records. What is the length of PQ?

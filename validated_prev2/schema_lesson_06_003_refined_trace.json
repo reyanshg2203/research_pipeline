@@ -1,0 +1,288 @@
+{
+  "problem_id": "lesson_06_003",
+  "lesson_id": "lesson_06",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_06",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 1,
+    "min_steps": 1,
+    "best_trace": [
+      "scale_factor"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "1 in-scope steps lands in band [1..2]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_06_003",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": [
+            {
+              "id": "MNO",
+              "sides": {
+                "MN": 10.0,
+                "NO": 14.0,
+                "MO": 12.0
+              },
+              "angles": {
+                "M": 45.0,
+                "N": 65.0,
+                "O": 70.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": null,
+                "QR": 21.0,
+                "PR": 18.0
+              },
+              "angles": {
+                "P": 45.0,
+                "Q": 65.0,
+                "R": 70.0
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_AA",
+            "entities": [
+              "MNO",
+              "PQR"
+            ],
+            "attributes": {
+              "pre_image": "MNO",
+              "image": "PQR",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": [
+                [
+                  "M",
+                  "P"
+                ],
+                [
+                  "N",
+                  "Q"
+                ],
+                [
+                  "O",
+                  "R"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQR",
+          "attribute": "sides.PQ"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 4,
+        "errors": [
+          {
+            "gate": "law_of_cosines_violation",
+            "severity": "contradiction",
+            "checks": "",
+            "failed": "Triangle MNO fails the Law of Cosines: angle M is declared as 45.0 but the side lengths imply it must be 78.46 (cos = 0.200 from sides vs cos = 0.707 from angle)."
+          },
+          {
+            "gate": "law_of_sines_violation",
+            "severity": "contradiction",
+            "checks": "",
+            "failed": "Triangle MNO fails the Law of Sines: side opposite M is 14.0 with angle 45.0 (ratio 19.80), but side opposite N is 12.0 with angle 65.0 (ratio 13.24). These ratios must be equal."
+          },
+          {
+            "gate": "law_of_sines_violation",
+            "severity": "contradiction",
+            "checks": "",
+            "failed": "Triangle MNO fails the Law of Sines: side opposite M is 14.0 with angle 45.0 (ratio 19.80), but side opposite O is 10.0 with angle 70.0 (ratio 10.64). These ratios must be equal."
+          },
+          {
+            "gate": "law_of_sines_violation",
+            "severity": "contradiction",
+            "checks": "",
+            "failed": "Triangle MNO fails the Law of Sines: side opposite N is 12.0 with angle 65.0 (ratio 13.24), but side opposite O is 10.0 with angle 70.0 (ratio 10.64). These ratios must be equal."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 4,
+      "haiku_correction": {
+        "problem_id": "lesson_06_003",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": [
+            {
+              "id": "MNO",
+              "sides": {
+                "MN": 10.0,
+                "NO": 14.0,
+                "MO": 12.0
+              },
+              "angles": {
+                "M": null,
+                "N": null,
+                "O": null
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": null,
+                "QR": 21.0,
+                "PR": 18.0
+              },
+              "angles": {
+                "P": null,
+                "Q": null,
+                "R": null
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_AA",
+            "entities": [
+              "MNO",
+              "PQR"
+            ],
+            "attributes": {
+              "pre_image": "MNO",
+              "image": "PQR",
+              "scale_factor": 1.5
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQR",
+          "attribute": "sides.PQ"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_06_003",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": [
+            {
+              "id": "MNO",
+              "sides": {
+                "MN": 10.0,
+                "NO": 14.0,
+                "MO": 12.0
+              },
+              "angles": {
+                "M": null,
+                "N": null,
+                "O": null
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": null,
+                "QR": 21.0,
+                "PR": 18.0
+              },
+              "angles": {
+                "P": null,
+                "Q": null,
+                "R": null
+              },
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_AA",
+            "entities": [
+              "MNO",
+              "PQR"
+            ],
+            "attributes": {
+              "pre_image": "MNO",
+              "image": "PQR",
+              "scale_factor": 1.5
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQR",
+          "attribute": "sides.PQ"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_06",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": 1,
+        "best_trace": [
+          "scale_factor"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "1 in-scope steps lands in band [1..2]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_06. Let triangle MNO be a triangle with sides MN = 10, NO = 14, MO = 12. Let triangle PQR be a triangle with sides QR = 21, PR = 18. Triangle MNO is similar to triangle PQR by AA similarity with scale factor 1.5. Find the length of PQ in PQR.",
+  "student_facing_prose": "A surveyor is comparing two triangular plots of land. The original plot MNO has sides MN = 10 meters, NO = 14 meters, and MO = 12 meters. A developer wants to create a larger similar plot PQR for a new project.\n\nThe surveyor confirms that triangle MNO is similar to triangle PQR by AA similarity, with a scale factor of 1.5. This means each side of PQR is 1.5 times the corresponding side in MNO.\n\nThe surveyor has already measured two sides of the new plot: QR = 21 meters and PR = 18 meters. Before finalizing the land purchase, she needs to determine the third side of the plot.\n\nWhat is the length of PQ?"
+}

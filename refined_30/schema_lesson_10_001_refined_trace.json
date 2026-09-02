@@ -1,0 +1,135 @@
+{
+  "lesson_id": "lesson_10",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": false,
+  "final_overall_score": 1.2,
+  "final_nl": "Two triangular truss braces are used in a construction project. The larger brace, PQR, has sides PQ = 10 cm, QR = 14 cm, and PR = 18 cm. A smaller brace, XYZ, is designed to be a scaled copy of the larger brace, with sides XY = 15 cm and YZ = 21 cm.\n\nFirst, identify the scale factor by finding the ratio of corresponding sides for the two pairs of sides you know. Then use this scale factor to find the length of XZ.\n\nFinally, verify that all three pairs of corresponding sides have the same ratio, confirming that triangle XYZ is similar to triangle PQR by the Side-Side-Side Similarity Theorem.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_10. Let triangle PQR be a triangle with sides PQ = 9, QR = 12, PR = 15. Let triangle XYZ be a triangle with sides XY = 6, YZ = 8. Triangle XYZ is similar to triangle PQR by SSS similarity with scale factor 1.5. Find the length of XZ in XYZ.",
+      "judgment": {
+        "overall_score": 1.2,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem has an internal contradiction: with PQ=9, QR=12, PR=15 and scale factor 1.5, the smaller triangle XYZ should have XY=6, YZ=8, XZ=10 only if PQR is 1.5 times XYZ. But then XY corresponds to PQ (9/6=1.5) and YZ to QR (12/8=1.5), giving XZ=10. However, the problem states 'XYZ is similar to PQR ... with scale factor 1.5' which typically means XYZ is 1.5 times PQR, which would give XY=13.5, not 6. The scale factor direction is ambiguous/incorrect, and given the stated XY=6, YZ=8, the answer is essentially handed to the student as 15/1.5=10.",
+          "lesson_alignment": "The lesson focuses on proving the SSS and SAS Similarity Theorems and applying them to identify similar triangles or find unknown measures via proportional reasoning. This problem merely asks for a trivial division (15 \u00f7 1.5 = 10) given the scale factor directly, which is pattern-matching rather than genuine application of SSS similarity. It also doesn't require the student to verify SSS similarity \u2014 that's asserted.",
+          "linguistic_clarity": "The problem is grammatically clear and unambiguous in what is asked, but the phrasing is flat and list-like ('Let triangle PQR be a triangle...'), with awkward repetition ('a triangle with sides'). There is no scenario, and the redundant final phrase 'XZ in XYZ' is clunky."
+        },
+        "feedback_for_haiku": "Your problem has a serious internal inconsistency around the scale factor. You state PQ=9, QR=12, PR=15 and XY=6, YZ=8, then say \"triangle XYZ is similar to triangle PQR with scale factor 1.5\" \u2014 but the ratio PQ/XY = 9/6 = 1.5 means PQR is 1.5\u00d7 XYZ, not the other way around. Fix the direction of the scale factor (e.g., \"PQR is similar to XYZ with scale factor 1.5\" or \"XYZ is a dilation of PQR with scale factor 2/3\"). Also, the task is too easy: you hand students the scale factor directly, reducing the problem to 15\u00f71.5. Make it a genuine application of SSS similarity by asking students to first verify the triangles are similar from the side lengths (showing 9/6 = 12/8 gives a common ratio), then determine XZ. Finally, wrap the problem in a concrete real-world scenario \u2014 for example, two triangular sail panels, garden plots, or truss braces \u2014 preserving every side length (9, 12, 15, 6, 8) and labels (PQR, XYZ), and put the final \"how long is XZ\" question inside that scenario.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The scale factor direction is inconsistent with the given side lengths: PQ/XY = 9/6 = 1.5 means PQR is the larger triangle, but the problem says XYZ is similar to PQR with scale factor 1.5, which would make XYZ the larger triangle.",
+            "suggested_fix": "Rephrase as 'PQR is similar to XYZ with scale factor 1.5' or 'XYZ is a scaled copy of PQR with scale factor 2/3' so the direction matches the given lengths."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The problem hands the scale factor to the student, reducing the task to a single division (15/1.5) rather than requiring genuine application of the SSS Similarity Theorem.",
+            "suggested_fix": "Remove the stated scale factor and ask students to first verify SSS similarity by comparing ratios of the two known pairs of sides, then use that ratio to find XZ."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is stated as a flat list of facts with awkward repetition ('Let triangle PQR be a triangle with sides...') and no real-world context.",
+            "suggested_fix": "Wrap the problem in a concrete scenario (e.g., two triangular sail panels or truss pieces) preserving every quantity and label, with the final question asked from inside that scenario."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The phrase 'Find the length of XZ in XYZ' is redundant since XZ is already a side of XYZ.",
+            "suggested_fix": "Simplify to 'Find the length of XZ.'"
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "Two triangular truss braces are used in a construction project. The larger brace, PQR, has sides PQ = 9 cm, QR = 12 cm, and PR = 15 cm. A smaller brace, XYZ, is designed to be a scaled copy of the larger brace, with sides XY = 6 cm and YZ = 8 cm.\n\nFirst, verify that triangle XYZ is similar to triangle PQR using the Side-Side-Side Similarity Theorem by checking that the ratios of corresponding sides are equal.\n\nThen, use this similarity relationship to find the length of XZ.",
+      "judgment": {
+        "overall_score": 3.2,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 3,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The ratios 6/9 = 8/12 = 2/3 are consistent, and XZ = 15\u00b7(2/3) = 10 cm follows correctly. However, the problem asks students to 'verify' SSS similarity using the ratios of corresponding sides, but only two side ratios are known before XZ is computed \u2014 so strictly speaking SSS cannot be verified until XZ is found (AA or SAS would apply, or SSS is verified post-hoc). This is a minor logical circularity but doesn't break the problem.",
+          "lesson_alignment": "The problem directly targets the SSS Similarity Theorem from the lesson and asks students to apply it to find an unknown side, which matches Problem 1/2 style tasks in the lesson. It is genuine application but not particularly pushing the productive edge \u2014 the 3-4-5 scaling is a well-known pattern easy to spot.",
+          "linguistic_clarity": "The problem is wrapped in a concrete construction scenario (truss braces), with quantities preserved and a clear task. Prose is clean and the question is asked from inside the scenario."
+        },
+        "feedback_for_haiku": "Your problem has a subtle logical issue: you ask students to 'verify that triangle XYZ is similar to triangle PQR using the Side-Side-Side Similarity Theorem by checking that the ratios of corresponding sides are equal' \u2014 but at that point in the problem, XZ is unknown, so only two of the three side ratios (XY/PQ and YZ/QR) can be checked. Students cannot fully verify SSS similarity before finding XZ. Fix this by restructuring: either (a) tell students to observe that two pairs of corresponding sides are in the same ratio and use that shared ratio (scale factor) to find XZ, then confirm SSS holds; or (b) give all three sides of XYZ and ask them to verify SSS similarity and then find a different unknown (like an angle measure, given angles in PQR). Also consider making the numbers less transparently a 3-4-5 scaled pair to push the difficulty toward the productive edge of the lesson.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "minor",
+            "issue": "The problem asks students to verify SSS similarity by checking ratios of corresponding sides, but XZ is unknown at that step, so only two of three ratios can be checked.",
+            "suggested_fix": "Rephrase so students first observe two proportional sides to establish the scale factor, use it to compute XZ, and then confirm all three ratios match \u2014 or supply XZ and ask for an angle instead."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The 9-12-15 to 6-8-? scaling is a very recognizable 3-4-5 pattern, making the problem more pattern-matching than productive application.",
+            "suggested_fix": "Use less transparent numbers (e.g., PQ = 10, QR = 14, PR = 18 with XY = 15) to require genuine proportional reasoning."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "Two triangular truss braces are used in a construction project. The larger brace, PQR, has sides PQ = 10 cm, QR = 14 cm, and PR = 18 cm. A smaller brace, XYZ, is designed to be a scaled copy of the larger brace, with sides XY = 15 cm and YZ = 21 cm.\n\nFirst, identify the scale factor by finding the ratio of corresponding sides for the two pairs of sides you know. Then use this scale factor to find the length of XZ.\n\nFinally, verify that all three pairs of corresponding sides have the same ratio, confirming that triangle XYZ is similar to triangle PQR by the Side-Side-Side Similarity Theorem.",
+      "judgment": {
+        "overall_score": 1.2,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The scale factor is inconsistent between the two given pairs: XY/PQ = 15/10 = 1.5, but YZ/QR = 21/14 = 1.5 \u2014 those match, good. However, the correspondence is problematic: PQ\u2194XY and QR\u2194YZ implies PR\u2194XZ, so XZ should be 18\u00b71.5 = 27. That part works. But the problem states 'find the scale factor from the two pairs you know' \u2014 the student only knows XY and YZ, and needs to assume PQ\u2194XY, QR\u2194YZ. That's fine. Actually the math is consistent: XZ = 27. Wait, let me recheck triangle inequality: 10+14=24 < 18? No, 10+14=24 > 18. OK valid. Scaled: 15+21=36 > 27. Valid. So the geometry works out. However, the problem's final step is circular: it asks the student to 'verify all three pairs have the same ratio' AFTER using the scale factor to compute XZ \u2014 of course XZ/PR will equal 1.5 by construction. This means the SSS Similarity conclusion is guaranteed by the setup, not verified. The problem essentially provides its own answer through the method.",
+          "lesson_alignment": "The lesson focuses on PROVING the SSS and SAS Similarity Theorems, with practice problems that ask students to explain WHY triangles are similar and to draw conclusions (like angle measures) from similarity. This problem instead asks students to compute a missing side using a scale factor, then 'verify' SSS similarity \u2014 but the verification is tautological because XZ was computed from the scale factor. It targets scale-factor arithmetic rather than the reasoning/proof emphasis of the lesson.",
+          "linguistic_clarity": "The truss brace scenario is a reasonable real-world frame, but the phrasing is clunky ('identify the scale factor by finding the ratio of corresponding sides for the two pairs of sides you know') and the multi-step instructions read like a worksheet checklist rather than a natural question posed from inside the scenario. The final 'verify' step is logically confusing since it follows a computation that guarantees the result."
+        },
+        "feedback_for_haiku": "Your problem has a fundamental logical flaw: you ask students to compute XZ using a scale factor derived from XY/PQ and YZ/QR, and then to \"verify\" that all three ratios are equal to confirm SSS Similarity. But since XZ was computed by multiplying PR by that scale factor, the third ratio equals the scale factor by construction \u2014 the \"verification\" is circular and proves nothing. To fix this, either (a) give XZ as a known measurement and ask students to test whether the triangles are similar by checking all three ratios (a genuine SSS Similarity test, matching Problem 1 and Problem 3 in the lesson), or (b) drop the fake verification step and instead ask students to find XZ AND then determine an angle measure in XYZ given angles in PQR (matching Problem 2's style). Also, this lesson emphasizes proving/explaining similarity, so consider asking \"explain how you know the triangles are similar\" rather than just computing. Finally, tighten the prose \u2014 the truss brace scenario is fine, but embed the question naturally inside it (e.g., \"The engineer needs to know how long to cut the third beam XZ...\") instead of listing procedural steps like a worksheet.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The 'verify all three ratios are equal' step is circular because XZ was just computed by multiplying PR by the scale factor, so the third ratio must equal the scale factor by construction.",
+            "suggested_fix": "Either provide XZ as a given measurement so students genuinely test SSS Similarity, or remove the verification step and replace it with a follow-up question about angle measures or a similarity explanation."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The problem exercises scale-factor arithmetic rather than the lesson's focus on proving/explaining why triangles are similar via SSS or SAS Similarity Theorems.",
+            "suggested_fix": "Rework as a genuine SSS Similarity test (give all six sides) and ask students to explain their reasoning, mirroring Problem 1 or Problem 3 from the lesson."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The prose reads as a procedural checklist ('First... Then... Finally...') rather than a question naturally embedded in the truss scenario.",
+            "suggested_fix": "Rewrite the ask from inside the scenario, e.g., 'How long should the engineer cut brace XZ, and how can she confirm the smaller truss has the same shape as the larger one?'"
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "minor",
+            "issue": "The correspondence PQ\u2194XY, QR\u2194YZ, PR\u2194XZ is assumed but never stated; students must infer it from the order of labeling.",
+            "suggested_fix": "State explicitly that vertex X corresponds to P, Y to Q, and Z to R, or note that XY corresponds to PQ and YZ to QR."
+          }
+        ]
+      }
+    }
+  ]
+}

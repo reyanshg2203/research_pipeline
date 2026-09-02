@@ -1,0 +1,5 @@
+A graphic designer is creating a scaled floor plan for a new office space. She starts with a detailed blueprint of quadrilateral ABCD with sides AB = 8, BC = 6, CD = 10, and DA = 12. To fit the plan on a presentation board, she reduces the design using a dilation centered at point P with a scale factor of 0.5, creating a smaller quadrilateral MNPQ.
+
+After applying the dilation, she measures two sides of the scaled figure: NP = 3 and PQ = 5. Now she needs to find the length of side MN in the scaled quadrilateral MNPQ so she can verify that all sides have been reduced correctly.
+
+What is the length of MN?

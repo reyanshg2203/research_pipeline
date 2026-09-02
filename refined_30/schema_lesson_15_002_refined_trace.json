@@ -1,0 +1,78 @@
+{
+  "lesson_id": "lesson_15",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A carpenter is building shelves and needs to check whether the corner is truly square (forms a 90\u00b0 angle). She measures three pieces that will form a triangle: two support braces measure 7 inches and 24 inches, and a diagonal brace measures 25 inches.\n\n(a) Is the corner a true right angle? Use the converse of the Pythagorean Theorem to determine whether the triangle formed by these three measurements is a right triangle.\n\n(b) Suppose the carpenter remeasures the diagonal and finds it is actually 26 inches instead of 25 inches. Without recalculating everything, would this new triangle with sides 7, 24, and 26 inches be acute, right, or obtuse? Explain your reasoning by comparing c\u00b2 to a\u00b2 + b\u00b2.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_15. Let triangle PQR be a triangle with sides PQ = 7, QR = 24, PR = 25. The interior angles of triangle PQR (\u2220P, \u2220Q, \u2220R) sum to 180\u00b0. Determine whether triangle PQR is a right triangle.",
+      "judgment": {
+        "overall_score": 3.2,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The side lengths 7, 24, 25 form a valid Pythagorean triple (49 + 576 = 625), so the triangle is indeed a right triangle. No internal contradictions exist, though the statement that interior angles sum to 180\u00b0 is superfluous.",
+          "lesson_alignment": "The problem targets the converse of the Pythagorean Theorem, which is on-topic for lesson 15. However, 7-24-25 is an extremely well-known Pythagorean triple, making this feel more like recall/pattern-matching than a genuine application; it also doesn't touch triangle classification (acute/obtuse) or the triangle inequality that the lesson emphasizes.",
+          "linguistic_clarity": "The problem is grammatically clear and unambiguous, but it is a flat list of assertions with no real-world scenario. The mention that angles sum to 180\u00b0 is filler that doesn't add value."
+        },
+        "feedback_for_haiku": "Your problem is mathematically correct but has two weaknesses. First, 7-24-25 is one of the most recognizable Pythagorean triples, so a strong student can answer by pattern recognition rather than applying the converse of the Pythagorean Theorem. Consider using less-familiar numbers, or better yet, extend the task to require classifying the triangle as acute, right, or obtuse (which is the actual lesson focus) \u2014 for example, ask students to determine which type it is by comparing c\u00b2 to a\u00b2+b\u00b2. Second, drop the filler sentence about angles summing to 180\u00b0 (that's not needed and hints that it might not be a triangle). Third, wrap the problem in a concrete real-world scenario preserving every quantity \u2014 e.g., a technician bracing a shelf with support pieces of 7 in and 24 in and a diagonal of 25 in, asking whether the corner forms a true square (right) angle \u2014 and put the final question inside that scenario.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The 7-24-25 triple is highly recognizable, allowing students to answer by recall rather than genuinely applying the converse of the Pythagorean Theorem.",
+            "suggested_fix": "Use less familiar numbers or expand the task to require classifying the triangle as acute, right, or obtuse based on comparing c\u00b2 to a\u00b2+b\u00b2."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem only asks about right-triangle identification and misses the lesson's broader emphasis on classifying triangles as acute/right/obtuse or applying triangle-inequality reasoning.",
+            "suggested_fix": "Add a follow-up such as 'If PR were changed to 26, would the triangle be acute, right, or obtuse?' to push toward the productive edge of the lesson."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is a bare list of asserted facts with no scenario giving the quantities a reason to exist, and includes an irrelevant reminder that angles sum to 180\u00b0.",
+            "suggested_fix": "Rewrite as a concrete scenario (e.g., a carpenter checking whether a corner is square using measured pieces of 7, 24, and 25 units) with the question asked from within it, and delete the 180\u00b0 filler sentence."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A carpenter is building shelves and needs to check whether the corner is truly square (forms a 90\u00b0 angle). She measures three pieces that will form a triangle: two support braces measure 7 inches and 24 inches, and a diagonal brace measures 25 inches.\n\n(a) Is the corner a true right angle? Use the converse of the Pythagorean Theorem to determine whether the triangle formed by these three measurements is a right triangle.\n\n(b) Suppose the carpenter remeasures the diagonal and finds it is actually 26 inches instead of 25 inches. Without recalculating everything, would this new triangle with sides 7, 24, and 26 inches be acute, right, or obtuse? Explain your reasoning by comparing c\u00b2 to a\u00b2 + b\u00b2.",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The numbers check out cleanly: 7\u00b2 + 24\u00b2 = 49 + 576 = 625 = 25\u00b2, confirming a right triangle for part (a). For part (b), 26\u00b2 = 676 > 625 = 7\u00b2 + 24\u00b2, correctly indicating obtuse. All relationships are accurate and consistent.",
+          "lesson_alignment": "The problem directly targets the lesson's core skill: using the converse of the Pythagorean Theorem to classify triangles as acute, right, or obtuse. Part (b) extends beyond simple recall by asking students to reason about how changing one side length affects the classification, matching the productive edge of the lesson.",
+          "linguistic_clarity": "The problem is wrapped in a concrete carpentry scenario (checking a square corner) with the question posed from inside that scenario. Quantities are preserved exactly, and part (b) naturally extends the scenario via a remeasurement. Prose is clean and purposeful."
+        },
+        "feedback_for_haiku": "Your problem is solid across the board. The carpentry framing gives the measurements a concrete reason to exist, the numbers form a classic Pythagorean triple (7-24-25) that verifies cleanly, and part (b) pushes students beyond recall by asking them to reason about how a single side-length change (25 \u2192 26) shifts the classification via c\u00b2 vs. a\u00b2 + b\u00b2. One tiny polish: in part (b), you might explicitly label which side is c so students clearly see that the diagonal remains the longest side after the change \u2014 this reinforces the lesson's convention of letting c denote the longest side before comparing. Otherwise, keep this style.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Part (b) does not explicitly remind students to identify the longest side as c before comparing, which is a convention emphasized in the lesson.",
+            "suggested_fix": "Add a brief prompt such as 'Identify the longest side as c, then compare c\u00b2 to a\u00b2 + b\u00b2' to reinforce the lesson's labeling convention."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+A graphic designer is working on a logo that features triangle PQR with sides PQ = 4 cm, QR = 5 cm, and RP = 6 cm. To create a larger version for a billboard, she enlarges the design using a dilation centered at point C with a scale factor of 2, producing triangle STU.
+
+When the designer orders materials for the billboard version, she needs to know the length of side ST, which corresponds to side PQ in the original logo. What should that length be?

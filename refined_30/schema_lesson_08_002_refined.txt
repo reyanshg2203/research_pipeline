@@ -1,0 +1,7 @@
+A graphic designer is working with two circular logos. The original logo, circle c, has a center at point O and a radius of 3 inches. The client requests a scaled-up version, circle d, with center at point P and a radius of 7 inches. The two logos need to be positioned so that they appear as if one is an enlarged version of the other on a poster.
+
+A colleague suggests the following sequence of transformations: First dilate circle c using center O and a scale factor of 7/3, then translate the image so its center coincides with point P.
+
+(a) Describe an alternative sequence of transformations (translation followed by a dilation) that would take circle c exactly onto circle d, as shown in the lesson proof.
+
+(b) Will both sequences result in circle c coinciding exactly with circle d? Explain why or why not, and justify your reasoning using what you know about rigid transformations and dilations.

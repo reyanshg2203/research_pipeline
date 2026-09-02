@@ -1,0 +1,3 @@
+A designer is creating a scaled-down version of a triangular logo. The original logo, triangle ABC, has sides measuring AB = 5 cm, BC = 7 cm, and AC = 8 cm. She uses a photocopier to reduce the design, which performs a dilation centered at point P with a scale factor of 0.6. This creates the smaller triangle A'B'C'.
+
+When the designer measures the corresponding side of the reduced logo, how long is A'B' in the image?

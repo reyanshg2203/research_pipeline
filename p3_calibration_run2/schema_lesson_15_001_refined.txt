@@ -1,0 +1,1 @@
+A triangle has two sides measuring AB = 12 and BC = 9. The three interior angles of triangle ABC must sum to 180°. What constraints does this place on the length of the third side, AC? In particular, find the range of possible lengths for AC.

@@ -1,0 +1,3 @@
+A mapmaker is comparing two triangular regions on neighboring maps drawn at different scales. On the first map, triangle PQR has sides measuring PQ = 9 cm, QR = 12 cm, and PR = 15 cm. On the second map, triangle XYZ is similar to triangle PQR by the Side-Side-Side Similarity Theorem, with a scale factor of 1.5. The mapmaker has already measured two sides of triangle XYZ: XY = 6 cm and YZ = 8 cm.
+
+To complete her analysis and verify the scale factor relationship, what is the length of the third side, XZ?

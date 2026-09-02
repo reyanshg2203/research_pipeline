@@ -1,0 +1,48 @@
+{
+    "problem_id": "coteach_problem_1",
+    "lesson": "lesson_02",
+    "entities": {
+      "triangles": [
+        {
+          "id": "ABC",
+          "sides": {
+            "AB": 4,
+            "BC": 6,
+            "AC": 5
+          },
+          "angles": {
+            "A": 60,
+            "B": 60,
+            "C": 60
+          }
+        },
+        {
+          "id": "DEF",
+          "sides": {
+            "DE": 6,
+            "EF": 9,
+            "DF": 7.5
+          },
+          "angles": {
+            "D": 60,
+            "E": 60,
+            "F": 60
+          }
+        }
+      ]
+    },
+    "relationships": [
+      {
+        "type": "scaled_copy_unspecified",
+        "entities": ["ABC", "DEF"],
+        "attributes": {
+          "pre_image": "ABC",
+          "image": "DEF"
+        }
+      }
+    ],
+    "target": {
+      "entity": "DEF",
+      "attribute": "is_scaled_copy"
+    }
+}

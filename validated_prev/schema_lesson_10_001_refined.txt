@@ -1,0 +1,5 @@
+A designer is working with two similar triangular templates. The first template, triangle PQR, has sides PQ = 9 cm, QR = 12 cm, and PR = 15 cm. She needs to create a smaller version, triangle XYZ, by scaling down the original using a scale factor of 1.5.
+
+She has already measured two sides of the smaller template: XY = 6 cm and YZ = 8 cm. These correspond to sides PQ and QR respectively, and she can confirm that the triangles are similar by the Side-Side-Side Similarity Theorem — all three pairs of corresponding sides are proportional with the same scale factor.
+
+To complete the smaller template, what length should she cut for side XZ?

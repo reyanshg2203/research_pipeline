@@ -1,0 +1,11 @@
+Two triangular support brackets are being designed for a warehouse shelving system. The brackets use the same angle measurements but are scaled to different sizes.
+
+The smaller bracket, ABC, has side AB = 10 cm, side BC = 8 cm, angle A = 52°, and angle B = 68°.
+
+The larger bracket, DEF, is a scaled version with side DE = 15 cm, angle D = 52°, and angle F = 60°.
+
+First, use the Triangle Angle Sum Theorem to find angle C in triangle ABC and angle E in triangle DEF.
+
+Then, determine whether the two triangles are similar using the Angle-Angle Triangle Similarity Theorem. If they are similar, find the length of side EF (round to the nearest tenth of a centimeter if necessary).
+
+If the triangles are not similar, explain why they cannot be similar.

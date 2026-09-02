@@ -1,0 +1,5 @@
+A designer is creating two decorative tiles for a mosaic. Both tiles are equilateral triangles. The first tile, ABC, has all angles measuring 60° each. The second tile, DEF, is larger, with all sides measuring 12 cm and all angles also measuring 60° each.
+
+The designer knows that these two equilateral triangles are similar by the Side-Side-Side (SSS) Similarity Theorem, with a scale factor of 1.5 — meaning that each side of triangle DEF is 1.5 times the length of the corresponding side in triangle ABC.
+
+What is the length of side AB in the smaller tile ABC?

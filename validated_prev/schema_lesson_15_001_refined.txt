@@ -1,0 +1,3 @@
+A surveyor is measuring a triangular plot of land ABC. She has already determined that side AB measures 12 meters and side BC measures 9 meters. She knows that the three interior angles of any triangle must sum to 180°, and she wants to find the length of the third side, AC, to complete her survey.
+
+What is the length of AC?

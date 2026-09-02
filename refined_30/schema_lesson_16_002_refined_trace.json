@@ -1,0 +1,123 @@
+{
+  "lesson_id": "lesson_16",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": true,
+  "final_overall_score": 3.7,
+  "final_nl": "A metalworking company is creating two similar triangular support brackets for a structural reinforcement project. Both brackets are right triangles.\n\nThe first bracket, DEF, has a right angle at E, with DE = 5 inches and DF = 13 inches (the hypotenuse). The second bracket, GHI, is similar to DEF with a right angle at H, and side GI = 19.5 inches (the hypotenuse, corresponding to DF).\n\nFirst, find the length of side EF in bracket DEF using the Pythagorean Theorem. Then, use the similarity relationship between the two triangles to find the length of side HI in bracket GHI, which corresponds to side EF.\n\nWhat should the length of HI be?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_16. Let triangle DEF be a right triangle with sides DE = 5, EF = 12. Let triangle GHI be a right triangle with sides HI = 18. The interior angles of triangle DEF (\u2220D, \u2220E, \u2220F) sum to 180\u00b0. The interior angles of triangle GHI (\u2220G, \u2220H, \u2220I) sum to 180\u00b0. Angles E, H are congruent. Triangle DEF is similar to triangle GHI by AA similarity with scale factor 1.5 (congruent angle pairs: E \u2245 H). Find the length of GH in GHI.",
+      "judgment": {
+        "overall_score": 2.0,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 2,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem is over-specified and inconsistent. If DEF is a right triangle with legs DE=5 and EF=12, and GHI is similar with scale factor 1.5, then the corresponding sides of GHI should be 7.5, 18, 19.5. HI=18 is consistent with EF=12 scaled by 1.5, and GH would be 7.5. However, stating 'AA similarity with scale factor 1.5' is redundant/confused (AA gives similarity, not a scale factor directly), and providing both the scale factor and HI=18 makes the problem trivial. Also, without specifying which angle is the right angle, correspondence is under-determined (though E\u2194H is given).",
+          "lesson_alignment": "The lesson targets using similarity, proportionality, and the Pythagorean Theorem in similar right triangles. This problem only requires multiplying 5 by 1.5, since the scale factor is handed to the student. It doesn't require any genuine application of proportional reasoning or the Pythagorean Theorem \u2014 the student just multiplies.",
+          "linguistic_clarity": "The prose is stilted and redundant ('The interior angles ... sum to 180\u00b0' stated twice adds nothing). It reads as a list of asserted facts with no scenario, and the phrase 'similar ... by AA similarity with scale factor 1.5' conflates two ideas. The final question 'Find the length of GH in GHI' is grammatically awkward."
+        },
+        "feedback_for_haiku": "Your problem gives away the scale factor (1.5) directly, which reduces the task to a single multiplication (5 \u00d7 1.5) and skips the actual lesson skill \u2014 deriving the proportional relationship from corresponding sides and/or using the Pythagorean Theorem. Instead, give students the raw side lengths and let them discover the ratio: for example, state DE=5, EF=12 (right angle at E), and in the similar triangle give HI=18 with the right angle at H, then ask for GH. Also drop the redundant \"interior angles sum to 180\u00b0\" sentences and the confused phrase \"similar by AA similarity with scale factor 1.5\" \u2014 AA establishes similarity; the scale factor is a consequence, not a given. Explicitly state which angle is the right angle so the correspondence is unambiguous. Finally, wrap the problem in a concrete real-world scenario (e.g., two similar ramps, sail panels, or triangular signs) preserving every quantity and label, and place the final question inside that scenario (\"How long should segment GH be cut?\").",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The problem states 'similar by AA similarity with scale factor 1.5,' conflating the AA criterion (which proves similarity) with the scale factor (a consequence), and the scale factor is redundant given HI=18 and EF=12.",
+            "suggested_fix": "Remove the explicit scale factor; provide only the side lengths and the congruent angle pair, letting the student derive the ratio 18/12 = 1.5."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The problem never specifies which angle is the right angle in either triangle, leaving the correspondence and the identity of the hypotenuse ambiguous.",
+            "suggested_fix": "State explicitly that angle E and angle H are the right angles (or whichever vertex you intend), so DE and EF are unambiguously the legs."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "Handing students the scale factor reduces the task to 5 \u00d7 1.5, bypassing the lesson's target skill of using proportional reasoning and/or the Pythagorean Theorem in similar right triangles.",
+            "suggested_fix": "Withhold the scale factor and require students to compute it from corresponding sides (e.g., EF=12 and HI=18), then apply it \u2014 or route the solution through the Pythagorean Theorem."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "Redundant filler ('The interior angles ... sum to 180\u00b0' repeated for both triangles) adds no information and clutters the problem.",
+            "suggested_fix": "Delete both interior-angle-sum sentences; they are irrelevant to the task."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is a flat list of asserted facts with no real-world context or motivation.",
+            "suggested_fix": "Embed the problem in a concrete scenario (e.g., a metalworker cutting two similar triangular brackets) that preserves every quantity and label, and ask the final question from within that scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A metalworking company is creating two similar triangular support brackets for a structural reinforcement project. Both brackets are right triangles.\n\nThe first bracket, DEF, has a right angle at E, with DE = 5 inches and EF = 12 inches. The second bracket, GHI, is similar to DEF with a right angle at H. The corresponding side HI measures 18 inches.\n\nThe company needs to cut a metal piece for side GH of the second bracket. What should the length of GH be?",
+      "judgment": {
+        "overall_score": 3.2,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 3,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The setup is mathematically consistent: DEF is a 5-12-13 right triangle at E, and GHI is similar with a right angle at H. However, 'corresponding side HI measures 18' is slightly underspecified \u2014 HI corresponds to EF (both opposite the non-right vertices adjacent to the right angle), giving scale factor 18/12 = 1.5 and GH = 7.5 inches. This is inferable from the labeling convention (DEF ~ GHI implies D\u2194G, E\u2194H, F\u2194I), so the answer is determinate, but a very attentive student might want it stated more explicitly.",
+          "lesson_alignment": "The problem targets the lesson's core skill: using similarity and proportional relationships (and implicitly Pythagorean theorem awareness) to find unknown sides in similar right triangles. It requires identifying corresponding sides and applying a scale factor \u2014 a genuine application, not just recall. It doesn't push to the productive edge (e.g., mixing Pythagorean theorem with similarity as the lesson summary does), so it's cleanly aligned but not maximally rich.",
+          "linguistic_clarity": "The problem is wrapped in a concrete metalworking scenario with the final question asked from inside it ('What should the length of GH be?' \u2014 cutting a metal piece). Every quantity is preserved and labels are clear. Prose is clean and purposeful."
+        },
+        "feedback_for_haiku": "Your problem is solid \u2014 a real metalworking scenario, clear labels, and a clean similarity setup. The one thing to tighten is making the corresponding-sides relationship explicit rather than relying on the reader to infer it from vertex-order convention. Either state that HI corresponds to EF, or say \"the side HI corresponding to EF measures 18 inches\" so students know unambiguously which sides pair up. To push the problem toward the productive edge of the lesson, consider requiring students to use both the Pythagorean Theorem AND similarity \u2014 for example, give DE and DF (hypotenuse), have them find EF first, then scale up \u2014 mirroring the lesson summary that emphasizes combining both tools.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "minor",
+            "issue": "The phrase 'corresponding side HI measures 18 inches' relies on the reader to infer from the vertex ordering DEF ~ GHI that HI corresponds to EF.",
+            "suggested_fix": "Rewrite as 'Side HI, which corresponds to side EF, measures 18 inches' to make the correspondence explicit."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem only exercises proportional scaling; it doesn't require combining the Pythagorean Theorem with similarity, which is the richer skill emphasized in the lesson summary.",
+            "suggested_fix": "Give a leg and hypotenuse of DEF (e.g., DE = 5 and DF = 13), require students to find EF via Pythagorean Theorem, then scale to find GH in the similar triangle."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A metalworking company is creating two similar triangular support brackets for a structural reinforcement project. Both brackets are right triangles.\n\nThe first bracket, DEF, has a right angle at E, with DE = 5 inches and DF = 13 inches (the hypotenuse). The second bracket, GHI, is similar to DEF with a right angle at H, and side GI = 19.5 inches (the hypotenuse, corresponding to DF).\n\nFirst, find the length of side EF in bracket DEF using the Pythagorean Theorem. Then, use the similarity relationship between the two triangles to find the length of side HI in bracket GHI, which corresponds to side EF.\n\nWhat should the length of HI be?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The math is fully consistent: DEF is a 5-12-13 right triangle so EF = 12, the scale factor is 19.5/13 = 1.5, and HI = 18. All labels, right-angle placements, and correspondences are internally coherent.",
+          "lesson_alignment": "The problem hits the lesson's core skill of combining the Pythagorean Theorem with similarity ratios to find missing sides in similar right triangles. However, it is fairly straightforward pattern-matching (find leg, multiply by scale factor) and doesn't push into estimation, information-gap style reasoning, or a less obvious ratio choice.",
+          "linguistic_clarity": "The problem is wrapped in a concrete metalworking scenario with clearly labeled brackets, the correspondence between sides is stated explicitly, and the final question ('What should the length of HI be?') is asked from inside that scenario. Every quantity has a clear referent."
+        },
+        "feedback_for_haiku": "Your problem is mathematically clean and well-framed, but the solution path is a bit too scaffolded \u2014 you explicitly tell the solver to (1) apply the Pythagorean Theorem to find EF and (2) then use similarity to find HI. To push closer to the productive edge of this lesson, consider removing the step-by-step instructions and letting the student decide which strategy to use, or add a twist such as giving a non-corresponding side pair (e.g., give a leg of GHI and ask for the hypotenuse, or give an area ratio) so students must think about which ratio applies. You could also require them to compare two different solution methods (scale factor vs. Pythagorean within the second triangle) as the lesson synthesis emphasizes.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem hand-holds the student through the two-step method rather than letting them choose a strategy, reducing the genuine problem-solving demand emphasized in the lesson.",
+            "suggested_fix": "Delete the 'First... Then...' instructions and just ask for HI, letting the student decide whether to use Pythagorean Theorem, scale factor, or within-triangle ratios."
+          }
+        ]
+      }
+    }
+  ]
+}

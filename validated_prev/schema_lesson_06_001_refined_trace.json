@@ -1,0 +1,393 @@
+{
+  "problem_id": "lesson_06_001",
+  "lesson_id": "lesson_06",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 2,
+  "final_prolog_error_count": 2,
+  "calibration": null,
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_06_001",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 6.0,
+                "BC": 8.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 9.0,
+                "EF": 12.0,
+                "DF": 15.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "pre_image": "ABC",
+              "image": "DEF",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": []
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.EF"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "target_vacuous",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Target DEF.sides.EF is already declared with value 12.0. The problem is vacuous - there is nothing to solve."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target DEF.sides.EF is already given a value..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": {
+        "problem_id": "lesson_06_001",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 6.0,
+                "BC": 8.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 9.0,
+                "EF": null,
+                "DF": 15.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "scale_factor": 1.5
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.EF"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_06_001",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 6.0,
+                "BC": 8.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 9.0,
+                "EF": null,
+                "DF": 15.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "scale_factor": 1.5
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.EF"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 3,
+        "errors": [
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is missing required attribute 'pre_image'. similar_SSS requires attributes: [pre_image,image]."
+          },
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is missing required attribute 'image'. similar_SSS requires attributes: [pre_image,image]."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target DEF.sides.EF is under-determined..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 3,
+      "haiku_correction": {
+        "problem_id": "lesson_06_001",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 6.0,
+                "BC": 8.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 9.0,
+                "EF": null,
+                "DF": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "scale_factor": 1.5,
+              "corresponding_sides": [
+                [
+                  "AB",
+                  "DE"
+                ],
+                [
+                  "BC",
+                  "EF"
+                ],
+                [
+                  "AC",
+                  "DF"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.EF"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_06_001",
+        "lesson": "lesson_06",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 6.0,
+                "BC": 8.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "DEF",
+              "sides": {
+                "DE": 9.0,
+                "EF": null,
+                "DF": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SSS",
+            "entities": [
+              "ABC",
+              "DEF"
+            ],
+            "attributes": {
+              "scale_factor": 1.5,
+              "corresponding_sides": [
+                [
+                  "AB",
+                  "DE"
+                ],
+                [
+                  "BC",
+                  "EF"
+                ],
+                [
+                  "AC",
+                  "DF"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "DEF",
+          "attribute": "sides.EF"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 3,
+        "errors": [
+          {
+            "gate": "invalid_attribute_key",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) has unexpected attribute 'corresponding_sides'. Allowed keys: [scale_factor,pre_image,image,congruent_angle_pairs]."
+          },
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is missing required attribute 'pre_image'. similar_SSS requires attributes: [pre_image,image]."
+          },
+          {
+            "gate": "missing_required_attribute",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Relationship similar_SSS (index 1) is missing required attribute 'image'. similar_SSS requires attributes: [pre_image,image]."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 3,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_06. Let triangle ABC be a triangle with sides AB = 6, BC = 8, AC = 10. Let triangle DEF be a triangle with sides DE = 9, EF = 12, DF = 15. Triangle ABC is similar to triangle DEF by SSS similarity with scale factor 1.5. Find the length of EF in DEF.",
+  "student_facing_prose": "A surveyor is comparing two triangular plots of land. The first plot, triangle ABC, has sides measuring AB = 6 meters, BC = 8 meters, and AC = 10 meters. The second plot, triangle DEF, has sides measuring DE = 9 meters, EF = 12 meters, and DF = 15 meters.\n\nThe surveyor notices that all three pairs of corresponding sides are proportional \u2014 each side of triangle DEF is exactly 1.5 times the length of the corresponding side in triangle ABC. This means triangle ABC is similar to triangle DEF by Side-Side-Side (SSS) similarity, with a scale factor of 1.5.\n\nWhen the surveyor needs to record the exact length of side EF in the larger plot for the property deed, what measurement should she write down?"
+}

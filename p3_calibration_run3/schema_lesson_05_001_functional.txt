@@ -1,0 +1,1 @@
+Lesson context: lesson_05. Let triangle ABC be a triangle with sides AB = 14, BC = 16, AC = 10. Let segment MN be a midsegment segment. Let point M be a point on AB. Let point N be a point on BC. Segment MN is a midsegment parallel to BC and half its length. Find the length of MN.

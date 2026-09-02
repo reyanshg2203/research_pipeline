@@ -1,0 +1,1 @@
+Lesson context: lesson_16. Let triangle JKL be a right triangle with sides JK = 8, KL = 6. Let triangle MNO be a right triangle with sides MN = 12. Triangle JKL is similar to triangle MNO by AA similarity (congruent angle pairs: L ≅ O). Find the length of NO in MNO.

@@ -1,0 +1,7 @@
+A graphic designer is creating a projected image of a company logo. The designer places a projector at point O and projects a small segment EF from the original logo onto a wall. The projector enlarges all distances from O by a scale factor of 2.5. The projected image segment GH on the wall measures 15 cm long.
+
+To verify the setup, the designer measures the distance from the projector at O to point G (the image of E) and finds it to be 7.5 cm.
+
+(a) Find the length of the original segment EF.
+
+(b) Based on the definition of dilation, what is the distance from O to point E (the original location before enlargement)? Explain your reasoning in terms of how a dilation scales distances from the center.

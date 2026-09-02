@@ -1,0 +1,1 @@
+Lesson context: lesson_15. Let triangle XYZ be a right triangle with sides XY = 6, YZ = 8. Find the length of XZ in XYZ.

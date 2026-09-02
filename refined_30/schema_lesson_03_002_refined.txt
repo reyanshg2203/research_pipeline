@@ -1,0 +1,7 @@
+A graphic designer is creating a pattern for a decorative tile. She has a quadrilateral design ABCD with sides AB = 5 cm, BC = 7 cm, CD = 6 cm, and DA = 8 cm. To create a smaller version of the design, she dilates the quadrilateral from a fixed center point O by a scale factor k, producing the image A'B'C'D'. After the dilation, the length of side B'C' is 3.5 cm.
+
+(a) What is the scale factor k of this dilation?
+
+(b) What is the length of side A'B' in the dilated quadrilateral?
+
+(c) If the distance from O to vertex A is OA = 12 cm, what is the distance OA' from O to the image vertex A'?

@@ -1,0 +1,65 @@
+{
+  "problem_id": "lesson_10_002",
+  "lesson": "lesson_10",
+  "entities": {
+    "triangles": [
+      {
+        "id": "MNO",
+        "sides": {
+          "MN": 10.0,
+          "NO": 14.0,
+          "MO": null
+        },
+        "angles": {
+          "N": 48.0
+        },
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "RST",
+        "sides": {
+          "RS": 15.0,
+          "ST": 21.0,
+          "RT": null
+        },
+        "angles": {
+          "S": 48.0
+        },
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "similar_SAS",
+      "entities": [
+        "MNO",
+        "RST"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "MNO",
+        "image": "RST",
+        "congruent_angle_pairs": [
+          [
+            "N",
+            "S"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "RST",
+    "attribute": "angles.T"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "problem_id": "lesson_16_003",
+  "lesson": "lesson_16",
+  "entities": {
+    "triangles": [
+      {
+        "id": "JKL",
+        "sides": {
+          "JK": 8.0,
+          "KL": 6.0,
+          "JL": null
+        },
+        "angles": null,
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "MNO",
+        "sides": {
+          "MN": 12.0,
+          "NO": null,
+          "MO": null
+        },
+        "angles": null,
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "similar_AA",
+      "entities": [
+        "JKL",
+        "MNO"
+      ],
+      "attributes": {
+        "pre_image": "JKL",
+        "image": "MNO",
+        "congruent_angle_pairs": [
+          [
+            "L",
+            "O"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "MNO",
+    "attribute": "sides.NO"
+  }
+}

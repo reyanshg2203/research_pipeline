@@ -1,0 +1,5 @@
+A surveyor is examining two triangular plots of land. The first plot, triangle ABC, has a side AB = 10 meters, with angle A measuring 52° and angle B measuring 68°. The second plot, triangle DEF, has a side DE = 15 meters, with angle D measuring 52° and angle F measuring 60°.
+
+The surveyor knows that the sum of all interior angles in any triangle equals 180°. She notices that angle A in the first plot matches angle D in the second plot (both 52°), and angle B in the first plot matches angle E in the second plot. This means the two triangular plots are similar by the Angle-Angle Similarity Theorem, with a scale factor of 1.5 relating corresponding sides.
+
+To complete her survey report, the surveyor needs to find the measure of angle E in triangle DEF. What is ∠E?

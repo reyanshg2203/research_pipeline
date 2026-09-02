@@ -1,0 +1,5 @@
+A designer is comparing two equilateral triangle templates for a craft project. The first template, triangle ABC, has all sides measuring 8 units, with each angle measuring 60°. The second template, triangle DEF, has all sides measuring 12 units, with each angle also measuring 60°.
+
+The designer notices that triangle DEF is a scaled version of triangle ABC—specifically, triangle ABC is similar to triangle DEF by SSS similarity, with a scale factor of 1.5 (meaning each side of DEF is 1.5 times the corresponding side of ABC).
+
+Given this relationship, what is the length of side AB in triangle ABC?

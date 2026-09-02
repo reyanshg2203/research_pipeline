@@ -1,0 +1,5 @@
+A toy manufacturer is creating two different video game controllers. The original controller UVW has sides UV = 4 inches, VW = 3 inches, and WU = 5 inches. The company decides to make a larger version, controller RST, which is a scaled copy of UVW with a scale factor of 3.
+
+The designer knows that ST = 9 inches and TR = 15 inches on the larger controller. To complete the design specifications, she needs to find the length of the third side, RS.
+
+What is the length of RS?

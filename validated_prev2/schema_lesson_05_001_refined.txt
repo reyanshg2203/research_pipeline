@@ -1,0 +1,7 @@
+A triangular plot of land ABC has sides measuring AB = 14 meters, BC = 16 meters, and AC = 10 meters. A surveyor marks three points—M on side AB, N on side BC, and P on side AC—each at the midpoint of its respective side. She then draws segments connecting these midpoints to form triangle MNP inside the original triangle.
+
+Because M and N are midpoints, the segment MN is parallel to the third side AC. Similarly, because N and P are midpoints, segment NP is parallel to AB. And because M and P are midpoints, segment MP is parallel to BC.
+
+The surveyor knows that triangle MNP is a dilation of triangle ABC with center at vertex A and scale factor 1/2 (since the midpoints are half the distance from A along each side). This means the sides of the inner triangle are half the length of the corresponding sides of the outer triangle.
+
+What is the length of segment MN?

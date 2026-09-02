@@ -1,0 +1,5 @@
+A toy manufacturer is creating two action figures. The smaller figure UVW has sides UV = 4, VW = 3, and WU = 5. The designer wants to make a larger version, triangle RST, that is a scaled copy of UVW with a scale factor of 3.
+
+The manufacturer knows that ST = 9 and TR = 15 in the larger figure. To complete the production specifications, they need to determine the length of the third side, RS.
+
+What is the length of RS?

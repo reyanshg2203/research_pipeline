@@ -1,0 +1,1 @@
+Lesson context: lesson_03. Let triangle ABC be a triangle with sides AB = 5, BC = 7, AC = 8. Let triangle DEF be a triangle. ABC is dilated to form DEF with scale factor 0.6, centered at point P. Find the length of DE in DEF.

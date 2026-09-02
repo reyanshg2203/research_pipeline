@@ -1,0 +1,3 @@
+A surveyor is mapping two similar right triangles formed by sight lines across a ravine. In the smaller triangle JKL, the two legs measure JK = 8 meters and KL = 6 meters, with the right angle at K. The larger triangle MNO is similar to triangle JKL by AA similarity, with the corresponding angles L and O being congruent. The surveyor knows that one leg of the larger triangle, MN, measures 12 meters.
+
+Using the proportional relationships between the similar triangles, what is the length of side NO in triangle MNO?

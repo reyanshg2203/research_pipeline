@@ -1,0 +1,369 @@
+{
+  "problem_id": "lesson_03_003",
+  "lesson_id": "lesson_03",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 2,
+  "final_prolog_error_count": 2,
+  "calibration": null,
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_03_003",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "P'Q'R'",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "C",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "PQR",
+              "P'Q'R'"
+            ],
+            "attributes": {
+              "scale_factor": null,
+              "center": "C",
+              "pre_image": "PQR",
+              "image": "P'Q'R'"
+            }
+          }
+        ],
+        "target": {
+          "entity": "P'Q'R'",
+          "attribute": "sides.P'Q'"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 3,
+        "errors": [
+          {
+            "gate": "naming_convention",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity P'Q'R' of kind 'triangle' violates the naming convention. Expected bare letters (e.g. ABC for triangle, AB for segment, single capital for point)."
+          },
+          {
+            "gate": "target_key_not_on_entity",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Target P'Q'R'.sides.P'Q' references sides 'P'Q'' which is not declared on entity P'Q'R'. Valid sides of P'Q'R' are: []."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target P'Q'R'.sides.P'Q' is under-determined..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 3,
+      "haiku_correction": {
+        "problem_id": "lesson_03_003",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 4.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "P'Q'R'",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "C",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "PQR",
+              "P'Q'R'"
+            ],
+            "attributes": {
+              "scale_factor": 2.0,
+              "pre_image": "PQR",
+              "image": "P'Q'R'",
+              "center": "C"
+            }
+          }
+        ],
+        "target": {
+          "entity": "P'Q'R'",
+          "attribute": "sides.P'Q'"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_03_003",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 4.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "P'Q'R'",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "C",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "PQR",
+              "P'Q'R'"
+            ],
+            "attributes": {
+              "scale_factor": 2.0,
+              "pre_image": "PQR",
+              "image": "P'Q'R'",
+              "center": "C"
+            }
+          }
+        ],
+        "target": {
+          "entity": "P'Q'R'",
+          "attribute": "sides.P'Q'"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "naming_convention",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity P'Q'R' of kind 'triangle' violates the naming convention. Expected bare letters (e.g. ABC for triangle, AB for segment, single capital for point)."
+          },
+          {
+            "gate": "target_key_not_on_entity",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Target P'Q'R'.sides.P'Q' references sides 'P'Q'' which is not declared on entity P'Q'R'. Valid sides of P'Q'R' are: []."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": {
+        "problem_id": "lesson_03_003",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 4.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "PQR_prime",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "C",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "PQR",
+              "PQR_prime"
+            ],
+            "attributes": {
+              "scale_factor": 2.0,
+              "pre_image": "PQR",
+              "image": "PQR_prime",
+              "center": "C"
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQR_prime",
+          "attribute": "sides.PQ"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_03_003",
+        "lesson": "lesson_03",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 4.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "PQR_prime",
+              "sides": null,
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "C",
+              "lies_on": null,
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "PQR",
+              "PQR_prime"
+            ],
+            "attributes": {
+              "scale_factor": 2.0,
+              "pre_image": "PQR",
+              "image": "PQR_prime",
+              "center": "C"
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQR_prime",
+          "attribute": "sides.PQ"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "naming_convention",
+            "severity": "style",
+            "checks": "",
+            "failed": "Entity PQR_prime of kind 'triangle' violates the naming convention. Expected bare letters (e.g. ABC for triangle, AB for segment, single capital for point)."
+          },
+          {
+            "gate": "target_key_not_on_entity",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Target PQR_prime.sides.PQ references sides 'PQ' which is not declared on entity PQR_prime. Valid sides of PQR_prime are: []."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_03. Let triangle PQR be a triangle with sides PQ = 4. Let triangle P'Q'R' be a triangle. PQR is dilated to form P'Q'R' with scale factor 2, centered at point C. Find the length of P'Q' in P'Q'R'.",
+  "student_facing_prose": "A designer is creating a scaled blueprint of a triangular component. The original triangle PQR has a side PQ measuring 4 units. She decides to enlarge the design using a dilation centered at point C with a scale factor of 2, producing the image triangle P'Q'R'.\n\nWhat will be the length of the corresponding side P'Q' in the enlarged triangle?"
+}

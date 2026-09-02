@@ -1,0 +1,130 @@
+{
+  "problem_id": "lesson_05_001",
+  "lesson": "lesson_05",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 14.0,
+          "BC": 16.0,
+          "AC": 10.0
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "MNP",
+        "sides": {
+          "MN": null,
+          "NP": 8.0,
+          "MP": 5.0
+        },
+        "angles": null,
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": [
+      {
+        "id": "MN",
+        "length": null,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": true,
+        "is_altitude": null
+      },
+      {
+        "id": "NP",
+        "length": null,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": true,
+        "is_altitude": null
+      },
+      {
+        "id": "MP",
+        "length": null,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": true,
+        "is_altitude": null
+      }
+    ],
+    "polygons": null,
+    "lines": null,
+    "points": [
+      {
+        "id": "M",
+        "lies_on": [
+          "AB"
+        ],
+        "is_intersection_of": null
+      },
+      {
+        "id": "N",
+        "lies_on": [
+          "BC"
+        ],
+        "is_intersection_of": null
+      },
+      {
+        "id": "P",
+        "lies_on": [
+          "AC"
+        ],
+        "is_intersection_of": null
+      }
+    ],
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "ABC",
+        "MNP"
+      ],
+      "attributes": {
+        "center": "A",
+        "scale_factor": 0.5,
+        "pre_image": "ABC",
+        "image": "MNP"
+      }
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "MN",
+        "AC"
+      ],
+      "attributes": null
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "NP",
+        "AB"
+      ],
+      "attributes": null
+    },
+    {
+      "type": "midsegment_parallel",
+      "entities": [
+        "MP",
+        "BC"
+      ],
+      "attributes": null
+    }
+  ],
+  "target": {
+    "entity": "MN",
+    "attribute": "length"
+  }
+}

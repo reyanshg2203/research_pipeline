@@ -1,0 +1,7 @@
+A surveyor is mapping out a triangular plot of land PQR, where side PQ measures 30 meters and side QR measures 50 meters. She marks point X on side PQ, 12 meters from P, and point Y on side PR, 9 meters from P. She then draws segment XY to connect these two points.
+
+By the triangle proportionality theorem, when a line segment divides two sides of a triangle proportionally, that segment must be parallel to the third side. Since X and Y divide sides PQ and PR in the same ratio (PX = 12 and PY = 9 create the same proportional relationship), segment XY is parallel to QR.
+
+Because XY is parallel to QR, triangle PXY is a dilation of triangle PQR, centered at vertex P. This means the sides of the two triangles are proportional.
+
+What is the length of XY?

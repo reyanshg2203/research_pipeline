@@ -1,0 +1,485 @@
+{
+  "problem_id": "lesson_14_003",
+  "lesson_id": "lesson_14",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 2,
+  "final_prolog_error_count": 2,
+  "calibration": null,
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_14_003",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "PSR",
+              "sides": {
+                "PS": null,
+                "SR": null,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "QS",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": "PR",
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": true
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "altitude_to_hypotenuse",
+            "entities": [
+              "PQR",
+              "QS",
+              "PR"
+            ],
+            "attributes": {
+              "altitude_id": "QS",
+              "hypotenuse": "PR",
+              "segment1": "PS",
+              "segment2": "SR"
+            }
+          },
+          {
+            "type": "geometric_mean_altitude",
+            "entities": [
+              "QS",
+              "PS",
+              "SR"
+            ],
+            "attributes": {
+              "altitude_id": "QS",
+              "segment1": "PS",
+              "segment2": "SR"
+            }
+          }
+        ],
+        "target": {
+          "entity": "QS",
+          "attribute": "length"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship altitude_to_hypotenuse (index 1) is out of scope: wrong number of entities (got 3, expected 4 for altitude_to_hypotenuse). Expected kinds [triangle,segment,segment,segment]; got entities [PQR,QS,PR]."
+          },
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship geometric_mean_altitude (index 2) is out of scope: entity 'QS' is a segment but geometric_mean_altitude expects a triangle in that position. Expected kinds [triangle,segment,segment]; got entities [QS,PS,SR]."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": {
+        "problem_id": "lesson_14_003",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "PSR",
+              "sides": {
+                "PS": null,
+                "SR": null,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "QS",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": "PR",
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": true
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "altitude_to_hypotenuse",
+            "entities": [
+              "PQR",
+              "QS",
+              "PR"
+            ],
+            "attributes": {
+              "altitude_id": "QS",
+              "hypotenuse": "PR",
+              "segment1": "PS",
+              "segment2": "SR"
+            }
+          },
+          {
+            "type": "geometric_mean_altitude",
+            "entities": [
+              "QS",
+              "PS",
+              "SR"
+            ],
+            "attributes": {
+              "altitude_id": "QS",
+              "segment1": "PS",
+              "segment2": "SR"
+            }
+          }
+        ],
+        "target": {
+          "entity": "QS",
+          "attribute": "length"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_14_003",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "PSR",
+              "sides": {
+                "PS": null,
+                "SR": null,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "QS",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": "PR",
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": true
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "altitude_to_hypotenuse",
+            "entities": [
+              "PQR",
+              "QS",
+              "PR"
+            ],
+            "attributes": {
+              "altitude_id": "QS",
+              "hypotenuse": "PR",
+              "segment1": "PS",
+              "segment2": "SR"
+            }
+          },
+          {
+            "type": "geometric_mean_altitude",
+            "entities": [
+              "QS",
+              "PS",
+              "SR"
+            ],
+            "attributes": {
+              "altitude_id": "QS",
+              "segment1": "PS",
+              "segment2": "SR"
+            }
+          }
+        ],
+        "target": {
+          "entity": "QS",
+          "attribute": "length"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship altitude_to_hypotenuse (index 1) is out of scope: wrong number of entities (got 3, expected 4 for altitude_to_hypotenuse). Expected kinds [triangle,segment,segment,segment]; got entities [PQR,QS,PR]."
+          },
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship geometric_mean_altitude (index 2) is out of scope: entity 'QS' is a segment but geometric_mean_altitude expects a triangle in that position. Expected kinds [triangle,segment,segment]; got entities [QS,PS,SR]."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": {
+        "problem_id": "lesson_14_003",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "PSR",
+              "sides": {
+                "PS": null,
+                "SR": null,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "QS",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": "PR",
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": true
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "altitude_to_hypotenuse",
+            "entities": [
+              "PQR",
+              "QS",
+              "PR"
+            ],
+            "attributes": {
+              "altitude_id": "QS",
+              "hypotenuse": "PR",
+              "segment1": "PS",
+              "segment2": "SR"
+            }
+          },
+          {
+            "type": "geometric_mean_altitude",
+            "entities": [
+              "QS",
+              "PS",
+              "SR"
+            ],
+            "attributes": {
+              "altitude_id": "QS",
+              "segment1": "PS",
+              "segment2": "SR"
+            }
+          }
+        ],
+        "target": {
+          "entity": "QS",
+          "attribute": "length"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_14_003",
+        "lesson": "lesson_14",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 9.0,
+                "QR": 12.0,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "PSR",
+              "sides": {
+                "PS": null,
+                "SR": null,
+                "PR": 15.0
+              },
+              "angles": null,
+              "is_right": true,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "QS",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": "PR",
+              "ratio_to": null,
+              "is_midsegment": null,
+              "is_altitude": true
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "altitude_to_hypotenuse",
+            "entities": [
+              "PQR",
+              "QS",
+              "PR"
+            ],
+            "attributes": {
+              "altitude_id": "QS",
+              "hypotenuse": "PR",
+              "segment1": "PS",
+              "segment2": "SR"
+            }
+          },
+          {
+            "type": "geometric_mean_altitude",
+            "entities": [
+              "QS",
+              "PS",
+              "SR"
+            ],
+            "attributes": {
+              "altitude_id": "QS",
+              "segment1": "PS",
+              "segment2": "SR"
+            }
+          }
+        ],
+        "target": {
+          "entity": "QS",
+          "attribute": "length"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 2,
+        "errors": [
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship altitude_to_hypotenuse (index 1) is out of scope: wrong number of entities (got 3, expected 4 for altitude_to_hypotenuse). Expected kinds [triangle,segment,segment,segment]; got entities [PQR,QS,PR]."
+          },
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship geometric_mean_altitude (index 2) is out of scope: entity 'QS' is a segment but geometric_mean_altitude expects a triangle in that position. Expected kinds [triangle,segment,segment]; got entities [QS,PS,SR]."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 2,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_14. Let triangle PQR be a right triangle with sides PQ = 9, QR = 12, PR = 15. Let triangle PSR be a right triangle with sides PR = 15. Let segment QS be a altitude segment perpendicular to PR. Altitude QS is drawn to hypotenuse PR, dividing it into segments PS and SR. Altitude QS is the geometric mean of segments PS and SR. Find the length of QS.",
+  "student_facing_prose": "A contractor is designing a roof truss for a house and needs to understand the internal geometry of the structure. She has a right triangle PQR where the two legs meeting at the right angle Q measure PQ = 9 feet and QR = 12 feet, and the hypotenuse PR = 15 feet.\n\nTo reinforce the truss, she plans to install a vertical support post QS that runs perpendicular from the right angle Q straight down to the hypotenuse PR, meeting it at point D. This altitude divides the hypotenuse into two segments: PS and SR.\n\nThe contractor recalls a useful property: the altitude to the hypotenuse of a right triangle is the geometric mean of the two segments it creates on the hypotenuse. In other words, QS is the geometric mean of PS and SR.\n\nUsing this relationship, find the length of the support post QS."
+}

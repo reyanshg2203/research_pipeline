@@ -1,0 +1,129 @@
+{
+  "lesson_id": "lesson_14",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A rooftop support structure consists of a triangular frame DEF where the right angle is at E. The two legs of the support beam are DE = 7 meters and EF = 24 meters. To reinforce the structure, an engineer draws a support cable from vertex E perpendicular to the hypotenuse DF. Let G be the foot of this perpendicular, so that G lies on DF and divides the hypotenuse into two segments, DG and GF.\n\n(a) First, find the length of the hypotenuse DF using the Pythagorean Theorem.\n\n(b) When an altitude is drawn to the hypotenuse of a right triangle, it creates three similar triangles. Identify which two of the original triangles (the large triangle DEF and the two smaller triangles formed by the altitude) are similar to each other in a way that relates the leg DE to the segment DG and the full hypotenuse DF. Using this similarity and the proportional relationship between corresponding sides, write an equation that expresses DE\u00b2 in terms of DG and DF.\n\n(c) Using your equation from part (b), find the length of segment DG.\n\n(d) Find the length of segment GF and verify that DG + GF equals your answer to part (a).",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_14. Let triangle DEF be a right triangle with sides DE = 7, EF = 24. Let segment GE be a altitude segment perpendicular to DF. Altitude GE is drawn to hypotenuse DF, dividing it into segments DG and GF. Find the length of DF in DEF.",
+      "judgment": {
+        "overall_score": 1.7,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 2,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem states DEF is a right triangle with DE=7, EF=24, and later calls DF the hypotenuse \u2014 but it never specifies where the right angle is. If the right angle is at E, then DF = 25 works, but this must be stated. Additionally, the altitude is introduced as 'segment GE' then called 'altitude GE'; G is presumably on DF, but this is never made explicit, and the altitude information is entirely irrelevant to finding DF (a straightforward Pythagorean computation).",
+          "lesson_alignment": "Lesson 14 is about proving the Pythagorean Theorem using similar triangles created by the altitude to the hypotenuse. This problem sets up that exact diagram (altitude to hypotenuse dividing it into DG and GF) but then asks only for the hypotenuse via a bare Pythagorean computation \u2014 completely ignoring the similarity/altitude structure that is the lesson's focus. The altitude is decorative, not used.",
+          "linguistic_clarity": "The prose is redundant ('segment GE be a altitude segment perpendicular to DF. Altitude GE is drawn to hypotenuse DF'), contains a grammar slip ('a altitude'), and never states where the right angle is or that G lies on DF. The closing 'in DEF' is awkward filler."
+        },
+        "feedback_for_haiku": "Your problem has several issues you should fix. First, you never say where the right angle of triangle DEF is located \u2014 for DF to be the hypotenuse with DE=7 and EF=24, the right angle must be at E, and you need to state that explicitly. Second, you introduce an altitude GE to the hypotenuse and mention it splits DF into DG and GF, but then the question you ask ('find DF') doesn't use any of that structure \u2014 it's just a bare a\u00b2+b\u00b2=c\u00b2 computation. Since this lesson is specifically about the altitude-to-hypotenuse configuration and the similar triangles it creates (leading to relationships like a\u00b2 = xc and b\u00b2 = yc), rewrite the task so the altitude actually matters: for example, ask students to find DG and GF (the two hypotenuse segments) or the length of the altitude GE, and have them justify their work using the similar-triangles relationships from the lesson. Third, clean up the wording \u2014 remove the redundant double introduction of the altitude, fix 'a altitude' to 'an altitude,' explicitly state that G lies on DF, and drop the awkward 'in DEF.' Finally, wrap the whole thing in a concrete real-world scenario (e.g., a ramp, a roof truss, a sail) with every quantity preserved and the final question asked from inside that scenario.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The location of the right angle in triangle DEF is never specified; the reader must infer it is at E for DF to be the hypotenuse.",
+            "suggested_fix": "Explicitly state 'with the right angle at E' so that DE and EF are the legs and DF is the hypotenuse."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "minor",
+            "issue": "The problem does not state that point G lies on DF, only that GE is perpendicular to DF; this must be inferred.",
+            "suggested_fix": "Write 'G is the foot of the altitude from E to DF' to make the configuration unambiguous."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "critical",
+            "issue": "The altitude to the hypotenuse \u2014 the central object of Lesson 14 \u2014 is introduced but plays no role in the question, which reduces to a bare Pythagorean Theorem calculation.",
+            "suggested_fix": "Change the question to ask for DG, GF, or GE and require students to use the similar-triangle relationships (a\u00b2 = xc, b\u00b2 = yc) developed in the lesson."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The altitude is introduced twice in redundant back-to-back sentences, and 'a altitude' contains a grammar error.",
+            "suggested_fix": "Combine into one clean sentence: 'Let EG be the altitude from E to the hypotenuse DF, with foot G on DF, dividing DF into segments DG and GF.'"
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is bare and list-like with no real-world scenario giving the quantities a reason to exist.",
+            "suggested_fix": "Wrap the setup in a concrete scenario (e.g., a support cable, a ramp, a triangular sail) preserving DE=7 and EF=24, and ask the final question from inside that scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A rooftop support structure consists of a triangular frame DEF where the right angle is at E. The two legs of the support beam are DE = 7 meters and EF = 24 meters. To reinforce the structure, an engineer draws a support cable from vertex E perpendicular to the hypotenuse DF. Let G be the foot of this perpendicular, so that G lies on DF and divides the hypotenuse into two segments, DG and GF.\n\nIn Lesson 14, we learned that when an altitude is drawn to the hypotenuse of a right triangle, it creates similar triangles with special relationships. Specifically, if the legs are a and b, the hypotenuse is c, and the altitude divides the hypotenuse into segments x and y (where x is adjacent to leg a), then a\u00b2 = xc and b\u00b2 = yc.\n\nUsing these relationships, find the length of segment DG (the part of the hypotenuse adjacent to leg DE).",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The 7-24-25 right triangle is consistent, and applying a\u00b2 = xc gives DG = 49/25 = 1.96 m, which is mathematically correct. The altitude-to-hypotenuse setup and labeling (G on DF, DG adjacent to DE) are internally consistent.",
+          "lesson_alignment": "The problem directly applies the a\u00b2 = xc relationship derived in Lesson 14, which is exactly the target skill. However, it is essentially a direct plug-and-chug application of the formula the lesson states, not pushing to a productive edge (e.g., asking students to derive the relationship, find both segments, or verify with the altitude length).",
+          "linguistic_clarity": "The problem is wrapped in a concrete rooftop-support scenario with a support cable playing the role of the altitude, and the final question is asked from within that scenario with all quantities preserved. The explicit restatement of the lesson relationship is a bit heavy-handed but keeps the terms deliberate and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is mathematically sound and nicely framed in a rooftop-support scenario, but it does most of the mathematical work for the student by explicitly restating the formula a\u00b2 = xc and telling them exactly which quantity to plug in where. To push this to the productive edge of the lesson, either (a) remove the explicit formula restatement and let students recall/derive the similar-triangle relationship themselves, or (b) add a second part that requires more synthesis \u2014 e.g., also find GF and the altitude EG, or ask students to first justify why the three sub-triangles are similar before computing DG. As written, it's a clean direct-recall exercise rather than a genuine application of the similarity-based proof reasoning that the lesson emphasizes.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem hands students the exact formula a\u00b2 = xc rather than asking them to derive or recall it from the similar triangles, reducing it to substitution.",
+            "suggested_fix": "Remove the paragraph stating the relationships and instead ask students to identify the similar triangles and use them to find DG, or add a follow-up part asking them to justify why a\u00b2 = xc holds."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The task is single-step and doesn't push students toward the productive edge of the lesson.",
+            "suggested_fix": "Add parts asking for GF, the altitude EG, or a verification that DG + GF = DF, so students engage more fully with the altitude-on-hypotenuse structure."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A rooftop support structure consists of a triangular frame DEF where the right angle is at E. The two legs of the support beam are DE = 7 meters and EF = 24 meters. To reinforce the structure, an engineer draws a support cable from vertex E perpendicular to the hypotenuse DF. Let G be the foot of this perpendicular, so that G lies on DF and divides the hypotenuse into two segments, DG and GF.\n\n(a) First, find the length of the hypotenuse DF using the Pythagorean Theorem.\n\n(b) When an altitude is drawn to the hypotenuse of a right triangle, it creates three similar triangles. Identify which two of the original triangles (the large triangle DEF and the two smaller triangles formed by the altitude) are similar to each other in a way that relates the leg DE to the segment DG and the full hypotenuse DF. Using this similarity and the proportional relationship between corresponding sides, write an equation that expresses DE\u00b2 in terms of DG and DF.\n\n(c) Using your equation from part (b), find the length of segment DG.\n\n(d) Find the length of segment GF and verify that DG + GF equals your answer to part (a).",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The 7-24-25 right triangle is correct, and DE\u00b2 = DG\u00b7DF from similarity of triangle DEG ~ triangle DEF gives DG = 49/25 = 1.96, GF = 576/25 = 23.04, sum = 25. \u2713 All relationships are internally consistent and correct.",
+          "lesson_alignment": "The problem directly targets the lesson's core content: using similar triangles formed by the altitude to the hypotenuse to derive the relation a\u00b2 = xc (here DE\u00b2 = DG\u00b7DF), which is exactly Elena's observation in the lesson narrative. It also pushes application by having students identify the similar triangles, write the proportion, and solve \u2014 a productive edge extension.",
+          "linguistic_clarity": "The problem is wrapped in a concrete rooftop support scenario with named quantities and the question flows from within that context. Prose is clean and unambiguous, though the phrase 'support cable from vertex E perpendicular to the hypotenuse' is a slight stretch (a cable in tension wouldn't naturally be perpendicular), but the geometric meaning is clear."
+        },
+        "feedback_for_haiku": "Your problem is strong: the 7-24-25 right triangle is clean, the scenario motivates the geometry, and each part scaffolds from the Pythagorean Theorem through the similar-triangles relation DE\u00b2 = DG\u00b7DF to a verification check \u2014 mirroring exactly what the lesson develops. One small realism nitpick: a \"support cable\" from E perpendicular to DF is geometrically fine but physically odd (real cables run along tension lines, not as altitudes). Consider reframing E's perpendicular segment as a \"vertical brace,\" \"strut,\" or \"reinforcing beam dropped perpendicular to DF\" to make the physical setup match the geometry more naturally. Also, in part (b) you could tighten \"in a way that relates the leg DE to the segment DG and the full hypotenuse DF\" \u2014 this is slightly wordy; something like \"such that DE corresponds to both DG and DF in the proportion\" reads cleaner. These are polish notes; the mathematics and pedagogy are on target.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "A 'support cable' perpendicular to the hypotenuse is a slightly forced physical image, since real cables act in tension along their length rather than as altitudes.",
+            "suggested_fix": "Replace 'support cable' with 'vertical brace' or 'reinforcing strut' to better match the geometric role of an altitude."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The phrasing in part (b) 'similar to each other in a way that relates the leg DE to the segment DG and the full hypotenuse DF' is wordy and slightly awkward.",
+            "suggested_fix": "Rewrite as 'identify the two triangles in which DE corresponds to both DG and DF, then write the proportion and derive an equation for DE\u00b2.'"
+          }
+        ]
+      }
+    }
+  ]
+}

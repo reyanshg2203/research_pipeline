@@ -1,0 +1,7 @@
+A contractor is designing a roof truss for a house and needs to understand the internal geometry of the structure. She has a right triangle PQR where the two legs meeting at the right angle Q measure PQ = 9 feet and QR = 12 feet, and the hypotenuse PR = 15 feet.
+
+To reinforce the truss, she plans to install a vertical support post QS that runs perpendicular from the right angle Q straight down to the hypotenuse PR, meeting it at point D. This altitude divides the hypotenuse into two segments: PS and SR.
+
+The contractor recalls a useful property: the altitude to the hypotenuse of a right triangle is the geometric mean of the two segments it creates on the hypotenuse. In other words, QS is the geometric mean of PS and SR.
+
+Using this relationship, find the length of the support post QS.

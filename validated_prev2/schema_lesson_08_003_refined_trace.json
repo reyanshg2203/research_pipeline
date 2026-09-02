@@ -1,0 +1,580 @@
+{
+  "problem_id": "lesson_08_003",
+  "lesson_id": "lesson_08",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 7,
+  "final_prolog_error_count": 7,
+  "calibration": null,
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_08_003",
+        "lesson": "lesson_08",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "ABCD",
+              "n_sides": 4,
+              "sides": {
+                "AB": 4.0,
+                "BC": 6.0,
+                "CD": 4.0,
+                "DA": 6.0
+              },
+              "angles": {
+                "A": 90.0,
+                "B": 90.0,
+                "C": 90.0,
+                "D": 90.0
+              }
+            },
+            {
+              "id": "PQRS",
+              "n_sides": 4,
+              "sides": {
+                "PQ": 6.0,
+                "QR": 9.0,
+                "RS": 6.0,
+                "SP": 9.0
+              },
+              "angles": {
+                "P": 90.0,
+                "Q": 90.0,
+                "R": 90.0,
+                "S": 90.0
+              }
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SAS",
+            "entities": [
+              "ABCD",
+              "PQRS"
+            ],
+            "attributes": {
+              "scale_factor": 1.5,
+              "pre_image": "ABCD",
+              "image": "PQRS",
+              "congruent_angle_pairs": [
+                [
+                  "A",
+                  "P"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABCD",
+          "attribute": "sides.BC"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 8,
+        "errors": [
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) is out of scope: entity 'ABCD' is a polygon but similar_SAS expects a triangle in that position. Expected kinds [triangle,triangle]; got entities [ABCD,PQRS]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) cannot apply to polygon 'ABCD'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) cannot apply to polygon 'PQRS'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "attribute_kind_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) attribute 'pre_image' expects a triangle but got polygon 'ABCD'."
+          },
+          {
+            "gate": "attribute_kind_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) attribute 'image' expects a triangle but got polygon 'PQRS'."
+          },
+          {
+            "gate": "insufficient_similarity_evidence",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Similarity between polygons ABCD and PQRS (n=4) requires 4 corresponding sides and 3 corresponding angles. Only 0 sides and 0 angles are given. Similarity is under-determined."
+          },
+          {
+            "gate": "target_vacuous",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Target ABCD.sides.BC is already declared with value 6.0. The problem is vacuous - there is nothing to solve."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target ABCD.sides.BC is already given a value..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 8,
+      "haiku_correction": {
+        "problem_id": "lesson_08_003",
+        "lesson": "lesson_08",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "ABCD",
+              "n_sides": 4,
+              "sides": {
+                "AB": 4.0,
+                "BC": null,
+                "CD": 4.0,
+                "DA": 6.0
+              },
+              "angles": {
+                "A": 90.0,
+                "B": 90.0,
+                "C": 90.0,
+                "D": 90.0
+              }
+            },
+            {
+              "id": "PQRS",
+              "n_sides": 4,
+              "sides": {
+                "PQ": 6.0,
+                "QR": 9.0,
+                "RS": 6.0,
+                "SP": 9.0
+              },
+              "angles": {
+                "P": 90.0,
+                "Q": 90.0,
+                "R": 90.0,
+                "S": 90.0
+              }
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SAS",
+            "entities": [
+              "ABCD",
+              "PQRS"
+            ],
+            "attributes": {
+              "pre_image": "ABCD",
+              "image": "PQRS",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": [
+                [
+                  "A",
+                  "P"
+                ],
+                [
+                  "B",
+                  "Q"
+                ],
+                [
+                  "C",
+                  "R"
+                ],
+                [
+                  "D",
+                  "S"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABCD",
+          "attribute": "sides.BC"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_08_003",
+        "lesson": "lesson_08",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "ABCD",
+              "n_sides": 4,
+              "sides": {
+                "AB": 4.0,
+                "BC": null,
+                "CD": 4.0,
+                "DA": 6.0
+              },
+              "angles": {
+                "A": 90.0,
+                "B": 90.0,
+                "C": 90.0,
+                "D": 90.0
+              }
+            },
+            {
+              "id": "PQRS",
+              "n_sides": 4,
+              "sides": {
+                "PQ": 6.0,
+                "QR": 9.0,
+                "RS": 6.0,
+                "SP": 9.0
+              },
+              "angles": {
+                "P": 90.0,
+                "Q": 90.0,
+                "R": 90.0,
+                "S": 90.0
+              }
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SAS",
+            "entities": [
+              "ABCD",
+              "PQRS"
+            ],
+            "attributes": {
+              "pre_image": "ABCD",
+              "image": "PQRS",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": [
+                [
+                  "A",
+                  "P"
+                ],
+                [
+                  "B",
+                  "Q"
+                ],
+                [
+                  "C",
+                  "R"
+                ],
+                [
+                  "D",
+                  "S"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABCD",
+          "attribute": "sides.BC"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 7,
+        "errors": [
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) is out of scope: entity 'ABCD' is a polygon but similar_SAS expects a triangle in that position. Expected kinds [triangle,triangle]; got entities [ABCD,PQRS]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) cannot apply to polygon 'ABCD'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) cannot apply to polygon 'PQRS'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "attribute_kind_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) attribute 'pre_image' expects a triangle but got polygon 'ABCD'."
+          },
+          {
+            "gate": "attribute_kind_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) attribute 'image' expects a triangle but got polygon 'PQRS'."
+          },
+          {
+            "gate": "insufficient_similarity_evidence",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Similarity between polygons ABCD and PQRS (n=4) requires 4 corresponding sides and 3 corresponding angles. Only 0 sides and 0 angles are given. Similarity is under-determined."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target ABCD.sides.BC is under-determined..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 7,
+      "haiku_correction": {
+        "problem_id": "lesson_08_003",
+        "lesson": "lesson_08",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "ABCD",
+              "n_sides": 4,
+              "sides": {
+                "AB": 4.0,
+                "BC": 6.0,
+                "CD": 4.0,
+                "DA": 6.0
+              },
+              "angles": {
+                "A": 90.0,
+                "B": 90.0,
+                "C": 90.0,
+                "D": 90.0
+              }
+            },
+            {
+              "id": "PQRS",
+              "n_sides": 4,
+              "sides": {
+                "PQ": 6.0,
+                "QR": 9.0,
+                "RS": 6.0,
+                "SP": 9.0
+              },
+              "angles": {
+                "P": 90.0,
+                "Q": 90.0,
+                "R": 90.0,
+                "S": 90.0
+              }
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SAS",
+            "entities": [
+              "ABCD",
+              "PQRS"
+            ],
+            "attributes": {
+              "pre_image": "ABCD",
+              "image": "PQRS",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": [
+                [
+                  "A",
+                  "P"
+                ],
+                [
+                  "B",
+                  "Q"
+                ],
+                [
+                  "C",
+                  "R"
+                ],
+                [
+                  "D",
+                  "S"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABCD",
+          "attribute": "sides.BC"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_08_003",
+        "lesson": "lesson_08",
+        "entities": {
+          "triangles": null,
+          "segments": null,
+          "polygons": [
+            {
+              "id": "ABCD",
+              "n_sides": 4,
+              "sides": {
+                "AB": 4.0,
+                "BC": 6.0,
+                "CD": 4.0,
+                "DA": 6.0
+              },
+              "angles": {
+                "A": 90.0,
+                "B": 90.0,
+                "C": 90.0,
+                "D": 90.0
+              }
+            },
+            {
+              "id": "PQRS",
+              "n_sides": 4,
+              "sides": {
+                "PQ": 6.0,
+                "QR": 9.0,
+                "RS": 6.0,
+                "SP": 9.0
+              },
+              "angles": {
+                "P": 90.0,
+                "Q": 90.0,
+                "R": 90.0,
+                "S": 90.0
+              }
+            }
+          ],
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "similar_SAS",
+            "entities": [
+              "ABCD",
+              "PQRS"
+            ],
+            "attributes": {
+              "pre_image": "ABCD",
+              "image": "PQRS",
+              "scale_factor": 1.5,
+              "congruent_angle_pairs": [
+                [
+                  "A",
+                  "P"
+                ],
+                [
+                  "B",
+                  "Q"
+                ],
+                [
+                  "C",
+                  "R"
+                ],
+                [
+                  "D",
+                  "S"
+                ]
+              ]
+            }
+          }
+        ],
+        "target": {
+          "entity": "ABCD",
+          "attribute": "sides.BC"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 8,
+        "errors": [
+          {
+            "gate": "scope_violation",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) is out of scope: entity 'ABCD' is a polygon but similar_SAS expects a triangle in that position. Expected kinds [triangle,triangle]; got entities [ABCD,PQRS]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) cannot apply to polygon 'ABCD'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "shape_relationship_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) cannot apply to polygon 'PQRS'. A polygon can only appear in relationships of type: [similar_unspecified,dilation,scaled_copy,scaled_copy_unspecified,angle_sum_polygon,center_on_figure,center_off_figure,point_interior]."
+          },
+          {
+            "gate": "attribute_kind_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) attribute 'pre_image' expects a triangle but got polygon 'ABCD'."
+          },
+          {
+            "gate": "attribute_kind_mismatch",
+            "severity": "fatal",
+            "checks": "",
+            "failed": "Relationship similar_SAS (index 1) attribute 'image' expects a triangle but got polygon 'PQRS'."
+          },
+          {
+            "gate": "insufficient_similarity_evidence",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Similarity between polygons ABCD and PQRS (n=4) requires 4 corresponding sides and 3 corresponding angles. Only 0 sides and 0 angles are given. Similarity is under-determined."
+          },
+          {
+            "gate": "target_vacuous",
+            "severity": "structural",
+            "checks": "",
+            "failed": "Target ABCD.sides.BC is already declared with value 6.0. The problem is vacuous - there is nothing to solve."
+          },
+          {
+            "gate": "target_undetermined",
+            "severity": "underdetermined",
+            "checks": "",
+            "failed": "Target ABCD.sides.BC is already given a value..."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 8,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_08. Let quadrilateral ABCD be a 4-sided figure with AB = 4, CD = 4, DA = 6, where \u2220A = 90\u00b0, \u2220B = 90\u00b0, \u2220C = 90\u00b0, \u2220D = 90\u00b0. Let quadrilateral PQRS be a 4-sided figure with PQ = 6, QR = 9, RS = 6, SP = 9, where \u2220P = 90\u00b0, \u2220Q = 90\u00b0, \u2220R = 90\u00b0, \u2220S = 90\u00b0. Triangle ABCD is similar to triangle PQRS by SAS similarity with scale factor 1.5 (congruent angle pairs: A \u2245 P, B \u2245 Q, C \u2245 R, D \u2245 S). Find the length of BC in ABCD.",
+  "student_facing_prose": "A contractor is designing two rectangular floor plans for similar buildings. The first building has a rectangular foundation ABCD with sides AB = 4 meters, CD = 4 meters, DA = 6 meters, and all four corners are right angles. The second building has a rectangular foundation PQRS with sides PQ = 6 meters, QR = 9 meters, RS = 6 meters, SP = 9 meters, and all four corners are right angles.\n\nThe contractor confirms that these two rectangular foundations are similar by SAS similarity, with a scale factor of 1.5 relating ABCD to PQRS. The corresponding angles are congruent: \u2220A \u2245 \u2220P, \u2220B \u2245 \u2220Q, \u2220C \u2245 \u2220R, and \u2220D \u2245 \u2220S.\n\nTo complete the specifications for the first building's foundation, what is the length of side BC in rectangle ABCD?"
+}

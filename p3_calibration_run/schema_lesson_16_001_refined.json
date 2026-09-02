@@ -1,0 +1,104 @@
+{
+  "problem_id": "lesson_16_001",
+  "lesson": "lesson_16",
+  "entities": {
+    "triangles": [
+      {
+        "id": "PQR",
+        "sides": {
+          "PQ": 9.0,
+          "QR": 12.0,
+          "PR": null
+        },
+        "angles": null,
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "XYZ",
+        "sides": {
+          "XY": 6.0,
+          "YZ": null,
+          "XZ": null
+        },
+        "angles": null,
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "PQR"
+      ],
+      "attributes": {
+        "triangle_id": "PQR",
+        "angles": [
+          "P",
+          "Q",
+          "R"
+        ],
+        "sum": 180.0
+      }
+    },
+    {
+      "type": "angle_sum_triangle",
+      "entities": [
+        "XYZ"
+      ],
+      "attributes": {
+        "triangle_id": "XYZ",
+        "angles": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "sum": 180.0
+      }
+    },
+    {
+      "type": "congruent_angles",
+      "entities": [
+        "Q",
+        "Y"
+      ],
+      "attributes": {
+        "ids": [
+          "Q",
+          "Y"
+        ]
+      }
+    },
+    {
+      "type": "similar_AA",
+      "entities": [
+        "PQR",
+        "XYZ"
+      ],
+      "attributes": {
+        "scale_factor": null,
+        "pre_image": "PQR",
+        "image": "XYZ",
+        "congruent_angle_pairs": [
+          [
+            "Q",
+            "Y"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "XYZ",
+    "attribute": "sides.YZ"
+  }
+}

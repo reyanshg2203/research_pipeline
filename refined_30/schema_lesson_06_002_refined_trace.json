@@ -1,0 +1,90 @@
+{
+  "lesson_id": "lesson_06",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A quilter is designing two similar quilt panels. The smaller panel is quadrilateral PQRS with sides PQ = 4 cm, QR = 6 cm, RS = 8 cm, and SP = 5 cm. The larger panel is quadrilateral WXYZ with sides WX = 6 cm, XY = 9 cm, and ZW = 7.5 cm. The quadrilaterals are similar, and all pairs of corresponding angles are congruent.\n\n(a) What is the scale factor of the dilation that takes quadrilateral PQRS onto quadrilateral WXYZ?\n\n(b) Find the length of side YZ in quadrilateral WXYZ.\n\n(c) Describe a sequence of rigid motions and a dilation that could take quadrilateral PQRS onto quadrilateral WXYZ. Be sure to specify the scale factor you use in your dilation.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_06. Let quadrilateral PQRS be a 4-sided figure with PQ = 4, QR = 6, RS = 8, SP = 5. Let quadrilateral WXYZ be a 4-sided figure with WX = 6, XY = 9, YZ = 12, ZW = 7.5. Triangle PQRS is similar to triangle WXYZ by SSS similarity with scale factor 1.5. Find the length of RS in PQRS.",
+      "judgment": {
+        "overall_score": 0.3,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 0,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 0
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem calls PQRS and WXYZ quadrilaterals but then says 'Triangle PQRS is similar to triangle WXYZ' \u2014 a contradiction. Worse, the side lengths given are not proportional: 6/4=1.5, 9/6=1.5, 12/8=1.5, but 7.5/5=1.5 \u2014 actually all ratios equal 1.5, so proportionality holds; however, SSS similarity for quadrilaterals is not a valid criterion (angles matter too). Finally, the 'question' asks for RS which is already stated as 8 in the givens \u2014 the answer is provided in the problem.",
+          "lesson_alignment": "The lesson is about identifying similar figures via sequences of rigid motions and dilations and writing similarity statements. This problem instead asks students to read a value already given, and misapplies an SSS similarity concept to quadrilaterals, missing the lesson's focus entirely.",
+          "linguistic_clarity": "The problem contradicts itself by calling the figures both quadrilaterals and triangles, and asks for a value (RS = 8) that is stated verbatim in the setup, making it unsolvable as a meaningful question."
+        },
+        "feedback_for_haiku": "Your problem has several serious breakdowns that need to be fixed together. First, you call PQRS and WXYZ quadrilaterals in the setup and then call them 'triangles' in the similarity claim \u2014 pick one figure type and stay consistent. Second, you cite 'SSS similarity' for quadrilaterals, but SSS similarity is a triangle criterion; for quadrilaterals, proportional sides alone do not guarantee similarity (angles must also match). Third and most damaging, you ask for RS when RS = 8 is already stated in the givens, so the problem answers itself. Rewrite so the unknown is actually unknown \u2014 for example, give three sides of PQRS plus the scale factor and one side of WXYZ, and ask for a missing corresponding side, or better, align with the lesson by asking students to describe a sequence of rigid motions and a dilation that maps one figure to the other and to state the scale factor. Finally, wrap the task in a concrete real-world scenario (e.g., two similar quilt panels, garden plots, or scaled blueprints), keeping every quantity and label intact, and place the final question inside that scenario.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem asks for the length of RS, but RS = 8 is explicitly stated in the givens, so the answer is provided in the question.",
+            "suggested_fix": "Remove one side length from the givens and ask for that missing side using the scale factor, or ask a different question aligned to the lesson (e.g., describe the similarity transformation)."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The figures are introduced as quadrilaterals but then referred to as 'Triangle PQRS' and 'triangle WXYZ' in the similarity statement.",
+            "suggested_fix": "Consistently call them quadrilaterals throughout, and write 'quadrilateral PQRS is similar to quadrilateral WXYZ'."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The problem invokes 'SSS similarity' for quadrilaterals, but SSS similarity is a triangle-only criterion; proportional sides alone do not determine quadrilateral similarity.",
+            "suggested_fix": "Either switch the figures to triangles to use SSS legitimately, or state similarity by definition (a sequence of rigid motions and a dilation) and include corresponding angle information."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The task does not exercise the lesson's core skill of describing a sequence of rigid motions and dilations or writing similarity statements.",
+            "suggested_fix": "Rewrite the prompt to ask students to identify the scale factor and describe a sequence of rigid motions and a dilation that maps one figure onto the other, or to write the correct similarity statement."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is presented as a bare list of asserted facts with no real-world context motivating the quantities.",
+            "suggested_fix": "Wrap the setup in a concrete scenario (e.g., two similar quilt blocks or scaled floor plans), preserving all side lengths and labels, and place the question inside that scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A quilter is designing two similar quilt panels. The smaller panel is quadrilateral PQRS with sides PQ = 4 cm, QR = 6 cm, RS = 8 cm, and SP = 5 cm. The larger panel is quadrilateral WXYZ with sides WX = 6 cm, XY = 9 cm, and ZW = 7.5 cm. The quadrilaterals are similar, and all pairs of corresponding angles are congruent.\n\n(a) What is the scale factor of the dilation that takes quadrilateral PQRS onto quadrilateral WXYZ?\n\n(b) Find the length of side YZ in quadrilateral WXYZ.\n\n(c) Describe a sequence of rigid motions and a dilation that could take quadrilateral PQRS onto quadrilateral WXYZ. Be sure to specify the scale factor you use in your dilation.",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The correspondence P\u2192W, Q\u2192X, R\u2192Y, S\u2192Z gives PQ/WX = 4/6 = 2/3, QR/XY = 6/9 = 2/3, and SP/ZW = 5/7.5 = 2/3, so the scale factor is consistently 3/2 (or 2/3 inverse). YZ corresponds to RS = 8, giving YZ = 12 cm. All relationships are internally consistent.",
+          "lesson_alignment": "The problem directly targets the lesson's core skills: identifying scale factor between similar figures, using proportional corresponding sides to find a missing length, and describing a sequence of rigid motions plus a dilation that maps one similar figure onto another. Part (c) especially aligns with the lesson synthesis goal.",
+          "linguistic_clarity": "The problem is wrapped in a concrete quilting scenario with the questions asked from within that context, quantities preserved, and clear labeling. Prose is clean and grade-appropriate."
+        },
+        "feedback_for_haiku": "Your problem is solid \u2014 the quilting scenario is concrete, the correspondence is unambiguous, and the three parts scaffold nicely from computing a scale factor, to applying it to find a missing side, to describing the full transformation sequence. One small tightening you could consider: in part (c), the problem asks students to describe a sequence that takes PQRS onto WXYZ but doesn't provide any positional/orientation information (locations, rotations, reflections) about the two panels, so students can only describe the sequence generically (\"dilate by 3/2 from some vertex, then translate/rotate/reflect to align\"). Either add a small figure or a sentence specifying relative orientation (e.g., \"WXYZ is a rotated and translated copy of the enlarged PQRS\"), or explicitly tell students to describe the sequence in general terms. This keeps the task fully well-posed without changing its difficulty.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "minor",
+            "issue": "Part (c) asks for a specific sequence of rigid motions but the relative position/orientation of the two quadrilaterals is not specified, so only a generic answer is possible.",
+            "suggested_fix": "Add a figure showing the two panels' positions, or specify orientation (e.g., 'WXYZ is positioned as a translated and rotated copy of the enlargement of PQRS'), or reword part (c) to explicitly accept a generic description."
+          }
+        ]
+      }
+    }
+  ]
+}

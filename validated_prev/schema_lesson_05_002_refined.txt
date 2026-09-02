@@ -1,0 +1,9 @@
+# Triangle XY and the Proportional Segments
+
+You're working with triangle PQR, where side PQ measures 30 units. Points X and Y lie on sides PQ and PR respectively, with PX = 12 and PY = 9.
+
+Because X and Y divide the two sides of the triangle proportionally — the ratio of PX to XQ equals the ratio of PY to YR, both equal to 0.6 — the segment XY must be parallel to the third side QR by the triangle proportionality theorem.
+
+Since XY is parallel to QR, triangle PXY is a dilation of triangle PQR, centered at vertex P. This means the sides of the two triangles are proportional with the same scale factor.
+
+**Find the length of segment XY.**

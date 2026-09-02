@@ -1,0 +1,173 @@
+{
+  "problem_id": "lesson_15_002",
+  "lesson_id": "lesson_15",
+  "max_iterations": 3,
+  "iterations_used": 2,
+  "stopped_early": true,
+  "final_passed": true,
+  "final_error_count": 0,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_15",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": 1,
+    "min_steps": 1,
+    "best_trace": [
+      "triangle_classification"
+    ],
+    "verdict": "in_band",
+    "accepted": true,
+    "reason": "1 in-scope steps lands in band [1..2]."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_15_002",
+        "lesson": "lesson_15",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 7.0,
+                "QR": 24.0,
+                "PR": 25.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "angle_sum_triangle",
+            "entities": [
+              "PQR"
+            ],
+            "attributes": {
+              "triangle_id": "PQR",
+              "angles": [
+                "P",
+                "Q",
+                "R"
+              ],
+              "sum": 180.0
+            }
+          }
+        ],
+        "target": {
+          "entity": "PQR",
+          "attribute": "is_right"
+        }
+      },
+      "validation": {
+        "status": "fail",
+        "error_count": 1,
+        "errors": [
+          {
+            "gate": "vacuous_angle_sum_relationship",
+            "severity": "structural",
+            "checks": "",
+            "failed": "angle_sum_triangle (index 1) is declared for triangle PQR but only 0 angle(s) are independently known. The relationship adds no constraint unless at least 2 angles are declared, allowing the third to be derived."
+          }
+        ]
+      },
+      "calibration": null,
+      "combined_error_count": 1,
+      "haiku_correction": {
+        "problem_id": "lesson_15_002",
+        "lesson": "lesson_15",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 7.0,
+                "QR": 24.0,
+                "PR": 25.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [],
+        "target": {
+          "entity": "PQR",
+          "attribute": "is_right"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_15_002",
+        "lesson": "lesson_15",
+        "entities": {
+          "triangles": [
+            {
+              "id": "PQR",
+              "sides": {
+                "PQ": 7.0,
+                "QR": 24.0,
+                "PR": 25.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [],
+        "target": {
+          "entity": "PQR",
+          "attribute": "is_right"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_15",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": 1,
+        "best_trace": [
+          "triangle_classification"
+        ],
+        "verdict": "in_band",
+        "accepted": true,
+        "reason": "1 in-scope steps lands in band [1..2]."
+      },
+      "combined_error_count": 0,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_15. Let triangle PQR be a triangle with sides PQ = 7, QR = 24, PR = 25. Determine whether triangle PQR is a right triangle.",
+  "student_facing_prose": "Triangle PQR has side lengths PQ = 7, QR = 24, and PR = 25. Determine whether this triangle is a right triangle, and explain your reasoning using the side lengths."
+}

@@ -1,0 +1,1 @@
+Lesson context: lesson_09. Let triangle PQR be a triangle with sides PQ = 12, QR = 9, where ∠P = 35°, ∠Q = 65°. Let triangle XYZ be a triangle with sides YZ = 18, where ∠Y = 80°, ∠Z = 35°. The interior angles of triangle PQR (∠P, ∠Q, ∠R) sum to 180°. The interior angles of triangle XYZ (∠X, ∠Y, ∠Z) sum to 180°. Find the measure of ∠X in XYZ.

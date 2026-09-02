@@ -1,0 +1,32 @@
+{
+  "problem_id": "lesson_15_001",
+  "lesson": "lesson_15",
+  "entities": {
+    "triangles": [
+      {
+        "id": "ABC",
+        "sides": {
+          "AB": 12.0,
+          "BC": 9.0,
+          "AC": null
+        },
+        "angles": {
+          "C": 90.0
+        },
+        "is_right": true,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [],
+  "target": {
+    "entity": "ABC",
+    "attribute": "sides.AC"
+  }
+}

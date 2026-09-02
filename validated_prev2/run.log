@@ -1,0 +1,789 @@
+Batch refine: 30 file(s) from /Users/reyanshg/research_pipeline/outputs_pipeline1_v1_frozen
+
+============================================================
+Refining schema_lesson_01_001.json (problem_id=lesson_01_001, lesson=lesson_01), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_01_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_01_001_functional.txt
+  Prose NL:      schema_lesson_01_001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_lesson_01_001_refined.json
+  NL:     validated/schema_lesson_01_001_refined.txt
+  Trace:  validated/schema_lesson_01_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_01_002.json (problem_id=lesson_01_002, lesson=lesson_01), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_01_002
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_01_002
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_01_002_functional.txt
+  Prose NL:      schema_lesson_01_002_refined.txt
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_lesson_01_002_refined.json
+  NL:     validated/schema_lesson_01_002_refined.txt
+  Trace:  validated/schema_lesson_01_002_refined_trace.json
+
+============================================================
+Refining schema_lesson_01_003.json (problem_id=lesson_01_003, lesson=lesson_01), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_01_003
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_01_003_functional.txt
+  Prose NL:      schema_lesson_01_003_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_lesson_01_003_refined.json
+  NL:     validated/schema_lesson_01_003_refined.txt
+  Trace:  validated/schema_lesson_01_003_refined_trace.json
+
+============================================================
+Refining schema_lesson_03_001.json (problem_id=lesson_03_001, lesson=lesson_03), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_03_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_03_001_functional.txt
+  Prose NL:      schema_lesson_03_001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_lesson_03_001_refined.json
+  NL:     validated/schema_lesson_03_001_refined.txt
+  Trace:  validated/schema_lesson_03_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_03_002.json (problem_id=lesson_03_002, lesson=lesson_03), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_03_002
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_03_002_functional.txt
+  Prose NL:      schema_lesson_03_002_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_lesson_03_002_refined.json
+  NL:     validated/schema_lesson_03_002_refined.txt
+  Trace:  validated/schema_lesson_03_002_refined_trace.json
+
+============================================================
+Refining schema_lesson_03_003.json (problem_id=lesson_03_003, lesson=lesson_03), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=3 [FAIL]
+  combined_error_count=3 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_03_003
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_03_003
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_03_003_functional.txt
+  Prose NL:      schema_lesson_03_003_refined.txt
+
+  Done [FAIL] errors=2 iterations=3
+  Schema: validated/schema_lesson_03_003_refined.json
+  NL:     validated/schema_lesson_03_003_refined.txt
+  Trace:  validated/schema_lesson_03_003_refined_trace.json
+
+============================================================
+Refining schema_lesson_05_001.json (problem_id=lesson_05_001, lesson=lesson_05), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=5 [FAIL]
+  combined_error_count=5 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_05_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=11 [FAIL]
+  combined_error_count=11 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_05_001
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail prolog_errors=4 [FAIL]
+  combined_error_count=4 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_05_001_functional.txt
+  Prose NL:      schema_lesson_05_001_refined.txt
+
+  Done [FAIL] errors=4 iterations=3
+  Schema: validated/schema_lesson_05_001_refined.json
+  NL:     validated/schema_lesson_05_001_refined.txt
+  Trace:  validated/schema_lesson_05_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_05_002.json (problem_id=lesson_05_002, lesson=lesson_05), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=5 [FAIL]
+  combined_error_count=5 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_05_002
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=5 [FAIL]
+  combined_error_count=5 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_05_002
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail prolog_errors=4 [FAIL]
+  combined_error_count=4 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_05_002_functional.txt
+  Prose NL:      schema_lesson_05_002_refined.txt
+
+  Done [FAIL] errors=4 iterations=3
+  Schema: validated/schema_lesson_05_002_refined.json
+  NL:     validated/schema_lesson_05_002_refined.txt
+  Trace:  validated/schema_lesson_05_002_refined_trace.json
+
+============================================================
+Refining schema_lesson_05_003.json (problem_id=lesson_05_003, lesson=lesson_05), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=4 [FAIL]
+  combined_error_count=4 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_05_003
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=3 [FAIL]
+  combined_error_count=3 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_05_003
+
+--- Iteration 3/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=alignment_fail [SCOPE FAIL] Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_05's own skill — the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required.
+  combined_error_count=1 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Calibration gate: ALIGNMENT_FAIL — skipping prose.
+    Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_05's own skill — the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required.
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_lesson_05_003_refined.json
+  NL:     validated/schema_lesson_05_003_refined.txt
+  Trace:  validated/schema_lesson_05_003_refined_trace.json
+
+============================================================
+Refining schema_lesson_06_001.json (problem_id=lesson_06_001, lesson=lesson_06), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_06_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_06_001_functional.txt
+  Prose NL:      schema_lesson_06_001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_lesson_06_001_refined.json
+  NL:     validated/schema_lesson_06_001_refined.txt
+  Trace:  validated/schema_lesson_06_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_06_002.json (problem_id=lesson_06_002, lesson=lesson_06), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=8 [FAIL]
+  combined_error_count=8 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_06_002
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=7 [FAIL]
+  combined_error_count=7 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_06_002
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail prolog_errors=7 [FAIL]
+  combined_error_count=7 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_06_002_functional.txt
+  Prose NL:      schema_lesson_06_002_refined.txt
+
+  Done [FAIL] errors=7 iterations=3
+  Schema: validated/schema_lesson_06_002_refined.json
+  NL:     validated/schema_lesson_06_002_refined.txt
+  Trace:  validated/schema_lesson_06_002_refined_trace.json
+
+============================================================
+Refining schema_lesson_06_003.json (problem_id=lesson_06_003, lesson=lesson_06), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=4 [FAIL]
+  combined_error_count=4 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_06_003
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_06_003_functional.txt
+  Prose NL:      schema_lesson_06_003_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_lesson_06_003_refined.json
+  NL:     validated/schema_lesson_06_003_refined.txt
+  Trace:  validated/schema_lesson_06_003_refined_trace.json
+
+============================================================
+Refining schema_lesson_08_001.json (problem_id=lesson_08_001, lesson=lesson_08), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_08_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_08_001_functional.txt
+  Prose NL:      schema_lesson_08_001_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_lesson_08_001_refined.json
+  NL:     validated/schema_lesson_08_001_refined.txt
+  Trace:  validated/schema_lesson_08_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_08_002.json (problem_id=lesson_08_002, lesson=lesson_08), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=4 [FAIL]
+  combined_error_count=4 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_08_002
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_08_002_functional.txt
+  Prose NL:      schema_lesson_08_002_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_lesson_08_002_refined.json
+  NL:     validated/schema_lesson_08_002_refined.txt
+  Trace:  validated/schema_lesson_08_002_refined_trace.json
+
+============================================================
+Refining schema_lesson_08_003.json (problem_id=lesson_08_003, lesson=lesson_08), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=8 [FAIL]
+  combined_error_count=8 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_08_003
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=7 [FAIL]
+  combined_error_count=7 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_08_003
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail prolog_errors=8 [FAIL]
+  combined_error_count=8 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_08_003_functional.txt
+  Prose NL:      schema_lesson_08_003_refined.txt
+
+  Done [FAIL] errors=7 iterations=3
+  Schema: validated/schema_lesson_08_003_refined.json
+  NL:     validated/schema_lesson_08_003_refined.txt
+  Trace:  validated/schema_lesson_08_003_refined_trace.json
+
+============================================================
+Refining schema_lesson_09_001.json (problem_id=lesson_09_001, lesson=lesson_09), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_09_001_functional.txt
+  Prose NL:      schema_lesson_09_001_refined.txt
+
+  Done [PASS] errors=0 iterations=1
+  Schema: validated/schema_lesson_09_001_refined.json
+  NL:     validated/schema_lesson_09_001_refined.txt
+  Trace:  validated/schema_lesson_09_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_09_002.json (problem_id=lesson_09_002, lesson=lesson_09), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_09_002
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=3 [FAIL]
+  combined_error_count=3 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_09_002
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_09_002_functional.txt
+  Prose NL:      schema_lesson_09_002_refined.txt
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_lesson_09_002_refined.json
+  NL:     validated/schema_lesson_09_002_refined.txt
+  Trace:  validated/schema_lesson_09_002_refined_trace.json
+
+============================================================
+Refining schema_lesson_09_003.json (problem_id=lesson_09_003, lesson=lesson_09), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_09_003
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_09_003
+
+--- Iteration 3/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=alignment_fail [SCOPE FAIL] A 2-step path uses the lesson skill, but a cheaper 1-step in-scope path skips it, so a student can solve this below level. Retarget or change the givens so the skill path is the shortest route (for altitude/geometric-mean lessons, target the altitude or a hypotenuse segment rather than a leg or the hypotenuse).
+  combined_error_count=1 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Calibration gate: ALIGNMENT_FAIL — skipping prose.
+    A 2-step path uses the lesson skill, but a cheaper 1-step in-scope path skips it, so a student can solve this below level. Retarget or change the givens so the skill path is the shortest route (for altitude/geometric-mean lessons, target the altitude or a hypotenuse segment rather than a leg or the hypotenuse).
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_lesson_09_003_refined.json
+  NL:     validated/schema_lesson_09_003_refined.txt
+  Trace:  validated/schema_lesson_09_003_refined_trace.json
+
+============================================================
+Refining schema_lesson_10_001.json (problem_id=lesson_10_001, lesson=lesson_10), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_10_001_functional.txt
+  Prose NL:      schema_lesson_10_001_refined.txt
+
+  Done [PASS] errors=0 iterations=1
+  Schema: validated/schema_lesson_10_001_refined.json
+  NL:     validated/schema_lesson_10_001_refined.txt
+  Trace:  validated/schema_lesson_10_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_10_002.json (problem_id=lesson_10_002, lesson=lesson_10), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_10_002
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=4 [FAIL]
+  combined_error_count=4 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_10_002
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail prolog_errors=3 [FAIL]
+  combined_error_count=3 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_10_002_functional.txt
+  Prose NL:      schema_lesson_10_002_refined.txt
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_lesson_10_002_refined.json
+  NL:     validated/schema_lesson_10_002_refined.txt
+  Trace:  validated/schema_lesson_10_002_refined_trace.json
+
+============================================================
+Refining schema_lesson_10_003.json (problem_id=lesson_10_003, lesson=lesson_10), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=alignment_fail [SCOPE FAIL] Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_10's own skill — the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required.
+  combined_error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_10_003
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=out_of_scope [SCOPE FAIL] Out of scope: the only derivation(s) of the target use law_of_cosines that lesson lesson_10 does not teach. Restructure so an allowed method reaches the target.
+  combined_error_count=1 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_10_003
+
+--- Iteration 3/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=out_of_scope [SCOPE FAIL] Out of scope: the only derivation(s) of the target use law_of_cosines that lesson lesson_10 does not teach. Restructure so an allowed method reaches the target.
+  combined_error_count=1 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Calibration gate: ALIGNMENT_FAIL — skipping prose.
+    Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_10's own skill — the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required.
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_lesson_10_003_refined.json
+  NL:     validated/schema_lesson_10_003_refined.txt
+  Trace:  validated/schema_lesson_10_003_refined_trace.json
+
+============================================================
+Refining schema_lesson_14_001.json (problem_id=lesson_14_001, lesson=lesson_14), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_14_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_14_001
+
+--- Iteration 3/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=alignment_fail [SCOPE FAIL] Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_14's own skill — the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required.
+  combined_error_count=1 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Calibration gate: ALIGNMENT_FAIL — skipping prose.
+    Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_14's own skill — the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required.
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_lesson_14_001_refined.json
+  NL:     validated/schema_lesson_14_001_refined.txt
+  Trace:  validated/schema_lesson_14_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_14_002.json (problem_id=lesson_14_002, lesson=lesson_14), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_14_002
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_14_002
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_14_002_functional.txt
+  Prose NL:      schema_lesson_14_002_refined.txt
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_lesson_14_002_refined.json
+  NL:     validated/schema_lesson_14_002_refined.txt
+  Trace:  validated/schema_lesson_14_002_refined_trace.json
+
+============================================================
+Refining schema_lesson_14_003.json (problem_id=lesson_14_003, lesson=lesson_14), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_14_003
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_14_003
+
+--- Iteration 3/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_14_003_functional.txt
+  Prose NL:      schema_lesson_14_003_refined.txt
+
+  Done [FAIL] errors=2 iterations=3
+  Schema: validated/schema_lesson_14_003_refined.json
+  NL:     validated/schema_lesson_14_003_refined.txt
+  Trace:  validated/schema_lesson_14_003_refined_trace.json
+
+============================================================
+Refining schema_lesson_15_001.json (problem_id=lesson_15_001, lesson=lesson_15), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_15_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Haiku repair produced an invalid schema; keeping best schema. (Haiku returned an invalid ProblemSchema: 4 validation errors for ProblemSchema
+relationships.0.attributes.angles.str
+  Input should be a valid string [type=string_type, input_value={'A': None, 'B': 90.0, 'C': None}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+relationships.0.attributes.angles.float
+  Input should be a valid number [type=float_type, input_value={'A': None, 'B': 90.0, 'C': None}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/float_type
+relationships.0.attributes.angles.bool
+  Input should be a valid boolean [type=bool_type, input_value={'A': None, 'B': 90.0, 'C': None}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/bool_type
+relationships.0.attributes.angles.list[any]
+  Input should be a valid list [type=list_type, input_value={'A': None, 'B': 90.0, 'C': None}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/list_type)
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_15_001_functional.txt
+  Prose NL:      schema_lesson_15_001_refined.txt
+
+  Done [FAIL] errors=1 iterations=2
+  Schema: validated/schema_lesson_15_001_refined.json
+  NL:     validated/schema_lesson_15_001_refined.txt
+  Trace:  validated/schema_lesson_15_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_15_002.json (problem_id=lesson_15_002, lesson=lesson_15), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_15_002
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_15_002
+
+--- Iteration 3/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_15_002_functional.txt
+  Prose NL:      schema_lesson_15_002_refined.txt
+
+  Done [PASS] errors=0 iterations=3
+  Schema: validated/schema_lesson_15_002_refined.json
+  NL:     validated/schema_lesson_15_002_refined.txt
+  Trace:  validated/schema_lesson_15_002_refined_trace.json
+
+============================================================
+Refining schema_lesson_15_003.json (problem_id=lesson_15_003, lesson=lesson_15), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=2 [FAIL]
+  combined_error_count=2 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_15_003
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_15_003
+
+--- Iteration 3/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=alignment_fail [SCOPE FAIL] Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_15's own skill — the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required.
+  combined_error_count=1 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Calibration gate: ALIGNMENT_FAIL — skipping prose.
+    Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_15's own skill — the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required.
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_lesson_15_003_refined.json
+  NL:     validated/schema_lesson_15_003_refined.txt
+  Trace:  validated/schema_lesson_15_003_refined_trace.json
+
+============================================================
+Refining schema_lesson_16_001.json (problem_id=lesson_16_001, lesson=lesson_16), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=3 [FAIL]
+  combined_error_count=3 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_16_001
+
+--- Iteration 2/3: Prolog validation ---
+  status=fail prolog_errors=1 [FAIL]
+  combined_error_count=1 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_16_001
+
+--- Iteration 3/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_16_001_functional.txt
+  Prose NL:      schema_lesson_16_001_refined.txt
+
+  Done [PASS] errors=0 iterations=3
+  Schema: validated/schema_lesson_16_001_refined.json
+  NL:     validated/schema_lesson_16_001_refined.txt
+  Trace:  validated/schema_lesson_16_001_refined_trace.json
+
+============================================================
+Refining schema_lesson_16_002.json (problem_id=lesson_16_002, lesson=lesson_16), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=3 [FAIL]
+  combined_error_count=3 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_16_002
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=too_easy [SCOPE FAIL] 1 in-scope steps is below the lesson floor of 2.
+  combined_error_count=1 [FAIL]
+--- Iteration 2: Haiku repairing schema ---
+  Corrected problem_id=lesson_16_002
+
+--- Iteration 3/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=too_easy [SCOPE FAIL] 1 in-scope steps is below the lesson floor of 2.
+  combined_error_count=1 [FAIL]
+  Max iterations reached — keeping best schema.
+--- Calibration gate: TOO_EASY — skipping prose.
+    1 in-scope steps is below the lesson floor of 2.
+
+  Done [FAIL] errors=1 iterations=3
+  Schema: validated/schema_lesson_16_002_refined.json
+  NL:     validated/schema_lesson_16_002_refined.txt
+  Trace:  validated/schema_lesson_16_002_refined_trace.json
+
+============================================================
+Refining schema_lesson_16_003.json (problem_id=lesson_16_003, lesson=lesson_16), max 3 iteration(s)
+
+--- Iteration 1/3: Prolog validation ---
+  status=fail prolog_errors=3 [FAIL]
+  combined_error_count=3 [FAIL]
+--- Iteration 1: Haiku repairing schema ---
+  Corrected problem_id=lesson_16_003
+
+--- Iteration 2/3: Prolog validation ---
+  status=pass prolog_errors=0 [PASS]
+  calibration=in_band [OK]
+  combined_error_count=0 [PASS]
+  Prolog + calibration both clean — stopping early.
+--- Haiku prose layer ---
+  Functional NL: schema_lesson_16_003_functional.txt
+  Prose NL:      schema_lesson_16_003_refined.txt
+
+  Done [PASS] errors=0 iterations=2
+  Schema: validated/schema_lesson_16_003_refined.json
+  NL:     validated/schema_lesson_16_003_refined.txt
+  Trace:  validated/schema_lesson_16_003_refined_trace.json
+
+============================================================
+Batch complete: 30/30 refined (13 passed)

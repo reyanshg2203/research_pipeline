@@ -1,0 +1,141 @@
+{
+  "lesson_id": "lesson_10",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": false,
+  "final_overall_score": 2.7,
+  "final_nl": "Two triangular garden plots are being designed for a community landscape project. The first plot, JKL, has side lengths JK = 8 feet, KL = 10 feet, and JL = 12 feet. The second plot, DEF, has side lengths DE = 12 feet, EF = 15 feet, and DF = 18 feet.\n\nA landscape designer needs to know whether the two plots have the same shape so she can adapt her sprinkler layout from one plot to the other. \n\n(a) Prove that triangles JKL and DEF are similar using the Side-Side-Side Triangle Similarity Theorem. In your proof, explain how a dilation followed by a sequence of rigid motions (or a congruence theorem) shows the triangles must be similar.\n\n(b) Determine which angle in triangle DEF corresponds to angle L in triangle JKL. Explain your reasoning by identifying how the vertices correspond based on the side ratios.\n\n(c) Use the Law of Cosines to find the measure of angle L in triangle JKL. Then state the measure of the corresponding angle in triangle DEF.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_10. Let triangle JKL be a triangle with sides JK = 8, KL = 10, JL = 12, where \u2220L = 42\u00b0. Let triangle DEF be a triangle with sides DE = 12, EF = 15, DF = 18. Triangle JKL is similar to triangle DEF by SSS similarity with scale factor 1.5 (congruent angle pairs: J \u2245 D, K \u2245 E, L \u2245 F). Find the measure of \u2220F in DEF.",
+      "judgment": {
+        "overall_score": 1.2,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The scale factor is wrong: DE/JK = 12/8 = 1.5, but EF/KL = 15/10 = 1.5, and DF/JL = 18/12 = 1.5 \u2014 wait, these are all 1.5, so scale factor is correct. However, the correspondence is inconsistent: with JK\u2194DE, KL\u2194EF, JL\u2194DF, the vertex correspondence is J\u2194D, K\u2194E, L\u2194F, which matches. But then \u2220L is the angle at vertex L in JKL, opposite side JK=8, and \u2220F is opposite DE=12. The problem states \u2220L=42\u00b0, so \u2220F=42\u00b0 by similarity \u2014 that's consistent. Actually the geometry checks out. But triangle inequality: 8+10=18>12 \u2713, so JKL is valid. The problem is solvable and correct, though it essentially gives the answer away by stating L\u2245F and \u2220L=42\u00b0.",
+          "lesson_alignment": "The lesson is about *proving* SSS and SAS similarity theorems, not applying them to find angle measures. Moreover, the problem trivially states the congruent angle pairs including L\u2245F and gives \u2220L=42\u00b0, so finding \u2220F=42\u00b0 requires zero reasoning \u2014 this is direct recall, not application of SSS similarity.",
+          "linguistic_clarity": "The problem is grammatically clear but extremely list-like and redundant: it states the similarity, the scale factor, AND the angle correspondence explicitly, leaving nothing for the student to derive. The phrase 'Let triangle JKL be a triangle' is clunky."
+        },
+        "feedback_for_haiku": "Your problem has two serious issues. First, it gives away the answer: by stating explicitly that L \u2245 F and that \u2220L = 42\u00b0, finding \u2220F = 42\u00b0 requires no reasoning at all \u2014 the student just reads off the given information. Remove the explicit angle correspondence and the phrase 'by SSS similarity' so the student must actually verify the side ratios (8/12 = 10/15 = 12/18 = 2/3) to establish similarity themselves, then determine which angles correspond. Second, this lesson is about *proving* the SSS and SAS Similarity Theorems, not about applying them to compute angles \u2014 consider rewriting the task as a short proof or justification (e.g., 'Prove these triangles are similar and explain what that tells you about \u2220F'). Finally, wrap the problem in a concrete real-world scenario \u2014 for example, two triangular sails, garden plots, or truss panels \u2014 preserving every side length and the 42\u00b0 angle, and ask the question from inside that scenario rather than presenting a bare 'Let triangle JKL...' list of facts.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The problem states the answer within the given information: \u2220L = 42\u00b0 and L \u2245 F are both provided, so \u2220F = 42\u00b0 requires no derivation.",
+            "suggested_fix": "Remove the explicit statement of the angle correspondence (J\u2245D, K\u2245E, L\u2245F) and let the student determine which angles correspond from the side lengths."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The lesson focuses on proving the SSS and SAS Similarity Theorems, but this problem only asks for an angle measure via direct substitution.",
+            "suggested_fix": "Reframe the task as a proof or explanation: 'Show that triangles JKL and DEF are similar, and justify what you can conclude about \u2220F.'"
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "The problem states 'similar by SSS similarity with scale factor 1.5' rather than asking the student to establish similarity themselves.",
+            "suggested_fix": "Give only the six side lengths and the one angle measure, then ask the student to prove similarity and identify the corresponding angle."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is a flat sequence of asserted facts with no real-world context or motivation for the quantities.",
+            "suggested_fix": "Wrap the setup in a concrete scenario \u2014 e.g., two triangular banners, sail panels, or land parcels \u2014 preserving JK=8, KL=10, JL=12, \u2220L=42\u00b0, and the DEF sides, with the question asked from inside the scenario."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The opening phrase 'Let triangle JKL be a triangle with sides...' is redundant and awkward.",
+            "suggested_fix": "Rephrase as 'Triangle JKL has sides JK = 8, KL = 10, JL = 12, with \u2220L = 42\u00b0.'"
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "Two triangular garden plots are being designed for a community landscape project. The first plot, JKL, has side lengths JK = 8 feet, KL = 10 feet, and JL = 12 feet, with an angle of 42\u00b0 at vertex L. The second plot, DEF, has side lengths DE = 12 feet, EF = 15 feet, and DF = 18 feet.\n\nProve that these two triangular plots are similar using the Side-Side-Side Similarity Theorem. Then, use your proof to determine which angle in triangle DEF corresponds to the 42\u00b0 angle at L in triangle JKL, and find the measure of that angle.",
+      "judgment": {
+        "overall_score": 1.7,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 2,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The side ratios are inconsistent: DE/JK = 12/8 = 1.5, EF/KL = 15/10 = 1.5, but DF/JL = 18/12 = 1.5 \u2014 actually these ARE all 1.5, so the triangles are similar by SSS. However, the correspondence J\u2192D, K\u2192E, L\u2192F means angle L corresponds to angle F. But the triangle JKL with sides 8, 10, 12 is not a valid triangle to have a 42\u00b0 angle at L: using the Law of Cosines, the angle at L (opposite JK=8) is arccos((100+144-64)/(2\u00b710\u00b712)) = arccos(180/240) = arccos(0.75) \u2248 41.41\u00b0, not 42\u00b0. This is close but not exact \u2014 a minor inconsistency. More critically, the 42\u00b0 datum is redundant/over-determined by the SSS side lengths, creating an internal contradiction (the angle is fixed by the sides at ~41.41\u00b0, not 42\u00b0).",
+          "lesson_alignment": "The problem targets SSS Triangle Similarity, which is directly from the lesson. However, the proof aspect is fine but the follow-up question about the corresponding angle is a straightforward corresponding-parts identification rather than pushing to the productive edge. The extraneous 42\u00b0 angle also muddles what the lesson emphasizes (proportional sides suffice).",
+          "linguistic_clarity": "The problem has a light real-world framing (community garden plots) but the question is asked in abstract math language (\"Prove that these two triangular plots are similar...\") rather than from inside the scenario. The prose is clear and grammatically sound, but the scenario feels tacked on rather than integrated into the question."
+        },
+        "feedback_for_haiku": "Your problem has a subtle but important internal inconsistency: you specified a 42\u00b0 angle at vertex L in triangle JKL, but the side lengths JK=8, KL=10, JL=12 already determine every angle of the triangle. By the Law of Cosines, the angle at L (opposite the shortest side JK=8) is actually arccos(0.75) \u2248 41.41\u00b0, not 42\u00b0. Either drop the specific side lengths of JKL and give only two sides plus the 42\u00b0 angle, or drop the 42\u00b0 stipulation entirely and ask students to compute the angle at L (and its corresponding angle F) using the Law of Cosines after establishing similarity. Also, note the correspondence carefully: with JK/DE = KL/EF = JL/DF = 2/3, vertex L corresponds to vertex F (since L is opposite JK and F is opposite DE), so the answer should identify angle F. Finally, wrap the question itself inside your garden-plot scenario \u2014 instead of \"Prove that these two triangular plots are similar,\" ask something like \"The landscape designer needs to know whether the two plots have the same shape so she can reuse her sprinkler layout \u2014 show that they are similar, and tell her which corner of plot DEF has the same 42\u00b0 angle as corner L.\"",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The 42\u00b0 angle at L is inconsistent with the given side lengths of triangle JKL, which force the angle at L to be arccos(0.75) \u2248 41.41\u00b0.",
+            "suggested_fix": "Either remove the specific side lengths of JKL (giving only two sides and the 42\u00b0 included angle) or drop the 42\u00b0 and have students compute the angle using the Law of Cosines."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The angle at L is opposite side JK=8, so it corresponds to angle F (opposite DE=12), but the problem's phrasing may lead students to expect angle E or the identification is nontrivial and worth stating explicitly.",
+            "suggested_fix": "Ensure the intended correspondence is J\u2194D, K\u2194E, L\u2194F and confirm the answer key identifies angle F as the corresponding angle."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The 'proof' request is answered simply by checking three ratios equal 3/2, which is more pattern-matching than the productive-edge proof work the lesson emphasizes.",
+            "suggested_fix": "Ask students to justify SSS Similarity from first principles (dilation + rigid motions or SSS Congruence after dilation), mirroring the lesson's proof structure."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The garden-plot scenario is introduced but the question reverts to abstract textbook language rather than being asked from inside the scenario.",
+            "suggested_fix": "Rewrite the question so the landscape designer or community project has a reason to know the plots are similar and to identify the matching corner angle."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "Two triangular garden plots are being designed for a community landscape project. The first plot, JKL, has side lengths JK = 8 feet, KL = 10 feet, and JL = 12 feet. The second plot, DEF, has side lengths DE = 12 feet, EF = 15 feet, and DF = 18 feet.\n\nA landscape designer needs to know whether the two plots have the same shape so she can adapt her sprinkler layout from one plot to the other. \n\n(a) Prove that triangles JKL and DEF are similar using the Side-Side-Side Triangle Similarity Theorem. In your proof, explain how a dilation followed by a sequence of rigid motions (or a congruence theorem) shows the triangles must be similar.\n\n(b) Determine which angle in triangle DEF corresponds to angle L in triangle JKL. Explain your reasoning by identifying how the vertices correspond based on the side ratios.\n\n(c) Use the Law of Cosines to find the measure of angle L in triangle JKL. Then state the measure of the corresponding angle in triangle DEF.",
+      "judgment": {
+        "overall_score": 2.7,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 2,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The side ratios check out: 12/8 = 15/10 = 18/12 = 1.5, so the triangles are similar by SSS. However, part (b) has a subtle issue: angle L is opposite side JK = 8, so it corresponds to angle E (opposite DF... wait: in DEF, the side opposite E is DF = 18, and 8\u00d71.5=12=DE, so angle L corresponds to the angle opposite DE, which is angle F). The correspondence J\u2194D, K\u2194E, L\u2194F works since JK/DE=8/12, KL/EF=10/15, JL/DF=12/18. So angle L corresponds to angle F. This is answerable and consistent. Part (c): Law of Cosines gives cos(L) = (JL\u00b2 + KL\u00b2 - JK\u00b2)/(2\u00b7JL\u00b7KL) = (144+100-64)/240 = 180/240 = 0.75, so angle L \u2248 41.4\u00b0. This is correct and consistent. Overall the math is correct \u2014 I revise upward.",
+          "lesson_alignment": "Part (a) directly targets the SSS Triangle Similarity Theorem proof, which is the core lesson goal, and asks for the dilation-plus-rigid-motion argument shown in the lesson summary. Part (b) reinforces correspondence understanding. Part (c) uses Law of Cosines, which goes beyond this lesson's scope but is a reasonable extension for angle-finding in similar triangles.",
+          "linguistic_clarity": "The problem is wrapped in a concrete landscape-design scenario with a stated reason (adapting the sprinkler layout) for comparing the plots, and every quantity is preserved. The three subparts are clearly labeled and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is well-framed and mathematically correct, but part (c)'s use of the Law of Cosines goes outside the scope of this lesson, which is focused on proving similarity theorems via dilations and rigid motions \u2014 not on trigonometric angle computation. Consider replacing part (c) with a task that stays within the lesson, such as: \"If a protractor measurement shows angle L \u2248 41.4\u00b0, what is the measure of the corresponding angle in triangle DEF, and why?\" \u2014 this preserves the correspondence idea without invoking Law of Cosines. Also, in part (a), explicitly prompt the student to compute the three side ratios (12/8, 15/10, 18/12) and note they all equal 1.5, so the dilation with scale factor k = 1.5 is well-defined; this makes the proof structure match the lesson's model proof more closely. Finally, in part (b), make sure the expected answer (angle F corresponds to angle L, since both are opposite the shortest side in their triangle) is unambiguous by asking students to justify via the side-opposite-angle relationship.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "Part (c) invokes the Law of Cosines, which is outside the scope of this lesson on proving triangle similarity theorems via dilations and rigid motions.",
+            "suggested_fix": "Replace part (c) with a question that uses the similarity correspondence directly \u2014 e.g., give angle L's measure and ask for the corresponding angle in DEF with justification \u2014 instead of computing it via Law of Cosines."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "minor",
+            "issue": "Part (a) asks for a proof using SSS Similarity but does not explicitly instruct the student to verify that all three side ratios are equal before invoking the theorem.",
+            "suggested_fix": "Add a sub-step in (a) asking students to compute JK/DE, KL/EF, and JL/DF and confirm they share the same scale factor k = 1.5 before constructing the dilation argument."
+          }
+        ]
+      }
+    }
+  ]
+}

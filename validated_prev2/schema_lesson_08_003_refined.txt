@@ -1,0 +1,5 @@
+A contractor is designing two rectangular floor plans for similar buildings. The first building has a rectangular foundation ABCD with sides AB = 4 meters, CD = 4 meters, DA = 6 meters, and all four corners are right angles. The second building has a rectangular foundation PQRS with sides PQ = 6 meters, QR = 9 meters, RS = 6 meters, SP = 9 meters, and all four corners are right angles.
+
+The contractor confirms that these two rectangular foundations are similar by SAS similarity, with a scale factor of 1.5 relating ABCD to PQRS. The corresponding angles are congruent: ∠A ≅ ∠P, ∠B ≅ ∠Q, ∠C ≅ ∠R, and ∠D ≅ ∠S.
+
+To complete the specifications for the first building's foundation, what is the length of side BC in rectangle ABCD?

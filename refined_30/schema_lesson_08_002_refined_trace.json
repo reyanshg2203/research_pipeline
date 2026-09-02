@@ -1,0 +1,123 @@
+{
+  "lesson_id": "lesson_08",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": true,
+  "final_overall_score": 3.5,
+  "final_nl": "A graphic designer is working with two circular logos. The original logo, circle c, has a center at point O and a radius of 3 inches. The client requests a scaled-up version, circle d, with center at point P and a radius of 7 inches. The two logos need to be positioned so that they appear as if one is an enlarged version of the other on a poster.\n\nA colleague suggests the following sequence of transformations: First dilate circle c using center O and a scale factor of 7/3, then translate the image so its center coincides with point P.\n\n(a) Describe an alternative sequence of transformations (translation followed by a dilation) that would take circle c exactly onto circle d, as shown in the lesson proof.\n\n(b) Will both sequences result in circle c coinciding exactly with circle d? Explain why or why not, and justify your reasoning using what you know about rigid transformations and dilations.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_08. Let point O be a point on c. Let point P be a point on d. Let circle c be a circle with radius 3. Let circle d be a circle with radius 7. c is dilated to form d with scale factor 7, centered at point O. Find the radius of circle d.",
+      "judgment": {
+        "overall_score": 1.0,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 1
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem contains multiple contradictions: it states circle c has radius 3 and circle d has radius 7, then asks to find the radius of d (already given as 7). It also claims c is dilated by scale factor 7 centered at O, which would produce a circle of radius 21, not 7\u2014so the scale factor is inconsistent with the given radii. Points O and P are introduced but never used.",
+          "lesson_alignment": "The lesson focuses on proving that all circles are similar via a sequence of a rigid motion and a dilation, and critiquing similarity proofs. This problem instead asks for a trivial radius computation whose answer is already stated in the problem, exercising neither the proof skill nor the reasoning about similarity that the lesson targets.",
+          "linguistic_clarity": "The prose is a disjointed list of 'Let ...' statements with irrelevant points O and P, and the final question ('Find the radius of circle d') is already answered in the setup. The wording is confusing and contradictory rather than merely flat."
+        },
+        "feedback_for_haiku": "Your problem has a fundamental issue: you tell the reader that circle d has radius 7, and then ask them to find the radius of circle d\u2014the answer is given in the setup. Additionally, your numbers contradict each other: dilating a radius-3 circle by scale factor 7 produces a radius of 21, not 7, so the scale factor should be 7/3 if you want d to have radius 7. You also introduce points O and P but never use P, and O only appears as the dilation center. More importantly, this lesson is about proving that all circles are similar via one rigid motion plus one dilation\u2014not about computing a radius. Rewrite the task so students must either identify/construct the sequence of transformations (a translation taking one center to the other, then a dilation by the ratio of radii) that shows two specific circles are similar, or critique/complete a similarity proof. Wrap the task in a concrete real-world scenario (e.g., a designer scaling one circular logo onto another) that preserves every quantity and label, and put the question inside that scenario. Make sure every point and number you introduce plays a role in the solution.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The radius of circle d is stated in the problem (7) and then asked for as the unknown, so the answer is given.",
+            "suggested_fix": "Remove the given radius of d and instead ask students to justify why d has a certain radius via the dilation, or ask a different question tied to the similarity proof."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "A dilation of a radius-3 circle by scale factor 7 yields radius 21, not 7, so the scale factor is inconsistent with the stated radii.",
+            "suggested_fix": "Change the scale factor to 7/3 so that dilating circle c produces a circle congruent to d."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "Point P is defined but never used anywhere in the problem.",
+            "suggested_fix": "Either remove point P or give it a role (e.g., P is the center of d and the dilation must be preceded by a translation from O to P)."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "critical",
+            "issue": "The task is a trivial radius lookup rather than an application of the 'all circles are similar' proof structure the lesson develops.",
+            "suggested_fix": "Ask students to describe or justify the sequence of a translation followed by a dilation that maps circle c exactly onto circle d, showing they are similar."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is a flat list of 'Let ...' declarations with no scenario, and the ordering (defining points on the circles before defining the circles) is awkward.",
+            "suggested_fix": "Wrap the problem in a concrete real-world scenario (e.g., overlapping circular garden plots or scaling circular logos) with the question posed from inside that scenario, and order the givens logically."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A graphic designer is working with two circular logos. The original logo, circle c, has a center at point O and a radius of 3 inches. The client requests a scaled-up version, circle d, with center at point P and a radius of 7 inches. The two logos need to be positioned so that they appear as if one is an enlarged version of the other on a poster.\n\nUsing the theorem that all circles are similar, describe the sequence of transformations (a translation followed by a dilation) that would take circle c exactly onto circle d. What scale factor must be used in the dilation to enlarge the radius from 3 inches to 7 inches?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The geometric setup is correct: circle c (radius 3) can be mapped to circle d (radius 7) by translating O to P, then dilating from P by scale factor 7/3. All quantities are consistent and the transformations are valid.",
+          "lesson_alignment": "The problem directly targets the lesson's theorem that all circles are similar and asks students to describe the sequence of transformations, which mirrors the lesson summary exactly. However, it leans toward direct recall of the lesson's worked example rather than pushing to the productive edge \u2014 it asks students to reproduce the given proof structure with specific numbers rather than critique, extend, or apply the reasoning more deeply.",
+          "linguistic_clarity": "The problem is wrapped in a concrete graphic-designer scenario with logos on a poster, all quantities (radii of 3 and 7 inches) are preserved, and the final question about the scale factor is asked from inside the scenario. Prose is clean and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is solid and cleanly framed, but it essentially asks students to reproduce the exact proof structure shown in the lesson summary with different numbers plugged in \u2014 a translation followed by a dilation with scale factor 7/3. To push toward the productive edge of difficulty, consider adding a critique or justification component: for example, ask students to explain why this two-step sequence is sufficient (why no rotation is needed), or ask whether the order of transformations matters, or ask them to prove the resulting circles coincide rather than just describe the steps. You could also present a flawed alternative sequence (e.g., \"my colleague says to dilate first then translate \u2014 will that work?\") and have students critique it, which aligns with the lesson's emphasis on critiquing proofs (MP3).",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The task closely mirrors the lesson summary's worked proof with only the numbers changed, so it functions more as recall/pattern-matching than genuine application or critique.",
+            "suggested_fix": "Add a critique or justification element \u2014 e.g., ask students to explain why no rotation is needed, or present a faulty alternative sequence to critique in the style of Tyler's proof from the lesson."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A graphic designer is working with two circular logos. The original logo, circle c, has a center at point O and a radius of 3 inches. The client requests a scaled-up version, circle d, with center at point P and a radius of 7 inches. The two logos need to be positioned so that they appear as if one is an enlarged version of the other on a poster.\n\nA colleague suggests the following sequence of transformations: First dilate circle c using center O and a scale factor of 7/3, then translate the image so its center coincides with point P.\n\n(a) Describe an alternative sequence of transformations (translation followed by a dilation) that would take circle c exactly onto circle d, as shown in the lesson proof.\n\n(b) Will both sequences result in circle c coinciding exactly with circle d? Explain why or why not, and justify your reasoning using what you know about rigid transformations and dilations.",
+      "judgment": {
+        "overall_score": 3.5,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 3,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "The geometry is sound: dilating circle c by 7/3 centered at O yields a circle of radius 7 centered at O, then translating O\u2192P places it onto circle d. The lesson's alternative (translate O\u2192P, then dilate centered at P by 7/3) is also correct. One minor concern: part (b) asks whether 'both sequences result in circle c coinciding exactly with circle d' \u2014 the answer is yes for both, which is a reasonable question, though slightly less pointed than contrasting with a faulty approach.",
+          "lesson_alignment": "The problem directly targets the lesson's proof that all circles are similar via a rigid motion followed by a dilation, and asks students to both reproduce the lesson's argument and justify why an alternative sequence also works. This pushes to the productive edge by asking about equivalence of transformation sequences rather than just recall.",
+          "linguistic_clarity": "The problem is wrapped in a concrete, motivated graphic-design scenario with specific quantities (radii 3 and 7 inches, logos on a poster), and the tasks in (a) and (b) are asked from within that context. Terms are precise and the referenced 'lesson proof' is unambiguous given the source material."
+        },
+        "feedback_for_haiku": "Your problem is well-framed and closely aligned with the lesson's proof that all circles are similar. One small refinement: in part (b), the phrasing 'Will both sequences result in circle c coinciding exactly with circle d?' invites a yes/no answer that may feel obvious once students realize both compositions produce the same final circle. Consider sharpening it by asking students to explicitly identify what makes both valid (e.g., 'Explain why the order of the dilation and translation can be swapped here, and identify the scale factor and translation vector each sequence uses'), or by contrasting with a deliberately faulty alternative (echoing Tyler's mistake from the lesson) so students must critique reasoning as well as construct it. Also, minor: naming circles with lowercase letters 'c' and 'd' while also using point labels O and P is fine but consider capitalizing (Circle C, Circle D) to match typical geometry notation and avoid any confusion with variables.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Part (b) has a straightforward 'yes' answer and doesn't push students to critique reasoning the way the lesson's Tyler-proof activity does.",
+            "suggested_fix": "Add a third proposed (faulty) sequence \u2014 e.g., two different dilations with mismatched scale factors \u2014 and ask students to identify which sequences work and why, mirroring the lesson's critique-a-proof structure."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "Lowercase circle labels 'c' and 'd' could be confused with variables or side labels in a geometry context.",
+            "suggested_fix": "Rename the circles as Circle C and Circle D (or Circle 1 and Circle 2) to match standard geometry notation."
+          }
+        ]
+      }
+    }
+  ]
+}

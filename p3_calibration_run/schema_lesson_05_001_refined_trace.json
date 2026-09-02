@@ -1,0 +1,485 @@
+{
+  "problem_id": "lesson_05_001",
+  "lesson_id": "lesson_05",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_passed": false,
+  "final_error_count": 1,
+  "final_prolog_error_count": 0,
+  "calibration": {
+    "lesson": "lesson_05",
+    "n_out_of_scope": 0,
+    "out_of_scope_concepts": [],
+    "any_min_steps": null,
+    "min_steps": null,
+    "best_trace": [],
+    "verdict": "untraceable",
+    "accepted": false,
+    "reason": "Calibration could not trace any derivation of the target for lesson lesson_05: target_derivable/3 yields no path, so scope and difficulty cannot be scored. This is a coverage limit of the step-counting engine (the target's answer type is not a length/angle derivation), NOT an out-of-scope condition. Validation already passed this schema."
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "input_schema": {
+        "problem_id": "lesson_05_001",
+        "lesson": "lesson_05",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 14.0,
+                "BC": 16.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNP",
+              "sides": {
+                "MN": null,
+                "NP": 8.0,
+                "MP": 5.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": [
+            {
+              "id": "MN",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            },
+            {
+              "id": "NP",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            },
+            {
+              "id": "MP",
+              "length": null,
+              "parallel_to": null,
+              "perpendicular_to": null,
+              "ratio_to": null,
+              "is_midsegment": true,
+              "is_altitude": null
+            }
+          ],
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "M",
+              "lies_on": [
+                "AB"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "N",
+              "lies_on": [
+                "BC"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "P",
+              "lies_on": [
+                "AC"
+              ],
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABC",
+              "MNP"
+            ],
+            "attributes": {
+              "center": "A",
+              "scale_factor": 0.5,
+              "pre_image": "ABC",
+              "image": "MNP"
+            }
+          },
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "MN",
+              "AC"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "NP",
+              "AB"
+            ],
+            "attributes": null
+          },
+          {
+            "type": "midsegment_parallel",
+            "entities": [
+              "MP",
+              "BC"
+            ],
+            "attributes": null
+          }
+        ],
+        "target": {
+          "entity": "MN",
+          "attribute": "length"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_05",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": null,
+        "min_steps": null,
+        "best_trace": [],
+        "verdict": "untraceable",
+        "accepted": false,
+        "reason": "Calibration could not trace any derivation of the target for lesson lesson_05: target_derivable/3 yields no path, so scope and difficulty cannot be scored. This is a coverage limit of the step-counting engine (the target's answer type is not a length/angle derivation), NOT an out-of-scope condition. Validation already passed this schema."
+      },
+      "combined_error_count": 1,
+      "haiku_correction": {
+        "problem_id": "lesson_05_001",
+        "lesson": "lesson_05",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 14.0,
+                "BC": 16.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNP",
+              "sides": {
+                "MN": null,
+                "NP": 8.0,
+                "MP": 5.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "M",
+              "lies_on": [
+                "AB"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "N",
+              "lies_on": [
+                "BC"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "P",
+              "lies_on": [
+                "AC"
+              ],
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABC",
+              "MNP"
+            ],
+            "attributes": {
+              "center": "A",
+              "scale_factor": 0.5,
+              "pre_image": "ABC",
+              "image": "MNP"
+            }
+          }
+        ],
+        "target": {
+          "entity": "MNP",
+          "attribute": "sides.MN"
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "input_schema": {
+        "problem_id": "lesson_05_001",
+        "lesson": "lesson_05",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 14.0,
+                "BC": 16.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNP",
+              "sides": {
+                "MN": null,
+                "NP": 8.0,
+                "MP": 5.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": [
+            {
+              "id": "M",
+              "lies_on": [
+                "AB"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "N",
+              "lies_on": [
+                "BC"
+              ],
+              "is_intersection_of": null
+            },
+            {
+              "id": "P",
+              "lies_on": [
+                "AC"
+              ],
+              "is_intersection_of": null
+            }
+          ],
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABC",
+              "MNP"
+            ],
+            "attributes": {
+              "center": "A",
+              "scale_factor": 0.5,
+              "pre_image": "ABC",
+              "image": "MNP"
+            }
+          }
+        ],
+        "target": {
+          "entity": "MNP",
+          "attribute": "sides.MN"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_05",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": null,
+        "best_trace": [],
+        "verdict": "alignment_fail",
+        "accepted": false,
+        "reason": "Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_05's own skill \u2014 the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required."
+      },
+      "combined_error_count": 1,
+      "haiku_correction": {
+        "problem_id": "lesson_05_001",
+        "lesson": "lesson_05",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 14.0,
+                "BC": 16.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNP",
+              "sides": {
+                "MN": null,
+                "NP": null,
+                "MP": null
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABC",
+              "MNP"
+            ],
+            "attributes": {
+              "center": "A",
+              "scale_factor": 0.5,
+              "pre_image": "ABC",
+              "image": "MNP"
+            }
+          }
+        ],
+        "target": {
+          "entity": "MNP",
+          "attribute": "sides.NP"
+        }
+      }
+    },
+    {
+      "iteration": 3,
+      "input_schema": {
+        "problem_id": "lesson_05_001",
+        "lesson": "lesson_05",
+        "entities": {
+          "triangles": [
+            {
+              "id": "ABC",
+              "sides": {
+                "AB": 14.0,
+                "BC": 16.0,
+                "AC": 10.0
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            },
+            {
+              "id": "MNP",
+              "sides": {
+                "MN": null,
+                "NP": null,
+                "MP": null
+              },
+              "angles": null,
+              "is_right": null,
+              "is_isosceles": null,
+              "is_equilateral": null
+            }
+          ],
+          "segments": null,
+          "polygons": null,
+          "lines": null,
+          "points": null,
+          "circles": null
+        },
+        "relationships": [
+          {
+            "type": "dilation",
+            "entities": [
+              "ABC",
+              "MNP"
+            ],
+            "attributes": {
+              "center": "A",
+              "scale_factor": 0.5,
+              "pre_image": "ABC",
+              "image": "MNP"
+            }
+          }
+        ],
+        "target": {
+          "entity": "MNP",
+          "attribute": "sides.NP"
+        }
+      },
+      "validation": {
+        "status": "pass",
+        "error_count": 0,
+        "errors": []
+      },
+      "calibration": {
+        "lesson": "lesson_05",
+        "n_out_of_scope": 0,
+        "out_of_scope_concepts": [],
+        "any_min_steps": 1,
+        "min_steps": null,
+        "best_trace": [],
+        "verdict": "alignment_fail",
+        "accepted": false,
+        "reason": "Solvable in 1 in-scope step(s), but NO derivation uses lesson lesson_05's own skill \u2014 the problem is solved entirely with prior-lesson methods. Rebuild so the lesson's skill is load-bearing: change the target, the givens, or the declared relationship so the intended method is required."
+      },
+      "combined_error_count": 1,
+      "haiku_correction": null
+    }
+  ],
+  "function_translated_nl": "Lesson context: lesson_05. Let triangle ABC be a triangle with sides AB = 14, BC = 16, AC = 10. Let triangle MNP be a triangle with sides NP = 8, MP = 5. Let segment MN be a midsegment segment. Let segment NP be a midsegment segment. Let segment MP be a midsegment segment. Let point M be a point on AB. Let point N be a point on BC. Let point P be a point on AC. ABC is dilated to form MNP with scale factor 0.5, centered at point A. Segment MN is parallel to AC. Segment NP is parallel to AB. Segment MP is parallel to BC. Find the length of MN.",
+  "prose_skipped": true,
+  "calibration_rejected": true
+}

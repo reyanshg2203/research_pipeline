@@ -1,0 +1,5 @@
+A contractor is examining two triangular braces to see if they can be made interchangeable through scaling and repositioning. The first brace, triangle ABC, has sides AB = 6 inches, BC = 8 inches, and AC = 10 inches. The second brace, triangle DEF, has sides DE = 9 inches, EF = 12 inches, and DF = 15 inches.
+
+The contractor notices that when she compares corresponding sides, the ratio is constant: each side of DEF is exactly 1.5 times the length of the corresponding side in ABC. This means triangle ABC is similar to triangle DEF by Side-Side-Side similarity, with a scale factor of 1.5.
+
+To verify her observation and complete the inventory, she needs to confirm the length of side EF in triangle DEF. What is this length?

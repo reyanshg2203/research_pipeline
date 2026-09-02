@@ -1,0 +1,9 @@
+Two triangular ramp designs for a skateboard park are being compared. Both ramps are right triangles.
+
+The first ramp, represented by triangle JKL, has a right angle at K. The horizontal leg JK measures 8 meters, and the hypotenuse JL measures 10 meters.
+
+The second ramp, represented by triangle MNO, is similar to the first ramp. It has a right angle at N, and the horizontal leg MN measures 12 meters.
+
+The triangles are similar with the correspondence J ↔ M, K ↔ N, and L ↔ O.
+
+What is the length of the vertical leg NO of the second ramp?

@@ -1,0 +1,147 @@
+{
+  "lesson_id": "lesson_09",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": false,
+  "final_passed": false,
+  "final_overall_score": 1.2,
+  "final_nl": "Two triangular support brackets are being manufactured for a construction project. The brackets must support equal load angles to function properly.\n\nThe first bracket is shaped like triangle JKL with \u2220J = 28\u00b0 and \u2220L = 112\u00b0. One edge JK measures 5 cm.\n\nThe second bracket is shaped like triangle MNO with \u2220N = 40\u00b0 and \u2220O = 112\u00b0. One edge MN measures 8 cm.\n\nTo ensure the brackets work as a matched pair, an engineer needs to verify they are geometrically similar and then determine the length of edge NO on the second bracket.\n\na) Find the measure of \u2220K in triangle JKL using the Triangle Angle Sum Theorem.\n\nb) Find the measure of \u2220M in triangle MNO using the Triangle Angle Sum Theorem.\n\nc) Which angles in triangle JKL correspond to which angles in triangle MNO? Explain how you can use the Angle-Angle (AA) Triangle Similarity Theorem to show that triangles JKL and MNO are similar.\n\nd) Since the triangles are similar, identify which sides correspond to each other (JK corresponds to MN, and KL corresponds to NO) and find the scale factor from triangle JKL to triangle MNO using these sides.\n\ne) Using the Law of Sines, calculate the length of side KL in triangle JKL: KL = 5 \u00b7 sin(28\u00b0)/sin(40\u00b0). Round your answer to two decimal places.\n\nf) A machinist needs to cut edge NO of the second bracket. Using the scale factor from part (d) and the length of KL from part (e), how long should edge NO be? Round your answer to two decimal places.",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_09. Let triangle JKL be a triangle with sides JK = 5, where \u2220J = 28\u00b0, \u2220L = 112\u00b0. Let triangle MNO be a triangle with sides MN = 8, where \u2220N = 40\u00b0, \u2220O = 112\u00b0. The interior angles of triangle JKL (\u2220J, \u2220K, \u2220L) sum to 180\u00b0. The interior angles of triangle MNO (\u2220M, \u2220N, \u2220O) sum to 180\u00b0. Find the measure of \u2220K in JKL.",
+      "judgment": {
+        "overall_score": 1.7,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 2,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem is mathematically solvable (\u2220K = 180 - 28 - 112 = 40\u00b0), and the two triangles do turn out similar by AA (both have angles 28\u00b0, 40\u00b0, 112\u00b0). However, the phrasing 'a triangle with sides JK = 5' is odd (only one side is given), and the side lengths JK = 5 and MN = 8 are extraneous \u2014 they are never used and don't correspond to the sides between congruent angles in any useful way. The problem is internally consistent but sloppily specified.",
+          "lesson_alignment": "The lesson is about proving and applying the Angle-Angle Triangle Similarity Theorem, typically to establish similarity and often find missing side lengths. This problem only asks students to apply the Triangle Angle Sum Theorem to find \u2220K \u2014 it never asks about similarity between JKL and MNO, making triangle MNO and the side lengths entirely irrelevant. This exercises a prerequisite skill rather than the target AA similarity skill.",
+          "linguistic_clarity": "The phrasing 'a triangle with sides JK = 5' is grammatically awkward (plural 'sides' for one length). The sentences reminding students that interior angles sum to 180\u00b0 are redundant and clunky. There is no scenario, and the final question is disconnected from the setup involving triangle MNO."
+        },
+        "feedback_for_haiku": "Your problem sets up two triangles with matching angle information, but then only asks students to find \u2220K using the Triangle Angle Sum Theorem \u2014 the second triangle MNO and both side lengths (JK = 5, MN = 8) are never used. This misses the lesson's target skill: applying the Angle-Angle Triangle Similarity Theorem. Rewrite the task so students must (a) use the Triangle Angle Sum Theorem to find a missing angle, (b) conclude that triangles JKL and MNO are similar by AA, and (c) use the scale factor from the corresponding sides to find an unknown side length. Also fix the grammar 'a triangle with sides JK = 5' (should be 'side JK = 5') and drop the redundant reminders that interior angles sum to 180\u00b0. Finally, wrap the problem in a concrete real-world scenario (e.g., two triangular sails, garden plots, or support brackets) that preserves every quantity and label, and ask the final question from inside that scenario.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "critical",
+            "issue": "The question only requires the Triangle Angle Sum Theorem to find \u2220K; it never asks students to establish similarity via AA or use similarity to find a side length, which is the lesson's target skill.",
+            "suggested_fix": "Add subparts asking students to prove triangles JKL and MNO are similar by AA, and then use the corresponding sides JK = 5 and MN = 8 to find an unknown side length."
+          },
+          {
+            "category": "geometric_accuracy",
+            "severity": "major",
+            "issue": "The side lengths JK = 5 and MN = 8 are extraneous \u2014 no question uses them, so they mislead students about what information is relevant.",
+            "suggested_fix": "Either remove the side lengths or (better) ask a follow-up question that requires using the scale factor MN/JK = 8/5 to find a missing side."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The phrasing 'a triangle with sides JK = 5' uses plural 'sides' for a single side, and the two sentences restating the Triangle Angle Sum Theorem are redundant and clunky.",
+            "suggested_fix": "Change to 'with side JK = 5' and delete the sentences reminding students that interior angles sum to 180\u00b0."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is flatly framed with no scenario giving the quantities a reason to exist.",
+            "suggested_fix": "Wrap the setup in a concrete real-world context (e.g., two triangular sailcloth panels or bracket pieces) preserving all labels and quantities, and ask the final question from within that scenario."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "Two triangular support brackets are being manufactured for a construction project. The brackets must support equal load angles to function together properly.\n\nThe first bracket is shaped like triangle JKL with side JK = 5 cm, where \u2220J = 28\u00b0 and \u2220L = 112\u00b0.\n\nThe second bracket is shaped like triangle MNO with side MN = 8 cm, where \u2220N = 40\u00b0 and \u2220O = 112\u00b0.\n\na) Find the measure of \u2220K in triangle JKL.\n\nb) Use the Triangle Angle Sum Theorem to find the measure of \u2220M in triangle MNO.\n\nc) Explain why triangles JKL and MNO are similar using the Angle-Angle (AA) Triangle Similarity Theorem.\n\nd) The side KL in triangle JKL has a length of 6 cm. Using the scale factor between the corresponding sides, find the length of the corresponding side NO in triangle MNO.",
+      "judgment": {
+        "overall_score": 2.0,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The problem is internally inconsistent: given \u2220J=28\u00b0, \u2220L=112\u00b0, so \u2220K=40\u00b0, and JK=5, the Law of Sines forces KL = 5\u00b7sin(28\u00b0)/sin(40\u00b0) \u2248 3.65 cm, not the 6 cm stipulated in part (d). Students who check for consistency will hit a contradiction; the intended similarity ratio 8/5 with NO = 9.6 cm works algebraically but rests on impossible side data.",
+          "lesson_alignment": "The problem cleanly targets the lesson's key skill: using the Triangle Angle Sum Theorem to find missing angles, then applying AA Similarity, then using the scale factor to find a missing side \u2014 mirroring the third activity of the lesson. Parts (a)\u2013(d) walk through exactly the process the lesson synthesizes.",
+          "linguistic_clarity": "The bracket scenario is introduced but not sustained \u2014 parts (a)\u2013(d) revert to flat 'Find...', 'Use...', 'Explain...' commands rather than asking the final question from inside the manufacturing context. Language is unambiguous and grade-appropriate, but the framing is essentially list-like."
+        },
+        "feedback_for_haiku": "Your problem has a critical mathematical inconsistency in part (d). In triangle JKL, angles are J=28\u00b0, K=40\u00b0, L=112\u00b0. In triangle MNO, angles are M=28\u00b0, N=40\u00b0, O=112\u00b0. The correspondence therefore must be J\u2194M, K\u2194N, L\u2194O, which means JK (between J and K) corresponds to MN (between M and N), and KL (between K and L) corresponds to NO (between N and O). With JK=5 and MN=8, the scale factor is 8/5=1.6, so NO should equal 6\u00b71.6=9.6 cm \u2014 this works out cleanly, so verify your intended answer. However, please double-check that KL=6 is geometrically possible: with angles 28\u00b0, 40\u00b0, 112\u00b0 and JK=5, the Law of Sines gives KL = 5\u00b7sin(28\u00b0)/sin(40\u00b0) \u2248 3.65 cm, not 6 cm. You cannot freely stipulate KL=6; it is over-determined by the given angles and JK=5. Either remove the angle-and-two-side over-specification (drop JK=5 or drop one angle, and let students use similarity with a consistent set), or recompute KL from the given data. Also, wrap the problem in a more concrete scenario \u2014 right now the \"support brackets\" framing is thin and the question is asked in bare list form (\"Find...\", \"Use...\"); rewrite so the final question is asked from inside the manufacturing scenario (e.g., \"how long should the machinist cut edge NO?\") while preserving every quantity and label.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "The given data over-determines triangle JKL: with \u2220J=28\u00b0, \u2220L=112\u00b0, \u2220K=40\u00b0, and JK=5 cm, the Law of Sines forces KL \u2248 3.65 cm, contradicting the stated KL = 6 cm in part (d).",
+            "suggested_fix": "Either remove JK=5 (leave only the angles) so KL=6 is free to be given, or recompute KL from the angles and JK=5 and use that consistent value in part (d)."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The 'support brackets' scenario is mentioned only in the opening sentence and then abandoned; parts (a)\u2013(d) are asked as flat instructions rather than from inside the manufacturing context.",
+            "suggested_fix": "Rewrite the sub-questions so the final ask is embedded in the scenario, e.g., 'How long should the machinist cut edge NO of the second bracket?' while keeping all labels and quantities."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "The problem tests AA similarity through non-corresponding given angles (requiring Triangle Angle Sum), which matches the lesson well, but part (d) mechanically applies a scale factor without asking students to articulate which sides correspond and why.",
+            "suggested_fix": "Add a brief prompt in (d) asking students to identify the corresponding sides (JK\u2194MN and KL\u2194NO) and justify the correspondence from the angle pairings before computing NO."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "Two triangular support brackets are being manufactured for a construction project. The brackets must support equal load angles to function properly.\n\nThe first bracket is shaped like triangle JKL with \u2220J = 28\u00b0 and \u2220L = 112\u00b0. One edge JK measures 5 cm.\n\nThe second bracket is shaped like triangle MNO with \u2220N = 40\u00b0 and \u2220O = 112\u00b0. One edge MN measures 8 cm.\n\nTo ensure the brackets work as a matched pair, an engineer needs to verify they are geometrically similar and then determine the length of edge NO on the second bracket.\n\na) Find the measure of \u2220K in triangle JKL using the Triangle Angle Sum Theorem.\n\nb) Find the measure of \u2220M in triangle MNO using the Triangle Angle Sum Theorem.\n\nc) Which angles in triangle JKL correspond to which angles in triangle MNO? Explain how you can use the Angle-Angle (AA) Triangle Similarity Theorem to show that triangles JKL and MNO are similar.\n\nd) Since the triangles are similar, identify which sides correspond to each other (JK corresponds to MN, and KL corresponds to NO) and find the scale factor from triangle JKL to triangle MNO using these sides.\n\ne) Using the Law of Sines, calculate the length of side KL in triangle JKL: KL = 5 \u00b7 sin(28\u00b0)/sin(40\u00b0). Round your answer to two decimal places.\n\nf) A machinist needs to cut edge NO of the second bracket. Using the scale factor from part (d) and the length of KL from part (e), how long should edge NO be? Round your answer to two decimal places.",
+      "judgment": {
+        "overall_score": 1.2,
+        "passed": false,
+        "scores": {
+          "geometric_accuracy": 1,
+          "lesson_alignment": 1,
+          "linguistic_clarity": 2
+        },
+        "rationales": {
+          "geometric_accuracy": "The triangles are NOT similar: JKL has angles 28\u00b0, 40\u00b0, 112\u00b0 and MNO has angles 28\u00b0, 40\u00b0, 112\u00b0 \u2014 wait, \u2220K = 180-28-112 = 40\u00b0 and \u2220M = 180-40-112 = 28\u00b0. So both triangles have angles {28\u00b0, 40\u00b0, 112\u00b0}, so they ARE similar. However, the correspondence stated in part (d) is wrong: JK is between \u2220J(28\u00b0) and \u2220K(40\u00b0); MN is between \u2220M(28\u00b0) and \u2220N(40\u00b0). So JK corresponds to MN only if J\u2194M and K\u2194N. Then KL (opposite \u2220J=28\u00b0) corresponds to NO (opposite \u2220M=28\u00b0) \u2713. Scale factor MN/JK = 8/5 = 1.6. Part (e) misuses Law of Sines: KL/sin(J) = JK/sin(L), so KL = 5\u00b7sin(28\u00b0)/sin(112\u00b0) \u2248 2.53, NOT sin(28\u00b0)/sin(40\u00b0). The formula given in (e) is incorrect. Then NO = 1.6\u00b7KL should give \u2248 4.05, but using the wrong formula gives KL = 5\u00b7sin(28\u00b0)/sin(40\u00b0) \u2248 3.65, leading to a wrong NO \u2248 5.84. This is a critical mathematical error.",
+          "lesson_alignment": "The lesson is about proving/applying AA Similarity and using scale factors to find missing sides \u2014 technology or Law of Sines is not part of this lesson. Introducing the Law of Sines is off-topic; the natural approach is to note KL corresponds to NO and use the scale factor directly (which makes part (e) circular/unnecessary). This significantly misaligns with the intended skill.",
+          "linguistic_clarity": "The scenario (support brackets) is concrete but thin, and the problem is heavily scaffolded with parts (a)\u2013(f) that essentially tell the student what to do. Part (d) parenthetically gives away the correspondence, and part (e) hands over a formula. Clear enough to follow, but clunky and over-directed."
+        },
+        "feedback_for_haiku": "Your problem has a critical math error in part (e): the Law of Sines application is wrong. In triangle JKL with \u2220J=28\u00b0, \u2220K=40\u00b0, \u2220L=112\u00b0, side KL is opposite \u2220J, and JK is opposite \u2220L, so the correct relation is KL/sin(28\u00b0) = JK/sin(112\u00b0), giving KL = 5\u00b7sin(28\u00b0)/sin(112\u00b0) \u2248 2.53 \u2014 not 5\u00b7sin(28\u00b0)/sin(40\u00b0). This propagates a wrong answer into part (f). More importantly, the Law of Sines is off-topic for this lesson, which is about AA Similarity and using scale factors. Rebuild the problem so students (1) use the Triangle Angle Sum Theorem to find the missing angles, (2) identify two pairs of congruent corresponding angles to justify AA Similarity, and (3) use the scale factor to find NO from a given KL \u2014 provide KL as a given length rather than asking students to compute it via trigonometry. Also fix part (d): don't parenthetically hand students the side correspondence; make them determine it from the angle correspondence J\u2194M, K\u2194N, L\u2194O. Finally, tighten the scenario \u2014 the \"equal load angles\" phrasing is vague; give the brackets a concrete purpose where the missing length actually matters, and remove the heavy step-by-step scaffolding so students genuinely apply the AA theorem rather than follow a recipe.",
+        "specific_issues": [
+          {
+            "category": "geometric_accuracy",
+            "severity": "critical",
+            "issue": "Part (e)'s Law of Sines formula is incorrect: KL is opposite \u2220J=28\u00b0 and JK is opposite \u2220L=112\u00b0, so KL = 5\u00b7sin(28\u00b0)/sin(112\u00b0) \u2248 2.53, not 5\u00b7sin(28\u00b0)/sin(40\u00b0) \u2248 3.65.",
+            "suggested_fix": "Either fix the denominator to sin(112\u00b0) or, better, remove the Law of Sines entirely and give KL as a stated length so students can apply the scale factor."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "critical",
+            "issue": "The Law of Sines is not part of this lesson on AA Triangle Similarity, and its inclusion diverts students from the intended skill of applying similarity and scale factor.",
+            "suggested_fix": "Provide KL as a given side length (e.g., KL = 2.5 cm) and have students find NO by multiplying by the scale factor derived from AA similarity."
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "major",
+            "issue": "Part (d) parenthetically hands students the side correspondence, removing the reasoning step that connects angle correspondence to side correspondence.",
+            "suggested_fix": "Ask students to determine which sides correspond based on the angle correspondence they identified in part (c), without giving the answer."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The scenario framing (\"equal load angles to function properly\") is vague and does not clearly motivate why the lengths matter.",
+            "suggested_fix": "Give a concrete reason NO must be computed (e.g., the machinist must cut the second bracket's longest edge to a precise length so the two brackets nest into a matched assembly)."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "The problem is heavily scaffolded into six labeled subparts that walk students through every step, reducing genuine application.",
+            "suggested_fix": "Consolidate into 2\u20133 parts that ask students to (i) justify similarity and (ii) find NO, letting them choose the intermediate steps."
+          }
+        ]
+      }
+    }
+  ]
+}

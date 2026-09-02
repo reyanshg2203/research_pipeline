@@ -1,0 +1,5 @@
+A surveyor is comparing two similar right triangles formed by measuring angles and distances from a hillside. The first triangle PQR has a right angle at Q, with sides PQ = 9 meters and QR = 12 meters. A smaller similar triangle XYZ also has a right angle, and one of its legs measures XY = 6 meters.
+
+The surveyor notices that angle Q in the larger triangle is congruent to angle Y in the smaller triangle — this means the triangles are similar by AA similarity. Since both triangles are right triangles, their interior angles sum to 180°, and the matching angles confirm the same shape.
+
+Using the proportional relationships between the corresponding sides of similar triangles, what is the length of YZ in the smaller triangle XYZ?

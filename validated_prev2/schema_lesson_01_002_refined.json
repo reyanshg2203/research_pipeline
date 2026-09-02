@@ -1,0 +1,56 @@
+{
+  "problem_id": "lesson_01_002",
+  "lesson": "lesson_01",
+  "entities": {
+    "triangles": null,
+    "segments": [
+      {
+        "id": "EF",
+        "length": null,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": null,
+        "is_altitude": null
+      },
+      {
+        "id": "GH",
+        "length": 15.0,
+        "parallel_to": null,
+        "perpendicular_to": null,
+        "ratio_to": null,
+        "is_midsegment": null,
+        "is_altitude": null
+      }
+    ],
+    "polygons": null,
+    "lines": null,
+    "points": [
+      {
+        "id": "O",
+        "lies_on": null,
+        "is_intersection_of": null
+      }
+    ],
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "dilation",
+      "entities": [
+        "EF",
+        "GH"
+      ],
+      "attributes": {
+        "center": "O",
+        "scale_factor": 2.5,
+        "pre_image": "EF",
+        "image": "GH"
+      }
+    }
+  ],
+  "target": {
+    "entity": "EF",
+    "attribute": "length"
+  }
+}

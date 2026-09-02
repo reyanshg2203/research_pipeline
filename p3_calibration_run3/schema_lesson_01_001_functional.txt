@@ -1,0 +1,1 @@
+Lesson context: lesson_01. Let quadrilateral ABCD be a 4-sided figure with AB = 8, BC = 6, CD = 10, DA = 12. Let quadrilateral MNPQ be a 4-sided figure with NP = 3, PQ = 5. ABCD is dilated to form MNPQ with scale factor 0.5, centered at point P. Find the length of MN in MNPQ.

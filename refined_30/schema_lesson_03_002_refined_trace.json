@@ -1,0 +1,98 @@
+{
+  "lesson_id": "lesson_03",
+  "max_iterations": 3,
+  "iterations_used": 3,
+  "stopped_early": false,
+  "final_perfect": true,
+  "final_passed": true,
+  "final_overall_score": 4.0,
+  "final_nl": "A graphic designer is creating a pattern for a decorative tile. She has a quadrilateral design ABCD with sides AB = 5 cm, BC = 7 cm, CD = 6 cm, and DA = 8 cm. To create a smaller version of the design, she dilates the quadrilateral from a fixed center point O by a scale factor k, producing the image A'B'C'D'. After the dilation, the length of side B'C' is 3.5 cm.\n\n(a) What is the scale factor k of this dilation?\n\n(b) What is the length of side A'B' in the dilated quadrilateral?\n\n(c) If the distance from O to vertex A is OA = 12 cm, what is the distance OA' from O to the image vertex A'?",
+  "iterations": [
+    {
+      "iteration": 1,
+      "nl_problem": "Lesson context: lesson_03. Let quadrilateral ABCD be a 4-sided figure with AB = 5, BC = 7, CD = 6, DA = 8. Let quadrilateral A'B'C'D' be a 4-sided figure. ABCD is dilated to form A'B'C'D' with scale factor 0.5, centered at point O. Find the length of B'C' in A'B'C'D'.",
+      "judgment": {
+        "overall_score": 3.5,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 3
+        },
+        "rationales": {
+          "geometric_accuracy": "The dilation setup is mathematically valid and internally consistent: B'C' = 0.5 \u00d7 7 = 3.5, and no relationships contradict. Extra side lengths (CD, DA) are unused but not incorrect.",
+          "lesson_alignment": "The problem targets exactly the lesson's assertion that dilation multiplies lengths by the scale factor, requiring a single application. However, it's a generic one-step recall task rather than pushing to the productive edge, and it wastes two of the four given measurements.",
+          "linguistic_clarity": "The prose is grammatical and unambiguous but reads as a bare sequence of asserted facts with no scenario motivating the quantities \u2014 matching the LC=3 flat-framing descriptor."
+        },
+        "feedback_for_haiku": "Your problem correctly applies the lesson's key idea (multiplying side lengths by the scale factor), but it reads as a bare list of asserted facts with no reason for the quantities to exist. Wrap it in a concrete real-world scenario \u2014 for example, a quilter, tile designer, or graphic designer who has a quadrilateral ABCD with sides AB = 5, BC = 7, CD = 6, DA = 8 (keep the same units and every quantity exact) and shrinks it from an anchor point O by a scale factor of 0.5 to make a smaller version A'B'C'D'. Ask the final question from inside that scenario (e.g., \"How long is side B'C' in the reduced design?\"). Also, trim redundant phrasing: you don't need to say \"quadrilateral ABCD be a 4-sided figure\" \u2014 \"quadrilateral ABCD\" already means 4-sided, and you don't need to introduce A'B'C'D' as a separate 4-sided figure before naming it as the image. Finally, since CD and DA are given but unused, consider either using them (e.g., asking for the perimeter of the image) to push toward the productive edge, or removing them to keep the problem tight.",
+        "specific_issues": [
+          {
+            "category": "linguistic_clarity",
+            "severity": "major",
+            "issue": "The problem is flat and list-like with no real-world scenario giving the quantities a reason to exist.",
+            "suggested_fix": "Wrap the problem in a concrete scenario (e.g., a designer scaling down a quadrilateral pattern from anchor point O by factor 0.5) and ask the final question from inside that scenario, preserving every quantity."
+          },
+          {
+            "category": "linguistic_clarity",
+            "severity": "minor",
+            "issue": "Redundant phrasing: 'quadrilateral ABCD be a 4-sided figure' and separately introducing A'B'C'D' as a 4-sided figure before defining it as the image is verbose.",
+            "suggested_fix": "Say 'Quadrilateral ABCD has AB = 5, BC = 7, CD = 6, DA = 8' and then 'ABCD is dilated from center O by scale factor 0.5 to form A'B'C'D'.'"
+          },
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "Two of the four given side lengths (CD and DA) are extraneous, and the task is a single direct multiplication \u2014 closer to recall than to the productive edge of the lesson.",
+            "suggested_fix": "Either use all sides by asking for the perimeter of the image, or ask a follow-up such as computing OB' given OB, to more richly exercise the assertion from the lesson."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "nl_problem": "A graphic designer is creating a pattern for a decorative tile. She has a quadrilateral design ABCD with sides AB = 5 cm, BC = 7 cm, CD = 6 cm, and DA = 8 cm. To create a smaller version of the design, she dilates the quadrilateral from a fixed center point O by a scale factor of 0.5, producing the image A'B'C'D'.\n\n(a) What is the length of side B'C' in the reduced design?\n\n(b) What is the perimeter of the original quadrilateral ABCD?\n\n(c) What is the perimeter of the dilated quadrilateral A'B'C'D'?",
+      "judgment": {
+        "overall_score": 3.7,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 3,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "All computations are correct: B'C' = 7 \u00d7 0.5 = 3.5 cm, perimeter of ABCD = 5+7+6+8 = 26 cm, and perimeter of A'B'C'D' = 13 cm. No internal contradictions and all relationships are consistent with the definition of dilation.",
+          "lesson_alignment": "The problem directly targets the lesson's core learning goal\u2014dilating by scale factor k multiplies all lengths (and perimeters) by k. It's cleanly aligned but modest in difficulty, essentially direct application of the assertion with three parallel sub-parts rather than pushing students to a productive edge (e.g., asking them to justify or work backward from a ratio).",
+          "linguistic_clarity": "The problem is wrapped in a concrete graphic-designer/tile scenario, with the question asked from inside that scenario and every quantity preserved. Prose is clean and unambiguous."
+        },
+        "feedback_for_haiku": "Your problem is mathematically clean and framed in a real-world scenario, which is great. The main opportunity is to raise the challenge level\u2014right now all three sub-parts ask for a direct multiplication by k, which is closer to recall than application. Consider replacing one of the parts with something that pushes students to reason with the assertion in a less mechanical way: for example, give the student one image side length (say B'C' = 3.5 cm) and ask them to determine the scale factor and then find another original length, or provide OA = 10 cm and ask for OA' in addition to a side computation. That would preserve the scenario while getting students to move between distance-to-center ratios and side-length ratios, which is exactly the distinction the lesson emphasizes.",
+        "specific_issues": [
+          {
+            "category": "lesson_alignment",
+            "severity": "minor",
+            "issue": "All three sub-parts exercise the same single step (multiply a length by 0.5), so the problem sits below the productive edge of difficulty for the lesson.",
+            "suggested_fix": "Replace one sub-part with a task that requires reversing the scale factor or connecting distance-to-center (PA'/PA) with side-length ratios, e.g., give B'C' and ask for the scale factor, or provide OA and ask for OA'."
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "nl_problem": "A graphic designer is creating a pattern for a decorative tile. She has a quadrilateral design ABCD with sides AB = 5 cm, BC = 7 cm, CD = 6 cm, and DA = 8 cm. To create a smaller version of the design, she dilates the quadrilateral from a fixed center point O by a scale factor k, producing the image A'B'C'D'. After the dilation, the length of side B'C' is 3.5 cm.\n\n(a) What is the scale factor k of this dilation?\n\n(b) What is the length of side A'B' in the dilated quadrilateral?\n\n(c) If the distance from O to vertex A is OA = 12 cm, what is the distance OA' from O to the image vertex A'?",
+      "judgment": {
+        "overall_score": 4.0,
+        "passed": true,
+        "scores": {
+          "geometric_accuracy": 4,
+          "lesson_alignment": 4,
+          "linguistic_clarity": 4
+        },
+        "rationales": {
+          "geometric_accuracy": "All computations are consistent: k = 3.5/7 = 1/2, so A'B' = 5(1/2) = 2.5 cm, and OA' = 12(1/2) = 6 cm. No contradictions and all relationships hold.",
+          "lesson_alignment": "Directly targets the lesson's core assertions: corresponding side lengths scale by k, and PA'/PA = k. Part (a) requires computing k from a ratio of side lengths, (b) applies the scale factor to another side, (c) applies it to a center-to-vertex distance \u2014 hitting both the definition-based and assertion-based aspects.",
+          "linguistic_clarity": "The problem is wrapped in a concrete tile-designer scenario, the final questions are asked from inside that scenario, quantities are preserved and labeled cleanly, and units are consistent."
+        },
+        "feedback_for_haiku": "Your problem is solid: the graphic-designer framing gives the quantities a reason to exist, the three sub-questions cleanly progress from finding k (from a ratio of corresponding sides) to applying it to another side length and then to a center-to-vertex distance, which mirrors both the definition of dilation and the assertion covered in the lesson. The arithmetic is internally consistent (k = 1/2, A'B' = 2.5 cm, OA' = 6 cm). No changes needed \u2014 if you wanted to push difficulty further, you could add a part asking for the perimeter of A'B'C'D' or ask students to justify why the ratio of side lengths equals PA'/PA using the definition of dilation.",
+        "specific_issues": []
+      }
+    }
+  ]
+}

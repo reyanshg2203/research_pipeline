@@ -1,0 +1,5 @@
+An artist is designing two equilateral triangle tiles for a mosaic. The first tile, triangle ABC, has sides of length 8 inches on all three sides—AB = 8, BC = 8, and AC = 8—with each interior angle measuring 60°. The second tile, triangle DEF, is a larger equilateral triangle with sides of length 12 inches on all three sides—DE = 12, EF = 12, and DF = 12—also with each interior angle measuring 60°.
+
+Because both triangles are equilateral, they are similar to each other by SSS similarity. When you compare the corresponding sides of the two triangles, the ratio of each pair of corresponding sides is the same: the scale factor is 1.5 (since 12 ÷ 8 = 1.5).
+
+What is the length of side AB in triangle ABC?

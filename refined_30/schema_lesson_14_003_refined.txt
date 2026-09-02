@@ -1,0 +1,13 @@
+A carpenter is building a roof truss support with a diagonal beam from one corner to another. The beam forms the hypotenuse of a right triangle with legs measuring 9 feet and 12 feet. The hypotenuse is 15 feet long.
+
+The carpenter needs to install a vertical brace from the right-angle corner perpendicular to the diagonal beam, dividing the beam into two segments.
+
+Let's call the right triangle PQR, where:
+- The two legs are PQ = 9 feet and QR = 12 feet
+- The hypotenuse is PR = 15 feet
+- A perpendicular brace from the right angle at Q meets the hypotenuse PR at point S
+- This creates segments PS and SR on the hypotenuse
+
+Using the similar-triangle relationships from the lesson—specifically, that a² = xc and b² = yc, where a and b are the legs, c is the hypotenuse, and x and y are the segments of the hypotenuse—find the length of the brace QS.
+
+(Hint: Start by finding PS and SR using the similar-triangle proportions, then determine QS.)

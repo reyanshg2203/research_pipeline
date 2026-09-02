@@ -1,0 +1,5 @@
+A builder is framing a triangular roof support with two wooden beams. The two beams meet at point Y, with their other endpoints at points X and Z. One beam from Y to X has a length of 6 feet, and the other beam from Y to Z has a length of 8 feet. A third beam will connect points X and Z to complete the triangular frame.
+
+Complete the inequality to describe the possible lengths for the third beam:
+
+___ < x < ___

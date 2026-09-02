@@ -1,0 +1,9 @@
+A rooftop support structure consists of a triangular frame DEF where the right angle is at E. The two legs of the support beam are DE = 7 meters and EF = 24 meters. To reinforce the structure, an engineer draws a support cable from vertex E perpendicular to the hypotenuse DF. Let G be the foot of this perpendicular, so that G lies on DF and divides the hypotenuse into two segments, DG and GF.
+
+(a) First, find the length of the hypotenuse DF using the Pythagorean Theorem.
+
+(b) When an altitude is drawn to the hypotenuse of a right triangle, it creates three similar triangles. Identify which two of the original triangles (the large triangle DEF and the two smaller triangles formed by the altitude) are similar to each other in a way that relates the leg DE to the segment DG and the full hypotenuse DF. Using this similarity and the proportional relationship between corresponding sides, write an equation that expresses DE² in terms of DG and DF.
+
+(c) Using your equation from part (b), find the length of segment DG.
+
+(d) Find the length of segment GF and verify that DG + GF equals your answer to part (a).

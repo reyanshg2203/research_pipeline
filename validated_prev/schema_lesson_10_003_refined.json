@@ -1,0 +1,77 @@
+{
+  "problem_id": "lesson_10_003",
+  "lesson": "lesson_10",
+  "entities": {
+    "triangles": [
+      {
+        "id": "JKL",
+        "sides": {
+          "JK": 8.0,
+          "KL": 10.0,
+          "JL": 12.0
+        },
+        "angles": {
+          "J": null,
+          "K": null,
+          "L": 42.0
+        },
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      },
+      {
+        "id": "DEF",
+        "sides": {
+          "DE": 12.0,
+          "EF": 15.0,
+          "DF": 18.0
+        },
+        "angles": {
+          "D": null,
+          "E": null,
+          "F": null
+        },
+        "is_right": null,
+        "is_isosceles": null,
+        "is_equilateral": null
+      }
+    ],
+    "segments": null,
+    "polygons": null,
+    "lines": null,
+    "points": null,
+    "circles": null
+  },
+  "relationships": [
+    {
+      "type": "similar_SSS",
+      "entities": [
+        "JKL",
+        "DEF"
+      ],
+      "attributes": {
+        "scale_factor": 1.5,
+        "pre_image": "JKL",
+        "image": "DEF",
+        "congruent_angle_pairs": [
+          [
+            "J",
+            "D"
+          ],
+          [
+            "K",
+            "E"
+          ],
+          [
+            "L",
+            "F"
+          ]
+        ]
+      }
+    }
+  ],
+  "target": {
+    "entity": "DEF",
+    "attribute": "angles.F"
+  }
+}
