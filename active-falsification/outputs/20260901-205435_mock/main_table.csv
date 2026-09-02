@@ -1,7 +1,0 @@
-model,family,split,repeat,n_test,H0,Passive,Active,delta_active_passive,delta_active_h0,P_tokens,A_tokens,token_mismatch_pct,P_obs,A_obs,A_unsat,A_unsat_rate,H0_pilot_acc,unparsed_H0,unparsed_P,unparsed_A,is_mock,precision
-mock,lte_valuation,challenge,0,6,0.3333,0.5,0.5,0.0,0.1667,48,34,41.18,6,2,0,0.0,0.625,0,0,0,True,none
-mock,lte_valuation,iid,0,8,0.75,0.5,0.0,-0.5,-0.75,48,34,41.18,6,2,0,0.0,0.625,0,0,0,True,none
-mock,order_minus_one,challenge,0,6,0.5,1.0,0.5,-0.5,0.0,48,34,41.18,6,2,0,0.0,0.375,0,0,0,True,none
-mock,order_minus_one,iid,0,8,0.25,0.625,0.5,-0.125,0.25,48,34,41.18,6,2,0,0.0,0.375,0,0,0,True,none
-mock,recurrence_substitution,challenge,0,6,0.5,1.0,0.6667,-0.3333,0.1667,48,35,37.14,6,2,0,0.0,0.375,0,0,0,True,none
-mock,recurrence_substitution,iid,0,8,0.125,0.5,0.375,-0.125,0.25,48,35,37.14,6,2,0,0.0,0.375,0,0,0,True,none
