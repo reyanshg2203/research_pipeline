@@ -10,12 +10,13 @@ Backend selection, in priority order:
   3. "local"                               (default — safe for testing)
 
 The Sheet must have these tabs (exact names):
-    cal_drafts, cal_responses, drafts, progress, responses,
-    cal_prolific_drafts, cal_prolific_responses, consent_log
+    cal_drafts, cal_responses, drafts, progress, responses
 
 Every function takes a `scope`: "cal" for the (internal) calibration app,
 "cal_prolific" for the Prolific calibration app, "main" for the 90-problem app.
-That keeps every study's data separate in one spreadsheet.
+"cal" and "cal_prolific" share the same cal_drafts / cal_responses tabs (rows are
+told apart by column A: an email for internal raters, a Prolific ID for Prolific
+raters); "main" has its own tabs.
 """
 from __future__ import annotations
 
@@ -30,8 +31,9 @@ ROOT = Path(__file__).resolve().parent.parent
 # tab names per scope
 TABS = {
     "cal": {"drafts": "cal_drafts", "responses": "cal_responses", "progress": "progress"},
-    "cal_prolific": {"drafts": "cal_prolific_drafts",
-                     "responses": "cal_prolific_responses", "progress": "progress"},
+    # Prolific raters write into the SAME cal_ tabs as the internal calibration.
+    "cal_prolific": {"drafts": "cal_drafts", "responses": "cal_responses",
+                     "progress": "progress"},
     "main": {"drafts": "drafts", "responses": "responses", "progress": "progress"},
 }
 

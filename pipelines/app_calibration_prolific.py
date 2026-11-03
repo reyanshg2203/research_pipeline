@@ -4,9 +4,8 @@ calibration study.
 
 Same 10 problems, same rubric, same Google Sheets backend as app_calibration.py,
 but wired for anonymous Prolific participants instead of named internal raters:
-
-  * Informed-consent gate as the mandatory first screen (no rating screen renders
-    until an explicit consent decision is recorded).
+  * Consent was already obtained and approved earlier in the study, so this phase
+    opens with a short intro screen (no consent gate).
   * Participant identity comes from Prolific's PROLIFIC_PID URL parameter, NOT a
     typed name/email. No personally identifying information is collected here.
   * A completion-code screen at the end so participants can be paid on Prolific.
@@ -36,58 +35,27 @@ SCOPE = "cal_prolific"
 COMPLETION_CODE = "CGUGWE4I" 
 COMPLETION_URL = f"https://app.prolific.com/submissions/complete?cc=CGUGWE4I"
 
-# Contact shown on the consent screen (matches the IRB consent form on file).
-CONTACT_EMAIL = "saurabh3005@gmail.com"
-
-# ------------------------------------------------------------------ CONSENT
-# This text is the exact consent instrument attached to the IRB submission.
-# Keep this string and the IRB attachment identical.
-CONSENT_MD = f"""
-### Research Study: Evaluating AI-Generated Geometry Practice Problems
-
-Thank you for your interest in this study. Before you begin, please read the
-information below.
-
-**What this study is about**
-This study compares different methods for generating geometry practice problems
-using AI, including a method that checks problems with a formal logic
-verification step. We are asking experienced geometry teachers to review a small
-set of problems and share their professional judgment on their quality.
-
-**What you will be asked to do**
-You will review 10 geometry problems and rate them on a short set of criteria
-such as correctness, difficulty, and clarity. This first phase should take about
-20 minutes. If you continue to the next phase of this study, you will be asked to
-review 90 additional problems (broken into smaller 10-problem chunks) using the
-same rating process, which should take about 180 minutes.
-
-**Compensation**
-You will be paid $5 for this phase through Prolific, based on an estimated
-completion time of 20 minutes. Payment is not affected by whether you choose to
-continue to a later phase.
-
-**Voluntary participation**
-Taking part in this study is entirely voluntary. You may stop at any time and for
-any reason, and you will still be paid for the portion of the task you completed.
-
-**Confidentiality**
-This study does not collect your name or any other personally identifying
-information beyond what Prolific already manages for participant payment. Your
-ratings will be combined with those of other teachers and reported only in
-aggregate. No individual responses will be shared or published.
-
-**About this research**
-This is a student-led independent research project. The study design and this
-consent process were reviewed by an adult supervisor to help ensure it meets
-standard ethical research practices.
-
-**Questions**
-If you have any questions about this study, you may contact {CONTACT_EMAIL} at
-any time.
+# ------------------------------------------------------------------ INTRO
+INTRO_MD = """
+You will rate **10 geometry practice problems** on three criteria, using the
+written 0\u20134 scoring guide. Some problems are well written and some have flaws;
+score each one exactly as it is written.
 """
 
-AGREE = "I have read the above and voluntarily agree to participate."
-DECLINE = "I do not agree to participate."
+# Prolific-only instructions (kept out of the shared DIRECTIONS_MD so the teacher
+# app is unchanged).
+PROLIFIC_DIRECTIONS_MD = """
+**Before you begin**
+
+- **Complete all 10 problems in one sitting.** This phase takes about 20 minutes,
+  so please set aside that time before you start.
+- **Score objectively.** Judge each problem strictly against the written 0\u20134
+  definitions in the sidebar rubric, based on what the problem actually says, not
+  on how you would have written it or on personal taste. Use the full 0\u20134 scale
+  where the definitions call for it.
+- **Payment.** You will receive **$5** through Prolific for this phase. When you
+  submit your last rating you will be shown a completion code to enter on Prolific.
+"""
 
 
 # ------------------------------------------------------------------ helpers
@@ -108,8 +76,10 @@ def save_draft(pid: str, ratings: dict, idx: int, total: int) -> None:
 
 
 def submit(pid: str, ratings: dict) -> None:
-    # name is intentionally blank — no personal data is stored for Prolific raters
-    storage.submit_response(SCOPE, pid, "", ratings, [f for f, _, _, _ in RUBRIC])
+    # No real name is collected. The Prolific ID goes in the name column too, because
+    # irr_report.py identifies each rater by evaluator_name and the shared cal_
+    # tabs would otherwise hold blank names.
+    storage.submit_response(SCOPE, pid, pid, ratings, [f for f, _, _, _ in RUBRIC])
     storage.delete_draft(SCOPE, pid)
 
 
@@ -120,13 +90,6 @@ def completion_screen() -> None:
              "receive payment on Prolific.")
     st.code(COMPLETION_CODE, language=None)
     st.link_button("Complete on Prolific →", COMPLETION_URL, type="primary")
-
-
-def declined_screen() -> None:
-    st.markdown("## Study ended")
-    st.info("You chose not to participate, so the study has ended and no ratings "
-            "were recorded. You may now close this window and return the study on "
-            "Prolific. Thank you for your time.")
 
 
 # ------------------------------------------------------------------ main
@@ -140,7 +103,7 @@ def main() -> None:
         return
 
     params = _params()
-    st.session_state.setdefault("step", "consent")
+    st.session_state.setdefault("step", "intro")
     st.session_state.setdefault("idx", 0)
     st.session_state.setdefault("ratings", {})
     # remember the PID across reruns once we have it
@@ -150,18 +113,16 @@ def main() -> None:
         st.session_state.setdefault("session_id", params["session_id"])
 
     # ---------- terminal states ----------
-    if st.session_state.step == "declined":
-        declined_screen()
-        return
-
     if st.session_state.step == "done":
         completion_screen()
         return
 
-    # ---------- consent gate ----------
-    if st.session_state.step == "consent":
-        st.markdown(CONSENT_MD)
+    # ---------- intro ----------
+    if st.session_state.step == "intro":
+        st.title("Geometry Problem Rating")
+        st.markdown(INTRO_MD)
         st.markdown(DIRECTIONS_MD)
+        st.markdown(PROLIFIC_DIRECTIONS_MD)
         st.divider()
 
         pid = st.session_state.get("pid", "")
@@ -174,19 +135,8 @@ def main() -> None:
                        "enter an ID below.")
             pid = st.text_input("Prolific ID").strip()
 
-        choice = st.radio("Please indicate your decision:",
-                          options=[AGREE, DECLINE], index=None)
-
-        can_continue = bool(pid) and choice is not None
-        if st.button("Continue", type="primary", disabled=not can_continue):
-            agreed = (choice == AGREE)
-            storage.log_consent(SCOPE, pid, agreed,
-                                st.session_state.get("study_id", ""),
-                                st.session_state.get("session_id", ""))
+        if st.button("Begin", type="primary", disabled=not pid):
             st.session_state["pid"] = pid
-            if not agreed:
-                st.session_state.step = "declined"
-                st.rerun()
             # already finished earlier? recover the completion screen, no re-do
             if storage.has_submitted(SCOPE, pid):
                 st.session_state.step = "done"
