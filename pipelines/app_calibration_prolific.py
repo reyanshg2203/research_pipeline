@@ -32,8 +32,8 @@ SCOPE = "cal_prolific"
 # Set these two per Prolific study before you publish.
 # Prolific gives you a completion code (and a matching completion URL) in the
 # study's "How to record completion" step. Paste that code here.
-COMPLETION_CODE = "CGUGWE4I" 
-COMPLETION_URL = f"https://app.prolific.com/submissions/complete?cc=CGUGWE4I"
+COMPLETION_CODE = "C11MXNLD"
+COMPLETION_URL = "https://app.prolific.com/submissions/complete?cc=C11MXNLD"
 
 # ------------------------------------------------------------------ INTRO
 INTRO_MD = """
